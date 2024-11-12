@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
+// app.component.ts
+import { Component } from '@angular/core';
+import { AuthComponent } from './autentificacion/autentificacion.component';
+import { AuthGuard } from './autentificacion/auth.service';
+import { CommonModule } from '@angular/common'; 
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  imports: [AuthComponent,CommonModule,RouterModule]
 })
 export class AppComponent {
-  title = 'Gestion-Escuela';
+  title ='Escuela';
+  constructor(public authService: AuthGuard) {}
+
+  logout() {
+    this.authService.logout();
+  }
 }
