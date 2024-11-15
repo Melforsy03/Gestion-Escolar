@@ -7,8 +7,8 @@
       "RelativeMoniker": "D:0:0:{93DC4577-C171-42D2-8BE1-B577A646E52E}|ASP.Net-backend\\ASP.Net-backend.csproj|solutionrelative:asp.net-backend\\controllers\\profesorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Migrations\\20241114070913_Migration1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ASP.Net-backend\\Migrations\\20241114070913_Migration1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{93DC4577-C171-42D2-8BE1-B577A646E52E}|ASP.Net-backend\\ASP.Net-backend.csproj|c:\\users\\rizhe\\desktop\\projects\\is_bd\\gestion-escolar\\asp.net-backend\\asp.net-backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{93DC4577-C171-42D2-8BE1-B577A646E52E}|ASP.Net-backend\\ASP.Net-backend.csproj|solutionrelative:asp.net-backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{93DC4577-C171-42D2-8BE1-B577A646E52E}|ASP.Net-backend\\ASP.Net-backend.csproj|c:\\users\\rizhe\\desktop\\projects\\is_bd\\gestion-escolar\\asp.net-backend\\asp.net-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,8 +23,20 @@
       "RelativeMoniker": "D:0:0:{93DC4577-C171-42D2-8BE1-B577A646E52E}|ASP.Net-backend\\ASP.Net-backend.csproj|solutionrelative:asp.net-backend\\models\\profesor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93DC4577-C171-42D2-8BE1-B577A646E52E}|ASP.Net-backend\\ASP.Net-backend.csproj|c:\\users\\rizhe\\desktop\\projects\\is_bd\\gestion-escolar\\asp.net-backend\\asp.net-backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{93DC4577-C171-42D2-8BE1-B577A646E52E}|ASP.Net-backend\\ASP.Net-backend.csproj|solutionrelative:asp.net-backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{93DC4577-C171-42D2-8BE1-B577A646E52E}|ASP.Net-backend\\ASP.Net-backend.csproj|c:\\users\\rizhe\\desktop\\projects\\is_bd\\gestion-escolar\\asp.net-backend\\asp.net-backend\\migrations\\20241115003551_migration1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93DC4577-C171-42D2-8BE1-B577A646E52E}|ASP.Net-backend\\ASP.Net-backend.csproj|solutionrelative:asp.net-backend\\migrations\\20241115003551_migration1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93DC4577-C171-42D2-8BE1-B577A646E52E}|ASP.Net-backend\\ASP.Net-backend.csproj|c:\\users\\rizhe\\desktop\\projects\\is_bd\\gestion-escolar\\asp.net-backend\\asp.net-backend\\asp.net-backend.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{93DC4577-C171-42D2-8BE1-B577A646E52E}|ASP.Net-backend\\ASP.Net-backend.csproj|solutionrelative:asp.net-backend\\asp.net-backend.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Migrations\\20241115003406_Migration2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ASP.Net-backend\\Migrations\\20241115003406_Migration2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93DC4577-C171-42D2-8BE1-B577A646E52E}|ASP.Net-backend\\ASP.Net-backend.csproj|c:\\users\\rizhe\\desktop\\projects\\is_bd\\gestion-escolar\\asp.net-backend\\asp.net-backend\\asp.net-backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{93DC4577-C171-42D2-8BE1-B577A646E52E}|ASP.Net-backend\\ASP.Net-backend.csproj|solutionrelative:asp.net-backend\\asp.net-backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -44,48 +56,9 @@
               "RelativeDocumentMoniker": "ASP.Net-backend\\Controllers\\ProfesorsController.cs",
               "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Controllers\\ProfesorsController.cs",
               "RelativeToolTip": "ASP.Net-backend\\Controllers\\ProfesorsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAFwAAAAAAAAAAAAswCIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T07:09:46.827Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "20241114070913_Migration1.cs",
-              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Migrations\\20241114070913_Migration1.cs",
-              "RelativeDocumentMoniker": "ASP.Net-backend\\Migrations\\20241114070913_Migration1.cs",
-              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Migrations\\20241114070913_Migration1.cs",
-              "RelativeToolTip": "ASP.Net-backend\\Migrations\\20241114070913_Migration1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T07:09:13.419Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Program.cs",
-              "RelativeDocumentMoniker": "ASP.Net-backend\\Program.cs",
-              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Program.cs",
-              "RelativeToolTip": "ASP.Net-backend\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T07:07:38.823Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\appsettings.json",
-              "RelativeDocumentMoniker": "ASP.Net-backend\\appsettings.json",
-              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\appsettings.json",
-              "RelativeToolTip": "ASP.Net-backend\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-11-14T07:06:50.872Z",
+              "WhenOpened": "2024-11-15T01:02:31.172Z",
               "EditorCaption": ""
             },
             {
@@ -96,10 +69,33 @@
               "RelativeDocumentMoniker": "ASP.Net-backend\\Models\\ProfesorContext.cs",
               "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Models\\ProfesorContext.cs",
               "RelativeToolTip": "ASP.Net-backend\\Models\\ProfesorContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAArAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T07:04:59.2Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-14T07:04:59.2Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Program.cs",
+              "RelativeDocumentMoniker": "ASP.Net-backend\\Program.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Program.cs",
+              "RelativeToolTip": "ASP.Net-backend\\Program.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T07:07:38.823Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\appsettings.json",
+              "RelativeDocumentMoniker": "ASP.Net-backend\\appsettings.json",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\appsettings.json",
+              "RelativeToolTip": "ASP.Net-backend\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-14T07:06:50.872Z"
             },
             {
               "$type": "Document",
@@ -109,10 +105,57 @@
               "RelativeDocumentMoniker": "ASP.Net-backend\\Models\\Profesor.cs",
               "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Models\\Profesor.cs",
               "RelativeToolTip": "ASP.Net-backend\\Models\\Profesor.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABYAAAAPAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T06:59:08.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-14T06:59:08.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "20241115003551_Migration1.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Migrations\\20241115003551_Migration1.cs",
+              "RelativeDocumentMoniker": "ASP.Net-backend\\Migrations\\20241115003551_Migration1.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Migrations\\20241115003551_Migration1.cs",
+              "RelativeToolTip": "ASP.Net-backend\\Migrations\\20241115003551_Migration1.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T00:35:51.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "20241115003406_Migration2.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Migrations\\20241115003406_Migration2.cs",
+              "RelativeDocumentMoniker": "ASP.Net-backend\\Migrations\\20241115003406_Migration2.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\Migrations\\20241115003406_Migration2.cs",
+              "RelativeToolTip": "ASP.Net-backend\\Migrations\\20241115003406_Migration2.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T00:34:06.593Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ASP.Net-backend.http",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\ASP.Net-backend.http",
+              "RelativeDocumentMoniker": "ASP.Net-backend\\ASP.Net-backend.http",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\ASP.Net-backend.http",
+              "RelativeToolTip": "ASP.Net-backend\\ASP.Net-backend.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-11-15T00:12:40.365Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ASP.Net-backend.csproj",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\ASP.Net-backend.csproj",
+              "RelativeDocumentMoniker": "ASP.Net-backend\\ASP.Net-backend.csproj",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\ASP.Net-backend\\ASP.Net-backend.csproj",
+              "RelativeToolTip": "ASP.Net-backend\\ASP.Net-backend.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-15T00:21:24.908Z"
             }
           ]
         }

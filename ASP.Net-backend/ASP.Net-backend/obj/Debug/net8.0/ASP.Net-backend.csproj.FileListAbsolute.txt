@@ -283,3 +283,5 @@ C:\Users\rizhe\Desktop\projects\IS_BD\Gestion-Escolar\ASP.Net-backend\ASP.Net-ba
 C:\Users\rizhe\Desktop\projects\IS_BD\Gestion-Escolar\ASP.Net-backend\ASP.Net-backend\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\rizhe\Desktop\projects\IS_BD\Gestion-Escolar\ASP.Net-backend\ASP.Net-backend\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\rizhe\Desktop\projects\IS_BD\Gestion-Escolar\ASP.Net-backend\ASP.Net-backend\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\rizhe\Desktop\projects\IS_BD\Gestion-Escolar\ASP.Net-backend\ASP.Net-backend\obj\Debug\net8.0\ASP.Net-backend.RazorAssemblyInfo.cache
+C:\Users\rizhe\Desktop\projects\IS_BD\Gestion-Escolar\ASP.Net-backend\ASP.Net-backend\obj\Debug\net8.0\ASP.Net-backend.RazorAssemblyInfo.cs
