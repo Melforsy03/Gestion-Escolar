@@ -1,0 +1,100 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Estudiantes</h4>
+        </div>
+        <div class="card-body">
+          <!-- Búsqueda global -->
+          <div class="search-bar mb-3 d-flex align-items-center">
+            <input
+              type="text"
+              id="globalSearch"
+              class="form-control"
+              placeholder="Buscar estudiante"
+              [(ngModel)]="globalSearchQuery"
+              (input)="updateDisplayedStudents()"
+            />
+            <i class="fa fa-search ml-2"></i>
+          </div>
+
+          <!-- Filtros -->
+          <div class="filter-section mb-3">
+            <label for="subjectFilter">Asignatura:</label>
+            <select
+              id="subjectFilter"
+              class="form-select"
+              [(ngModel)]="selectedSubject"
+              (change)="updateDisplayedStudents()"
+            >
+              <option value="">Todas</option>
+              <option *ngFor="let subject of subjects" [value]="subject">{{ subject }}</option>
+            </select>
+
+            <label for="courseFilter">Curso:</label>
+            <select
+              id="courseFilter"
+              class="form-select"
+              [(ngModel)]="selectedCourse"
+              (change)="updateDisplayedStudents()"
+            >
+              <option value="">Todos</option>
+              <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
+            </select>
+          </div>
+
+          <!-- Tabla de estudiantes -->
+          <div class="table-responsive" *ngIf="displayedStudents.length > 0">
+            <table class="table tablesorter">
+              <thead class="text-primary">
+                <tr>
+                  <th>Nombre</th>
+                  <th>Asistencia</th>
+                  <th>Promedio</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let student of displayedStudents; let i = index">
+                  <td>{{ student.name }}</td>
+                  <td>
+                    <input
+                      type="text"
+                      [(ngModel)]="student.attendance"
+                      [ngClass]="{ 'input-editable': editMode[i], 'input-readonly': !editMode[i] }"
+                      [readonly]="!editMode[i]"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      [(ngModel)]="student.average"
+                      [ngClass]="{ 'input-editable': editMode[i], 'input-readonly': !editMode[i] }"
+                      [readonly]="!editMode[i]"
+                      step="0.1"
+                      min="0"
+                      max="10"
+                    />
+                  </td>
+                  <td>
+                    <button
+                      class="custom-button"
+                      (click)="toggleEditMode(i)"
+                    >
+                      {{ editMode[i] ? 'Guardar' : 'Editar' }}
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mensaje si no hay estudiantes -->
+          <p *ngIf="displayedStudents.length === 0">No se encontraron estudiantes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

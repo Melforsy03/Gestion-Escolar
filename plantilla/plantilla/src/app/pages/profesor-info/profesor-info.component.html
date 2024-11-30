@@ -1,0 +1,134 @@
+<div class="content">
+  <div class="row">
+    <!-- Fila para el campo de búsqueda -->
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Campo de búsqueda de profesores -->
+              <input
+                type="text"
+                [(ngModel)]="searchQuery"
+                class="form-control"
+                placeholder="Buscar profesor por nombre"
+                (input)="filterProfesores()"
+              />
+            </div>
+            <div class="col-md-6 text-right">
+              <!-- Botón para abrir el modal de agregar un nuevo profesor -->
+              <button class="custom-button" (click)="showAddProfesorForm = true">
+                Agregar Profesor
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabla de profesores -->
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <tr>
+                  <th>Nombre</th>
+                  <th>Especialidad</th>
+                  <th>Tipo de Contrato</th>
+                  <th>Asignaturas</th>
+                  <th>Promedio de Calificaciones</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let profesor of filteredProfesores; let i = index">
+                  <!-- Fila del profesor -->
+                  <tr>
+                    <td>{{ profesor.nombre }} {{ profesor.apellidos }}</td>
+                    <td>{{ profesor.especialidad }}</td>
+                    <td>{{ profesor.contrato }}</td>
+                    <td>
+                      <ul>
+                        <li *ngFor="let asignatura of profesor.asignaturas">
+                          {{ asignatura.nombre }}
+                        </li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                        <li *ngFor="let asignatura of profesor.asignaturas">
+                          {{ calcularPromedio(asignatura.calificaciones) | number:'1.2-2' }}
+                        </li>
+                      </ul>
+                    </td>
+                    <td>
+                      <button
+                        class="custom-button"
+                        (click)="toggleGrafico(i)">
+                        {{ graficosVisibles[i] ? 'Ocultar Gráfico' : 'Mostrar Gráfico' }}
+                      </button>
+                    </td>
+                  </tr>
+                  <!-- Contenedor del gráfico desplegable -->
+                  <tr *ngIf="graficosVisibles[i]">
+                    <td colspan="6">
+                      <div class="chart-container">
+                        <canvas id="graficoProfesor{{ i }}" width="400" height="200"></canvas>
+                      </div>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para agregar profesor -->
+    
+  </div>
+</div>
+<!-- Modal para agregar profesor -->
+<div class="modal" tabindex="-1" [ngClass]="{'show': showAddProfesorForm}" style="display: block;" *ngIf="showAddProfesorForm">
+  <div class="modal-dialo">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Nuevo Profesor</h5>
+        <button type="button" class="close" (click)="showAddProfesorForm = false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="addProfesor()">
+          <!-- Campos de Nombre y Apellidos -->
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-contro" id="nombre" [(ngModel)]="newProfesor.nombre" name="nombre" required />
+          </div>
+          <div class="form-group">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" class="form-contro" id="apellidos" [(ngModel)]="newProfesor.apellidos" name="apellidos" required />
+          </div>
+          <div class="form-group">
+            <label for="especialidad">Especialidad</label>
+            <input type="text" class="form-contro" id="especialidad" [(ngModel)]="newProfesor.especialidad" name="especialidad" required />
+          </div>
+
+          <!-- Campo para seleccionar el tipo de contrato -->
+          <div class="form-group">
+            <label for="contrato">Tipo de Contrato</label>
+            <select class="form-contro" id="contrato" [(ngModel)]="newProfesor.contrato" name="contrato" required>
+              <option value="Tiempo Completo">Tiempo Completo</option>
+              <option value="Parcial">Parcial</option>
+            </select>
+          </div>
+          <button type="submit" class="custom-button">Guardar</button>
+          <button type="button" class="btn btn-secondary" (click)="showAddProfesorForm = false">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

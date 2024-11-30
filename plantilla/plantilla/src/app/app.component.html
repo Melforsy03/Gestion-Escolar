@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="app-container">
+    <!-- Muestra el componente de login si el usuario no está autenticado -->
+    <app-auth *ngIf="!authService.isAuthenticated()"></app-auth>
+  
+    <!-- Muestra el contenido de la aplicación si el usuario está autenticado -->
+    <div *ngIf="authService.isAuthenticated()">
+      <h1>Bienvenido</h1>
+  
+      <button (click)="logout()">Cerrar sesión</button>
+  
+      <!-- Aquí va el contenido de la aplicación que se muestra después de hacer login -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
