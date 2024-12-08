@@ -1,0 +1,12 @@
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Domain\bin\Debug\net8.0\SchoolManagement.Domain.deps.json
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Domain\bin\Debug\net8.0\SchoolManagement.Domain.dll
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Domain\bin\Debug\net8.0\SchoolManagement.Domain.pdb
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Domain\obj\Debug\net8.0\SchoolManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Domain\obj\Debug\net8.0\SchoolManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Domain\obj\Debug\net8.0\SchoolManagement.Domain.AssemblyInfo.cs
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Domain\obj\Debug\net8.0\SchoolManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Domain\obj\Debug\net8.0\SchoolManagement.Domain.sourcelink.json
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Domain\obj\Debug\net8.0\SchoolManagement.Domain.dll
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Domain\obj\Debug\net8.0\refint\SchoolManagement.Domain.dll
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Domain\obj\Debug\net8.0\SchoolManagement.Domain.pdb
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Domain\obj\Debug\net8.0\ref\SchoolManagement.Domain.dll

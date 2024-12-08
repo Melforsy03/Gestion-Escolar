@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj": {}
+    "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj": {
+    "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj",
         "projectName": "SchoolManagement.Domain",
-        "projectPath": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj",
+        "projectPath": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj",
         "packagesPath": "C:\\Users\\rizhe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\obj\\",
+        "outputPath": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rizhe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,6 +45,22 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

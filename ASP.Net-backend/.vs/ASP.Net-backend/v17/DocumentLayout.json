@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\",
+  "WorkspaceRootPath": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|c:\\users\\rizhe\\desktop\\projects\\is_bd\\gestion-escolar\\asp.net-backend\\schoolmanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|solutionrelative:schoolmanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Program.cs",
               "RelativeDocumentMoniker": "SchoolManagement.Api\\Program.cs",
-              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Program.cs",
               "RelativeToolTip": "SchoolManagement.Api\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAkAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-08T21:06:28Z",
               "EditorCaption": ""
