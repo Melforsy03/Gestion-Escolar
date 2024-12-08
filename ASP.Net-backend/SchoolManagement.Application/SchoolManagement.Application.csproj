@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="ApplicationServices\IServices\" />
+    <Folder Include="ApplicationServices\Services\" />
+  </ItemGroup>
+
 </Project>

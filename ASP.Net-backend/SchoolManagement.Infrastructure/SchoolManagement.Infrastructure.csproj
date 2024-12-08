@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="DataAccess\IRepository\" />
+    <Folder Include="DataAccess\Repository\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

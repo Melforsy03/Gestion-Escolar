@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\SchoolManagement.Api.csproj": {}
+    "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\SchoolManagement.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\SchoolManagement.Api.csproj": {
+    "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\SchoolManagement.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\SchoolManagement.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\SchoolManagement.Api.csproj",
         "projectName": "SchoolManagement.Api",
-        "projectPath": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\SchoolManagement.Api.csproj",
-        "packagesPath": "C:\\Users\\rizhe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\obj\\",
+        "projectPath": "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\SchoolManagement.Api.csproj",
+        "packagesPath": "C:\\Users\\Livi3\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\rizhe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Livi3\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -35,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -70,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
