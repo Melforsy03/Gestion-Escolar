@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Livi3\\Desktop\\Proyecto\\Gestion-Escolar\\Backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj": {}
+    "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Livi3\\Desktop\\Proyecto\\Gestion-Escolar\\Backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj": {
+    "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Livi3\\Desktop\\Proyecto\\Gestion-Escolar\\Backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj",
         "projectName": "SchoolManagement.Domain",
-        "projectPath": "C:\\Users\\Livi3\\Desktop\\Proyecto\\Gestion-Escolar\\Backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj",
-        "packagesPath": "C:\\Users\\Livi3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Livi3\\Desktop\\Proyecto\\Gestion-Escolar\\Backend\\SchoolManagement.Domain\\obj\\",
+        "projectPath": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj",
+        "packagesPath": "C:\\Users\\rizhe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rizhe\\Desktop\\projects\\IS_BD\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Livi3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rizhe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,26 +46,6 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
-              "target": "Package",
-              "version": "[8.0.10, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[7.0.11, )"
-            },
-            "Microsoft.EntityFrameworkCore.tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
