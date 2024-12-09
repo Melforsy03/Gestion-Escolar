@@ -13,35 +13,38 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
     {
         public AutomapperProfile()
         {
-            CreateMap<ProfessorDto, Domain.Entities.Professor>();
-            CreateMap<Domain.Entities.Professor, ProfessorDto>();
+            CreateMap<ProfessorDto, Professor>();
+            CreateMap<Professor, ProfessorDto>();
 
-            CreateMap<SubjectDto, Domain.Entities.Subject>();
-            CreateMap<Domain.Entities.Subject, SubjectDto>();
+            CreateMap<SubjectDto, Subject>();
+            CreateMap<Subject, SubjectDto>();
 
-            CreateMap<RestrictionDto, Domain.Entities.Restriction>();
-            CreateMap<Domain.Entities.Restriction, RestrictionDto>();
+            CreateMap<RestrictionDto, Restriction>();
+            CreateMap<Restriction, RestrictionDto>();
 
-            CreateMap<SecretaryDto, Domain.Entities.Secretary>();
-            CreateMap<Domain.Entities.Secretary, SecretaryDto>();
+            CreateMap<SecretaryDto, Secretary>();
+            CreateMap<Secretary, SecretaryDto>();
 
-            CreateMap<CourseDto, Domain.Entities.Course>();
-            CreateMap<Domain.Entities.Course, CourseDto>();
+            CreateMap<CourseDto, Course>();
+            CreateMap<Course, CourseDto>();
 
-            CreateMap<MaintenanceDto, Domain.Entities.Maintenance>();
-            CreateMap<Domain.Entities.Maintenance, MaintenanceDto>();
+            CreateMap<MaintenanceDto, Maintenance>();
+            CreateMap<Maintenance, MaintenanceDto>();
 
-            CreateMap<AuxiliaryMeansDto, Domain.Entities.AuxiliaryMeans>();
-            CreateMap<Domain.Entities.AuxiliaryMeans, AuxiliaryMeansDto>();
+            CreateMap<AuxiliaryMeansDto, AuxiliaryMeans>();
+            CreateMap<AuxiliaryMeans, AuxiliaryMeansDto>();
 
-            CreateMap<TechnologicalMeansDto, Domain.Entities.TechnologicalMeans>();
-            CreateMap<Domain.Entities.TechnologicalMeans, TechnologicalMeansDto>();
+            CreateMap<TechnologicalMeansDto, TechnologicalMeans>();
+            CreateMap<TechnologicalMeans, TechnologicalMeansDto>();
 
-            CreateMap<ClassRoomDto, Domain.Entities.ClassRoom>();
-            CreateMap<Domain.Entities.ClassRoom, ClassRoomDto>();
+            CreateMap<ClassRoomDto, ClassRoom>();
+            CreateMap<ClassRoom, ClassRoomDto>();
 
-            CreateMap<StudentDto, Domain.Entities.Student>();
-            CreateMap<Domain.Entities.Student, StudentDto>();
+            CreateMap<StudentDto, Student>();
+            CreateMap<Student, StudentDto>();
+
+            CreateMap<StudentSubjectDto, Domain.Relations.StudentSubject>();
+            CreateMap<Domain.Relations.StudentSubject, StudentSubjectDto>();
         }
     }
 }

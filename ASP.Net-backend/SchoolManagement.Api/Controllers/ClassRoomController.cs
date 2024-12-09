@@ -11,7 +11,7 @@ namespace SchoolManagement.Api.Controllers
     public class ClassRoomController : ControllerBase
     {
         private readonly IClassRoomService _classRoomService;
-        public ClassRoomController(ClassRoomService classRoomService)
+        public ClassRoomController(IClassRoomService classRoomService)
         {
             _classRoomService = classRoomService;
         }

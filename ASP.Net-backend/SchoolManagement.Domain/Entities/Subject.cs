@@ -12,5 +12,7 @@ namespace SchoolManagement.Domain.Entities
         public string NameSub { get; set; }
         public string StudyProgram { get; set; }
         public int CourseLoad { get; set; }
+        public List<Professor> Professors { get; set; }
+        public List<Student> Students { get; set; }
     }
 }
