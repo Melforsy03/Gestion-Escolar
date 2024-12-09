@@ -23,7 +23,23 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.IsDean).IsRequired();
                 entity.Property(e => e.LaboralExperience).IsRequired();
             });
-        }
 
+            modelBuilder.Entity<ClassRoom>(entity =>
+            {
+                entity.HasKey(e => e.IdClassR);
+                entity.Property(e => e.IsAviable);
+                entity.Property(e => e.Ubication);
+
+            });
+
+            modelBuilder.Entity<Student>(entity =>
+            {
+                entity.HasKey(e => e.IdStud);
+                entity.Property(e => e.NameStud).IsRequired().HasMaxLength(100);
+                entity.Property(e => e.Age).IsRequired();
+                entity.Property(e => e.EAtcivity);
+
+            });
+        }
     }
 }

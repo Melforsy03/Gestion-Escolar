@@ -8,7 +8,7 @@ namespace SchoolManagement.Api.Controllers
 {
    
         [ApiController]
-        [Route("[controller]")]
+        [Route("professor")]
         public class ProfessorController : ControllerBase
         {
             private readonly IProfessorService _professorService;

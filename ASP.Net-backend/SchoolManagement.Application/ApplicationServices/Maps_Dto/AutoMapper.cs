@@ -15,6 +15,12 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
         {
             CreateMap<ProfessorDto, Domain.Entities.Professor>();
             CreateMap<Domain.Entities.Professor, ProfessorDto>();
+
+            CreateMap<ClassRoomDto, Domain.Entities.ClassRoom>();
+            CreateMap<Domain.Entities.ClassRoom, ClassRoomDto>();
+
+            CreateMap<StudentDto, Domain.Entities.Student>();
+            CreateMap<Domain.Entities.Student, StudentDto>();
         }
     }
 }
