@@ -36,6 +36,12 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
 
             CreateMap<TechnologicalMeansDto, Domain.Entities.TechnologicalMeans>();
             CreateMap<Domain.Entities.TechnologicalMeans, TechnologicalMeansDto>();
+
+            CreateMap<ClassRoomDto, Domain.Entities.ClassRoom>();
+            CreateMap<Domain.Entities.ClassRoom, ClassRoomDto>();
+
+            CreateMap<StudentDto, Domain.Entities.Student>();
+            CreateMap<Domain.Entities.Student, StudentDto>();
         }
     }
 }

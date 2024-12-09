@@ -81,6 +81,22 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.Type).IsRequired().HasMaxLength(10);
             });
 
+            modelBuilder.Entity<ClassRoom>(entity =>
+            {
+                entity.HasKey(e => e.IdClassR);
+                entity.Property(e => e.IsAviable).IsRequired();
+                entity.Property(e => e.Location).IsRequired();
+
+            });
+
+            modelBuilder.Entity<Student>(entity =>
+            {
+                entity.HasKey(e => e.IdStud);
+                entity.Property(e => e.NameStud).IsRequired().HasMaxLength(32);
+                entity.Property(e => e.Age).IsRequired();
+                entity.Property(e => e.EActivity).IsRequired();
+
+            });
 
         }
 
