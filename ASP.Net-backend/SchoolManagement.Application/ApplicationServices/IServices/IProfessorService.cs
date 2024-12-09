@@ -9,9 +9,9 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IProfessorService
     {
-        Task<ProfessorDto> CreateProfessorAsync(ProfessorDto profesorDto);
-        Task<ProfessorDto> UpdateProfessorAsync(ProfessorDto profesorDto);
+        Task<ProfessorDto> CreateProfessorAsync(ProfessorDto professorDto);
+        Task<ProfessorDto> UpdateProfessorAsync(ProfessorDto professorDto);
         Task<IEnumerable<ProfessorDto>> ListProfessorAsync();
-        Task DeleteProfessorByIdAsync(int profesorDto);
+        Task DeleteProfessorByIdAsync(int professorDto);
     }
 }

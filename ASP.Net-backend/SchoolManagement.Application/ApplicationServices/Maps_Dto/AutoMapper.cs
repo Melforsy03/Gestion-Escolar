@@ -15,6 +15,27 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
         {
             CreateMap<ProfessorDto, Domain.Entities.Professor>();
             CreateMap<Domain.Entities.Professor, ProfessorDto>();
+
+            CreateMap<SubjectDto, Domain.Entities.Subject>();
+            CreateMap<Domain.Entities.Subject, SubjectDto>();
+
+            CreateMap<RestrictionDto, Domain.Entities.Restriction>();
+            CreateMap<Domain.Entities.Restriction, RestrictionDto>();
+
+            CreateMap<SecretaryDto, Domain.Entities.Secretary>();
+            CreateMap<Domain.Entities.Secretary, SecretaryDto>();
+
+            CreateMap<CourseDto, Domain.Entities.Course>();
+            CreateMap<Domain.Entities.Course, CourseDto>();
+
+            CreateMap<MaintenanceDto, Domain.Entities.Maintenance>();
+            CreateMap<Domain.Entities.Maintenance, MaintenanceDto>();
+
+            CreateMap<AuxiliaryMeansDto, Domain.Entities.AuxiliaryMeans>();
+            CreateMap<Domain.Entities.AuxiliaryMeans, AuxiliaryMeansDto>();
+
+            CreateMap<TechnologicalMeansDto, Domain.Entities.TechnologicalMeans>();
+            CreateMap<Domain.Entities.TechnologicalMeans, TechnologicalMeansDto>();
         }
     }
 }

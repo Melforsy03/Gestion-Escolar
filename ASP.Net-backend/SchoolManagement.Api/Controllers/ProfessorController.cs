@@ -8,7 +8,7 @@ namespace SchoolManagement.Api.Controllers
 {
    
         [ApiController]
-        [Route("[controller]")]
+        [Route("professor")]
         public class ProfessorController : ControllerBase
         {
             private readonly IProfessorService _professorService;
@@ -20,7 +20,7 @@ namespace SchoolManagement.Api.Controllers
             [HttpPost]
             [Route("create")]
             //[Authorize(Roles = "SuperAdmin")]
-            public async Task<IActionResult> Createprofessor(ProfessorDto professor)
+            public async Task<IActionResult> CreateProfessor(ProfessorDto professor)
             {
                 var professor2 = await _professorService.CreateProfessorAsync(professor);
                 return Ok(professor2);
@@ -29,7 +29,7 @@ namespace SchoolManagement.Api.Controllers
             [HttpGet]
             [Route("list")]
             //[Authorize (Roles = "SuperAdmin")]
-            public async Task<ActionResult<IEnumerable<Professor>>> Listprofessor()
+            public async Task<ActionResult<IEnumerable<Professor>>> ListProfessor()
             {
                 var professor = await _professorService.ListProfessorAsync();
                 return Ok(professor);
@@ -37,7 +37,7 @@ namespace SchoolManagement.Api.Controllers
 
             [HttpPut]
             [Route("update")]
-            public async Task<ActionResult> Updateprofessor(ProfessorDto professor)
+            public async Task<ActionResult> UpdateProfessor(ProfessorDto professor)
             {
                 var _professor = await _professorService.UpdateProfessorAsync(professor);
                 return Ok(_professor);
@@ -45,7 +45,7 @@ namespace SchoolManagement.Api.Controllers
 
             [HttpDelete]
             [Route("delete")]
-            public async Task<IActionResult> Deleteprofessor(int professorId)
+            public async Task<IActionResult> DeleteProfessor(int professorId)
             {
                 await _professorService.DeleteProfessorByIdAsync(professorId);
                 return Ok();
