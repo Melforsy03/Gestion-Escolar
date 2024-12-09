@@ -12,7 +12,7 @@ namespace SchoolManagement.Api.Controllers
         public class ProfessorController : ControllerBase
         {
             private readonly IProfessorService _professorService;
-            public ProfessorController(ProfessorService professorService)
+            public ProfessorController(IProfessorService professorService)
             {
                 _professorService = professorService;
             }

@@ -18,14 +18,14 @@ namespace SchoolManagement.Infrastructure.Common.Implementation
                 throw new ArgumentNullException(nameof(context));
 
             _context = context;
-           // entity = context.Set<TEntity>();
+           entity = context.Set<TEntity>();
         }
 
         public async Task DeleteByIdAsync(int elementId, CancellationToken cancellationToken = default)
         {
             var element = entity.Find(elementId);
             entity.Remove(element);
-            // await _context.SaveChangesAsync(cancellationToken);
+             await _context.SaveChangesAsync(cancellationToken);
         }
 
         public async Task<TEntity> GetByIdAsync<TId>(TId elementId, CancellationToken cancellationToken = default)
@@ -37,14 +37,14 @@ namespace SchoolManagement.Infrastructure.Common.Implementation
         public async Task<TEntity> CreateAsync(TEntity element, CancellationToken cancellationToken = default)
         {
             entity.Add(element);
-            //await _context.SaveChangesAsync(cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
             return element;
         }
 
         public async Task UpdateAsync(TEntity element, CancellationToken cancellationToken = default)
         {
             entity.Update(element);
-            // await _context.SaveChangesAsync(cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
         }
         public async Task<IEnumerable<TEntity>> ListAsync(CancellationToken cancellationToken = default)
         {

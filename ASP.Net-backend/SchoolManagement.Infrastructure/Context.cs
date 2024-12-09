@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using SchoolManagement.Domain.Entities;
+using SchoolManagement.Domain.Relations;
 
 namespace SchoolManagement.Infrastructure
 {
@@ -22,7 +24,11 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.Salary).IsRequired();
                 entity.Property(e => e.IsDean).IsRequired();
                 entity.Property(e => e.LaboralExperience).IsRequired();
+                /*entity.HasMany(p => p.Subjects).WithMany(s => s.Professors).UsingEntity<ProfessorSubject>(
+                    ps => ps.HasOne(prop => prop.Subject).WithMany()
+                    .HasForeignKey(prop => prop.IdS)*/
             });
+            
 
             modelBuilder.Entity<Subject>(entity =>
             {
@@ -30,7 +36,7 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.NameSub).IsRequired().HasMaxLength(16);
                 entity.Property(e => e.StudyProgram).IsRequired().HasMaxLength(20);
                 entity.Property(e => e.CourseLoad).IsRequired();
-                
+
             });
 
             modelBuilder.Entity<Restriction>(entity =>
@@ -52,7 +58,7 @@ namespace SchoolManagement.Infrastructure
             modelBuilder.Entity<Course>(entity =>
             {
                 entity.HasKey(e => e.IdC);
-      
+
             });
 
             modelBuilder.Entity<Maintenance>(entity =>
@@ -69,7 +75,7 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.NameMean).IsRequired().HasMaxLength(16);
                 entity.Property(e => e.State).IsRequired().HasMaxLength(10);
                 entity.Property(e => e.Ammount).IsRequired();
-                
+
             });
 
             modelBuilder.Entity<AuxiliaryMeans>(entity =>
@@ -95,6 +101,15 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.NameStud).IsRequired().HasMaxLength(32);
                 entity.Property(e => e.Age).IsRequired();
                 entity.Property(e => e.EActivity).IsRequired();
+                entity.HasMany(st => st.Subjects).WithMany(sub => sub.Students).UsingEntity<StudentSubject>(
+                  ss => ss.HasOne(prop => prop.Subject).WithMany()
+                  .HasForeignKey(prop => prop.IdStud), ss => ss.HasOne(prop => prop.Student).WithMany()
+                  .HasForeignKey(prop => prop.IdSub),
+                  ss =>
+                  {
+                      ss.Property(prop => prop.NJAbsents).HasDefaultValue(0);
+                      ss.HasKey(prop => new { prop.IdStud, prop.IdSub });
+                  });
 
             });
 

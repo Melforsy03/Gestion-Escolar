@@ -8,10 +8,12 @@ namespace SchoolManagement.Domain.Entities
 {
     public class Student
     {
-        public int IdStud { get; set; }
-        public string NameStud { get; set; }
-        public int Age { get; set; }
-        public bool EActivity { get; set; }
+        public int IdStud { get; set; } = 0;
+        public string NameStud { get; set; } = string.Empty;
+        public int Age { get; set; } = 0;
+        public bool EActivity { get; set; } = false;
+
+        public List<Subject> Subjects { get; set; } = new List<Subject>();
     }
 }
 
