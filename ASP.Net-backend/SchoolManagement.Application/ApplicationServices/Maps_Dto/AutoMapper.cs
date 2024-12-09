@@ -13,8 +13,38 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
     {
         public AutomapperProfile()
         {
-            CreateMap<ProfessorDto, Domain.Entities.Professor>();
-            CreateMap<Domain.Entities.Professor, ProfessorDto>();
+            CreateMap<ProfessorDto, Professor>();
+            CreateMap<Professor, ProfessorDto>();
+
+            CreateMap<SubjectDto, Subject>();
+            CreateMap<Subject, SubjectDto>();
+
+            CreateMap<RestrictionDto, Restriction>();
+            CreateMap<Restriction, RestrictionDto>();
+
+            CreateMap<SecretaryDto, Secretary>();
+            CreateMap<Secretary, SecretaryDto>();
+
+            CreateMap<CourseDto, Course>();
+            CreateMap<Course, CourseDto>();
+
+            CreateMap<MaintenanceDto, Maintenance>();
+            CreateMap<Maintenance, MaintenanceDto>();
+
+            CreateMap<AuxiliaryMeansDto, AuxiliaryMeans>();
+            CreateMap<AuxiliaryMeans, AuxiliaryMeansDto>();
+
+            CreateMap<TechnologicalMeansDto, TechnologicalMeans>();
+            CreateMap<TechnologicalMeans, TechnologicalMeansDto>();
+
+            CreateMap<ClassRoomDto, ClassRoom>();
+            CreateMap<ClassRoom, ClassRoomDto>();
+
+            CreateMap<StudentDto, Student>();
+            CreateMap<Student, StudentDto>();
+
+            CreateMap<StudentSubjectDto, Domain.Relations.StudentSubject>();
+            CreateMap<Domain.Relations.StudentSubject, StudentSubjectDto>();
         }
     }
 }
