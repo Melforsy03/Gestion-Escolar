@@ -3,12 +3,148 @@
   "WorkspaceRootPath": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.api\\controllers\\technologicalmeanscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|solutionrelative:schoolmanagement.api\\controllers\\technologicalmeanscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.api\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|solutionrelative:schoolmanagement.api\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.api\\controllers\\auxiliarymeanscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|solutionrelative:schoolmanagement.api\\controllers\\auxiliarymeanscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\maps_dto\\automapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\maps_dto\\automapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\services\\technologicalmeansservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\services\\technologicalmeansservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\services\\courseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\services\\courseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\services\\auxiliarymeansservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\services\\auxiliarymeansservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\iservices\\icourseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\iservices\\icourseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\iservices\\itechnologicalmeansservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\iservices\\itechnologicalmeansservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\iservices\\iauxiliarymeansservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\iservices\\iauxiliarymeansservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\maps_dto\\technologicalmeansdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\maps_dto\\technologicalmeansdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\maps_dto\\auxiliarymeansdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\maps_dto\\auxiliarymeansdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.domain\\entities\\mean.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|solutionrelative:schoolmanagement.domain\\entities\\mean.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\maps_dto\\coursedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\maps_dto\\coursedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.domain\\entities\\auxiliarymeans.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|solutionrelative:schoolmanagement.domain\\entities\\auxiliarymeans.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.domain\\entities\\technologicalmeans.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|solutionrelative:schoolmanagement.domain\\entities\\technologicalmeans.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\repository\\technologicalmeansrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\repository\\technologicalmeansrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\irepository\\iauxiliarymeans.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\irepository\\iauxiliarymeans.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\irepository\\itechnologicalmeans.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\irepository\\itechnologicalmeans.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\repository\\auxiliarymeansrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\repository\\auxiliarymeansrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\repository\\courserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\repository\\courserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\irepository\\imaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\irepository\\imaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\irepository\\icourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\irepository\\icourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.api\\controllers\\maintenancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|solutionrelative:schoolmanagement.api\\controllers\\maintenancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\services\\maintenanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\services\\maintenanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\iservices\\imaintenanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\iservices\\imaintenanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\maps_dto\\maintenancedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\maps_dto\\maintenancedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.domain\\entities\\maintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|solutionrelative:schoolmanagement.domain\\entities\\maintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\repository\\maintenancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\repository\\maintenancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\services\\subjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\services\\subjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.api\\controllers\\professorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|solutionrelative:schoolmanagement.api\\controllers\\professorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\services\\professorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\services\\professorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\iservices\\iprofessorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\iservices\\iprofessorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.domain\\entities\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|solutionrelative:schoolmanagement.domain\\entities\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\maps_dto\\professordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\maps_dto\\professordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\repository\\professorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,28 +155,92 @@
       "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\irepository\\iprofessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\maps_dto\\professordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\maps_dto\\professordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.api\\controllers\\secretarycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|solutionrelative:schoolmanagement.api\\controllers\\secretarycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\iservices\\iprofessorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\iservices\\iprofessorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.api\\controllers\\subjectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|solutionrelative:schoolmanagement.api\\controllers\\subjectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|solutionrelative:schoolmanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.api\\controllers\\restrictioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|solutionrelative:schoolmanagement.api\\controllers\\restrictioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\services\\secretaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\services\\secretaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\iservices\\isecretaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\iservices\\isecretaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\iservices\\irestrictionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\iservices\\irestrictionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\maps_dto\\secretarydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\maps_dto\\secretarydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.domain\\entities\\secretary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|solutionrelative:schoolmanagement.domain\\entities\\secretary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\repository\\secretaryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\repository\\secretaryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\irepository\\isecretary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\irepository\\isecretary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.domain\\entities\\professor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|solutionrelative:schoolmanagement.domain\\entities\\professor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\maps_dto\\automapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\maps_dto\\automapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\services\\restrictionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\services\\restrictionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\maps_dto\\restrictiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\maps_dto\\restrictiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.domain\\entities\\restriction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|solutionrelative:schoolmanagement.domain\\entities\\restriction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\maps_dto\\subjectdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\maps_dto\\subjectdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.application\\applicationservices\\iservices\\isubjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1C4A370-10E4-4D1D-BF52-C30F5DCBBC24}|SchoolManagement.Application\\SchoolManagement.Application.csproj|solutionrelative:schoolmanagement.application\\applicationservices\\iservices\\isubjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\repository\\subjectrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\repository\\subjectrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\irepository\\irestriction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\irepository\\irestriction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\repository\\restrictionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\repository\\restrictionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\dataaccess\\irepository\\isubject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|solutionrelative:schoolmanagement.infrastructure\\dataaccess\\irepository\\isubject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.domain\\entities\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{735A7861-F509-409E-B2C8-578DC7A1DC7E}|SchoolManagement.Domain\\SchoolManagement.Domain.csproj|solutionrelative:schoolmanagement.domain\\entities\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD929D6-DEDE-4F7F-A4C2-8EB985C2DF64}|SchoolManagement.Api\\SchoolManagement.Api.csproj|solutionrelative:schoolmanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4B0B791-D504-4BFE-90A9-69A0CAB5B62D}|SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj|c:\\users\\rizhe\\desktop\\projects\\gestion-escolar\\asp.net-backend\\schoolmanagement.infrastructure\\common\\implementation\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -63,45 +263,773 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TechnologicalMeansController.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\TechnologicalMeansController.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Api\\Controllers\\TechnologicalMeansController.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\TechnologicalMeansController.cs",
+              "RelativeToolTip": "SchoolManagement.Api\\Controllers\\TechnologicalMeansController.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAA+wDQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:29:41.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuxiliaryMeansController.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\AuxiliaryMeansController.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Api\\Controllers\\AuxiliaryMeansController.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\AuxiliaryMeansController.cs",
+              "RelativeToolTip": "SchoolManagement.Api\\Controllers\\AuxiliaryMeansController.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAgwDQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:28:40.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CourseService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\CourseService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Services\\CourseService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\CourseService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Services\\CourseService.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAwAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:45:19.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuxiliaryMeansService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\AuxiliaryMeansService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Services\\AuxiliaryMeansService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\AuxiliaryMeansService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Services\\AuxiliaryMeansService.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAuwDcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:20:18.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TechnologicalMeansService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\TechnologicalMeansService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Services\\TechnologicalMeansService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\TechnologicalMeansService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Services\\TechnologicalMeansService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADIAAABrAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:20:08.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CourseController.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\CourseController.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Api\\Controllers\\CourseController.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\CourseController.cs",
+              "RelativeToolTip": "SchoolManagement.Api\\Controllers\\CourseController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:47:49.603Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ICourseService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\ICourseService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\IServices\\ICourseService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\ICourseService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\IServices\\ICourseService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:44:57.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ITechnologicalMeansService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\ITechnologicalMeansService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\IServices\\ITechnologicalMeansService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\ITechnologicalMeansService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\IServices\\ITechnologicalMeansService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:19:15.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AutoMapper.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\AutoMapper.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\AutoMapper.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\AutoMapper.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\AutoMapper.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACUAAABPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T22:51:27.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IAuxiliaryMeansService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\IAuxiliaryMeansService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\IServices\\IAuxiliaryMeansService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\IAuxiliaryMeansService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\IServices\\IAuxiliaryMeansService.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAA4AAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:19:24.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TechnologicalMeansDto.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\TechnologicalMeansDto.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\TechnologicalMeansDto.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\TechnologicalMeansDto.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\TechnologicalMeansDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:19:34.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AuxiliaryMeansDto.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\AuxiliaryMeansDto.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\AuxiliaryMeansDto.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\AuxiliaryMeansDto.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\AuxiliaryMeansDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:19:52.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Mean.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Mean.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Domain\\Entities\\Mean.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Mean.cs",
+              "RelativeToolTip": "SchoolManagement.Domain\\Entities\\Mean.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:06:42.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CourseDto.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\CourseDto.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\CourseDto.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\CourseDto.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\CourseDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:45:10.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AuxiliaryMeansRepository.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\AuxiliaryMeansRepository.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\AuxiliaryMeansRepository.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\AuxiliaryMeansRepository.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\AuxiliaryMeansRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:12:59.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TechnologicalMeansRepository.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\TechnologicalMeansRepository.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\TechnologicalMeansRepository.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\TechnologicalMeansRepository.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\TechnologicalMeansRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:12:46.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IAuxiliaryMeans.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IAuxiliaryMeans.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IAuxiliaryMeans.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IAuxiliaryMeans.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IAuxiliaryMeans.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:12:29.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ITechnologicalMeans.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ITechnologicalMeans.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ITechnologicalMeans.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ITechnologicalMeans.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ITechnologicalMeans.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:12:18.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Context.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\Context.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\Context.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\Context.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\Context.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAQwFAAAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T22:23:10.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "TechnologicalMeans.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\TechnologicalMeans.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Domain\\Entities\\TechnologicalMeans.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\TechnologicalMeans.cs",
+              "RelativeToolTip": "SchoolManagement.Domain\\Entities\\TechnologicalMeans.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:11:00.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AuxiliaryMeans.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\AuxiliaryMeans.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Domain\\Entities\\AuxiliaryMeans.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\AuxiliaryMeans.cs",
+              "RelativeToolTip": "SchoolManagement.Domain\\Entities\\AuxiliaryMeans.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:09:50.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CourseRepository.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\CourseRepository.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\CourseRepository.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\CourseRepository.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\CourseRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:40:51.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IMaintenance.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IMaintenance.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IMaintenance.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IMaintenance.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IMaintenance.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:53:20.938Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ICourse.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ICourse.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ICourse.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ICourse.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ICourse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:40:18.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "MaintenanceController.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\MaintenanceController.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Api\\Controllers\\MaintenanceController.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\MaintenanceController.cs",
+              "RelativeToolTip": "SchoolManagement.Api\\Controllers\\MaintenanceController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T02:04:53.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "IMaintenanceService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\IMaintenanceService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\IServices\\IMaintenanceService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\IMaintenanceService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\IServices\\IMaintenanceService.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA4AAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:59:27.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "MaintenanceService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\MaintenanceService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Services\\MaintenanceService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\MaintenanceService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Services\\MaintenanceService.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAADcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:59:16.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "MaintenanceDto.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\MaintenanceDto.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\MaintenanceDto.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\MaintenanceDto.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\MaintenanceDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:59:06.025Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Maintenance.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Maintenance.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Domain\\Entities\\Maintenance.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Maintenance.cs",
+              "RelativeToolTip": "SchoolManagement.Domain\\Entities\\Maintenance.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:51:25.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "MaintenanceRepository.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\MaintenanceRepository.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\MaintenanceRepository.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\MaintenanceRepository.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\MaintenanceRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:53:45.518Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "IProfessorService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\IProfessorService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\IServices\\IProfessorService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\IProfessorService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\IServices\\IProfessorService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T22:56:51.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
               "Title": "ProfessorController.cs",
               "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\ProfessorController.cs",
               "RelativeDocumentMoniker": "SchoolManagement.Api\\Controllers\\ProfessorController.cs",
               "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\ProfessorController.cs",
               "RelativeToolTip": "SchoolManagement.Api\\Controllers\\ProfessorController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABBAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-08T23:04:27.297Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 30,
+              "Title": "SubjectService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\SubjectService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Services\\SubjectService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\SubjectService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Services\\SubjectService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T00:19:43.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Course.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Course.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Domain\\Entities\\Course.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Course.cs",
+              "RelativeToolTip": "SchoolManagement.Domain\\Entities\\Course.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:34:26.113Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
               "Title": "ProfessorDto.cs",
               "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\ProfessorDto.cs",
               "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\ProfessorDto.cs",
               "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\ProfessorDto.cs",
               "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\ProfessorDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAoAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-08T22:52:23.302Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 32,
+              "Title": "ProfessorService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\ProfessorService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Services\\ProfessorService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\ProfessorService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Services\\ProfessorService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADcAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T22:59:39.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "SecretaryController.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\SecretaryController.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Api\\Controllers\\SecretaryController.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\SecretaryController.cs",
+              "RelativeToolTip": "SchoolManagement.Api\\Controllers\\SecretaryController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:27:31.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "ProfessorRepository.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\ProfessorRepository.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\ProfessorRepository.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\ProfessorRepository.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\ProfessorRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T22:25:53.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "SubjectController.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\SubjectController.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Api\\Controllers\\SubjectController.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\SubjectController.cs",
+              "RelativeToolTip": "SchoolManagement.Api\\Controllers\\SubjectController.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAYwCwAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T00:45:44.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "RestrictionController.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\RestrictionController.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Api\\Controllers\\RestrictionController.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Controllers\\RestrictionController.cs",
+              "RelativeToolTip": "SchoolManagement.Api\\Controllers\\RestrictionController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAkAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:08:40.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
               "Title": "IProfessor.cs",
               "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IProfessor.cs",
               "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IProfessor.cs",
               "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IProfessor.cs",
               "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IProfessor.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAcAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-08T22:25:40.308Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 41,
+              "Title": "SecretaryService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\SecretaryService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Services\\SecretaryService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\SecretaryService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Services\\SecretaryService.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAADgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:21:17.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "ISecretaryService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\ISecretaryService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\IServices\\ISecretaryService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\ISecretaryService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\IServices\\ISecretaryService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:21:07.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "IRestrictionService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\IRestrictionService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\IServices\\IRestrictionService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\IRestrictionService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\IServices\\IRestrictionService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:00:04.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "SecretaryDto.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\SecretaryDto.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\SecretaryDto.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\SecretaryDto.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\SecretaryDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:20:24.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "Secretary.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Secretary.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Domain\\Entities\\Secretary.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Secretary.cs",
+              "RelativeToolTip": "SchoolManagement.Domain\\Entities\\Secretary.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:15:46.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "SecretaryRepository.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\SecretaryRepository.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\SecretaryRepository.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\SecretaryRepository.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\SecretaryRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:17:03.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "ISecretary.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ISecretary.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ISecretary.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ISecretary.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ISecretary.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:16:52.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "RestrictionService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\RestrictionService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Services\\RestrictionService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\RestrictionService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Services\\RestrictionService.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwDUAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:02:12.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "Professor.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Professor.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Domain\\Entities\\Professor.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Professor.cs",
+              "RelativeToolTip": "SchoolManagement.Domain\\Entities\\Professor.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAgAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T22:13:11.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "RestrictionDto.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\RestrictionDto.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\RestrictionDto.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\RestrictionDto.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\RestrictionDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T01:01:38.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "SubjectDto.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\SubjectDto.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\SubjectDto.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\SubjectDto.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\SubjectDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T00:16:59.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "SubjectRepository.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\SubjectRepository.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\SubjectRepository.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\SubjectRepository.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\SubjectRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T00:10:25.424Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "IRestriction.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IRestriction.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IRestriction.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IRestriction.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\IRestriction.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T00:56:53.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "Restriction.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Restriction.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Domain\\Entities\\Restriction.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Restriction.cs",
+              "RelativeToolTip": "SchoolManagement.Domain\\Entities\\Restriction.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T00:55:37.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "RestrictionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\RestrictionRepository.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\RestrictionRepository.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\RestrictionRepository.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\RestrictionRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T00:57:05.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "ISubjectService.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\ISubjectService.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\IServices\\ISubjectService.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\ISubjectService.cs",
+              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\IServices\\ISubjectService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T00:17:47.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "ISubject.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ISubject.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ISubject.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ISubject.cs",
+              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\IRepository\\ISubject.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T00:09:32.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "Subject.cs",
+              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Subject.cs",
+              "RelativeDocumentMoniker": "SchoolManagement.Domain\\Entities\\Subject.cs",
+              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Subject.cs",
+              "RelativeToolTip": "SchoolManagement.Domain\\Entities\\Subject.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T00:03:15.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\Program.cs",
               "RelativeDocumentMoniker": "SchoolManagement.Api\\Program.cs",
@@ -109,51 +1037,11 @@
               "RelativeToolTip": "SchoolManagement.Api\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T21:06:28Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-08T21:06:28Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProfessorService.cs",
-              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\ProfessorService.cs",
-              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Services\\ProfessorService.cs",
-              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Services\\ProfessorService.cs",
-              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Services\\ProfessorService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T22:59:39.636Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IProfessorService.cs",
-              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\IProfessorService.cs",
-              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\IServices\\IProfessorService.cs",
-              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\IServices\\IProfessorService.cs",
-              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\IServices\\IProfessorService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T22:56:51.448Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProfessorRepository.cs",
-              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\ProfessorRepository.cs",
-              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\ProfessorRepository.cs",
-              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\DataAccess\\Repository\\ProfessorRepository.cs",
-              "RelativeToolTip": "SchoolManagement.Infrastructure\\DataAccess\\Repository\\ProfessorRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABLAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T22:25:53.158Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 60,
               "Title": "GenericRepository.cs",
               "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\Common\\Implementation\\GenericRepository.cs",
               "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\Common\\Implementation\\GenericRepository.cs",
@@ -161,38 +1049,11 @@
               "RelativeToolTip": "SchoolManagement.Infrastructure\\Common\\Implementation\\GenericRepository.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAAAwAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T22:16:51.933Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-08T22:16:51.933Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Context.cs",
-              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\Context.cs",
-              "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\Context.cs",
-              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\Context.cs",
-              "RelativeToolTip": "SchoolManagement.Infrastructure\\Context.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAQwBcAAABHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T22:23:10.668Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AutoMapper.cs",
-              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\AutoMapper.cs",
-              "RelativeDocumentMoniker": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\AutoMapper.cs",
-              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\AutoMapper.cs",
-              "RelativeToolTip": "SchoolManagement.Application\\ApplicationServices\\Maps_Dto\\AutoMapper.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T22:51:27.673Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 61,
               "Title": "IRepository.cs",
               "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\Common\\GenericInterface\\IRepository.cs",
               "RelativeDocumentMoniker": "SchoolManagement.Infrastructure\\Common\\GenericInterface\\IRepository.cs",
@@ -200,21 +1061,7 @@
               "RelativeToolTip": "SchoolManagement.Infrastructure\\Common\\GenericInterface\\IRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T22:15:17.558Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Professor.cs",
-              "DocumentMoniker": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Professor.cs",
-              "RelativeDocumentMoniker": "SchoolManagement.Domain\\Entities\\Professor.cs",
-              "ToolTip": "C:\\Users\\rizhe\\Desktop\\projects\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\Entities\\Professor.cs",
-              "RelativeToolTip": "SchoolManagement.Domain\\Entities\\Professor.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T22:13:11.676Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-08T22:15:17.558Z"
             }
           ]
         }
