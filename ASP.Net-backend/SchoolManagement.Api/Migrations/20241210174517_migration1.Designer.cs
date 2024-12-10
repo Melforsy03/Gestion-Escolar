@@ -12,8 +12,8 @@ using SchoolManagement.Infrastructure;
 namespace SchoolManagement.Api.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20241209045711_Migration1")]
-    partial class Migration1
+    [Migration("20241210174517_migration1")]
+    partial class migration1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,21 +24,6 @@ namespace SchoolManagement.Api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("ProfessorSubject", b =>
-                {
-                    b.Property<int>("ProfessorsIdProf")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SubjectsIdSub")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProfessorsIdProf", "SubjectsIdSub");
-
-                    b.HasIndex("SubjectsIdSub");
-
-                    b.ToTable("ProfessorSubject");
-                });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.AuxiliaryMeans", b =>
                 {
@@ -160,7 +145,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasKey("IdProf");
 
-                    b.ToTable("Professors");
+                    b.ToTable("Professor");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.Restriction", b =>
@@ -178,7 +163,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasKey("IdRes");
 
-                    b.ToTable("Restriction");
+                    b.ToTable("Restrction");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.Secretary", b =>
@@ -286,6 +271,21 @@ namespace SchoolManagement.Api.Migrations
                     b.ToTable("TechnologicalMeans");
                 });
 
+            modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfessorSubject", b =>
+                {
+                    b.Property<int>("IdProf")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdSub")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdProf", "IdSub");
+
+                    b.HasIndex("IdSub");
+
+                    b.ToTable("ProfessorSubject");
+                });
+
             modelBuilder.Entity("SchoolManagement.Domain.Relations.StudentSubject", b =>
                 {
                     b.Property<int>("IdStud")
@@ -303,22 +303,26 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("IdSub");
 
-                    b.ToTable("StudentSubject");
+                    b.ToTable("studentSubject");
                 });
 
-            modelBuilder.Entity("ProfessorSubject", b =>
+            modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfessorSubject", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Entities.Professor", null)
+                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
                         .WithMany()
-                        .HasForeignKey("ProfessorsIdProf")
+                        .HasForeignKey("IdProf")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Domain.Entities.Subject", null)
+                    b.HasOne("SchoolManagement.Domain.Entities.Professor", "Professor")
                         .WithMany()
-                        .HasForeignKey("SubjectsIdSub")
+                        .HasForeignKey("IdSub")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Professor");
+
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.StudentSubject", b =>

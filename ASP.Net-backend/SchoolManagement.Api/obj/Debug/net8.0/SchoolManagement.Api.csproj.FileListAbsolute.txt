@@ -200,10 +200,10 @@ C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.SchoolManagement.Api.props
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\scopedcss\bundle\SchoolManagement.Api.styles.css
-C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\SchoolMa.0F49EE62.Up2Date
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\SchoolManagement.Api.dll
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\refint\SchoolManagement.Api.dll
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\SchoolManagement.Api.pdb
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\SchoolManagement.Api.genruntimeconfig.cache
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\ref\SchoolManagement.Api.dll
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\SchoolMa.0F49EE62.Up2Date

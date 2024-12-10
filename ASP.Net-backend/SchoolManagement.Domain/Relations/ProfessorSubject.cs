@@ -12,7 +12,7 @@ namespace SchoolManagement.Domain.Relations
         public int IdProf { get; set; }
         public Professor Professor { get; set; }
 
-        public int IdS { get; set; }
+        public int IdSub { get; set; }
         public Subject Subject { get; set; }
 
     }
