@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SchoolManagement.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class Migration1 : Migration
+    public partial class migration1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -68,7 +68,7 @@ namespace SchoolManagement.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Professors",
+                name: "Professor",
                 columns: table => new
                 {
                     IdProf = table.Column<int>(type: "int", nullable: false)
@@ -83,11 +83,11 @@ namespace SchoolManagement.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Professors", x => x.IdProf);
+                    table.PrimaryKey("PK_Professor", x => x.IdProf);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Restriction",
+                name: "Restrction",
                 columns: table => new
                 {
                     IdRes = table.Column<int>(type: "int", nullable: false)
@@ -96,7 +96,7 @@ namespace SchoolManagement.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Restriction", x => x.IdRes);
+                    table.PrimaryKey("PK_Restrction", x => x.IdRes);
                 });
 
             migrationBuilder.CreateTable(
@@ -164,28 +164,28 @@ namespace SchoolManagement.Api.Migrations
                 name: "ProfessorSubject",
                 columns: table => new
                 {
-                    ProfessorsIdProf = table.Column<int>(type: "int", nullable: false),
-                    SubjectsIdSub = table.Column<int>(type: "int", nullable: false)
+                    IdProf = table.Column<int>(type: "int", nullable: false),
+                    IdSub = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProfessorSubject", x => new { x.ProfessorsIdProf, x.SubjectsIdSub });
+                    table.PrimaryKey("PK_ProfessorSubject", x => new { x.IdProf, x.IdSub });
                     table.ForeignKey(
-                        name: "FK_ProfessorSubject_Professors_ProfessorsIdProf",
-                        column: x => x.ProfessorsIdProf,
-                        principalTable: "Professors",
+                        name: "FK_ProfessorSubject_Professor_IdSub",
+                        column: x => x.IdSub,
+                        principalTable: "Professor",
                         principalColumn: "IdProf",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProfessorSubject_Subject_SubjectsIdSub",
-                        column: x => x.SubjectsIdSub,
+                        name: "FK_ProfessorSubject_Subject_IdProf",
+                        column: x => x.IdProf,
                         principalTable: "Subject",
                         principalColumn: "IdSub",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "StudentSubject",
+                name: "studentSubject",
                 columns: table => new
                 {
                     IdStud = table.Column<int>(type: "int", nullable: false),
@@ -194,15 +194,15 @@ namespace SchoolManagement.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentSubject", x => new { x.IdStud, x.IdSub });
+                    table.PrimaryKey("PK_studentSubject", x => new { x.IdStud, x.IdSub });
                     table.ForeignKey(
-                        name: "FK_StudentSubject_Student_IdSub",
+                        name: "FK_studentSubject_Student_IdSub",
                         column: x => x.IdSub,
                         principalTable: "Student",
                         principalColumn: "IdStud",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_StudentSubject_Subject_IdStud",
+                        name: "FK_studentSubject_Subject_IdStud",
                         column: x => x.IdStud,
                         principalTable: "Subject",
                         principalColumn: "IdSub",
@@ -210,13 +210,13 @@ namespace SchoolManagement.Api.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfessorSubject_SubjectsIdSub",
+                name: "IX_ProfessorSubject_IdSub",
                 table: "ProfessorSubject",
-                column: "SubjectsIdSub");
+                column: "IdSub");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentSubject_IdSub",
-                table: "StudentSubject",
+                name: "IX_studentSubject_IdSub",
+                table: "studentSubject",
                 column: "IdSub");
         }
 
@@ -239,19 +239,19 @@ namespace SchoolManagement.Api.Migrations
                 name: "ProfessorSubject");
 
             migrationBuilder.DropTable(
-                name: "Restriction");
+                name: "Restrction");
 
             migrationBuilder.DropTable(
                 name: "Secretary");
 
             migrationBuilder.DropTable(
-                name: "StudentSubject");
+                name: "studentSubject");
 
             migrationBuilder.DropTable(
                 name: "TechnologicalMeans");
 
             migrationBuilder.DropTable(
-                name: "Professors");
+                name: "Professor");
 
             migrationBuilder.DropTable(
                 name: "Student");

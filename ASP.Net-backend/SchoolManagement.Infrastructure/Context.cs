@@ -11,7 +11,19 @@ namespace SchoolManagement.Infrastructure
         {
         }
 
-        public DbSet<Professor> Professors { get; set; }
+        public DbSet<Professor> Professor { get; set; }
+        public DbSet<AuxiliaryMeans> AuxiliaryMeans { get; set; }
+        public DbSet<ClassRoom> ClassRoom { get; set; }
+        public DbSet<Course> Course { get; set; }
+        public DbSet<Maintenance> Maintenance { get; set; }
+        public DbSet<Restriction> Restrction { get; set; }
+        public DbSet<Secretary> Secretary { get; set; }
+        public DbSet<Student> Student { get; set; }
+        public DbSet<Subject> Subject { get; set; }
+        public DbSet<TechnologicalMeans> TechnologicalMeans { get; set; }
+        public DbSet<ProfessorSubject> ProfessorSubject { get; set; }
+        public DbSet<StudentSubject> studentSubject { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,10 +36,11 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.Salary).IsRequired();
                 entity.Property(e => e.IsDean).IsRequired();
                 entity.Property(e => e.LaboralExperience).IsRequired();
-                /*entity.HasMany(p => p.Subjects).WithMany(s => s.Professors).UsingEntity<ProfessorSubject>(
-                    ps => ps.HasOne(prop => prop.Subject).WithMany()
-                    .HasForeignKey(prop => prop.IdS)*/
-            });
+                entity.HasMany(p => p.Subjects).WithMany(sub => sub.Professors).UsingEntity<ProfessorSubject>(
+                 p => p.HasOne(prop => prop.Subject).WithMany()
+                 .HasForeignKey(prop => prop.IdProf), p => p.HasOne(prop => prop.Professor).WithMany()
+                 .HasForeignKey(prop => prop.IdSub));
+                 });
             
 
             modelBuilder.Entity<Subject>(entity =>
