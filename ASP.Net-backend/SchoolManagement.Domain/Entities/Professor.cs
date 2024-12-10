@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolManagement.Domain.Relations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,6 @@ namespace SchoolManagement.Domain.Entities
         public int LaboralExperience { get; set; }
         public bool IsDeleted { get; set; }
         public List<Subject> Subjects { get; set; }
+        public List<StudentSubject> StudentSubjects { get; set; }
     }
 }

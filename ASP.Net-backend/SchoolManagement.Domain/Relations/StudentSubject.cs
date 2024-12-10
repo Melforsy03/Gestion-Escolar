@@ -17,5 +17,7 @@ namespace SchoolManagement.Domain.Relations
 
         public int NJAbsents { get; set; }
 
+        public List<Professor> Professors { get; set; }
+
     }
 }
