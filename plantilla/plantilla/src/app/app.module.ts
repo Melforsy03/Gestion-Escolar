@@ -10,10 +10,12 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
-import { StudentService } from "./pages/tables/tables.service";
+import { StudentService } from "./pages/tables/estudiante.service";
 import { AuthComponent } from "./components/Autentificacion/auth.component";
 import { NgStyle, NgClass } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { SolicitudComponent } from './pages/solicitud/solicitud.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -24,10 +26,11 @@ import { CommonModule } from '@angular/common';
     RouterModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
 
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent],
   providers: [StudentService],
   bootstrap: [AppComponent]
 })

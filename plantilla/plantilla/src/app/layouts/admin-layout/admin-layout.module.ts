@@ -6,8 +6,8 @@ import { FormsModule } from "@angular/forms";
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { ProfesorComponent } from "../../pages/profesor-info/profesor-info.component";
-import { NotasComponent } from "../../pages/notas/notas.component";
-import { TablesComponent } from "../../pages/tables/tables.component";
+import { NotasComponent } from "../../pages/notas/info-estudiantes.component";
+import { TablesComponent } from "../../pages/tables/estudiante.component";
 
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";

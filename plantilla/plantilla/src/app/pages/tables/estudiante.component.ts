@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { StudentService } from "./tables.service";
+import { StudentService } from "./estudiante.service";
 import { ChangeDetectorRef } from "@angular/core";
 @Component({
-  selector: "app-tables",
-  templateUrl: "tables.component.html",
-  styleUrls: ["./tables.component.css"]
+  selector: "app-estudiante",
+  templateUrl: "estudiante.component.html",
+  styleUrls: ["./estudiante.component.css"]
   
 })
 export class TablesComponent implements OnInit {

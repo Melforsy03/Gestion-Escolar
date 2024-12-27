@@ -5,6 +5,6 @@ export interface RolePermissions {
   
   export interface MenuItem {
     label: string;
-    route: string;
+    path: string;
     icon?: string; // Este campo es opcional
   }

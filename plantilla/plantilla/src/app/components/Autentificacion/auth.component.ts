@@ -24,12 +24,6 @@ export class AuthComponent {
     this.registerStyles = { right: '-520px', opacity: '0' };
   }
 
-  // Función para mostrar el formulario de registro
-  showRegister() {
-    this.loginStyles = { left: '-510px', opacity: '0' };
-    this.registerStyles = { right: '5px', opacity: '1' };
-  }
-
   // Función para alternar el menú
   toggleMenu() {
     this.isMenuResponsive = !this.isMenuResponsive;

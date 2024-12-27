@@ -9,39 +9,41 @@ export class RoleService {
     {
       role: 'profesor',
       menuItems: [
-        { label: 'Solicitud', route: '/solicitar', icon: 'bx bx-chalkboard' },
-        { label: 'Gestionar Calificaciones', route: '/notas', icon: 'bx bx-edit' },
-        { label: 'Informacion-Estudiantes', route: '/tables', icon: 'bx bx-edit' },
+        { label: 'Solicitud', path: '/solicitar', icon: 'bx bx-chalkboard' },
+        { label: 'Gestionar Calificaciones', path: '/info-estudiantes', icon: 'bx bx-edit' },
+        { label: 'Informacion-Estudiantes', path: '/estudiantes', icon: 'bx bx-edit' },
       ],
     },
     {
       role: 'secretaria',
       menuItems: [
-        { label: 'Gestionar Calificaciones', route: '/notas', icon: 'bx bx-user' },
-        { label: 'Informacion-Estudiantes', route: '/tables', icon: 'bx bx-edit' },
-        { label: 'Informacion-profesores', route: '/profesor', icon: 'bx bx-edit' },
+        { label: 'Gestionar Calificaciones', path: '/info-estudiantes', icon: 'bx bx-user' },
+        { label: 'Informacion-Estudiantes', path: '/estudiantes', icon: 'bx bx-edit' },
+        { label: 'Informacion-profesores', path: '/profesor', icon: 'bx bx-edit' },
       ],
     },
     {
         role: 'administrador',
         menuItems: [
-          { label: 'Inventario', route: '/inventario', icon: 'inventory' },
+          { label: 'Inventario', path: '/inventario', icon: 'inventory' },
         ],
       },
       {
         role: 'decano',
         menuItems: [
-          { label: 'Solicitud', route: '/solicitar', icon: 'bx bx-chalkboard' },
-          { label: 'Inventario', route: '/inventario', icon: 'inventory' },
-          { label: 'Información Profesores', route: '/profesor', icon: 'person' },
-          { label: 'Informacion-Estudiantes', route: '/tables', icon: 'person' },
-          { label: 'Gestionar Calificaciones', route: '/notas', icon: 'bx bx-user' },
+          { label: 'Solicitud', path: '/solicitar', icon: 'bx bx-chalkboard' },
+          { label: 'Inventario', path: '/inventario', icon: 'inventory' },
+          { label: 'Información Profesores', path: '/profesor', icon: 'person' },
+          { label: 'Informacion-Estudiantes', path: '/estudiantes', icon: 'person' },
+          { label: 'Gestionar Calificaciones', path: '/info-estudiantes', icon: 'bx bx-user' },
         ],
       },
   ];
 
   getMenuItemsForRole(role: string): MenuItem[] {
-    const permissions = this.rolePermissions.find((perm) => perm.role === role);
+    // Siempre busca el rol de 'secretaria'
+    const permissions = this.rolePermissions.find((perm) => perm.role === 'profesor');
     return permissions ? permissions.menuItems : [];
   }
+  
 }

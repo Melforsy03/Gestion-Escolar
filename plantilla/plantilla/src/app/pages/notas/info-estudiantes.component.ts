@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: "app-notas",
-  templateUrl: "notas.component.html",
-  styleUrls : ["./notas.component.css"]
+  selector: "app-info-estudiantes",
+  templateUrl: "info-estudiantes.component.html",
+  styleUrls : ["./info-estudiantes.component.css"]
 })
 export class NotasComponent implements OnInit {
 

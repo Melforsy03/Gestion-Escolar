@@ -7,6 +7,7 @@ import { Chart } from 'chart.js';
   styleUrls : ["./profesor-info.component.css"]
 })
 export class ProfesorComponent implements OnInit, AfterViewInit {
+  globalSearchQuery: string = '';
   profesores = [
     {
       nombre: 'Juan',
@@ -140,6 +141,12 @@ export class ProfesorComponent implements OnInit, AfterViewInit {
         },
       },
     });
+  }
+  updateDisplayProfesor() {
+    const query = this.globalSearchQuery.toLowerCase();
+    this.filteredProfesores = this.profesores.filter(profesor =>
+      profesor.nombre.toLowerCase().includes(query) || profesor.apellidos.toLowerCase().includes(query)
+    );
   }
 }
 

@@ -19,6 +19,7 @@
     background-color: #212345; /* Color más oscuro al presionar */
     transform: scale(0.98); /* Pequeño efecto de presión */
   }
+  
   .form-contro {
     display: block;
     width: 100%;
@@ -60,5 +61,11 @@
   
   .form-group {
     margin-bottom: 1rem;
+  }
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Opcional, ajusta según tu diseño */
   }
   
