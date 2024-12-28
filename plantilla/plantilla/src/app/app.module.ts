@@ -16,6 +16,7 @@ import { NgStyle, NgClass } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InventarioComponent } from './pages/inventario/inventario.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -30,7 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
 
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, InventarioComponent],
   providers: [StudentService],
   bootstrap: [AppComponent]
 })
