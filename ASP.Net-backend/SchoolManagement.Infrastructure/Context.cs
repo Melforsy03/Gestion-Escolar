@@ -49,10 +49,9 @@ namespace SchoolManagement.Infrastructure
                 entity.HasMany(p => p.Subjects).WithMany(sub => sub.Professors).UsingEntity<ProfessorSubject>(
                  p => p.HasOne(prop => prop.Subject).WithMany()
                  .HasForeignKey(prop => prop.IdProf), 
-                 
                  p => p.HasOne(prop => prop.Professor).WithMany()
                  .HasForeignKey(prop => prop.IdSub),
-                 p => p.HasKey(prop => new { prop.IdProf, prop.IdSub })
+                 p => p.HasKey(prop => prop.IdProfSub)
                  );
 
 
@@ -62,8 +61,7 @@ namespace SchoolManagement.Infrastructure
                   .HasForeignKey(prop => new { prop.IdStud, prop.IdSub }),
                   pss => pss.HasOne(prop => prop.Professor).WithMany()
                   .HasForeignKey(prop => prop.IdProf),
-
-            pss =>
+                  pss =>
                   {
                       pss.Property(prop => prop.StudentGrades).HasDefaultValue(0);
                       pss.HasKey(prop => new { prop.IdProf, prop.IdStud, prop.IdSub });

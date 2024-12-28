@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolManagement.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
 {
     public class ProfessorSubjectDto
     {
+        public int IdProfSub { get; set; } = 0;
         public int IdProf { get; set; } = 0;
         public int IdSub { get; set; } = 0;
     }

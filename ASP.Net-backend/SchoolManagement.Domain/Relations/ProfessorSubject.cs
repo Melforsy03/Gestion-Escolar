@@ -9,6 +9,7 @@ namespace SchoolManagement.Domain.Relations
 {
     public class ProfessorSubject
     {
+        public int IdProfSub {  get; set; } = 0;
         public int IdProf { get; set; } = 0;
         public Professor Professor { get; set; } = new Professor();
 

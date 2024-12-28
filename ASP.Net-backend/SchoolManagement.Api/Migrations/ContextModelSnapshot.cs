@@ -312,13 +312,21 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfessorSubject", b =>
                 {
+                    b.Property<int>("IdProfSub")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdProfSub"));
+
                     b.Property<int>("IdProf")
                         .HasColumnType("int");
 
                     b.Property<int>("IdSub")
                         .HasColumnType("int");
 
-                    b.HasKey("IdProf", "IdSub");
+                    b.HasKey("IdProfSub");
+
+                    b.HasIndex("IdProf");
 
                     b.HasIndex("IdSub");
 

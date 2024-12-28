@@ -44,11 +44,11 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
             CreateMap<StudentDto, Student>();
             CreateMap<Student, StudentDto>();
 
-            CreateMap<ProfessorSubjectDto, ProfessorSubjectDto>(); 
-            CreateMap<ProfessorSubject, ProfessorSubjectDto>();
-
             CreateMap<StudentSubjectDto, StudentSubject>();
             CreateMap<StudentSubject, StudentSubjectDto>();
+
+            CreateMap<ProfessorSubjectDto,  ProfessorSubject>();
+            CreateMap<ProfessorSubject, ProfessorSubjectDto>(); 
         }
     }
 }
