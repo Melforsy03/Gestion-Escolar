@@ -22,12 +22,14 @@ namespace SchoolManagement.Application
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<IMaintenanceService, MaintenanceService>();
             services.AddScoped<IProfessorService, ProfessorService>();
+            services.AddScoped<IProfessorSubjectService, ProfessorSubjectService>();
             services.AddScoped<IRestrictionService, RestrictionService>();
             services.AddScoped<ISecretaryService, SecretaryService>();
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IStudentSubjectService, StudentSubjectService>();
             services.AddScoped<ISubjectService, SubjectService>();
             services.AddScoped<ITechnologicalMeansService, TechnologicalMeansService>();
+            
         }
     }
 }

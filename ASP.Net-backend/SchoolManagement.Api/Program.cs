@@ -20,7 +20,7 @@ services.AddHttpContextAccessor();
 services.AddApplicationServices();
 services.AddInfraestructureServices();
 
-//builder.Services.AddInfraestructureServices();
+builder.Services.AddInfraestructureServices();
 
 builder.Services.AddDbContext<Context>(options =>
 {

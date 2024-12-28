@@ -12,8 +12,12 @@ namespace SchoolManagement.Domain.Entities
         public string NameStud { get; set; } = string.Empty;
         public int Age { get; set; } = 0;
         public bool EActivity { get; set; } = false;
+        public int IdC = 0;
+        public Course Course { get; set; }
 
-        public List<Subject> Subjects { get; set; } = new List<Subject>();
+        public List<Subject> Subjects { get; set; }
+        public List<Professor> Professors { get; set; }
+        public List<Course> Courses { get; set; } 
     }
 }
 

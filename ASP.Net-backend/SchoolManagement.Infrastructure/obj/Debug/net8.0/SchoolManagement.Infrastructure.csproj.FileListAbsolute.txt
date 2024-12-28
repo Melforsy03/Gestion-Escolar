@@ -15,4 +15,4 @@ C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Infrastructure\obj\Debug\net8.0\SchoolManagement.Infrastructure.pdb
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Infrastructure\obj\Debug\net8.0\SchoolManagement.Infrastructure.genruntimeconfig.cache
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Infrastructure\obj\Debug\net8.0\ref\SchoolManagement.Infrastructure.dll
-C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Infrastructure\obj\Debug\net8.0\SchoolMa.324EA75F.Up2Date
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Infrastructure\obj\Debug\net8.0\SchoolManagement.Infrastructure.csproj.CopyComplete

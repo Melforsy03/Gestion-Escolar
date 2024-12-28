@@ -11,7 +11,8 @@ namespace SchoolManagement.Domain.Relations
     {
         public int IdProf { get; set; }
         public Professor Professor { get; set; }
-        public int IdStudSub { get; set; }
+        public int IdStud { get; set; }
+        public int IdSub {  get; set; }
         public StudentSubject StudentSubject { get; set; }
         public float StudentGrades { get; set; }
     }

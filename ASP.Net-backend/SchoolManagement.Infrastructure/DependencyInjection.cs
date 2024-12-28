@@ -19,6 +19,7 @@ namespace SchoolManagement.Infrastructure
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<IMaintenanceRepository, MaintenanceRepository>();
             services.AddScoped<IProfessorRepository, ProfessorRepository>();
+            services.AddScoped<IProfessorSubjectRepository, ProfessorSubjectRepository>();
             services.AddScoped<IRestrictionRepository, RestrictionRepository>();
             services.AddScoped<ISecretaryRepository, SecretaryRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();

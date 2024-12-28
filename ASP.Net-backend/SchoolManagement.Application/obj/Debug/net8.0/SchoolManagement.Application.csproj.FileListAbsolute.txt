@@ -17,4 +17,4 @@ C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Application\obj\Debug\net8.0\SchoolManagement.Application.pdb
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Application\obj\Debug\net8.0\SchoolManagement.Application.genruntimeconfig.cache
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Application\obj\Debug\net8.0\ref\SchoolManagement.Application.dll
-C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Application\obj\Debug\net8.0\SchoolMa.1175F4A4.Up2Date
+C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Application\obj\Debug\net8.0\SchoolManagement.Application.csproj.CopyComplete

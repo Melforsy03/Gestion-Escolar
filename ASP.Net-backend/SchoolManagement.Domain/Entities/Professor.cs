@@ -17,7 +17,8 @@ namespace SchoolManagement.Domain.Entities
         public bool IsDean {  get; set; }
         public int LaboralExperience { get; set; }
         public bool IsDeleted { get; set; }
-        public List<Subject> Subjects { get; set; }
-        public List<StudentSubject> StudentSubjects { get; set; }
+        public List<Subject> Subjects { get; set; } = new List<Subject>();
+        public List<StudentSubject> StudentSubjects { get; set; } = new List<StudentSubject>();
+    
     }
 }

@@ -11,7 +11,8 @@ namespace SchoolManagement.Api.Controllers
     public class SubjectController : ControllerBase
     {
         private readonly ISubjectService _subjectService;
-        public SubjectController(SubjectService subjectService)
+
+        public SubjectController(ISubjectService subjectService)
         {
             _subjectService = subjectService;
         }
@@ -21,25 +22,25 @@ namespace SchoolManagement.Api.Controllers
         //[Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateSubject(SubjectDto subject)
         {
-            var subject2 = await _subjectService.CreateSubjectAsync(subject);
-            return Ok(subject2);
+            var createdSubject = await _subjectService.CreateSubjectAsync(subject);
+            return Ok(createdSubject);
         }
 
         [HttpGet]
         [Route("list")]
-        //[Authorize (Roles = "SuperAdmin")]
-        public async Task<ActionResult<IEnumerable<Subject>>> ListSubject()
+        //[Authorize(Roles = "SuperAdmin")]
+        public async Task<ActionResult<IEnumerable<Subject>>> ListSubjects()
         {
-            var subject = await _subjectService.ListSubjectAsync();
-            return Ok(subject);
+            var subjects = await _subjectService.ListSubjectAsync();
+            return Ok(subjects);
         }
 
         [HttpPut]
         [Route("update")]
         public async Task<ActionResult> UpdateSubject(SubjectDto subject)
         {
-            var _subject = await _subjectService.UpdateSubjectAsync(subject);
-            return Ok(_subject);
+            var updatedSubject = await _subjectService.UpdateSubjectAsync(subject);
+            return Ok(updatedSubject);
         }
 
         [HttpDelete]
@@ -50,4 +51,5 @@ namespace SchoolManagement.Api.Controllers
             return Ok();
         }
     }
+
 }

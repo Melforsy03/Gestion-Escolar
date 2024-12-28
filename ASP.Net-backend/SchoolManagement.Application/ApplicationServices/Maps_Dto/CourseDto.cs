@@ -9,5 +9,6 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
     public class CourseDto
     {
         public int IdC { get; set; }
+        public string CourseName { get; set; }
     }
 }
