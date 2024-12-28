@@ -9,11 +9,11 @@ namespace SchoolManagement.Domain.Relations
 {
     public class ProfessorSubject
     {
-        public int IdProf { get; set; }
-        public Professor Professor { get; set; }
+        public int IdProf { get; set; } = 0;
+        public Professor Professor { get; set; } = new Professor();
 
-        public int IdSub { get; set; }
-        public Subject Subject { get; set; }
+        public int IdSub { get; set; } = 0;
+        public Subject Subject { get; set; } = new Subject();
 
     }
 }

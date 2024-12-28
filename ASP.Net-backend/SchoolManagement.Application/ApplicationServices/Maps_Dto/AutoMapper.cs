@@ -7,6 +7,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using AutoMapper;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Domain.Relations;
 namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
 {
     public class AutomapperProfile : Profile
@@ -43,8 +44,11 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
             CreateMap<StudentDto, Student>();
             CreateMap<Student, StudentDto>();
 
-            CreateMap<StudentSubjectDto, Domain.Relations.StudentSubject>();
-            CreateMap<Domain.Relations.StudentSubject, StudentSubjectDto>();
+            CreateMap<ProfessorSubjectDto, ProfessorSubjectDto>(); 
+            CreateMap<ProfessorSubject, ProfessorSubjectDto>();
+
+            CreateMap<StudentSubjectDto, StudentSubject>();
+            CreateMap<StudentSubject, StudentSubjectDto>();
         }
     }
 }

@@ -9,5 +9,7 @@ namespace SchoolManagement.Domain.Entities
     public class Course
     {
         public int IdC { get; set; }
+        public string CourseName {  get; set; }
+        public List<Student> Students { get; set; }
     }
 }

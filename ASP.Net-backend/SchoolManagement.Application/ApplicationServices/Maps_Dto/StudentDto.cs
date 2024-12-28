@@ -13,6 +13,7 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
         public string NameStud { get; set; } = string.Empty;
         public int Age { get; set; } = 0;
         public bool EActivity { get; set; } = false;
+        public int IdC { get; set; } = 0;
 
         //public List<Subject> Subjects { get; set; } = new List<Subject>();
     }
