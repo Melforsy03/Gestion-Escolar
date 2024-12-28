@@ -40,7 +40,8 @@ export class InventarioComponent implements OnInit {
         fechasMantenimiento: [{ fecha: '2023-01-01' }, { fecha: '2023-06-01' }],
         fechaReemplazo: '2024-01-01',
         isEditing: false,
-        showFechasMantenimiento: false
+        showFechasMantenimiento: false,
+        newFechaMantenimiento: ''
       },
       {
         id: '2',
@@ -53,7 +54,8 @@ export class InventarioComponent implements OnInit {
         fechasMantenimiento: [{ fecha: '2023-02-01' }, { fecha: '2023-07-01' }],
         fechaReemplazo: '2024-02-01',
         isEditing: false,
-        showFechasMantenimiento: false
+        showFechasMantenimiento: false,
+        newFechaMantenimiento: ''
       },
       {
         id: '3',
@@ -66,7 +68,8 @@ export class InventarioComponent implements OnInit {
         fechasMantenimiento: [{ fecha: '2023-03-01' }, { fecha: '2023-08-01' }],
         fechaReemplazo: '2024-03-01',
         isEditing: false,
-        showFechasMantenimiento: false
+        showFechasMantenimiento: false,
+        newFechaMantenimiento: ''
       }
     ];
   }
@@ -84,7 +87,10 @@ export class InventarioComponent implements OnInit {
   }
 
   addFechaMantenimientoToMedio(medio: any): void {
-    medio.fechasMantenimiento.push({ fecha: '' });
+    if (medio.newFechaMantenimiento) {
+      medio.fechasMantenimiento.push({ fecha: medio.newFechaMantenimiento });
+      medio.newFechaMantenimiento = '';
+    }
   }
 
   removeFechaMantenimientoFromMedio(medio: any, index: number): void {
