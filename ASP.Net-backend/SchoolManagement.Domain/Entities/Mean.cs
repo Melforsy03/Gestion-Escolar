@@ -8,9 +8,11 @@ namespace SchoolManagement.Domain.Entities
 {
     public class Mean
     {
-        public int IdMean { get; set; }
-        public int Ammount  { get; set; }   
-        public string NameMean {  get; set; }
-        public string State { get; set; }
+        public int IdMean { get; set; } = 0;
+        public int Ammount { get; set; } = 0;  
+        public string NameMean {  get; set; } = string.Empty;
+        public string State { get; set; } = string.Empty;
+        public int IdMaintenance { get; set; } = 0; 
+        public List<Maintenance> maintenances { get; set; } = new List<Maintenance>();
     }
 }

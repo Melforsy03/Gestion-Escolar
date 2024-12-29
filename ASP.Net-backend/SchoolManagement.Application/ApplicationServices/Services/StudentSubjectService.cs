@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Domain.Entities;
 using SchoolManagement.Domain.Relations;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
+using SchoolManagement.Infrastructure.DataAccess.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,19 +16,29 @@ namespace SchoolManagement.Application.ApplicationServices.Services
     public class StudentSubjectService : IStudentSubjectService
     {
         private readonly IStudentSubjectRepository _studentSubjectRepository;
+        private readonly IStudentRepository _studentRepository;
+        private readonly ISubjectRepository _subjectRepository;
         private readonly IMapper _mapper;
 
-        public StudentSubjectService(IStudentSubjectRepository studentSubjectRepository, IMapper mapper)
+        public StudentSubjectService(IStudentSubjectRepository studentSubjectRepository,  IMapper mapper, IStudentRepository studentRepository, ISubjectRepository subjectRepository)
         {
             _studentSubjectRepository = studentSubjectRepository;
             _mapper = mapper;
+            _studentRepository = studentRepository;
+            _subjectRepository = subjectRepository;
         }
 
         public async Task<StudentSubjectDto> CreateStudentSubjectAsync(StudentSubjectDto studentSubjectDto)
         {
-            var studentSubject = _mapper.Map<Domain.Relations.StudentSubject>(studentSubjectDto);
+            var studentSubject = _mapper.Map<StudentSubject>(studentSubjectDto);
+            studentSubject.Subject = _subjectRepository.GetById(studentSubjectDto.IdSub);
+            studentSubject.Student = _studentRepository.GetById(studentSubjectDto.IdStud);
+
             var savedStudentSubject = await _studentSubjectRepository.CreateAsync(studentSubject);
+
             return _mapper.Map<StudentSubjectDto>(savedStudentSubject);
+
+            
         }
 
 
@@ -45,7 +57,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<StudentSubjectDto> UpdateStudentSubjectAsync(StudentSubjectDto studentSubjectDto)
         {
-            var studentSubject = _studentSubjectRepository.GetById(studentSubjectDto.IdStud);
+            var studentSubject = _studentSubjectRepository.GetById(studentSubjectDto.IdStudSub);
             _mapper.Map(studentSubjectDto, studentSubject);
             await _studentSubjectRepository.UpdateAsync(studentSubject);
             return _mapper.Map<StudentSubjectDto>(studentSubject);

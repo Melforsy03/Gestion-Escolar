@@ -26,6 +26,9 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
             CreateMap<SecretaryDto, Secretary>();
             CreateMap<Secretary, SecretaryDto>();
 
+            CreateMap<SecretaryProfessorStudentSubjectDto, SecretaryProfessorStudentSubject>();
+            CreateMap<SecretaryProfessorStudentSubject, SecretaryProfessorStudentSubjectDto>();
+
             CreateMap<CourseDto, Course>();
             CreateMap<Course, CourseDto>();
 
@@ -41,14 +44,26 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
             CreateMap<ClassRoomDto, ClassRoom>();
             CreateMap<ClassRoom, ClassRoomDto>();
 
+            CreateMap<ClassRoomRestrictionDto, ClassRoomRestriction>();
+            CreateMap<ClassRoomRestriction, ClassRoomRestrictionDto>();
+
+            CreateMap<ClassRoomTechMeanDto, ClassRoomTechMean>();
+            CreateMap<ClassRoomTechMean, ClassRoomTechMeanDto>();
+
             CreateMap<StudentDto, Student>();
             CreateMap<Student, StudentDto>();
 
-            CreateMap<ProfessorSubjectDto, ProfessorSubjectDto>(); 
-            CreateMap<ProfessorSubject, ProfessorSubjectDto>();
-
             CreateMap<StudentSubjectDto, StudentSubject>();
             CreateMap<StudentSubject, StudentSubjectDto>();
+
+            CreateMap<ProfessorSubjectDto,  ProfessorSubject>();
+            CreateMap<ProfessorSubject, ProfessorSubjectDto>(); 
+
+            CreateMap<ProfessorStudentSubjectDto, ProfessorStudentSubject>();
+            CreateMap<ProfessorStudentSubject, ProfessorStudentSubjectDto>();
+
+            CreateMap<ProfStudSubCourseDto, ProfStudSubCourse>();
+            CreateMap<ProfStudSubCourse, ProfStudSubCourseDto>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolManagement.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,12 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
 {
     public class MaintenanceDto
     {
-        public int IdM { get; set; }
-        public DateOnly MaintenanceDate { get; set; }
-        public int Cost { get; set; }
+        public int IdM { get; set; } = 0;
+        public DateOnly MaintenanceDate { get; set; } = new DateOnly();
+        public int Cost { get; set; } = 0;
+        public int IdMean { get; set; } = 0;
+        public int typeOfMean { get; set; } = 0;
+        public int IdAuxMean { get; set; } = 0;
+        public int IdTechMean { get; set; } = 0;
     }
 }

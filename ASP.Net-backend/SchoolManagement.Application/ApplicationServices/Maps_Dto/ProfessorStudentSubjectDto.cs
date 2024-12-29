@@ -8,7 +8,9 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
 {
     public class ProfessorStudentSubjectDto
     {
-        public int IdProf { get; set; }
+        public int IdProfStudSub { get; set; }
+        public int IdProf {  get; set; }
+        public int IdStudSub { get; set; }
         public float StudentGrades { get; set; }
     }
 }

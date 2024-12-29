@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Domain.Entities;
+using SchoolManagement.Domain.Relations;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
+using SchoolManagement.Infrastructure.DataAccess.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +16,26 @@ namespace SchoolManagement.Application.ApplicationServices.Services
     public class ProfessorSubjectService : IProfessorSubjectService
     {
         private readonly IProfessorSubjectRepository _professorSubjectRepository;
+        private readonly IProfessorRepository _professorRepository;
+        private readonly ISubjectRepository _subjectRepository;
         private readonly IMapper _mapper;
 
-        public ProfessorSubjectService(IProfessorSubjectRepository professorSubjectRepository, IMapper mapper)
+        public ProfessorSubjectService(IProfessorSubjectRepository professorSubjectRepository, ISubjectRepository subjectRepository, IProfessorRepository professorRepository, IMapper mapper)
         {
             _professorSubjectRepository = professorSubjectRepository;
+            _professorRepository = professorRepository;
+            _subjectRepository = subjectRepository;
             _mapper = mapper;
         }
 
         public async Task<ProfessorSubjectDto> CreateProfessorSubjectAsync(ProfessorSubjectDto professorSubjectDto)
         {
-            var professorSubject = _mapper.Map < Domain.Relations.ProfessorSubject>(professorSubjectDto);
-            var savedAgency = await _professorSubjectRepository.CreateAsync(professorSubject);
-            return _mapper.Map<ProfessorSubjectDto>(savedAgency);
+
+            var professorSubject = _mapper.Map<ProfessorSubject>(professorSubjectDto);
+            professorSubject.Professor = _professorRepository.GetById(professorSubjectDto.IdProf);
+            professorSubject.Subject = _subjectRepository.GetById(professorSubjectDto.IdSub);
+            var savedProfessorSubject = await _professorSubjectRepository.CreateAsync(professorSubject);
+            return _mapper.Map<ProfessorSubjectDto>(savedProfessorSubject);
         }
 
         public async Task DeleteProfessorSubjectByIdAsync(int professorSubjectId)
@@ -35,16 +45,15 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<IEnumerable<ProfessorSubjectDto>> ListProfessorSubjectAsync()
         {
-            var professorSubject = await _professorSubjectRepository.ListAsync();
-            var list = professorSubject.ToList();
-            List<ProfessorSubjectDto> professorSubjectList = new();
-
-            for (int i = 0; i < list.Count; i++)
+            var professorSubjects = await _professorSubjectRepository.ListAsync();
+            var list = professorSubjects.ToList();
+            List<ProfessorSubjectDto> professorSubjects_List = new();
+            for (int i = 0; i < professorSubjects.Count(); i++)
             {
-                professorSubjectList.Add(_mapper.Map<ProfessorSubjectDto>(list[i]));
+                professorSubjects_List.Add(_mapper.Map<ProfessorSubjectDto>(list[i]));
             }
 
-            return professorSubjectList;
+            return professorSubjects_List;
         }
 
     }

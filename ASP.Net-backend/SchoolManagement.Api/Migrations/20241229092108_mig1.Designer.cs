@@ -12,7 +12,7 @@ using SchoolManagement.Infrastructure;
 namespace SchoolManagement.Api.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20241228060909_mig1")]
+    [Migration("20241229092108_mig1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -34,6 +34,9 @@ namespace SchoolManagement.Api.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMean"));
 
                     b.Property<int>("Ammount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdMaintenance")
                         .HasColumnType("int");
 
                     b.Property<string>("NameMean")
@@ -88,12 +91,7 @@ namespace SchoolManagement.Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StudentIdStud")
-                        .HasColumnType("int");
-
                     b.HasKey("IdC");
-
-                    b.HasIndex("StudentIdStud");
 
                     b.ToTable("Course");
                 });
@@ -109,10 +107,23 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<int>("Cost")
                         .HasColumnType("int");
 
+                    b.Property<int>("IdAuxMean")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdTechMean")
+                        .HasColumnType("int");
+
                     b.Property<DateOnly>("MaintenanceDate")
                         .HasColumnType("date");
 
+                    b.Property<int>("typeOfMean")
+                        .HasColumnType("int");
+
                     b.HasKey("IdM");
+
+                    b.HasIndex("IdAuxMean");
+
+                    b.HasIndex("IdTechMean");
 
                     b.ToTable("Maintenance");
                 });
@@ -177,7 +188,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasKey("IdRes");
 
-                    b.ToTable("Restrction");
+                    b.ToTable("Restriction");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.Secretary", b =>
@@ -226,6 +237,9 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<int>("IdC")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("NameStud")
                         .IsRequired()
                         .HasMaxLength(32)
@@ -249,6 +263,9 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<int>("CourseLoad")
                         .HasColumnType("int");
 
+                    b.Property<int>("IdClassRoom")
+                        .HasColumnType("int");
+
                     b.Property<string>("NameSub")
                         .IsRequired()
                         .HasMaxLength(16)
@@ -260,6 +277,8 @@ namespace SchoolManagement.Api.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.HasKey("IdSub");
+
+                    b.HasIndex("IdClassRoom");
 
                     b.ToTable("Subject");
                 });
@@ -273,6 +292,9 @@ namespace SchoolManagement.Api.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMean"));
 
                     b.Property<int>("Ammount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdMaintenance")
                         .HasColumnType("int");
 
                     b.Property<string>("NameMean")
@@ -290,8 +312,66 @@ namespace SchoolManagement.Api.Migrations
                     b.ToTable("TechnologicalMeans");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfessorStudentSubject", b =>
+            modelBuilder.Entity("SchoolManagement.Domain.Relations.ClassRoomRestriction", b =>
                 {
+                    b.Property<int>("IdClassRoomRest")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdClassRoomRest"));
+
+                    b.Property<int>("IdClassRoom")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdRest")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdClassRoomRest");
+
+                    b.HasIndex("IdClassRoom");
+
+                    b.HasIndex("IdRest");
+
+                    b.ToTable("ClassRoomRestriction");
+                });
+
+            modelBuilder.Entity("SchoolManagement.Domain.Relations.ClassRoomTechMean", b =>
+                {
+                    b.Property<int>("IdClassRoomTech")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdClassRoomTech"));
+
+                    b.Property<int>("IdClassRoom")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdTechMean")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdClassRoomTech");
+
+                    b.HasIndex("IdClassRoom");
+
+                    b.HasIndex("IdTechMean");
+
+                    b.ToTable("ClassRoomTechMean");
+                });
+
+            modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfStudSubCourse", b =>
+                {
+                    b.Property<int>("IdProfStudSubCourse")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdProfStudSubCourse"));
+
+                    b.Property<int>("Evaluation")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdCourse")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdProf")
                         .HasColumnType("int");
 
@@ -301,35 +381,101 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<int>("IdSub")
                         .HasColumnType("int");
 
+                    b.HasKey("IdProfStudSubCourse");
+
+                    b.HasIndex("IdCourse");
+
+                    b.HasIndex("IdProf");
+
+                    b.HasIndex("IdStud");
+
+                    b.HasIndex("IdSub");
+
+                    b.ToTable("ProfStudSubCourse");
+                });
+
+            modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfessorStudentSubject", b =>
+                {
+                    b.Property<int>("IdProfStudSub")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdProfStudSub"));
+
+                    b.Property<int>("IdProf")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdStudSub")
+                        .HasColumnType("int");
+
                     b.Property<float>("StudentGrades")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("real")
                         .HasDefaultValue(0f);
 
-                    b.HasKey("IdProf", "IdStud", "IdSub");
+                    b.HasKey("IdProfStudSub");
 
-                    b.HasIndex("IdStud", "IdSub");
+                    b.HasIndex("IdProf");
+
+                    b.HasIndex("IdStudSub");
 
                     b.ToTable("ProfessorStudentSubject");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfessorSubject", b =>
                 {
+                    b.Property<int>("IdProfSub")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdProfSub"));
+
                     b.Property<int>("IdProf")
                         .HasColumnType("int");
 
                     b.Property<int>("IdSub")
                         .HasColumnType("int");
 
-                    b.HasKey("IdProf", "IdSub");
+                    b.HasKey("IdProfSub");
+
+                    b.HasIndex("IdProf");
 
                     b.HasIndex("IdSub");
 
                     b.ToTable("ProfessorSubject");
                 });
 
+            modelBuilder.Entity("SchoolManagement.Domain.Relations.SecretaryProfessorStudentSubject", b =>
+                {
+                    b.Property<int>("IdSecProfStudSub")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdSecProfStudSub"));
+
+                    b.Property<int>("IdProfStudSub")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdSec")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdSecProfStudSub");
+
+                    b.HasIndex("IdProfStudSub");
+
+                    b.HasIndex("IdSec");
+
+                    b.ToTable("SecretaryProfessorStudentSubject");
+                });
+
             modelBuilder.Entity("SchoolManagement.Domain.Relations.StudentSubject", b =>
                 {
+                    b.Property<int>("IdStudSub")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdStudSub"));
+
                     b.Property<int>("IdStud")
                         .HasColumnType("int");
 
@@ -341,18 +487,55 @@ namespace SchoolManagement.Api.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
-                    b.HasKey("IdStud", "IdSub");
+                    b.HasKey("IdStudSub");
+
+                    b.HasIndex("IdStud");
 
                     b.HasIndex("IdSub");
 
                     b.ToTable("StudentSubject");
                 });
 
-            modelBuilder.Entity("SchoolManagement.Domain.Entities.Course", b =>
+            modelBuilder.Entity("SchoolManagement.Domain.Relations.SubjectAuxMean", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Entities.Student", null)
-                        .WithMany("Courses")
-                        .HasForeignKey("StudentIdStud");
+                    b.Property<int>("IdSubAuxMean")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdSubAuxMean"));
+
+                    b.Property<int>("IdAuxMean")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdSub")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdSubAuxMean");
+
+                    b.HasIndex("IdAuxMean");
+
+                    b.HasIndex("IdSub");
+
+                    b.ToTable("SubjectAuxMean");
+                });
+
+            modelBuilder.Entity("SchoolManagement.Domain.Entities.Maintenance", b =>
+                {
+                    b.HasOne("SchoolManagement.Domain.Entities.AuxiliaryMeans", "auxMean")
+                        .WithMany("maintenances")
+                        .HasForeignKey("IdAuxMean")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SchoolManagement.Domain.Entities.TechnologicalMeans", "technologicalMean")
+                        .WithMany("maintenances")
+                        .HasForeignKey("IdTechMean")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("auxMean");
+
+                    b.Navigation("technologicalMean");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.Professor", b =>
@@ -373,6 +556,90 @@ namespace SchoolManagement.Api.Migrations
                     b.Navigation("Course");
                 });
 
+            modelBuilder.Entity("SchoolManagement.Domain.Entities.Subject", b =>
+                {
+                    b.HasOne("SchoolManagement.Domain.Entities.ClassRoom", "classRoom")
+                        .WithMany("Subjects")
+                        .HasForeignKey("IdClassRoom")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("classRoom");
+                });
+
+            modelBuilder.Entity("SchoolManagement.Domain.Relations.ClassRoomRestriction", b =>
+                {
+                    b.HasOne("SchoolManagement.Domain.Entities.Restriction", "Restriction")
+                        .WithMany()
+                        .HasForeignKey("IdClassRoom")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SchoolManagement.Domain.Entities.ClassRoom", "ClassRoom")
+                        .WithMany()
+                        .HasForeignKey("IdRest")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ClassRoom");
+
+                    b.Navigation("Restriction");
+                });
+
+            modelBuilder.Entity("SchoolManagement.Domain.Relations.ClassRoomTechMean", b =>
+                {
+                    b.HasOne("SchoolManagement.Domain.Entities.TechnologicalMeans", "TechnologicalMeans")
+                        .WithMany()
+                        .HasForeignKey("IdClassRoom")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SchoolManagement.Domain.Entities.ClassRoom", "ClassRoom")
+                        .WithMany()
+                        .HasForeignKey("IdTechMean")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ClassRoom");
+
+                    b.Navigation("TechnologicalMeans");
+                });
+
+            modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfStudSubCourse", b =>
+                {
+                    b.HasOne("SchoolManagement.Domain.Entities.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("IdCourse")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("SchoolManagement.Domain.Entities.Professor", "Professor")
+                        .WithMany()
+                        .HasForeignKey("IdProf")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("SchoolManagement.Domain.Entities.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("IdStud")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("IdSub")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("Professor");
+
+                    b.Navigation("Student");
+
+                    b.Navigation("Subject");
+                });
+
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfessorStudentSubject", b =>
                 {
                     b.HasOne("SchoolManagement.Domain.Entities.Professor", "Professor")
@@ -383,7 +650,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasOne("SchoolManagement.Domain.Relations.StudentSubject", "StudentSubject")
                         .WithMany()
-                        .HasForeignKey("IdStud", "IdSub")
+                        .HasForeignKey("IdStudSub")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -411,6 +678,25 @@ namespace SchoolManagement.Api.Migrations
                     b.Navigation("Subject");
                 });
 
+            modelBuilder.Entity("SchoolManagement.Domain.Relations.SecretaryProfessorStudentSubject", b =>
+                {
+                    b.HasOne("SchoolManagement.Domain.Entities.Secretary", "Secretary")
+                        .WithMany()
+                        .HasForeignKey("IdProfStudSub")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SchoolManagement.Domain.Relations.ProfessorStudentSubject", "Evaluation")
+                        .WithMany()
+                        .HasForeignKey("IdSec")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Evaluation");
+
+                    b.Navigation("Secretary");
+                });
+
             modelBuilder.Entity("SchoolManagement.Domain.Relations.StudentSubject", b =>
                 {
                     b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
@@ -430,6 +716,35 @@ namespace SchoolManagement.Api.Migrations
                     b.Navigation("Subject");
                 });
 
+            modelBuilder.Entity("SchoolManagement.Domain.Relations.SubjectAuxMean", b =>
+                {
+                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("IdAuxMean")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SchoolManagement.Domain.Entities.AuxiliaryMeans", "AuxMean")
+                        .WithMany()
+                        .HasForeignKey("IdSub")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AuxMean");
+
+                    b.Navigation("Subject");
+                });
+
+            modelBuilder.Entity("SchoolManagement.Domain.Entities.AuxiliaryMeans", b =>
+                {
+                    b.Navigation("maintenances");
+                });
+
+            modelBuilder.Entity("SchoolManagement.Domain.Entities.ClassRoom", b =>
+                {
+                    b.Navigation("Subjects");
+                });
+
             modelBuilder.Entity("SchoolManagement.Domain.Entities.Course", b =>
                 {
                     b.Navigation("Students");
@@ -437,9 +752,12 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.Student", b =>
                 {
-                    b.Navigation("Courses");
-
                     b.Navigation("Professors");
+                });
+
+            modelBuilder.Entity("SchoolManagement.Domain.Entities.TechnologicalMeans", b =>
+                {
+                    b.Navigation("maintenances");
                 });
 #pragma warning restore 612, 618
         }

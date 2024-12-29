@@ -14,17 +14,24 @@ namespace SchoolManagement.Application.ApplicationServices.Services
     public class MaintenanceService : IMaintenanceService
     {
         private readonly IMaintenanceRepository _maintenanceRepository;
+        private readonly IAuxiliaryMeansRepository _auxiliaryMeansRepository;
+        private readonly ITechnologicalMeansRepository _technologicalMeansRepository;
         private readonly IMapper _mapper;
 
-        public MaintenanceService(IMaintenanceRepository maintenanceRepository, IMapper mapper)
+        public MaintenanceService(IMaintenanceRepository maintenanceRepository, ITechnologicalMeansRepository technologicalMeansRepository, IAuxiliaryMeansRepository auxiliaryMeansRepository, IMapper mapper)
         {
             _maintenanceRepository = maintenanceRepository;
+            _auxiliaryMeansRepository = auxiliaryMeansRepository;
+            _technologicalMeansRepository = technologicalMeansRepository;
             _mapper = mapper;
         }
 
         public async Task<MaintenanceDto> CreateMaintenanceAsync(MaintenanceDto maintenanceDto)
         {
             var maintenance = _mapper.Map<Domain.Entities.Maintenance>(maintenanceDto);
+            if (maintenance.typeOfMean == 0) maintenance.technologicalMean = await _technologicalMeansRepository.GetByIdAsync(maintenance.IdTechMean);
+            else maintenance.auxMean = await _auxiliaryMeansRepository.GetByIdAsync(maintenance.IdTechMean);
+
             var savedMaintenance = await _maintenanceRepository.CreateAsync(maintenance);
             return _mapper.Map<MaintenanceDto>(savedMaintenance);
         }

@@ -8,5 +8,6 @@ namespace SchoolManagement.Domain.Entities
 {
     public class TechnologicalMeans: Mean
     {
+        public List<ClassRoom> ClassRooms { get; set; } = new List<ClassRoom>();
     }
 }

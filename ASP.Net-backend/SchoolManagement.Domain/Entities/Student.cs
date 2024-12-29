@@ -13,11 +13,10 @@ namespace SchoolManagement.Domain.Entities
         public int Age { get; set; } = 0;
         public bool EActivity { get; set; } = false;
         public int IdC = 0;
-        public Course Course { get; set; }
-
-        public List<Subject> Subjects { get; set; }
-        public List<Professor> Professors { get; set; }
-        public List<Course> Courses { get; set; } 
+        public Course Course { get; set; } = new Course();
+        public bool IsDeleted { get; set; } = false;
+        public List<Subject> Subjects { get; set; } = new List<Subject>();
+        public List<Professor> Professors { get; set; } = new List<Professor>();
     }
 }
 

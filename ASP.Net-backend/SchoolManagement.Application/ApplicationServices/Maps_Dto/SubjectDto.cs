@@ -12,5 +12,6 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
         public string NameSub { get; set; } = string.Empty;
         public string StudyProgram { get; set; } = string.Empty;
         public int CourseLoad { get; set; } = 0;
+        public int IdClassRoom { get; set; } = 0;   
     }
 }
