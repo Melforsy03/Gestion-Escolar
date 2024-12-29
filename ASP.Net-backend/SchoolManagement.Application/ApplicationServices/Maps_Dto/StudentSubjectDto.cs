@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
 {
     public class StudentSubjectDto
-    {
-        public int IdStud { get; set; }
-        public int NJAbsent { get; set; }
+    {   
+        public int IdStudSub { get; set; } = 0;
+        public int IdStud { get; set; } = 0;
+        public int IdSub { get; set; } = 0;
+        public int NJAbsents { get; set; } = 0;
     }
 }

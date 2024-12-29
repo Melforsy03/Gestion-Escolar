@@ -9,15 +9,18 @@ namespace SchoolManagement.Domain.Relations
 {
     public class StudentSubject
     {
-        public int IdStud { get; set; }
-        public Student Student { get; set; }
+        public int IdStudSub { get; set; } = 0;
+        public int IdStud { get; set; } = 0;
+        public Student Student { get; set; } = new Student();
+        public int IdSub { get; set; } = 0;
+        public Subject Subject { get; set; } = new Subject();
+        public int NJAbsents { get; set; } = 0;
 
-        public int IdSub { get; set; }
-        public Subject Subject { get; set; }
+        public List<Professor> Professors { get; set; } = new List<Professor> { };
+        
+        
 
-        public int NJAbsents { get; set; }
-
-        public List<Professor> Professors { get; set; }
+      
 
     }
 }

@@ -16,17 +16,23 @@ namespace SchoolManagement.Infrastructure
         {
             services.AddScoped<IAuxiliaryMeansRepository, AuxiliaryMeansRepository>();
             services.AddScoped<IClassRoomRepository, ClassRoomRepository>();
+            services.AddScoped<IClassRoomRestrictionRepository, ClassRoomRestrictionRepository>();
+            services.AddScoped<IClassRoomTechMeanRepository, ClassRoomTechMeanRepository>();
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<IMaintenanceRepository, MaintenanceRepository>();
             services.AddScoped<IProfessorRepository, ProfessorRepository>();
             services.AddScoped<IProfessorSubjectRepository, ProfessorSubjectRepository>();
+            services.AddScoped<IProfessorStudentSubjectRepository, ProfessorStudentSubjectRepository>();
+            services.AddScoped<IProfStudSubCourseRepository, ProfStudSubCourseRepository>();
             services.AddScoped<IRestrictionRepository, RestrictionRepository>();
             services.AddScoped<ISecretaryRepository, SecretaryRepository>();
+            services.AddScoped<ISecretaryProfessorStudentSubjectRepository,  SecretaryProfessorStudentSubjectRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IStudentSubjectRepository, StudentSubjectRepository>();
             services.AddScoped<ISubjectRepository, SubjectRepository>();
             services.AddScoped<ITechnologicalMeansRepository, TechnologicalMeansRepository>();
-
+            services.AddScoped<ISubjectAuxMeanRepository, SubjectAuxMeanRepository>();
+            
 
         }
     }

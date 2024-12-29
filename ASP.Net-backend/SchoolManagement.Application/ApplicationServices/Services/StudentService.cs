@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
 using System.Collections.Generic;
@@ -13,17 +14,20 @@ namespace SchoolManagement.Application.ApplicationServices.Services
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _studentRepository;
+        private readonly ICourseRepository _courseRepository;
         private readonly IMapper _mapper;
 
-        public StudentService(IStudentRepository studentRepository, IMapper mapper)
+        public StudentService(IStudentRepository studentRepository, ICourseRepository courseRepository,IMapper mapper)
         {
             _studentRepository = studentRepository;
+            _courseRepository = courseRepository;
             _mapper = mapper;
         }
 
         public async Task<StudentDto> CreateStudentAsync(StudentDto studentDto)
         {
-            var student = _mapper.Map<Domain.Entities.Student>(studentDto);
+            var student = _mapper.Map<Student>(studentDto);
+            student.Course = _courseRepository.GetById(studentDto.IdC);
             var savedStudent = await _studentRepository.CreateAsync(student);
             return _mapper.Map<StudentDto>(savedStudent);
         }

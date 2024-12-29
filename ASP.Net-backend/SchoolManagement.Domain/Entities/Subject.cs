@@ -12,7 +12,10 @@ namespace SchoolManagement.Domain.Entities
         public string NameSub { get; set; } = string.Empty;
         public string StudyProgram { get; set; } = string.Empty;
         public int CourseLoad { get; set; } = 0;
+        public int IdClassRoom { get; set; } = 0;
+        public ClassRoom classRoom { get; set; } = new ClassRoom();
         public List<Professor> Professors { get; set; } = new List<Professor>();
         public List<Student> Students { get; set; } = new List<Student>();
+        public List<AuxiliaryMeans> AuxiliaryMeans { get; set; } = new List<AuxiliaryMeans> { };
     }
 }

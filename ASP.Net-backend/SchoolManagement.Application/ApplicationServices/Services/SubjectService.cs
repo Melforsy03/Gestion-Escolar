@@ -14,17 +14,20 @@ namespace SchoolManagement.Application.ApplicationServices.Services
     public class SubjectService : ISubjectService
     {
         private readonly ISubjectRepository _subjectRepository;
+        private readonly IClassRoomRepository _classRoomRepository;
         private readonly IMapper _mapper;
 
-        public SubjectService(ISubjectRepository subjectRepository, IMapper mapper)
+        public SubjectService(ISubjectRepository subjectRepository,  IMapper mapper, IClassRoomRepository classRoomRepository)
         {
             _subjectRepository = subjectRepository;
             _mapper = mapper;
+            _classRoomRepository = classRoomRepository;
         }
 
         public async Task<SubjectDto> CreateSubjectAsync(SubjectDto subjectDto)
         {
             var subject = _mapper.Map<Domain.Entities.Subject>(subjectDto);
+            subject.classRoom = await _classRoomRepository.GetByIdAsync(subject.IdClassRoom);
             var savedAgency = await _subjectRepository.CreateAsync(subject);
             return _mapper.Map<SubjectDto>(savedAgency);
         }

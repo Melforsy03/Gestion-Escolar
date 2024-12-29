@@ -10,6 +10,7 @@ namespace SchoolManagement.Domain.Entities
     {
         public int IdRes { get; set; }
         public string NameRes { get; set; }
+        public List<ClassRoom> ClassRooms { get; set; } = new List<ClassRoom>();
     
     }
 }
