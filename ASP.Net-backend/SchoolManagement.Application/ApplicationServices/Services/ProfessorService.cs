@@ -21,7 +21,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public async Task<ProfessorDto> CreateProfessorAsync(zzz professorDto)
+        public async Task<ProfessorDto> CreateProfessorAsync(ProfessorDto professorDto)
         {
             var professor = _mapper.Map<Domain.Entities.Professor>(professorDto);
             var savedAgency = await _professorRepository.CreateAsync(professor);
