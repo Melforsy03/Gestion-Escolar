@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
+using SchoolManagement.Infrastructure.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +23,15 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public async Task<ProfessorDto> CreateProfessorAsync(ProfessorDto professorDto)
+        public async Task<ProfessorDto> CreateProfessorAsync(User professorUser)
         {
-            var professor = _mapper.Map<Domain.Entities.Professor>(professorDto);
-            var savedAgency = await _professorRepository.CreateAsync(professor);
-            return _mapper.Map<ProfessorDto>(savedAgency);
+            Professor professor = new();
+            professor.NameProf = professorUser.UserName!;
+            professor.userId = professorUser.Id;
+            professor.Email = professorUser.Email!;
+
+            await _professorRepository.CreateAsync(professor);
+            return _mapper.Map<professor>(professor);
         }
 
         public async Task DeleteProfessorByIdAsync(int professorDto)

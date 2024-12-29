@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SchoolManagement.Domain.Entities;
+using SchoolManagement.Infrastructure.Identity;
 
 namespace SchoolManagement.Infrastructure
 {
-    public class Context: DbContext
+    public class Context: IdentityDbContext<User>
     {
-        public Context(DbContextOptions<Context> options) : base(options)
+        public Context(DbContextOptions options) : base(options)
         {
         }
 

@@ -13,6 +13,10 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
     {
         public AutomapperProfile()
         {
+            CreateMap<User, UserDto>();
+            CreateMap<RegisterDto, User>();
+            CreateMap<LoginDto, User>();
+
             CreateMap<ProfessorDto, Domain.Entities.Professor>();
             CreateMap<Domain.Entities.Professor, ProfessorDto>();
 
