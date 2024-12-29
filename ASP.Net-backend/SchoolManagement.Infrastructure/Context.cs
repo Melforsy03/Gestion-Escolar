@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SchoolManagement.Domain.Entities;z
+using SchoolManagement.Domain.Entities;
 
 namespace SchoolManagement.Infrastructure
 {

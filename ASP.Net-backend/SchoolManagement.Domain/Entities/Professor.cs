@@ -8,8 +8,6 @@ namespace SchoolManagement.Domain.Entities
 {
     public class Professor
     {
-        public string userId { get; set; }
-        public string Email { get; set; } = null!;
         public int IdProf { get; set; }
         public string NameProf { get; set; }
         public string LastNameProf { get; set; }
