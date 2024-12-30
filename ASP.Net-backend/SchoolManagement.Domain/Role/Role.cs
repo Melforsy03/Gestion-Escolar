@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace SchoolManagement.Domain.Role
 {
-    internal class Role
+    public class Role
     {
+        public const string SuperAdmin = "Dean";
+        public const string Admin = "Admin";
+        public const string Secretary = "Secretary";
+        public const string Professor = "Professor";
+        public const string Student = "Student";
     }
 }

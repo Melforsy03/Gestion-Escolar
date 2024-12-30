@@ -8,12 +8,16 @@ using AutoMapper;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 using SchoolManagement.Domain.Relations;
+using SchoolManagement.Infrastructure.Identity;
 namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
 {
     public class AutomapperProfile : Profile
     {
         public AutomapperProfile()
         {
+            CreateMap<User, UserDto>();
+            CreateMap<RegisterDto, User>();
+            CreateMap<LoginDto, User>();
             CreateMap<ProfessorDto, Professor>();
             CreateMap<Professor, ProfessorDto>();
 

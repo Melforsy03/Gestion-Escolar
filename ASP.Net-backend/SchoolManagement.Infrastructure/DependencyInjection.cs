@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using SchoolManagement.Infrastructure.Identity;
 
 namespace SchoolManagement.Infrastructure
 {
@@ -32,8 +35,13 @@ namespace SchoolManagement.Infrastructure
             services.AddScoped<ISubjectRepository, SubjectRepository>();
             services.AddScoped<ITechnologicalMeansRepository, TechnologicalMeansRepository>();
             services.AddScoped<ISubjectAuxMeanRepository, SubjectAuxMeanRepository>();
-            
 
+            //services.AddAuthentication();
+
+            services
+            .AddIdentityCore<User>()
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<Context>();
         }
     }
 }
