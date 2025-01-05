@@ -10,6 +10,7 @@ namespace SchoolManagement.Domain.Entities
     public class Professor
     {
         public int IdProf { get; set; } = 0;
+        public string userId { get; set; }
         public string NameProf { get; set; } = string.Empty;
         public string LastNameProf { get; set; } = string.Empty;
         public string Contract { get; set; } = string.Empty;

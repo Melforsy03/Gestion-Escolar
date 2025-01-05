@@ -57,7 +57,7 @@ namespace SchoolManagement.Application
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = configurationManager.GetSection("JwtSettings:Issuer").Value,
                     ValidAudience = configurationManager.GetSection("JwtSettings:Audience").Value,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configurationManager.GetSection("JwtSettings:Secret").Value!))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configurationManager.GetSection("JwtSettings:Secret").Value))
                 };
             });
         }

@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Infrastructure.Identity;
 
 namespace SchoolManagement.Application.ApplicationServices.IServices
 {
-   public interface IIdentityService
+    public interface IIdentityService
     {
-        Task<(string,string)> CreateUserAsync(RegisterDto userDto);
+        Task<(string, string)> CreateUserAsync(RegisterDto userDto);
         Task<(bool, string)> CheckCredentialsAsync(LoginDto userDto);
+        Task<IEnumerable<User>> ListUsersAsync();
     }
 }

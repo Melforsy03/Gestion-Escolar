@@ -1,4 +1,5 @@
 ﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Infrastructure.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IProfessorService
     {
-        Task<ProfessorDto> CreateProfessorAsync(ProfessorDto professorDto);
+        Task<ProfessorDto> CreateProfessorAsync(User professorUser);
         Task<ProfessorDto> UpdateProfessorAsync(ProfessorDto professorDto);
         Task<IEnumerable<ProfessorDto>> ListProfessorAsync();
         Task DeleteProfessorByIdAsync(int professorDto);

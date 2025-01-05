@@ -2,6 +2,7 @@
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 using SchoolManagement.Domain.Entities;
+using SchoolManagement.Infrastructure.Identity;
 
 namespace SchoolManagement.Api.Controllers
 {
@@ -42,5 +43,14 @@ namespace SchoolManagement.Api.Controllers
                 token = user.Item2
             });
         }
+
+        [HttpGet]
+        [Route("list")]
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        {
+            var users = await _identityService.ListUsersAsync();
+            return Ok(users);
+        }
+
     }
 }

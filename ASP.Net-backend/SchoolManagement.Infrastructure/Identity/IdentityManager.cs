@@ -26,9 +26,9 @@ namespace SchoolManagement.Infrastructure.Identity
         }
         public async Task<User> CreateUserAsync(User user, string password)
         {
-            
+
             await _userManager.CreateAsync(user, password);
-           
+
             return user;
         }
 
@@ -44,10 +44,10 @@ namespace SchoolManagement.Infrastructure.Identity
         public async Task<bool> CheckCredentialsAsync(string username, string password)
         {
             var user = await _userManager.Users
-                               .FirstOrDefaultAsync(u => u.UserName!.Equals(username));
-           
+                            .FirstOrDefaultAsync(u => u.UserName!.Equals(username));
+
             if (user is null)
-               return false;
+                return false;
 
             return await _userManager.CheckPasswordAsync(user, password);
 

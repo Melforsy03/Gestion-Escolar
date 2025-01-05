@@ -9,8 +9,8 @@ using SchoolManagement.Domain.Role;
 
 namespace SchoolManagement.Infrastructure.Identity
 {
-   public class User : IdentityUser
+    public class User : IdentityUser
     {
-    
+
     }
 }
