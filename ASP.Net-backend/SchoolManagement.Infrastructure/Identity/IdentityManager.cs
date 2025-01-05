@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SchoolManagement.Infrastructure.Identity
 {
-   
     public interface IIdentityManager
     {
         Task<User> CreateUserAsync(User user, string password);
@@ -17,7 +16,6 @@ namespace SchoolManagement.Infrastructure.Identity
         Task<bool> IsInRoleAsync(string userId, string role);
         IEnumerable<User> ListUsersAsync();
     }
-
 
     public class IdentityManager : IIdentityManager
     {
@@ -33,7 +31,6 @@ namespace SchoolManagement.Infrastructure.Identity
            
             return user;
         }
-
 
         public async Task AddRoles(string userId, string role)
         {
@@ -55,7 +52,6 @@ namespace SchoolManagement.Infrastructure.Identity
             return await _userManager.CheckPasswordAsync(user, password);
 
         }
-
 
         public async Task<bool> IsInRoleAsync(string userId, string role)
         {

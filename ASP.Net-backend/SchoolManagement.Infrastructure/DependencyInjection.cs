@@ -10,13 +10,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using SchoolManagement.Infrastructure.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace SchoolManagement.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static void AddInfraestructureServices(this IServiceCollection services)
+        public static void AddInfraestructureServices(this IServiceCollection services, IConfiguration configuration)
         {
+            var db = services.AddDbContext<Context>(x =>
+                    { x.UseSqlServer(configuration.GetConnectionString("DefaultConnection")); });
+            services.AddScoped<IIdentityManager, IdentityManager>();
             services.AddScoped<IAuxiliaryMeansRepository, AuxiliaryMeansRepository>();
             services.AddScoped<IClassRoomRepository, ClassRoomRepository>();
             services.AddScoped<IClassRoomRestrictionRepository, ClassRoomRestrictionRepository>();
@@ -29,14 +33,14 @@ namespace SchoolManagement.Infrastructure
             services.AddScoped<IProfStudSubCourseRepository, ProfStudSubCourseRepository>();
             services.AddScoped<IRestrictionRepository, RestrictionRepository>();
             services.AddScoped<ISecretaryRepository, SecretaryRepository>();
-            services.AddScoped<ISecretaryProfessorStudentSubjectRepository,  SecretaryProfessorStudentSubjectRepository>();
+            services.AddScoped<ISecretaryProfessorStudentSubjectRepository, SecretaryProfessorStudentSubjectRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IStudentSubjectRepository, StudentSubjectRepository>();
             services.AddScoped<ISubjectRepository, SubjectRepository>();
             services.AddScoped<ITechnologicalMeansRepository, TechnologicalMeansRepository>();
             services.AddScoped<ISubjectAuxMeanRepository, SubjectAuxMeanRepository>();
 
-            //services.AddAuthentication();
+            services.AddAuthentication();
 
             services
             .AddIdentityCore<User>()
