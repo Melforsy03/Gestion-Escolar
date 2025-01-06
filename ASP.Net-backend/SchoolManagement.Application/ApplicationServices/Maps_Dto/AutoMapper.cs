@@ -9,6 +9,7 @@ using SchoolManagement.Domain.Entities;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 using SchoolManagement.Domain.Relations;
 using SchoolManagement.Infrastructure.Identity;
+
 namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
 {
     public class AutomapperProfile : Profile

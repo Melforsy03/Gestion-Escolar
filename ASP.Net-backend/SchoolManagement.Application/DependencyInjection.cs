@@ -5,13 +5,12 @@ using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Services;
 using SchoolManagement.Application.Authentication;
 using SchoolManagement.Application.Interfaces;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using System.Text; 
 using System.Threading.Tasks;
 
 
@@ -52,7 +51,7 @@ namespace SchoolManagement.Application
 
             services.AddAuthentication(options =>
             {
-                Options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(options =>

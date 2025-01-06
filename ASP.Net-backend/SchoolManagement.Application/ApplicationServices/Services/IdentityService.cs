@@ -9,7 +9,7 @@ using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 using SchoolManagement.Application.Interfaces;
 using SchoolManagement.Domain.Role;
 using SchoolManagement.Infrastructure.Identity;
-
+ 
 namespace SchoolManagement.Application.ApplicationServices.Services
 {
     public class IdentityService : IIdentityService
@@ -76,7 +76,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             var user = _mapper.Map<User>(userDto);
             var savedUser = await _identityManager.CreateUserAsync(user, userDto.Password);
             await _identityManager.AddRoles(savedUser.Id, userDto.role);
-            await _professorService.CreateProfessorAsync(savedUser); 
+            await _professorService.CreateProfessorAsync(savedUser);  
             var token = _jwtTokenGenerator.GenerateToken(savedUser, userDto.role);
             return (token, savedUser.Id.ToString());
         }

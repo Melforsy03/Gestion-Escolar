@@ -1,10 +1,14 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using SchoolManagement.Application.Interfaces;
 
 namespace SchoolManagement.Api.ApiServices
 {
    public class CurrentUser : IUser
-    {
+    { 
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public CurrentUser(IHttpContextAccessor httpContextAccessor)
