@@ -1,6 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SchoolManagement.Application.ApplicationServices.IServices;
+using SchoolManagement.Application.ApplicationServices.Services;
+using SchoolManagement.Application.Authentication;
+using SchoolManagement.Application.Interfaces;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -8,15 +13,13 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Services;
-using SchoolManagement.Application.Authentication;
-using SchoolManagement.Application.Interfaces;
+
 
 namespace SchoolManagement.Application
 {
     public static class DependencyInjection
     {
+
         public static void AddApplicationServices(this IServiceCollection services, ConfigurationManager configurationManager)
         {
             services.Configure<JwtSettings>(configurationManager.GetSection(JwtSettings.SECTION_NAME));
@@ -39,27 +42,32 @@ namespace SchoolManagement.Application
             services.AddScoped<IStudentSubjectService, StudentSubjectService>();
             services.AddScoped<ISubjectService, SubjectService>();
             services.AddScoped<ITechnologicalMeansService, TechnologicalMeansService>();
-            services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
 
+
+            var jwtKey = configurationManager["Jwt:Key"];
+            if (string.IsNullOrEmpty(jwtKey))
+            {
+                throw new ArgumentNullException("Jwt:Key", "La clave JWT no está configurada.");
+            }
 
             services.AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                Options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(options =>
             {
-                options.TokenValidationParameters = new TokenValidationParameters()
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateActor = true,
                     ValidateIssuer = true,
                     ValidateAudience = true,
+                    ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = configurationManager.GetSection("JwtSettings:Issuer").Value,
-                    ValidAudience = configurationManager.GetSection("JwtSettings:Audience").Value,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configurationManager.GetSection("JwtSettings:Secret").Value))
+                    ValidIssuer = configurationManager["Jwt:Issuer"],
+                    ValidAudience = configurationManager["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
                 };
-            });
+            }); 
         }
     }
 }

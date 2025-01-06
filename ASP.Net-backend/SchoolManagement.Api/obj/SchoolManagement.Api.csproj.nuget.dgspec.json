@@ -41,6 +41,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -51,19 +56,15 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "Microsoft.AspNetCore": {
               "target": "Package",
-              "version": "[8.0.11, )"
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[8.0.11, )"
-            },
-            "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[8.0.11, )"
             },
@@ -81,17 +82,9 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
-            "Microsoft.Extensions.Identity.Core": {
-              "target": "Package",
-              "version": "[9.0.0, )"
-            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
-            },
-            "Swashbuckle.AspNetCore.Filters": {
-              "target": "Package",
-              "version": "[8.0.2, )"
             }
           },
           "imports": [
@@ -113,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -154,6 +147,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -164,19 +162,15 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "Microsoft.AspNetCore": {
               "target": "Package",
-              "version": "[8.0.11, )"
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[8.0.11, )"
-            },
-            "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[8.0.11, )"
             },
@@ -193,14 +187,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.0, )"
-            },
-            "Microsoft.Extensions.Identity.Core": {
-              "target": "Package",
-              "version": "[9.0.0, )"
-            },
-            "Swashbuckle.AspNetCore.Filters": {
-              "target": "Package",
-              "version": "[8.0.2, )"
             }
           },
           "imports": [
@@ -219,7 +205,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -253,6 +239,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -263,19 +254,15 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "Microsoft.AspNetCore": {
               "target": "Package",
-              "version": "[8.0.11, )"
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[8.0.11, )"
-            },
-            "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[8.0.11, )"
             },
@@ -292,14 +279,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.0, )"
-            },
-            "Microsoft.Extensions.Identity.Core": {
-              "target": "Package",
-              "version": "[9.0.0, )"
-            },
-            "Swashbuckle.AspNetCore.Filters": {
-              "target": "Package",
-              "version": "[8.0.2, )"
             }
           },
           "imports": [
@@ -318,7 +297,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -356,6 +335,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -366,19 +350,15 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "Microsoft.AspNetCore": {
               "target": "Package",
-              "version": "[8.0.11, )"
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[8.0.11, )"
-            },
-            "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[8.0.11, )"
             },
@@ -395,14 +375,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.0, )"
-            },
-            "Microsoft.Extensions.Identity.Core": {
-              "target": "Package",
-              "version": "[9.0.0, )"
-            },
-            "Swashbuckle.AspNetCore.Filters": {
-              "target": "Package",
-              "version": "[8.0.2, )"
             }
           },
           "imports": [
@@ -421,7 +393,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

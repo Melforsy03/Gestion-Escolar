@@ -5,7 +5,7 @@ using SchoolManagement.Domain.Relations;
 
 namespace SchoolManagement.Infrastructure
 {
-    public class Context: DbContext
+    public class Context : DbContext
     {
         public Context(DbContextOptions<Context> options) : base(options)
         {
@@ -14,13 +14,19 @@ namespace SchoolManagement.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            
+            // modelBuilder.Entity<User>(entity =>
+            // {
+            //     entity.HasKey(u => u.Id);
+            //     entity.Property(u => u.UserName).IsRequired().HasMaxLength(50);
+            //     entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
+            //     entity.Property(u => u.PasswordHash).IsRequired();
+            // });            
 
             modelBuilder.Entity<ProfStudSubCourse>(entity =>
             {
                 entity.HasKey(e => e.IdProfStudSubCourse);
                 entity.Property(e => e.Evaluation);
-                
+
                 entity.HasOne(prop => prop.Professor).WithMany().HasForeignKey(prop => prop.IdProf).OnDelete(DeleteBehavior.NoAction);
 
                 entity.HasOne(prop => prop.Subject).WithMany().HasForeignKey(prop => prop.IdSub).OnDelete(DeleteBehavior.NoAction);
@@ -28,10 +34,10 @@ namespace SchoolManagement.Infrastructure
                 entity.HasOne(prop => prop.Student).WithMany().HasForeignKey(prop => prop.IdStud).OnDelete(DeleteBehavior.NoAction);
 
                 entity.HasOne(prop => prop.Course).WithMany().HasForeignKey(prop => prop.IdCourse).OnDelete(DeleteBehavior.NoAction);
-                
+
 
             });
-           
+
             modelBuilder.Entity<Professor>(entity =>
             {
                 entity.HasKey(e => e.IdProf);
@@ -45,7 +51,7 @@ namespace SchoolManagement.Infrastructure
                 //Relacion de Profesor con Asignatura
                 entity.HasMany(p => p.Subjects).WithMany(sub => sub.Professors).UsingEntity<ProfessorSubject>(
                  p => p.HasOne(prop => prop.Subject).WithMany()
-                 .HasForeignKey(prop => prop.IdProf), 
+                 .HasForeignKey(prop => prop.IdProf),
                  p => p.HasOne(prop => prop.Professor).WithMany()
                  .HasForeignKey(prop => prop.IdSub),
                  p => p.HasKey(prop => prop.IdProfSub)
@@ -63,7 +69,7 @@ namespace SchoolManagement.Infrastructure
                       pss.Property(prop => prop.StudentGrades).HasDefaultValue(0);
                       pss.HasKey(prop => prop.IdProfStudSub);
                   });
-                
+
             });
 
             modelBuilder.Entity<Subject>(entity =>
@@ -73,7 +79,7 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.StudyProgram).IsRequired().HasMaxLength(20);
                 entity.Property(e => e.CourseLoad).IsRequired();
                 //Relacion Asignatura con Aula
-                entity.HasOne(e => e.classRoom ) // Relación uno a muchos
+                entity.HasOne(e => e.classRoom) // Relación uno a muchos
                 .WithMany(c => c.Subjects)
                 .HasForeignKey(s => s.IdClassRoom);
                 //Relacion de Asignatura con medios auxiliares
@@ -130,7 +136,7 @@ namespace SchoolManagement.Infrastructure
                 .HasForeignKey(e => e.IdAuxMean);
 
                 //Relacion de mantenimiento con medios teconologicos
-                entity.HasOne(e => e.technologicalMean) 
+                entity.HasOne(e => e.technologicalMean)
                 .WithMany(m => m.maintenances)
                 .HasForeignKey(e => e.IdTechMean);
 
@@ -151,7 +157,7 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.State).IsRequired().HasMaxLength(10);
                 entity.Property(e => e.Ammount).IsRequired();
                 entity.Property(e => e.Type).IsRequired().HasMaxLength(10);
-             
+
             });
 
             modelBuilder.Entity<ClassRoom>(entity =>
@@ -203,8 +209,8 @@ namespace SchoolManagement.Infrastructure
                     pssc => pssc.HasOne(prop => prop.Professor).WithMany()
                     .HasForeignKey(prop => prop.IdStud), pssc => pssc.HasOne(prop => prop.Student).WithMany()
                     .HasForeignKey(prop => prop.IdProf),*/
-                    
-                  //);
+
+                //);
 
             });
 

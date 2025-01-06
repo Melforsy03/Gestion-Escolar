@@ -17,10 +17,10 @@ builder.Services.AddControllers();
 var services = builder.Services;
 
 services.AddHttpContextAccessor();
-services.AddApplicationServices(builder.Configuration);
-services.AddInfraestructureServices(builder.Configuration);
+services.AddApplicationServices();
+services.AddInfraestructureServices();
 
-builder.Services.AddInfraestructureServices(builder.Configuration);
+builder.Services.AddInfraestructureServices();
 
 builder.Services.AddDbContext<Context>(options =>
 {

@@ -54,5 +54,6 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             await _secretaryRepository.UpdateAsync(secretary);
             return _mapper.Map<SecretaryDto>(secretary);
         }
+
     }
 }
