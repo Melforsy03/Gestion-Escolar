@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InventarioComponent } from './pages/inventario/inventario.component';
+import { PeticionesComponent } from './pages/peticiones/peticiones.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -29,9 +30,10 @@ import { InventarioComponent } from './pages/inventario/inventario.component';
     ToastrModule.forRoot(),
     CommonModule,
     ReactiveFormsModule,
+   
 
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, InventarioComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, InventarioComponent, PeticionesComponent],
   providers: [StudentService],
   bootstrap: [AppComponent]
 })

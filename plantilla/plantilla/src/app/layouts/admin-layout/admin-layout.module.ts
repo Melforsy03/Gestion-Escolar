@@ -8,8 +8,6 @@ import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { ProfesorComponent } from "../../pages/profesor-info/profesor-info.component";
 import { NotasComponent } from "../../pages/notas/info-estudiantes.component";
 import { TablesComponent } from "../../pages/tables/estudiante.component";
-
-
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
@@ -25,6 +23,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     TablesComponent,
     ProfesorComponent,
     NotasComponent,
+    
   ]
 })
 export class AdminLayoutModule {}

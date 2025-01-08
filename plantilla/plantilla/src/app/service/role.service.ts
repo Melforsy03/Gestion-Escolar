@@ -42,7 +42,7 @@ export class RoleService {
   ];
 
   getMenuItemsForRole(role: string): MenuItem[] {
-    // Siempre busca el rol de 'secretaria'
+    
     const permissions = this.rolePermissions.find((perm) => perm.role === 'decano');
     return permissions ? permissions.menuItems : [];
   }
