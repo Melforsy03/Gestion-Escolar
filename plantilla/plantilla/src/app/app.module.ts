@@ -12,7 +12,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { StudentService } from "./pages/tables/estudiante.service";
 import { AuthComponent } from "./components/Autentificacion/auth.component";
-import { NgStyle, NgClass } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { ReactiveFormsModule } from '@angular/forms';

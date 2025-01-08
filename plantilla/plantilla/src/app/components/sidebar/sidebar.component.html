@@ -1,5 +1,6 @@
+
 <div class="logo">
-  <a  class="simple-text logo-mini">
+  <a class="simple-text logo-mini">
     <div class="logo-img">
       <img src="./assets/img/matcom.jpeg" />
     </div>
@@ -10,7 +11,7 @@
     </div>
   </a>
 </div>
-<div class="sidebar-wrapper">
+<div class="sidebar-wrapper" [ngClass]="{'hidden': isSidebarHidden}">
   <ul class="nav">
     <li
       routerLinkActive="active"

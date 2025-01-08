@@ -42,7 +42,6 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: MenuItem[] = [];
-
   constructor(private roleService: RoleService , private authGuard :AuthGuard) {}
 
   ngOnInit():void {
@@ -57,4 +56,5 @@ export class SidebarComponent implements OnInit {
     }
     return true;
   }
+  
 }
