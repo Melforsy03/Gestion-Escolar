@@ -4766,19 +4766,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Livi3\\.nuget\\packages\\": {}
+    "C:\\Users\\rizhe\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Livi3\\Desktop\\Base d datos\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\rizhe\\Desktop\\projects\\is\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj",
       "projectName": "SchoolManagement.Domain",
-      "projectPath": "C:\\Users\\Livi3\\Desktop\\Base d datos\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj",
-      "packagesPath": "C:\\Users\\Livi3\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Livi3\\Desktop\\Base d datos\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\obj\\",
+      "projectPath": "C:\\Users\\rizhe\\Desktop\\projects\\is\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj",
+      "packagesPath": "C:\\Users\\rizhe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rizhe\\Desktop\\projects\\is\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Livi3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rizhe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4798,11 +4803,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -4844,7 +4844,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

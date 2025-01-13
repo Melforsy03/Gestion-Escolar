@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagement.Domain.Role
 {
-    internal class Role
+    public class Role
     {
     }
 }
