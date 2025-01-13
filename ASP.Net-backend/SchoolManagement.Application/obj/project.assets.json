@@ -6522,19 +6522,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Livi3\\.nuget\\packages\\": {}
+    "C:\\Users\\rizhe\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\SchoolManagement.Application.csproj",
+      "projectUniqueName": "C:\\Users\\rizhe\\Desktop\\projects\\is\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\SchoolManagement.Application.csproj",
       "projectName": "SchoolManagement.Application",
-      "projectPath": "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\SchoolManagement.Application.csproj",
-      "packagesPath": "C:\\Users\\Livi3\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\obj\\",
+      "projectPath": "C:\\Users\\rizhe\\Desktop\\projects\\is\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\SchoolManagement.Application.csproj",
+      "packagesPath": "C:\\Users\\rizhe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rizhe\\Desktop\\projects\\is\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Application\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Livi3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rizhe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6548,11 +6553,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj": {
-              "projectPath": "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj"
+            "C:\\Users\\rizhe\\Desktop\\projects\\is\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj": {
+              "projectPath": "C:\\Users\\rizhe\\Desktop\\projects\\is\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj"
             },
-            "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj"
+            "C:\\Users\\rizhe\\Desktop\\projects\\is\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\rizhe\\Desktop\\projects\\is\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Infrastructure\\SchoolManagement.Infrastructure.csproj"
             }
           }
         }
