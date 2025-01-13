@@ -13,7 +13,15 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SchoolManagement.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6961df21b6ed3cd46a34aedf3b4368070693726a")]
+=======
+<<<<<<< HEAD
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ae5f7db88d4e0a785b900d6eedee6fb8dabe629")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74feeaebe59796ff34eda05d8dd43c2d819f9d74")]
+>>>>>>> 3ae5f7db88d4e0a785b900d6eedee6fb8dabe629
+>>>>>>> olivia-backend
 [assembly: System.Reflection.AssemblyProductAttribute("SchoolManagement.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SchoolManagement.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

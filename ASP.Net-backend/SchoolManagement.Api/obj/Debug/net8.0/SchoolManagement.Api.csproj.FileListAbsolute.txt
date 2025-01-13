@@ -207,3 +207,6 @@ C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\ref\SchoolManagement.Api.dll
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\bin\Debug\net8.0\AutoMapper.dll
 C:\Users\rizhe\Desktop\projects\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\SchoolManagement.Api.csproj.CopyComplete
+C:\Users\Livi3\Desktop\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\SchoolManagement.Api.dll
+C:\Users\Livi3\Desktop\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\refint\SchoolManagement.Api.dll
+C:\Users\Livi3\Desktop\Gestion-Escolar\ASP.Net-backend\SchoolManagement.Api\obj\Debug\net8.0\SchoolManagement.Api.pdb
