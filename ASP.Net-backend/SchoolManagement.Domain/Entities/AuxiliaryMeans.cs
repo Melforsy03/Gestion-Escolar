@@ -9,6 +9,7 @@ namespace SchoolManagement.Domain.Entities
     public class AuxiliaryMeans:Mean
     {
         public string Type { get; set; } = string.Empty;
+        public int AviableAmmount { get; set; } = 0;
         public List<Subject> Subjects { get; set; } = new List<Subject> { };
     }
 }
