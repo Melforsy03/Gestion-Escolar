@@ -1,3 +1,8 @@
-
-
+.vs/
+.vscode/
+obj/
+SchoolManagement.Api/obj/
+SchoolManagement.Application/obj/
+SchoolManagement.Domain/obj/
+SchoolManagement.Infrastructure/obj/
 .cache/

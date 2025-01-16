@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NGXw0yKAt9w=",
+  "dgSpecHash": "bzIgI72qQNSowSRKavHjPF16gBidSKjvFL2JAoy3zPvEIlbZOei21zT5+weKC8ZqyrYCblxrSd6yq8tfG74/QQ==",
   "success": true,
-<<<<<<< HEAD
-  "projectFilePath": "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\SchoolManagement.Api.csproj",
-  "projectFilePath": "C:\\Users\\Livi3\\Desktop\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\SchoolManagement.Api.csproj",
-=======
   "projectFilePath": "C:\\Users\\rizhe\\Desktop\\projects\\is\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\SchoolManagement.Api.csproj",
->>>>>>> olivia-backend
   "expectedPackageFiles": [
     "C:\\Users\\rizhe\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\rizhe\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
@@ -151,5 +146,12 @@
     "C:\\Users\\rizhe\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\rizhe\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\rizhe\\Desktop\\projects\\is\\Gestion-Escolar\\ASP.Net-backend\\SchoolManagement.Api\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'success', line 5, position 0."
+    }
+  ]
 }
