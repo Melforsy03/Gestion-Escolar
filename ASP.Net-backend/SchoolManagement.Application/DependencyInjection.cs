@@ -43,30 +43,25 @@ namespace SchoolManagement.Application
             services.AddScoped<ITechnologicalMeansService, TechnologicalMeansService>();
 
 
-            var jwtKey = configurationManager["Jwt:Key"];
-            if (string.IsNullOrEmpty(jwtKey))
-            {
-                throw new ArgumentNullException("Jwt:Key", "La clave JWT no está configurada.");
-            }
-
-            services.AddAuthentication(options =>
+           services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(options =>
             {
-                options.TokenValidationParameters = new TokenValidationParameters
+                options.TokenValidationParameters = new TokenValidationParameters()
                 {
+                    ValidateActor = true,
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidateLifetime = true,
+                    RequireExpirationTime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = configurationManager["Jwt:Issuer"],
-                    ValidAudience = configurationManager["Jwt:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
-                };
-            }); 
+                    ValidIssuer = configurationManager.GetSection("JwtSettings:Issuer").Value,
+                    ValidAudience = configurationManager.GetSection("JwtSettings:Audience").Value,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configurationManager.GetSection("JwtSettings:Secret").Value!))
+                };  
+            });  
         }
     }
 }
