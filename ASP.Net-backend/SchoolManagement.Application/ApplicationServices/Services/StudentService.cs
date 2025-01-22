@@ -3,6 +3,7 @@ using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
+using SchoolManagement.Infrastructure.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +25,17 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public async Task<StudentDto> CreateStudentAsync(StudentDto studentDto)
+        public async Task<StudentDto> CreateStudentAsync(User studentUser)
         {
-            var student = _mapper.Map<Student>(studentDto);
-            student.Course = _courseRepository.GetById(studentDto.IdC);
-            var savedStudent = await _studentRepository.CreateAsync(student);
-            return _mapper.Map<StudentDto>(savedStudent);
+           
+            Student student = new();
+            student.NameStud = studentUser.UserName!;
+            student.Course = _courseRepository.GetById(studentUser.Id);
+            student.userId = studentUser.Id;
+
+            await _studentRepository.CreateAsync(student);
+            return _mapper.Map<StudentDto>(student);
+
         }
 
         public async Task DeleteStudentByIdAsync(int studentDto)

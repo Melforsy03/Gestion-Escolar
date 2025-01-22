@@ -1,4 +1,5 @@
 ﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Infrastructure.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface ISecretaryService
     {
-        Task<SecretaryDto> CreateSecretaryAsync(SecretaryDto secretaryDto);
+        Task<SecretaryDto> CreateSecretaryAsync(User secretaryDto);
         Task<SecretaryDto> UpdateSecretaryAsync(SecretaryDto secretaryDto);
         Task<IEnumerable<SecretaryDto>> ListSecretariesAsync();
         Task DeleteSecretaryByIdAsync(int secretaryDto);

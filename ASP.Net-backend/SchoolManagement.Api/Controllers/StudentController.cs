@@ -4,6 +4,7 @@ using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 using SchoolManagement.Application.ApplicationServices.Services;
 using SchoolManagement.Domain.Entities;
+using SchoolManagement.Infrastructure.Identity;
 
 namespace SchoolManagement.Api.Controllers
 {
@@ -20,7 +21,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPost]
         [Route("create")]
         [Authorize(Roles = "Secretary, SuperAdmin")]
-        public async Task<IActionResult> CreateStudent(StudentDto student)
+        public async Task<IActionResult> CreateStudent(User student)
         {
             var student2 = await _studentService.CreateStudentAsync(student);
             return Ok(student2);

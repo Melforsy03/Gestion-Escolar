@@ -9,6 +9,7 @@ namespace SchoolManagement.Domain.Entities
     public class Student
     {
         public int IdStud { get; set; } = 0;
+        public string userId { get; set; }
         public string NameStud { get; set; } = string.Empty;
         public int Age { get; set; } = 0;
         public bool EActivity { get; set; } = false;

@@ -27,7 +27,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         {
             Professor professor = new();
             professor.NameProf = professorUser.UserName!;
-            professor.uderId = professorUser.Id;
+            professor.userId = professorUser.Id;
 
             await _professorRepository.CreateAsync(professor);
             return _mapper.Map<ProfessorDto>(professor);

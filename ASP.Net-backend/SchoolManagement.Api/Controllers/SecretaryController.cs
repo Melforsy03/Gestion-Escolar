@@ -4,6 +4,7 @@ using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 using SchoolManagement.Application.ApplicationServices.Services;
 using SchoolManagement.Domain.Entities;
+using SchoolManagement.Infrastructure.Identity;
 
 namespace SchoolManagement.Api.Controllers
 {
@@ -21,7 +22,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPost]
         [Route("create")]
         [Authorize(Roles = "SuperAdmin")]
-        public async Task<IActionResult> CreateSecretary(SecretaryDto secretary)
+        public async Task<IActionResult> CreateSecretary(User secretary)
         {
             var secretaryCreated = await _secretaryService.CreateSecretaryAsync(secretary);
             return Ok(secretaryCreated);

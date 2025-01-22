@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using SchoolManagement.Infrastructure.DataAccess.Repository;
+using SchoolManagement.Infrastructure.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +24,15 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public async Task<SecretaryDto> CreateSecretaryAsync(SecretaryDto secretaryDto)
+        public async Task<SecretaryDto> CreateSecretaryAsync(User secretaryUser)
         {
-            var secretary = _mapper.Map<Domain.Entities.Secretary>(secretaryDto);
-            var savedSecretary = await _secretaryRepository.CreateAsync(secretary);
-            return _mapper.Map<SecretaryDto>(savedSecretary);
+            Secretary secretary = new();
+            secretary.NameS = secretaryUser.UserName!;
+            secretary.userId = secretaryUser.Id;
+
+            await _secretaryRepository.CreateAsync(secretary);
+            return _mapper.Map<SecretaryDto>(secretary);
+
         }
 
         public async Task DeleteSecretaryByIdAsync(int secretaryId)
