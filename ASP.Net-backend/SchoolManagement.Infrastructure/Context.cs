@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Domain.Relations;
+using SchoolManagement.Domain.Role;
 using SchoolManagement.Infrastructure.Identity;
 
 namespace SchoolManagement.Infrastructure
@@ -40,13 +41,13 @@ namespace SchoolManagement.Infrastructure
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>(entity =>
+           /* modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(u => u.Id);
                 entity.Property(u => u.UserName).IsRequired().HasMaxLength(50);
                 entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
                 entity.Property(u => u.PasswordHash).IsRequired();
-            });            
+            });  */          
 
             modelBuilder.Entity<ProfStudSubCourse>(entity =>
             {

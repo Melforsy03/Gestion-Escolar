@@ -20,7 +20,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("register")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateUser(RegisterDto registerDto)
         {
 
