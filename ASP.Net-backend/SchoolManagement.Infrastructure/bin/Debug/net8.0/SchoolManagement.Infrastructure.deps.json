@@ -1588,10 +1588,7 @@
           "Swashbuckle.AspNetCore.Filters": "8.0.2"
         },
         "runtime": {
-          "SchoolManagement.Domain.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "SchoolManagement.Domain.dll": {}
         }
       }
     }

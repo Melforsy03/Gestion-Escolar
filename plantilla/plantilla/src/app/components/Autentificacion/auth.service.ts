@@ -1,56 +1,54 @@
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router  } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class AuthGuard implements CanActivate {
-  private isLoggedIn = false; // Controla si el usuario está logueado
-  private userRole: string | null = null; // Almacena el rol del usuario
+  private isLoggedIn = false;
+  private userRole: string | null = null;
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  // Método que Angular llama al intentar acceder a una ruta protegida
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const userRole = localStorage.getItem('role'); // Obtener rol del usuario desde el almacenamiento local
-    const expectedRole = route.data['role']; // Obtener el rol esperado para la ruta
+    const userRole = localStorage.getItem('role');
+    const expectedRole = route.data['role'];
 
-    if (userRole === expectedRole) { // Si el rol del usuario coincide, permite el acceso
+    if (userRole === expectedRole) {
       return true;
-    } else { // Si no coincide, redirige a login
+    } else {
       this.router.navigate(['/login']);
       return false;
     }
   }
 
-  // Método para iniciar sesión y guardar el rol del usuario y el token en localStorage
   login(credentials: { email: string; password: string }) {
-    this.http.post('/api/login', credentials).subscribe((res: any) => {
-      localStorage.setItem('token', res.token); // Guardar el token
-      localStorage.setItem('role', res.role); // Guardar el rol
-      this.redirectUser(res.role); // Redirigir basado en el rol
-    });
+    return this.http.post('http://localhost:5164/identity/login', credentials).pipe(
+      map(response => response as { token: string; role: string }),
+      tap((response) => {
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('role', response.role);
+        this.redirectUser(response.role);
+      })
+    );
   }
 
-  // Método para cerrar sesión
   logout() {
     this.isLoggedIn = false;
     this.userRole = null;
   }
 
-  // Método que verifica si el usuario está autenticado
   isAuthenticated(): boolean {
     return this.isLoggedIn;
   }
 
-  // Método para obtener el rol del usuario
   getUserRole(): string | null {
     return localStorage.getItem('role');
   }
 
-  // Método para redirigir basado en el rol del usuario
   redirectUser(role: string) {
     switch (role) {
       case 'profesor':
@@ -69,5 +67,9 @@ export class AuthGuard implements CanActivate {
         this.router.navigate(['/login']);
         break;
     }
+  }
+
+  registerUser(userData: any) {
+    return this.http.post('http://localhost:5164/indenity/login', userData);
   }
 }
