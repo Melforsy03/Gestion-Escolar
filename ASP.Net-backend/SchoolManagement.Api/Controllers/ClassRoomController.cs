@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 using SchoolManagement.Application.ApplicationServices.Services;
@@ -18,7 +19,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        //[Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateClassRoom(ClassRoomDto classRoom)
         {
             var classRoom2 = await _classRoomService.CreateClassRoomAsync(classRoom);
@@ -27,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        //[Authorize (Roles = "SuperAdmin")]
+        [Authorize (Roles = "SuperAdmin")]
         public async Task<ActionResult<IEnumerable<ClassRoom>>> ListClassRoom()
         {
             var classRoom = await _classRoomService.ListClassRoomAsync();
@@ -36,6 +37,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
+        [Authorize (Roles = "SuperAdmin")]
         public async Task<ActionResult> UpdateClassRoom(ClassRoomDto classRoom)
         {
             var _classRoom = await _classRoomService.UpdateClassRoomAsync(classRoom);

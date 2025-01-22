@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 using SchoolManagement.Domain.Entities;
@@ -19,6 +20,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("register")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateUser(RegisterDto registerDto)
         {
 

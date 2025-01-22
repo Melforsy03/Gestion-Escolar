@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 using SchoolManagement.Domain.Entities;
@@ -18,7 +19,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        //[Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateAuxiliaryMeans(AuxiliaryMeansDto auxiliaryMeans)
         {
             var createdAuxiliaryMeans = await _auxiliaryMeansService.CreateAuxiliaryMeansAsync(auxiliaryMeans);
@@ -27,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        //[Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<AuxiliaryMeans>>> ListAuxiliaryMeans()
         {
             var auxiliaryMeansList = await _auxiliaryMeansService.ListAuxiliaryMeansAsync();
@@ -36,6 +37,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> UpdateAuxiliaryMeans(AuxiliaryMeansDto auxiliaryMeans)
         {
             var updatedAuxiliaryMeans = await _auxiliaryMeansService.UpdateAuxiliaryMeansAsync(auxiliaryMeans);

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 
@@ -17,7 +18,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        //[Authorize(Roles = "SuperAdmin")]
+       // [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateClassRoomTechMean(ClassRoomTechMeanDto classRoomTechMean)
         {
             var createdClassRoomTechMean = await _classRoomTechMeanService.CreateClassRoomTechMeanAsync(classRoomTechMean);
@@ -26,7 +27,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        //[Authorize(Roles = "SuperAdmin")]
+       // [Authorize(Roles = "SuperAdmin")]
         public async Task<ActionResult<IEnumerable<ClassRoomTechMeanDto>>> ListClassRoomTechMeans()
         {
             var classRoomTechMeans = await _classRoomTechMeanService.ListClassRoomTechMeansAsync();

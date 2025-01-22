@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 using SchoolManagement.Application.ApplicationServices.Services;
@@ -18,7 +19,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        //[Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "Secretary")]
         public async Task<IActionResult> CreateStudent(StudentDto student)
         {
             var student2 = await _studentService.CreateStudentAsync(student);
@@ -27,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        //[Authorize (Roles = "SuperAdmin")]
+        [Authorize (Roles = "Secretary")]
         public async Task<ActionResult<IEnumerable<Student>>> ListStudent()
         {
             var student = await _studentService.ListStudentAsync();
@@ -36,6 +37,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<ActionResult> UpdateStudent(StudentDto student)
         {
             var _student = await _studentService.UpdateStudentAsync(student);
@@ -44,6 +46,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpDelete]
         [Route("delete")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> DeleteStudent(int studentId)
         {
             await _studentService.DeleteStudentByIdAsync(studentId);
