@@ -19,7 +19,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> CreateMaintenance(MaintenanceDto maintenance)
         {
             var createdMaintenance = await _maintenanceService.CreateMaintenanceAsync(maintenance);
@@ -28,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<ActionResult<IEnumerable<Maintenance>>> ListMaintenances()
         {
             var maintenances = await _maintenanceService.ListMaintenancesAsync();
@@ -37,7 +37,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<ActionResult> UpdateMaintenance(MaintenanceDto maintenance)
         {
             var updatedMaintenance = await _maintenanceService.UpdateMaintenanceAsync(maintenance);
@@ -46,7 +46,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> DeleteMaintenance(int maintenanceId)
         {
             await _maintenanceService.DeleteMaintenanceByIdAsync(maintenanceId);
