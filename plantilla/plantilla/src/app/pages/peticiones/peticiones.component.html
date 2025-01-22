@@ -1,0 +1,83 @@
+<div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <!-- Filtro -->
+            <div class="filter-section mb-3">
+              <label for="tableFilter">Seleccionar Funcionalidad:</label>
+              <select
+                id="tableFilter"
+                class="form-select"
+                [(ngModel)]="selectedOption"
+                (change)="updateTable()"
+              >
+                <option *ngFor="let option of tableOptions" [value]="option.value">
+                  {{ option.label }}
+                </option>
+              </select>
+            </div>
+            <h4 class="card-title" *ngIf="selectedOption">{{ getTableTitle(selectedOption) }}</h4>
+          </div>
+  
+          <div class="card-body">
+            <div class="table-responsive">
+              <!-- Tablas Condicionales -->
+              <table class="table tablesorter" *ngIf="selectedOption === 'profesores'">
+                <thead class="text-primary">
+                  <tr>
+                    <th>Profesor</th>
+                    <th>Especialización</th>
+                    <th>Medio Tecnológico</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let profesor of profesoresData">
+                    <td>{{ profesor.profesor }}</td>
+                    <td>{{ profesor.especializacion }}</td>
+                    <td>{{ profesor.medioTecnologico }}</td>
+                    <td>{{ profesor.estado }}</td>
+                  </tr>
+                </tbody>
+              </table>
+  
+              <table class="table tablesorter" *ngIf="selectedOption === 'mantenimientos'">
+                <thead class="text-primary">
+                  <tr>
+                    <th>Aula</th>
+                    <th>Tipo de Medio</th>
+                    <th>Total Mantenimientos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let mantenimiento of mantenimientosData">
+                    <td>{{ mantenimiento.aula }}</td>
+                    <td>{{ mantenimiento.tipoMedio }}</td>
+                    <td>{{ mantenimiento.totalMantenimientos }}</td>
+                  </tr>
+                </tbody>
+              </table>
+  
+              <table class="table tablesorter" *ngIf="selectedOption === 'asignaturas'">
+                <thead class="text-primary">
+                  <tr>
+                    <th>Asignatura</th>
+                    <th>Profesor</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let asignatura of asignaturasData">
+                    <td>{{ asignatura.asignatura }}</td>
+                    <td>{{ asignatura.profesor }}</td>
+                    <td>{{ asignatura.estado }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

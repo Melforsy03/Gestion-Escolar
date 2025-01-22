@@ -1,0 +1,81 @@
+<div class="content">
+  <div class="row">
+    <!-- Fila para el campo de búsqueda -->
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+             <!-- Barra de búsqueda -->
+          <div class="search-bar mb-3 d-flex align-items-center">
+            <input
+              type="text"
+              id="globalSearch"
+              class="form-control"
+              placeholder="Buscar profesores"
+              [(ngModel)]="globalSearchQuery"
+              (input)="updateDisplayProfesor()"
+            />
+            <i class="fa fa-search ml-2"></i>
+          </div>
+        </div>
+        <!-- Tabla de profesores -->
+    <div class="col-md-12">
+        <div class="card-header">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <tr>
+                  <th>Nombre</th>
+                  <th>Especialidad</th>
+                  <th>Tipo de Contrato</th>
+                  <th>Asignaturas</th>
+                  <th>Promedio de Calificaciones</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let profesor of filteredProfesores; let i = index">
+                  <!-- Fila del profesor -->
+                  <tr>
+                    <td>{{ profesor.nombre }} {{ profesor.apellidos }}</td>
+                    <td>{{ profesor.especialidad }}</td>
+                    <td>{{ profesor.contrato }}</td>
+                    <td>
+                      <ul>
+                        <li *ngFor="let asignatura of profesor.asignaturas">
+                          {{ asignatura.nombre }}
+                        </li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                        <li *ngFor="let asignatura of profesor.asignaturas">
+                          {{ calcularPromedio(asignatura.calificaciones) | number:'1.2-2' }}
+                        </li>
+                      </ul>
+                    </td>
+                    <td>
+                      <button
+                        class="custom-button"
+                        (click)="toggleGrafico(i)">
+                        {{ graficosVisibles[i] ? 'Ocultar Gráfico' : 'Mostrar Gráfico' }}
+                      </button>
+                    </td>
+                  </tr>
+                  <!-- Contenedor del gráfico desplegable -->
+                  <tr *ngIf="graficosVisibles[i]">
+                    <td colspan="6">
+                      <div class="chart-container">
+                        <canvas id="graficoProfesor{{ i }}" width="400" height="200"></canvas>
+                      </div>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+     </div>
+    </div>
+  </div>
+</div>

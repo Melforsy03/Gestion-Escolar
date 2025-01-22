@@ -1,0 +1,121 @@
+<div class="content">
+    <div class="row">
+      <div class="container mt-4">
+        <h2>Gestión de Inventario de Medios</h2>
+        <button class="custom-butt" (click)="toggleForm()">Agregar Medio</button>
+  
+        <!-- Formulario para agregar medio -->
+        <div *ngIf="isFormVisible" class="mt-3">
+          <form [formGroup]="medioForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" formControlName="nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="tipo">Tipo</label>
+              <select class="form-control" formControlName="tipo" required>
+                <option value="proyector">Proyector</option>
+                <option value="computadora">Computadora</option>
+                <option value="pizarra">Pizarra</option>
+                <option value="altavoces">Altavoces</option>
+                <option value="mesas">Mesas</option>
+                <option value="sillas">Sillas</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="estado">Estado</label>
+              <select class="form-control" formControlName="estado">
+                <option value="funcionando">Funcionando</option>
+                <option value="enMantenimiento">En Mantenimiento</option>
+                <option value="reemplazado">Reemplazado</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ubicacion">Ubicación</label>
+              <input type="text" class="form-control" formControlName="ubicacion">
+            </div>
+            <div class="form-group">
+              <label for="asignatura">Asignatura</label>
+              <input type="text" class="form-control" formControlName="asignatura">
+            </div>
+            <div class="form-group">
+              <label for="costoMantenimiento">Costo de Mantenimiento</label>
+              <input type="number" class="form-control" formControlName="costoMantenimiento">
+            </div>
+            <div class="form-group">
+              <label for="fechaReemplazo">Fecha de Reemplazo</label>
+              <input type="date" class="form-control" formControlName="fechaReemplazo">
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </form>
+        </div>
+  
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th>Estado</th>
+              <th>Ubicación</th>
+              <th>Asignatura</th>
+              <th>Costo de Mantenimiento</th>
+              <th>Fecha de Reemplazo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let medio of medios; let i = index">
+              <tr>
+                <td>{{ medio.nombre }}</td>
+                <td>{{ medio.tipo }}</td>
+                <td *ngIf="!medio.isEditing">{{ medio.estado }}</td>
+                <td *ngIf="medio.isEditing">
+                  <select [(ngModel)]="medio.estado" class="form-control">
+                    <option value="funcionando">Funcionando</option>
+                    <option value="enMantenimiento">En Mantenimiento</option>
+                    <option value="reemplazado">Reemplazado</option>
+                  </select>
+                </td>
+                <td *ngIf="!medio.isEditing">{{ medio.ubicacion }}</td>
+                <td *ngIf="medio.isEditing"><input [(ngModel)]="medio.ubicacion" class="form-control"></td>
+                <td *ngIf="!medio.isEditing">{{ medio.asignatura }}</td>
+                <td *ngIf="medio.isEditing"><input [(ngModel)]="medio.asignatura" class="form-control"></td>
+                <td *ngIf="!medio.isEditing">{{ medio.costoMantenimiento }}</td>
+                <td *ngIf="medio.isEditing"><input [(ngModel)]="medio.costoMantenimiento" type="number" class="form-control"></td>
+                <td *ngIf="!medio.isEditing">{{ medio.fechaReemplazo }}</td>
+                <td *ngIf="medio.isEditing"><input [(ngModel)]="medio.fechaReemplazo" type="date" class="form-control"></td>
+                <td>
+                  <button *ngIf="!medio.isEditing" class="custom-butt" (click)="editMedio(medio)">Editar</button>
+                  <button *ngIf="medio.isEditing" class="custom-butt" (click)="saveMedio(medio)">Guardar</button>
+                  <button class="custom-butt" (click)="deleteMedio(medio)">Eliminar</button>
+                  <button class="custom-butt" (click)="toggleFechasMantenimiento(medio)">Mantenimientos</button>
+                </td>
+              </tr>
+              <tr *ngIf="medio.showFechasMantenimiento">
+                <td colspan="8">
+                  <table class="table nested-table">
+                    <thead class="text-secondary">
+                      <tr>
+                        <th>Fechas de Mantenimiento</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let fecha of medio.fechasMantenimiento">
+                        <td>{{ fecha.fecha }}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input type="date" [(ngModel)]="medio.newFechaMantenimiento" class="form-control">
+                          <button class="custom-butt" (click)="addFechaMantenimientoToMedio(medio)">Agregar Fecha</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

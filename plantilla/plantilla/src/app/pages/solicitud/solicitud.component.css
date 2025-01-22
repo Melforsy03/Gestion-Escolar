@@ -1,0 +1,14 @@
+.custom-butto {
+  background-color: #32325d; /* Color de fondo */
+  color: white; /* Color del texto */
+  border: 1px solid #1e1f35; /* Borde */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 8px 16px; /* Espaciado interno */
+  font-size: 14px; /* Tamaño de la fuente */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  transition: all 0.3s ease; /* Transición suave para efectos */
+  margin-bottom: 20px;
+}
+.custom-select option {
+  color: black;
+}
