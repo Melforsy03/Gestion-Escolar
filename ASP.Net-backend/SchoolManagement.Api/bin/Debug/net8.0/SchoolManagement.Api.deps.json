@@ -1609,10 +1609,7 @@
           "Swashbuckle.AspNetCore.Filters": "8.0.2"
         },
         "runtime": {
-          "SchoolManagement.Application.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "SchoolManagement.Application.dll": {}
         }
       },
       "SchoolManagement.Domain/1.0.0": {
@@ -1628,10 +1625,7 @@
           "Swashbuckle.AspNetCore.Filters": "8.0.2"
         },
         "runtime": {
-          "SchoolManagement.Domain.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "SchoolManagement.Domain.dll": {}
         }
       },
       "SchoolManagement.Infrastructure/1.0.0": {
@@ -1648,10 +1642,7 @@
           "Swashbuckle.AspNetCore.Filters": "8.0.2"
         },
         "runtime": {
-          "SchoolManagement.Infrastructure.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "SchoolManagement.Infrastructure.dll": {}
         }
       }
     }

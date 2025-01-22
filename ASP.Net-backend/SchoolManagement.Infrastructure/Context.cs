@@ -9,12 +9,36 @@ namespace SchoolManagement.Infrastructure
 {
     public class Context : IdentityDbContext<User>
     {
+
         public Context(DbContextOptions<Context> options) : base(options)
         {
         }
+        //Entities
+        public DbSet<AuxiliaryMeans> AuxiliaryMeans { get; set; }
+        public DbSet<ClassRoom> ClassRooms { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Maintenance> Maintenances { get; set; }
+        public DbSet<Professor> Professors { get; set; }
+        public DbSet<Restriction> Restrictions { get; set; }
+        public DbSet<Secretary> Secretaries { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<TechnologicalMeans> TechnologicalMeans { get; set; }
+
+        //Relations
+        public DbSet<ClassRoomRestriction> ClassRoomRestrictions { get; set; }
+        public DbSet<ClassRoomTechMean> ClassRoomTechMeans { get; set; }
+        public DbSet<ProfessorStudentSubject> ProfessorStudentSubjects { get; set; }
+        public DbSet<ProfessorSubject> ProfessorSubjects { get; set; }
+        public DbSet<ProfStudSubCourse> ProfStudSubCourses { get; set; }
+        public DbSet<SecretaryProfessorStudentSubject> SecretaryProfessorStudentSubjects { get; set; }
+        public DbSet<StudentSubject> StudentSubjects { get; set; }
+        public DbSet<SubjectAuxMean> SubjectAuxMeans { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<User>(entity =>
             {
@@ -149,15 +173,19 @@ namespace SchoolManagement.Infrastructure
                 entity.HasKey(e => e.IdMean);
                 entity.Property(e => e.NameMean).IsRequired().HasMaxLength(16);
                 entity.Property(e => e.State).IsRequired().HasMaxLength(10);
-                entity.Property(e => e.Ammount).IsRequired();
-            });
+                entity.Property(e => e.isActive);
+                entity.Property(e => e.isAviable);
+                entity.Property(e => e.isDeleted);
+    });
 
             modelBuilder.Entity<AuxiliaryMeans>(entity =>
             {
                 entity.HasKey(e => e.IdMean);
                 entity.Property(e => e.NameMean).IsRequired().HasMaxLength(16);
                 entity.Property(e => e.State).IsRequired().HasMaxLength(10);
-                entity.Property(e => e.Ammount).IsRequired();
+                entity.Property(e => e.isActive);
+                entity.Property(e => e.isAviable);
+                entity.Property(e => e.isDeleted);
                 entity.Property(e => e.Type).IsRequired().HasMaxLength(10);
 
             });
@@ -206,14 +234,6 @@ namespace SchoolManagement.Infrastructure
                       ss.Property(prop => prop.NJAbsents).HasDefaultValue(0);
                       ss.HasKey(prop => prop.IdStudSub);
                   });
-                //Agregacion Evalucion
-                /*entity.HasMany(st => st.Professors).WithMany(p => p.Students).UsingEntity<ProfStudSubCourse>(
-                    pssc => pssc.HasOne(prop => prop.Professor).WithMany()
-                    .HasForeignKey(prop => prop.IdStud), pssc => pssc.HasOne(prop => prop.Student).WithMany()
-                    .HasForeignKey(prop => prop.IdProf),*/
-
-                //);
-
             });
 
         }

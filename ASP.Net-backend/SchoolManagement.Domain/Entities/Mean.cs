@@ -9,7 +9,9 @@ namespace SchoolManagement.Domain.Entities
     public class Mean
     {
         public int IdMean { get; set; } = 0;
-        public int Ammount { get; set; } = 0;  
+        public bool isAviable { get; set; } = true;
+        public bool isActive { get; set; } = true;
+        public bool isDeleted { get; set; } = true;
         public string NameMean {  get; set; } = string.Empty;
         public string State { get; set; } = string.Empty;
         public int IdMaintenance { get; set; } = 0; 

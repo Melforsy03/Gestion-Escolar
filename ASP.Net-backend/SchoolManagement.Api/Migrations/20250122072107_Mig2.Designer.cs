@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolManagement.Infrastructure;
 
@@ -11,9 +12,11 @@ using SchoolManagement.Infrastructure;
 namespace SchoolManagement.Api.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250122072107_Mig2")]
+    partial class Mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,6 +166,12 @@ namespace SchoolManagement.Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMean"));
 
+                    b.Property<int>("Ammount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AviableAmmount")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdMaintenance")
                         .HasColumnType("int");
 
@@ -180,15 +189,6 @@ namespace SchoolManagement.Api.Migrations
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
-
-                    b.Property<bool>("isActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("isAviable")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("isDeleted")
-                        .HasColumnType("bit");
 
                     b.HasKey("IdMean");
 
@@ -212,7 +212,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasKey("IdClassR");
 
-                    b.ToTable("ClassRooms");
+                    b.ToTable("ClassRoom");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.Course", b =>
@@ -229,7 +229,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasKey("IdC");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Course");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.Maintenance", b =>
@@ -261,7 +261,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("IdTechMean");
 
-                    b.ToTable("Maintenances");
+                    b.ToTable("Maintenance");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.Professor", b =>
@@ -310,7 +310,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("StudentIdStud");
 
-                    b.ToTable("Professors");
+                    b.ToTable("Professor");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.Restriction", b =>
@@ -328,7 +328,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasKey("IdRes");
 
-                    b.ToTable("Restrictions");
+                    b.ToTable("Restriction");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.Secretary", b =>
@@ -357,7 +357,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasKey("IdS");
 
-                    b.ToTable("Secretaries");
+                    b.ToTable("Secretary");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.Student", b =>
@@ -389,7 +389,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("IdC");
 
-                    b.ToTable("Students");
+                    b.ToTable("Student");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.Subject", b =>
@@ -420,7 +420,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("IdClassRoom");
 
-                    b.ToTable("Subjects");
+                    b.ToTable("Subject");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.TechnologicalMeans", b =>
@@ -430,6 +430,9 @@ namespace SchoolManagement.Api.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMean"));
+
+                    b.Property<int>("Ammount")
+                        .HasColumnType("int");
 
                     b.Property<int>("IdMaintenance")
                         .HasColumnType("int");
@@ -443,15 +446,6 @@ namespace SchoolManagement.Api.Migrations
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
-
-                    b.Property<bool>("isActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("isAviable")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("isDeleted")
-                        .HasColumnType("bit");
 
                     b.HasKey("IdMean");
 
@@ -478,7 +472,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("IdRest");
 
-                    b.ToTable("ClassRoomRestrictions");
+                    b.ToTable("ClassRoomRestriction");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ClassRoomTechMean", b =>
@@ -501,7 +495,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("IdTechMean");
 
-                    b.ToTable("ClassRoomTechMeans");
+                    b.ToTable("ClassRoomTechMean");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfStudSubCourse", b =>
@@ -537,7 +531,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("IdSub");
 
-                    b.ToTable("ProfStudSubCourses");
+                    b.ToTable("ProfStudSubCourse");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfessorStudentSubject", b =>
@@ -565,7 +559,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("IdStudSub");
 
-                    b.ToTable("ProfessorStudentSubjects");
+                    b.ToTable("ProfessorStudentSubject");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfessorSubject", b =>
@@ -588,7 +582,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("IdSub");
 
-                    b.ToTable("ProfessorSubjects");
+                    b.ToTable("ProfessorSubject");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.SecretaryProfessorStudentSubject", b =>
@@ -611,7 +605,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("IdSec");
 
-                    b.ToTable("SecretaryProfessorStudentSubjects");
+                    b.ToTable("SecretaryProfessorStudentSubject");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.StudentSubject", b =>
@@ -639,7 +633,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("IdSub");
 
-                    b.ToTable("StudentSubjects");
+                    b.ToTable("StudentSubject");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.SubjectAuxMean", b =>
@@ -662,7 +656,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("IdSub");
 
-                    b.ToTable("SubjectAuxMeans");
+                    b.ToTable("SubjectAuxMean");
                 });
 
             modelBuilder.Entity("SchoolManagement.Infrastructure.Identity.User", b =>
