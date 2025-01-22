@@ -44,8 +44,7 @@ export class AuthComponent {
     if (this.loginForm.valid) {
       this.userData.email = this.loginForm.get('email')?.value;
       this.userData.password = this.loginForm.get('password')?.value;
-      
-       this.authGuard.registerUser(this.userData).subscribe(
+       this.authGuard.login(this.userData).subscribe(
         response => console.log(response),
         error => console.error(error)
       );
