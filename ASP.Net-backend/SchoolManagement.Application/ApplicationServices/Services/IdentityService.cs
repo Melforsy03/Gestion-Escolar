@@ -14,13 +14,13 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 {
     public class IdentityService : IIdentityService
     {
-        private readonly IProfessorService _professorService;
+        //private readonly IProfessorService _professorService;
         private readonly IIdentityManager _identityManager;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
         private readonly IMapper _mapper;
-        public IdentityService(IJwtTokenGenerator jwtTokenGenerator, IIdentityManager identityManager, IMapper mapper, IProfessorService professorService)
+        public IdentityService(IJwtTokenGenerator jwtTokenGenerator, IIdentityManager identityManager, IMapper mapper)
         {
-            _professorService = professorService;
+           // _professorService = professorService;
             _identityManager = identityManager;
             _mapper = mapper;
             _jwtTokenGenerator = jwtTokenGenerator;
@@ -76,7 +76,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             var user = _mapper.Map<User>(userDto);
             var savedUser = await _identityManager.CreateUserAsync(user, userDto.Password);
             await _identityManager.AddRoles(savedUser.Id, userDto.role);
-            await _professorService.CreateProfessorAsync(savedUser);  
+           // await _professorService.CreateProfessorAsync(savedUser);  
             var token = _jwtTokenGenerator.GenerateToken(savedUser, userDto.role);
             return (token, savedUser.Id.ToString());
         }

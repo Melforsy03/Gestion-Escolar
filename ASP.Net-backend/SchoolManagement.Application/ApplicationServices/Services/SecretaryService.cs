@@ -24,14 +24,11 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public async Task<SecretaryDto> CreateSecretaryAsync(User secretaryUser)
+        public async Task<SecretaryDto> CreateSecretaryAsync(SecretaryDto secretaryDto)
         {
-            Secretary secretary = new();
-            secretary.NameS = secretaryUser.UserName!;
-            secretary.userId = secretaryUser.Id;
-
-            await _secretaryRepository.CreateAsync(secretary);
-            return _mapper.Map<SecretaryDto>(secretary);
+            var secretary = _mapper.Map<Secretary>(secretaryDto);
+            var savedSecretary = await _secretaryRepository.CreateAsync(secretary);
+            return _mapper.Map<SecretaryDto>(savedSecretary);
 
         }
 

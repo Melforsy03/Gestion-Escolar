@@ -63,6 +63,7 @@ namespace SchoolManagement.Infrastructure
                 entity.HasOne(prop => prop.Course).WithMany().HasForeignKey(prop => prop.IdCourse).OnDelete(DeleteBehavior.NoAction);
 
 
+
             });
 
             modelBuilder.Entity<Professor>(entity =>
