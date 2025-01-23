@@ -23,6 +23,7 @@ namespace SchoolManagement.Application
         {
             services.Configure<JwtSettings>(configurationManager.GetSection(JwtSettings.SECTION_NAME));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddScoped<IAdministratorService, AdministratorService>();
             services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<IAuxiliaryMeansService, AuxiliaryMeansService>();
             services.AddScoped<IClassRoomService, ClassRoomService>();

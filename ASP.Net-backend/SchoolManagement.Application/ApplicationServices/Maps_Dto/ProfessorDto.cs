@@ -10,7 +10,6 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
     {
         public int IdProf {  get; set; }
         public string NameProf { get; set; }
-        public string LastNameProf { get; set; }
         public string Contract { get; set; }
         public int Salary { get; set; }
         public bool IsDean { get; set; }

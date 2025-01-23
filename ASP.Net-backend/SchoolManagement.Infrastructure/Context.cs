@@ -79,8 +79,8 @@ namespace SchoolManagement.Infrastructure
             modelBuilder.Entity<Professor>(entity =>
             {
                 entity.HasKey(e => e.IdProf);
+                entity.Property(e => e.UserId).IsRequired();
                 entity.Property(e => e.NameProf).IsRequired().HasMaxLength(16);
-                entity.Property(e => e.LastNameProf).IsRequired().HasMaxLength(16);
                 entity.Property(e => e.Contract).IsRequired().HasMaxLength(20);
                 entity.Property(e => e.Salary).IsRequired();
                 entity.Property(e => e.IsDean).IsRequired();

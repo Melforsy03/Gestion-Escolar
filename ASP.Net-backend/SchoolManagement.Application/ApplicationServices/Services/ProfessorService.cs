@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.Common;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using SchoolManagement.Infrastructure.DataAccess.Repository;
@@ -16,19 +18,24 @@ namespace SchoolManagement.Application.ApplicationServices.Services
     public class ProfessorService : IProfessorService
     {
         private readonly IProfessorRepository _professorRepository;
+        private readonly Triggers _trigger;
         private readonly IMapper _mapper;
 
-        public ProfessorService(IProfessorRepository professorRepository, IMapper mapper)
+        public ProfessorService(IProfessorRepository professorRepository, IMapper mapper, Triggers trigger)
         {
             _professorRepository = professorRepository;
             _mapper = mapper;
+            _trigger = trigger;
         }
 
-        public async Task<ProfessorDto> CreateProfessorAsync(ProfessorDto professorDto)
+        public async Task<(ProfessorDto, (string, string))> CreateProfessorAsync(ProfessorDto professorDto)
         {
             var professor = _mapper.Map<Professor>(professorDto);
             var savedProfessor = await _professorRepository.CreateAsync(professor);
-            return _mapper.Map<ProfessorDto>(savedProfessor);
+
+            User User = await _trigger.RegisterUser(professorDto.NameProf, "Professor");           
+
+            return (_mapper.Map<ProfessorDto>(savedProfessor), (User.UserName, User.PasswordHash));
             
         }
 

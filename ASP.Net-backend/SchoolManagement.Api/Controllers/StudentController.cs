@@ -21,7 +21,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPost]
         [Route("create")]
         [Authorize(Roles = "Secretary, SuperAdmin")]
-        public async Task<IActionResult> CreateStudent(User student)
+        public async Task<IActionResult> CreateStudent(StudentDto student)
         {
             var student2 = await _studentService.CreateStudentAsync(student);
             return Ok(student2);

@@ -22,7 +22,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPost]
         [Route("create")]
         [Authorize(Roles = "Secretary, SuperAdmin")]
-        public async Task<IActionResult> CreateProfessor(User professor)
+        public async Task<IActionResult> CreateProfessor(ProfessorDto professor)
         {
             var professor2 = await _professorService.CreateProfessorAsync(professor);
             return Ok(professor2);

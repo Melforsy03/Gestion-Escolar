@@ -22,7 +22,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPost]
         [Route("create")]
         [Authorize(Roles = "SuperAdmin")]
-        public async Task<IActionResult> CreateSecretary(User secretary)
+        public async Task<IActionResult> CreateSecretary(SecretaryDto secretary)
         {
             var secretaryCreated = await _secretaryService.CreateSecretaryAsync(secretary);
             return Ok(secretaryCreated);
