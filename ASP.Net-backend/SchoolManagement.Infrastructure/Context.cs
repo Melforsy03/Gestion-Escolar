@@ -41,13 +41,23 @@ namespace SchoolManagement.Infrastructure
         {
             base.OnModelCreating(modelBuilder);
 
-           /* modelBuilder.Entity<User>(entity =>
+            /* modelBuilder.Entity<User>(entity =>
+             {
+                 entity.HasKey(u => u.Id);
+                 entity.Property(u => u.UserName).IsRequired().HasMaxLength(50);
+                 entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
+                 entity.Property(u => u.PasswordHash).IsRequired();
+             });  */
+
+            modelBuilder.Entity<Administrator>(entity =>
             {
-                entity.HasKey(u => u.Id);
-                entity.Property(u => u.UserName).IsRequired().HasMaxLength(50);
-                entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
-                entity.Property(u => u.PasswordHash).IsRequired();
-            });  */          
+                entity.HasKey(e => e.AdminId);
+                entity.Property(e => e.AdminName).IsRequired().HasMaxLength(16);
+                entity.Property(e => e.AdminLastName).IsRequired().HasMaxLength(32);
+                entity.Property(e => e.AdminSalary).IsRequired();
+                entity.Property(e => e.IsDeleted);
+            }
+            );
 
             modelBuilder.Entity<ProfStudSubCourse>(entity =>
             {

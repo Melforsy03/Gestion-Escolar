@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using SchoolManagement.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
+using SchoolManagement.Domain.Entities;
 
 namespace SchoolManagement.Infrastructure
 {
@@ -18,6 +19,7 @@ namespace SchoolManagement.Infrastructure
     {
         public static void AddInfraestructureServices(this IServiceCollection services)
         {
+            services.AddScoped<IAdministrator, AdministratorRepository>();
             services.AddScoped<IIdentityManager, IdentityManager>();
             services.AddScoped<IAuxiliaryMeansRepository, AuxiliaryMeansRepository>();
             services.AddScoped<IClassRoomRepository, ClassRoomRepository>();
