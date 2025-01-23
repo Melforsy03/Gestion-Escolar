@@ -12,6 +12,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text; 
 using System.Threading.Tasks;
+using SchoolManagement.Application.Common;
 
 
 namespace SchoolManagement.Application
@@ -42,6 +43,7 @@ namespace SchoolManagement.Application
             services.AddScoped<IStudentSubjectService, StudentSubjectService>();
             services.AddScoped<ISubjectService, SubjectService>();
             services.AddScoped<ITechnologicalMeansService, TechnologicalMeansService>();
+            services.AddScoped<Triggers>();
 
 
            services.AddAuthentication(options =>

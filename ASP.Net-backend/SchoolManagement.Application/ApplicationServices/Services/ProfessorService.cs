@@ -31,11 +31,12 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         public async Task<(ProfessorDto, (string, string))> CreateProfessorAsync(ProfessorDto professorDto)
         {
             var professor = _mapper.Map<Professor>(professorDto);
+            User User = await _trigger.RegisterUser(professorDto.NameProf, "Professor");
+            professor.UserId = User.Id;
             var savedProfessor = await _professorRepository.CreateAsync(professor);
 
-            User User = await _trigger.RegisterUser(professorDto.NameProf, "Professor");           
-
-            return (_mapper.Map<ProfessorDto>(savedProfessor), (User.UserName, User.PasswordHash));
+            professorDto = _mapper.Map<ProfessorDto>(savedProfessor);
+            return (professorDto, (User.UserName, User.PasswordHash));
             
         }
 
