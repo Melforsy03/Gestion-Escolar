@@ -18,7 +18,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateProfStudSubCourse(ProfStudSubCourseDto profStudSubCourseDto)
         {
             var createdProfStudSubCourse = await _profStudSubCourseService.CreateProfStudSubCourseAsync(profStudSubCourseDto);
@@ -27,7 +27,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<ActionResult<IEnumerable<ProfStudSubCourseDto>>> ListProfStudSubCourses()
         {
             var profStudSubCourses = await _profStudSubCourseService.ListProfStudSubCoursesAsync();

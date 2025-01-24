@@ -19,7 +19,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateStudentSubject(StudentSubjectDto studentSubject)
         {
             var createdStudentSubject = await _studentSubjectService.CreateStudentSubjectAsync(studentSubject);
@@ -28,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<ActionResult<IEnumerable<StudentSubject>>> ListStudentSubjects()
         {
             var studentSubjects = await _studentSubjectService.ListStudentSubjectAsync();

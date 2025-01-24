@@ -18,7 +18,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateSubjectAuxMean(SubjectAuxMeanDto subjectAuxMean)
         {
             var createdSubjectAuxMean = await _subjectAuxMeanService.CreateSubjectAuxMeanAsync(subjectAuxMean);
@@ -27,7 +27,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<ActionResult<IEnumerable<SubjectAuxMeanDto>>> ListSubjectAuxMeans()
         {
             var subjectAuxMeans = await _subjectAuxMeanService.ListSubjectAuxMeansAsync();
@@ -36,7 +36,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<ActionResult> UpdateSubjectAuxMean(SubjectAuxMeanDto subjectAuxMean)
         {
             var updatedSubjectAuxMean = await _subjectAuxMeanService.UpdateSubjectAuxMeanAsync(subjectAuxMean);

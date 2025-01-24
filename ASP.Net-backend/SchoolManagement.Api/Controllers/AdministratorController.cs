@@ -19,7 +19,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateAdministrator(AdministratorDto administrator)
         {
             var createdAdministrator = await _administratorService.CreateAdministratorAsync(administrator);
@@ -28,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<ActionResult<IEnumerable<Administrator>>> ListAdministrator()
         {
             var administratorList = await _administratorService.ListAdministratorAsync();
@@ -37,7 +37,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<ActionResult> UpdateAdministrator(AdministratorDto administrator)
         {
             var updatedAdministrator = await _administratorService.UpdateAdministratorAsync(administrator);

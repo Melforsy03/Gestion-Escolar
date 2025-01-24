@@ -20,7 +20,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        [Authorize(Roles = "Secretary, SuperAdmin")]
+        //[Authorize(Roles = "Secretary, SuperAdmin")]
         public async Task<IActionResult> CreateStudent(StudentDto student)
         {
             var student2 = await _studentService.CreateStudentAsync(student);
@@ -29,7 +29,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        [Authorize(Roles = "Secretary, SuperAdmin")]
+        //[Authorize(Roles = "Secretary, SuperAdmin")]
         public async Task<ActionResult<IEnumerable<Student>>> ListStudent()
         {
             var student = await _studentService.ListStudentAsync();
@@ -38,7 +38,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<ActionResult> UpdateStudent(StudentDto student)
         {
             var _student = await _studentService.UpdateStudentAsync(student);
@@ -47,7 +47,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> DeleteStudent(int studentId)
         {
             await _studentService.DeleteStudentByIdAsync(studentId);

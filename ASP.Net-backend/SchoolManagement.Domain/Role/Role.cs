@@ -8,7 +8,7 @@ namespace SchoolManagement.Domain.Role
 {
     public class Role
     {
-        public const string SuperAdmin = "Dean";
+        public const string SuperAdmin = "SuperAdmin";
         public const string Admin = "Admin";
         public const string Secretary = "Secretary";
         public const string Professor = "Professor";

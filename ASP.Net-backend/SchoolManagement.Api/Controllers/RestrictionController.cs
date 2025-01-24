@@ -20,7 +20,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateRestriction(RestrictionDto restriction)
         {
             var restriction2 = await _restrictionService.CreateRestrictionAsync(restriction);
@@ -29,7 +29,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public async Task<ActionResult<IEnumerable<Restriction>>> ListRestrictions()
         {
             var restrictions = await _restrictionService.ListRestrictionAsync();

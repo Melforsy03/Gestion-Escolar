@@ -19,7 +19,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        [Authorize(Roles = "SuperAdmin, Admin")]
+        //[Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> CreateTechnologicalMeans(TechnologicalMeansDto technologicalMeans)
         {
             var createdTechnologicalMeans = await _technologicalMeansService.CreateTechnologicalMeansAsync(technologicalMeans);
@@ -28,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        [Authorize(Roles = "SuperAdmin, Admin")]
+        //[Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<ActionResult<IEnumerable<TechnologicalMeans>>> ListTechnologicalMeans()
         {
             var technologicalMeansList = await _technologicalMeansService.ListTechnologicalMeansAsync();
@@ -37,7 +37,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
-        [Authorize(Roles = "SuperAdmin, Admin")]
+        //[Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<ActionResult> UpdateTechnologicalMeans(TechnologicalMeansDto technologicalMeans)
         {
             var updatedTechnologicalMeans = await _technologicalMeansService.UpdateTechnologicalMeansAsync(technologicalMeans);
@@ -46,7 +46,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        [Authorize(Roles = "SuperAdmin, Admin")]
+        //[Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> DeleteTechnologicalMeans(int technologicalMeansId)
         {
             await _technologicalMeansService.DeleteTechnologicalMeansByIdAsync(technologicalMeansId);

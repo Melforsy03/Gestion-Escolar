@@ -18,7 +18,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("classroommeanrequest")]
-        [Authorize(Roles = "SuperAdmin,Professor")]
+       // [Authorize(Roles = "SuperAdmin,Professor")]
         public async Task<IActionResult> CreateClassRoomMeanRequest(ClassRoomMeanRequestDto classRoomMeanRequest)
         {
             var createdClassRoomMeanRequest = await _classRoomMeanRequestService.GetAviableClassRoomMean(classRoomMeanRequest);
