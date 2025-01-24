@@ -48,8 +48,8 @@ namespace SchoolManagement.Api.Controllers
         [Route("delete")]
         public async Task<IActionResult> DeleteAdministrator(int administratorId)
         {
-            await _administratorService.DeleteAdministratorByIdAsync(administratorId);
-            return Ok();
+            var administrator = await _administratorService.DeleteAdministratorByIdAsync(administratorId);
+            return Ok(administrator);
         }
     }
 

@@ -50,8 +50,8 @@ namespace SchoolManagement.Api.Controllers
         [Authorize(Roles = "Secretary, SuperAdmin")]
         public async Task<IActionResult> DeleteStudent(int studentId)
         {
-            await _studentService.DeleteStudentByIdAsync(studentId);
-            return Ok();
+            var student = await _studentService.DeleteStudentByIdAsync(studentId);
+            return Ok(student);
         }
     }
 }
