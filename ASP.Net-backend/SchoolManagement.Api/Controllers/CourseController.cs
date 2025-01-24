@@ -19,7 +19,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-       // [Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin, Secretary")]
         public async Task<IActionResult> CreateCourse(CourseDto course)
         {
             var createdCourse = await _courseService.CreateCourseAsync(course);
@@ -28,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        //[Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin, Secretary")]
         public async Task<ActionResult<IEnumerable<Course>>> ListCourses()
         {
             var courses = await _courseService.ListCoursesAsync();
@@ -37,6 +37,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
+        [Authorize(Roles = "SuperAdmin, Secretary")]
         public async Task<ActionResult> UpdateCourse(CourseDto course)
         {
             var updatedCourse = await _courseService.UpdateCourseAsync(course);
@@ -45,10 +46,11 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpDelete]
         [Route("delete")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> DeleteCourse(int courseId)
         {
-            await _courseService.DeleteCourseByIdAsync(courseId);
-            return Ok();
+            var course = await _courseService.DeleteCourseByIdAsync(courseId);
+            return Ok(course);
         }
     }
 }

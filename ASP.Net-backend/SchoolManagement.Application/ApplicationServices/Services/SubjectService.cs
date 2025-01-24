@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using SchoolManagement.Infrastructure.DataAccess.Repository;
 using System;
@@ -32,9 +33,13 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             return _mapper.Map<SubjectDto>(savedAgency);
         }
 
-        public async Task DeleteSubjectByIdAsync(int subjectDto)
+        public async Task<SubjectDto> DeleteSubjectByIdAsync(int subjectId)
         {
-            await _subjectRepository.DeleteByIdAsync(subjectDto);
+            var subject = _subjectRepository.GetById(subjectId);
+            if (subject.IsDeleted) return null;
+            subject.IsDeleted = true;
+            await _subjectRepository.UpdateAsync(subject);
+            return _mapper.Map<SubjectDto>(subject);
         }
 
         public async Task<IEnumerable<SubjectDto>> ListSubjectAsync()
@@ -44,7 +49,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             List<SubjectDto> Subject_List = new();
             for (int i = 0; i < subjects.Count(); i++)
             {
-                Subject_List.Add(_mapper.Map<SubjectDto>(list[i]));
+                if(!list[i].IsDeleted) Subject_List.Add(_mapper.Map<SubjectDto>(list[i]));
             }
 
             return Subject_List;
@@ -53,6 +58,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         public async Task<SubjectDto> UpdateSubjectAsync(SubjectDto subjectDto)
         {
             var subject = _subjectRepository.GetById(subjectDto.IdSub);
+            if (subject.IsDeleted) return null;
             _mapper.Map(subjectDto, subject);
             await _subjectRepository.UpdateAsync(subject);
             return _mapper.Map<SubjectDto>(subject);

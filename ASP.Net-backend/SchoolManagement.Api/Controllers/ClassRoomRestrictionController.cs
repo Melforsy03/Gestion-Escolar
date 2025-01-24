@@ -46,8 +46,8 @@ namespace SchoolManagement.Api.Controllers
         [Route("delete")]
         public async Task<IActionResult> DeleteClassRoomRestriction(int id)
         {
-            await _classRoomRestrictionService.DeleteClassRoomRestrictionByIdAsync(id);
-            return Ok();
+            var classRoomRestriction = await _classRoomRestrictionService.DeleteClassRoomRestrictionByIdAsync(id);
+            return Ok(classRoomRestriction);
         }
     }
 

@@ -12,7 +12,7 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<ClassRoomRestrictionDto> CreateClassRoomRestrictionAsync(ClassRoomRestrictionDto classRoomRestrictionDto);
         Task<ClassRoomRestrictionDto> UpdateClassRoomRestrictionAsync(ClassRoomRestrictionDto classRoomRestrictionDto);
         Task<IEnumerable<ClassRoomRestrictionDto>> ListClassRoomRestrictionsAsync();
-        Task DeleteClassRoomRestrictionByIdAsync(int id);
+        Task<ClassRoomRestrictionDto> DeleteClassRoomRestrictionByIdAsync(int id);
     }
 
 }

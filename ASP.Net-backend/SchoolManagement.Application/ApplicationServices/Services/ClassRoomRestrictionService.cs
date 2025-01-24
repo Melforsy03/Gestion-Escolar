@@ -34,9 +34,12 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             return _mapper.Map<ClassRoomRestrictionDto>(savedClassR);
         }
 
-        public async Task DeleteClassRoomRestrictionByIdAsync(int id)
+        public async Task<ClassRoomRestrictionDto> DeleteClassRoomRestrictionByIdAsync(int id)
         {
+            var classRoomRestriction = _classRoomRestrictionRepository.GetById(id);
+            var classRoomRestrictionDto = _mapper.Map<ClassRoomRestrictionDto>(classRoomRestriction);
             await _classRoomRestrictionRepository.DeleteByIdAsync(id);
+            return classRoomRestrictionDto;
         }
 
         public async Task<IEnumerable<ClassRoomRestrictionDto>> ListClassRoomRestrictionsAsync()

@@ -10,6 +10,7 @@ namespace SchoolManagement.Domain.Entities
     {
         public int IdClassR { get; set; } = 0;
         public bool IsAviable { get; set; } = true;
+        public bool IsDeleted { get; set; } = false;
         public string Location { get; set; } = string.Empty;
         public List<Subject> Subjects { get; set; } = new List<Subject>();
         public List<Restriction> Restrictions { get; set; } = new List<Restriction>();

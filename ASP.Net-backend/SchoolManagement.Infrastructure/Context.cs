@@ -116,6 +116,7 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.NameSub).IsRequired().HasMaxLength(16);
                 entity.Property(e => e.StudyProgram).IsRequired().HasMaxLength(20);
                 entity.Property(e => e.CourseLoad).IsRequired();
+                entity.Property(e => e.IsDeleted);
                 //Relacion Asignatura con Aula
                 entity.HasOne(e => e.classRoom) // Relación uno a muchos
                 .WithMany(c => c.Subjects)
@@ -136,6 +137,7 @@ namespace SchoolManagement.Infrastructure
             {
                 entity.HasKey(e => e.IdRes);
                 entity.Property(e => e.NameRes).IsRequired().HasMaxLength(16);
+                entity.Property(e => e.IsDeleted).IsRequired();
 
             });
 
@@ -159,6 +161,8 @@ namespace SchoolManagement.Infrastructure
             modelBuilder.Entity<Course>(entity =>
             {
                 entity.HasKey(e => e.IdC);
+                entity.Property(e => e.IsDeleted).IsRequired();
+                entity.Property(e => e.CourseName);
 
             });
 
@@ -167,6 +171,7 @@ namespace SchoolManagement.Infrastructure
                 entity.HasKey(e => e.IdM);
                 entity.Property(e => e.MaintenanceDate).IsRequired();
                 entity.Property(e => e.Cost).IsRequired();
+                entity.Property(e => e.IsDeleted).IsRequired();
                 entity.Property(e => e.typeOfMean).IsRequired();
                 //Relacion de Mantenimiento con medios auxiliares
                 entity.HasOne(e => e.auxMean)
@@ -207,6 +212,7 @@ namespace SchoolManagement.Infrastructure
                 entity.HasKey(e => e.IdClassR);
                 entity.Property(e => e.IsAviable).IsRequired();
                 entity.Property(e => e.Location).IsRequired();
+                entity.Property(e => e.IsDeleted).IsRequired();
                 //Relacion aula con restricciones
                 entity.HasMany(c => c.Restrictions).WithMany(r => r.ClassRooms).UsingEntity<ClassRoomRestriction>(
                     cr => cr.HasOne(prop => prop.Restriction).WithMany()

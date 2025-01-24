@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
+using SchoolManagement.Infrastructure.DataAccess.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +30,13 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             return _mapper.Map<CourseDto>(savedCourse);
         }
 
-        public async Task DeleteCourseByIdAsync(int courseId)
+        public async Task<CourseDto> DeleteCourseByIdAsync(int courseId)
         {
-            await _courseRepository.DeleteByIdAsync(courseId);
+            var course = _courseRepository.GetById(courseId);
+            if (course.IsDeleted) return null;
+            course.IsDeleted = true;
+            await _courseRepository.UpdateAsync(course);
+            return _mapper.Map<CourseDto>(course);
         }
 
         public async Task<IEnumerable<CourseDto>> ListCoursesAsync()
@@ -39,8 +45,8 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             var list = courses.ToList();
             List<CourseDto> coursesList = new();
             for (int i = 0; i < courses.Count(); i++)
-            {
-                coursesList.Add(_mapper.Map<CourseDto>(list[i]));
+            {   
+                if(!list[i].IsDeleted) coursesList.Add(_mapper.Map<CourseDto>(list[i]));
             }
 
             return coursesList;
@@ -48,7 +54,8 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<CourseDto> UpdateCourseAsync(CourseDto courseDto)
         {
-            var course =  _courseRepository.GetById(courseDto.IdC); 
+            var course =  _courseRepository.GetById(courseDto.IdC);
+            if (course.IsDeleted) return null;
             _mapper.Map(courseDto, course);
             await _courseRepository.UpdateAsync(course);
             return _mapper.Map<CourseDto>(course);

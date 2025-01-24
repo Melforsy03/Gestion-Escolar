@@ -28,9 +28,16 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             return _mapper.Map<ClassRoomDto>(savedClassR);
         }
 
-        public async Task DeleteClassRoomByIdAsync(int ClassRoomDto)
+        public async Task<ClassRoomDto> DeleteClassRoomByIdAsync(int ClassRoomDto)
         {
-            await _classRoomRepository.DeleteByIdAsync(ClassRoomDto);
+            var classRoom = _classRoomRepository.GetById(ClassRoomDto);
+            if (classRoom.IsDeleted)
+            {
+                return null;
+            }
+            classRoom.IsDeleted = true;
+            await _classRoomRepository.UpdateAsync(classRoom);
+            return _mapper.Map<ClassRoomDto>(classRoom);
         }
 
         public async Task<IEnumerable<ClassRoomDto>> ListClassRoomAsync()
@@ -40,7 +47,10 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             List<ClassRoomDto> classRooms_List = new();
             for (int i = 0; i < classRooms.Count(); i++)
             {
-                classRooms_List.Add(_mapper.Map<ClassRoomDto>(list[i]));
+                if (!list[i].IsDeleted)
+                {
+                    classRooms_List.Add(_mapper.Map<ClassRoomDto>(list[i]));
+                }
             }
 
             return classRooms_List;
@@ -49,6 +59,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         public async Task<ClassRoomDto> UpdateClassRoomAsync(ClassRoomDto ClassRoomDto)
         {
             var ClassRoom = _classRoomRepository.GetById(ClassRoomDto.IdClassR);
+            if (ClassRoom.IsDeleted) return null;
             _mapper.Map(ClassRoomDto, ClassRoom);
             await _classRoomRepository.UpdateAsync(ClassRoom);
             return _mapper.Map<ClassRoomDto>(ClassRoom);

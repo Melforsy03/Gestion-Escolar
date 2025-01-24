@@ -12,6 +12,6 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<MaintenanceDto> CreateMaintenanceAsync(MaintenanceDto maintenanceDto);
         Task<MaintenanceDto> UpdateMaintenanceAsync(MaintenanceDto maintenanceDto);
         Task<IEnumerable<MaintenanceDto>> ListMaintenancesAsync();
-        Task DeleteMaintenanceByIdAsync(int maintenanceDto);
+        Task<MaintenanceDto> DeleteMaintenanceByIdAsync(int maintenanceDto);
     }
 }

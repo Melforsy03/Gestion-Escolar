@@ -12,6 +12,6 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<RestrictionDto> CreateRestrictionAsync(RestrictionDto restrictionDto);
         Task<RestrictionDto> UpdateRestrictionAsync(RestrictionDto restrictionDto);
         Task<IEnumerable<RestrictionDto>> ListRestrictionAsync();
-        Task DeleteRestrictionByIdAsync(int restrictionDto);
+        Task<RestrictionDto> DeleteRestrictionByIdAsync(int restrictionDto);
     }
 }

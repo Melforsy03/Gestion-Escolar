@@ -235,6 +235,9 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<bool>("IsAviable")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -255,6 +258,9 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<string>("CourseName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("IdC");
 
@@ -277,6 +283,9 @@ namespace SchoolManagement.Api.Migrations
 
                     b.Property<int>("IdTechMean")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<DateOnly>("MaintenanceDate")
                         .HasColumnType("date");
@@ -345,6 +354,9 @@ namespace SchoolManagement.Api.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdRes"));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("NameRes")
                         .IsRequired()
@@ -437,6 +449,9 @@ namespace SchoolManagement.Api.Migrations
 
                     b.Property<int>("IdClassRoom")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("NameSub")
                         .IsRequired()

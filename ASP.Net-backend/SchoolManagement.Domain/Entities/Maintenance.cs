@@ -11,6 +11,7 @@ namespace SchoolManagement.Domain.Entities
         public int IdM { get; set; } = 0;
         public DateOnly MaintenanceDate { get; set; } = new DateOnly();
         public int Cost { get; set; } = 0;
+        public bool IsDeleted { get; set; } = false;
         public int typeOfMean { get; set; } = 0;
         public int IdAuxMean { get; set; } = 0;
         public AuxiliaryMeans auxMean { get; set; } = new AuxiliaryMeans();

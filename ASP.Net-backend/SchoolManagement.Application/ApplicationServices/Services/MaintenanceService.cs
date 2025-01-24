@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using SchoolManagement.Infrastructure.DataAccess.Repository;
 using System;
@@ -36,9 +37,13 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             return _mapper.Map<MaintenanceDto>(savedMaintenance);
         }
 
-        public async Task DeleteMaintenanceByIdAsync(int maintenanceId)
+        public async Task<MaintenanceDto> DeleteMaintenanceByIdAsync(int maintenanceId)
         {
-            await _maintenanceRepository.DeleteByIdAsync(maintenanceId);
+            var maintenance = _maintenanceRepository.GetById(maintenanceId);
+            if (maintenance.IsDeleted) return null;
+            maintenance.IsDeleted = true;
+            await _maintenanceRepository.UpdateAsync(maintenance);
+            return _mapper.Map<MaintenanceDto>(maintenance);    
         }
 
         public async Task<IEnumerable<MaintenanceDto>> ListMaintenancesAsync()
@@ -48,7 +53,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             List<MaintenanceDto> maintenancesList = new();
             for (int i = 0; i < maintenances.Count(); i++)
             {
-                maintenancesList.Add(_mapper.Map<MaintenanceDto>(list[i]));
+                if(!list[i].IsDeleted) maintenancesList.Add(_mapper.Map<MaintenanceDto>(list[i]));
             }
 
             return maintenancesList;
@@ -57,6 +62,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         public async Task<MaintenanceDto> UpdateMaintenanceAsync(MaintenanceDto maintenanceDto)
         {
             var maintenance = _maintenanceRepository.GetById(maintenanceDto.IdM);
+            if (maintenance.IsDeleted) return null;
             _mapper.Map(maintenanceDto, maintenance);
             await _maintenanceRepository.UpdateAsync(maintenance);
             return _mapper.Map<MaintenanceDto>(maintenance);

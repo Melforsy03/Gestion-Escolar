@@ -12,6 +12,6 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<CourseDto> CreateCourseAsync(CourseDto courseDto);
         Task<CourseDto> UpdateCourseAsync(CourseDto courseDto);
         Task<IEnumerable<CourseDto>> ListCoursesAsync();
-        Task DeleteCourseByIdAsync(int courseDto);
+        Task<CourseDto> DeleteCourseByIdAsync(int courseDto);
     }
 }

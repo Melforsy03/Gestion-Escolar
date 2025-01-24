@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
+using SchoolManagement.Infrastructure.DataAccess.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +30,13 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             return _mapper.Map<RestrictionDto>(savedAgency);
         }
 
-        public async Task DeleteRestrictionByIdAsync(int restrictionDto)
-        {
-            await _restrictionRepository.DeleteByIdAsync(restrictionDto);
+        public async Task<RestrictionDto> DeleteRestrictionByIdAsync(int restrictionId)
+        {   
+            var restriction = _restrictionRepository.GetById(restrictionId);
+            if (restriction.IsDeleted) return null;
+            restriction.IsDeleted = true;
+            await _restrictionRepository.UpdateAsync(restriction);
+            return _mapper.Map<RestrictionDto>(restriction);
         }
 
         public async Task<IEnumerable<RestrictionDto>> ListRestrictionAsync()
@@ -40,7 +46,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             List<RestrictionDto> Restriction_List = new();
             for (int i = 0; i < restrictions.Count(); i++)
             {
-                Restriction_List.Add(_mapper.Map<RestrictionDto>(list[i]));
+                if(!list[i].IsDeleted) Restriction_List.Add(_mapper.Map<RestrictionDto>(list[i]));
             }
 
             return Restriction_List;
@@ -49,6 +55,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         public async Task<RestrictionDto> UpdateRestrictionAsync(RestrictionDto restrictionDto)
         {
             var restriction = _restrictionRepository.GetById(restrictionDto.IdRes);
+            if (restriction.IsDeleted) return null;
             _mapper.Map(restrictionDto, restriction);
             await _restrictionRepository.UpdateAsync(restriction);
             return _mapper.Map<RestrictionDto>(restriction);

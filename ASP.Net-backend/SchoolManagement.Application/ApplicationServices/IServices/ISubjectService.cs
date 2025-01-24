@@ -12,6 +12,6 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<SubjectDto> CreateSubjectAsync(SubjectDto subjectDto);
         Task<SubjectDto> UpdateSubjectAsync(SubjectDto subjectDto);
         Task<IEnumerable<SubjectDto>> ListSubjectAsync();
-        Task DeleteSubjectByIdAsync(int subjectDto);
+        Task<SubjectDto> DeleteSubjectByIdAsync(int subjectDto);
     }
 }

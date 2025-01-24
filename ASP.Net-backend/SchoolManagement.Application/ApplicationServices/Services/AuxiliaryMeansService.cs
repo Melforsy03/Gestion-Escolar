@@ -29,9 +29,16 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             return _mapper.Map<AuxiliaryMeansDto>(savedAuxiliaryMeans);
         }
 
-        public async Task DeleteAuxiliaryMeansByIdAsync(int auxiliaryMeansId)
+        public async Task<AuxiliaryMeansDto> DeleteAuxiliaryMeansByIdAsync(int auxiliaryMeansId)
         {
-            await _auxiliaryMeansRepository.DeleteByIdAsync(auxiliaryMeansId);
+            var auxiliaryMean = _auxiliaryMeansRepository.GetById(auxiliaryMeansId);
+            if (auxiliaryMean.isDeleted)
+            {
+                return null;
+            }
+            auxiliaryMean.isDeleted = true;
+            await _auxiliaryMeansRepository.UpdateAsync(auxiliaryMean);
+            return _mapper.Map<AuxiliaryMeansDto>(auxiliaryMean);
         }
 
         public async Task<IEnumerable<AuxiliaryMeansDto>> ListAuxiliaryMeansAsync()
@@ -41,7 +48,10 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             List<AuxiliaryMeansDto> auxiliaryMeansDtos = new();
             for (int i = 0; i < auxiliaryMeansList.Count(); i++)
             {
-                auxiliaryMeansDtos.Add(_mapper.Map<AuxiliaryMeansDto>(list[i]));
+                if (!list[i].isDeleted)
+                {
+                    auxiliaryMeansDtos.Add(_mapper.Map<AuxiliaryMeansDto>(list[i]));
+                }
             }
 
             return auxiliaryMeansDtos;
@@ -49,7 +59,8 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<AuxiliaryMeansDto> UpdateAuxiliaryMeansAsync(AuxiliaryMeansDto auxiliaryMeansDto)
         {
-            var auxiliaryMeans = _auxiliaryMeansRepository.GetById(auxiliaryMeansDto.IdMean); 
+            var auxiliaryMeans = _auxiliaryMeansRepository.GetById(auxiliaryMeansDto.IdMean);
+            if (auxiliaryMeans.isDeleted) return null;
             _mapper.Map(auxiliaryMeansDto, auxiliaryMeans);
             await _auxiliaryMeansRepository.UpdateAsync(auxiliaryMeans);
             return _mapper.Map<AuxiliaryMeansDto>(auxiliaryMeans);

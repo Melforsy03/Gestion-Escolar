@@ -46,8 +46,8 @@ namespace SchoolManagement.Api.Controllers
         [Route("delete")]
         public async Task<IActionResult> DeleteClassRoomTechMean(int id)
         {
-            await _classRoomTechMeanService.DeleteClassRoomTechMeanByIdAsync(id);
-            return Ok();
+            var classRoomTechMean = await _classRoomTechMeanService.DeleteClassRoomTechMeanByIdAsync(id);
+            return Ok(classRoomTechMean);
         }
     }
 

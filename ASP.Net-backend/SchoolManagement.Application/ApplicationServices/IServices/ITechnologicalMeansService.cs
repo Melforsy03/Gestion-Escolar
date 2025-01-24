@@ -12,6 +12,6 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<TechnologicalMeansDto> CreateTechnologicalMeansAsync(TechnologicalMeansDto technologicalMeansDto);
         Task<TechnologicalMeansDto> UpdateTechnologicalMeansAsync(TechnologicalMeansDto technologicalMeansDto);
         Task<IEnumerable<TechnologicalMeansDto>> ListTechnologicalMeansAsync();
-        Task DeleteTechnologicalMeansByIdAsync(int technologicalMeansDto);
+        Task <TechnologicalMeansDto> DeleteTechnologicalMeansByIdAsync(int technologicalMeansDto);
     }
 }

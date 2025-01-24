@@ -11,6 +11,7 @@ namespace SchoolManagement.Domain.Entities
         public int IdSub { get; set; } = 0;
         public string NameSub { get; set; } = string.Empty;
         public string StudyProgram { get; set; } = string.Empty;
+        public bool IsDeleted { get; set; } = false;
         public int CourseLoad { get; set; } = 0;
         public int IdClassRoom { get; set; } = 0;
         public ClassRoom classRoom { get; set; } = new ClassRoom();

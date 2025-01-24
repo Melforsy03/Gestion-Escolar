@@ -34,9 +34,12 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             return _mapper.Map<ClassRoomTechMeanDto>(savedClassR);
         }
 
-        public async Task DeleteClassRoomTechMeanByIdAsync(int id)
+        public async Task<ClassRoomTechMeanDto> DeleteClassRoomTechMeanByIdAsync(int id)
         {
+            var classRoomTeachMean = _classRoomTechMeanRepository.GetById(id);
+            var classRoomTechMeanDto = _mapper.Map<ClassRoomTechMeanDto>(classRoomTeachMean);
             await _classRoomTechMeanRepository.DeleteByIdAsync(id);
+            return classRoomTechMeanDto;
         }
 
         public async Task<IEnumerable<ClassRoomTechMeanDto>> ListClassRoomTechMeansAsync()

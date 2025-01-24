@@ -12,6 +12,6 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<AuxiliaryMeansDto> CreateAuxiliaryMeansAsync(AuxiliaryMeansDto auxiliaryMeansDto);
         Task<AuxiliaryMeansDto> UpdateAuxiliaryMeansAsync(AuxiliaryMeansDto auxiliaryMeansDto);
         Task<IEnumerable<AuxiliaryMeansDto>> ListAuxiliaryMeansAsync();
-        Task DeleteAuxiliaryMeansByIdAsync(int auxiliaryMeansDto);
+        Task<AuxiliaryMeansDto> DeleteAuxiliaryMeansByIdAsync(int auxiliaryMeansDto);
     }
 }

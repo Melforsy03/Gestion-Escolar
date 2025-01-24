@@ -12,7 +12,7 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<ClassRoomTechMeanDto> CreateClassRoomTechMeanAsync(ClassRoomTechMeanDto classRoomTechMeanDto);
         Task<ClassRoomTechMeanDto> UpdateClassRoomTechMeanAsync(ClassRoomTechMeanDto classRoomTechMeanDto);
         Task<IEnumerable<ClassRoomTechMeanDto>> ListClassRoomTechMeansAsync();
-        Task DeleteClassRoomTechMeanByIdAsync(int id);
+        Task<ClassRoomTechMeanDto> DeleteClassRoomTechMeanByIdAsync(int id);
     }
 
 }

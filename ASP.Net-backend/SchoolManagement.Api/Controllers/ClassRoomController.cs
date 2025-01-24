@@ -19,7 +19,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        //[Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateClassRoom(ClassRoomDto classRoom)
         {
             var classRoom2 = await _classRoomService.CreateClassRoomAsync(classRoom);
@@ -28,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        //[Authorize (Roles = "SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin, Professor")]
         public async Task<ActionResult<IEnumerable<ClassRoom>>> ListClassRoom()
         {
             var classRoom = await _classRoomService.ListClassRoomAsync();
@@ -37,7 +37,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
-        //[Authorize (Roles = "SuperAdmin")]
+        [Authorize (Roles = "SuperAdmin")]
         public async Task<ActionResult> UpdateClassRoom(ClassRoomDto classRoom)
         {
             var _classRoom = await _classRoomService.UpdateClassRoomAsync(classRoom);
@@ -46,10 +46,11 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpDelete]
         [Route("delete")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> DeleteClassRoom(int classRoomId)
         {
-            await _classRoomService.DeleteClassRoomByIdAsync(classRoomId);
-            return Ok();
+            var classRoom = await _classRoomService.DeleteClassRoomByIdAsync(classRoomId);
+            return Ok(classRoom);
         }
     }
 }

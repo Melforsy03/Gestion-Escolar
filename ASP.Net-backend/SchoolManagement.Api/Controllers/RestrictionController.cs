@@ -20,7 +20,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        //[Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateRestriction(RestrictionDto restriction)
         {
             var restriction2 = await _restrictionService.CreateRestrictionAsync(restriction);
@@ -29,7 +29,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        //[Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<ActionResult<IEnumerable<Restriction>>> ListRestrictions()
         {
             var restrictions = await _restrictionService.ListRestrictionAsync();
@@ -38,6 +38,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<ActionResult> UpdateRestriction(RestrictionDto restriction)
         {
             var updatedRestriction = await _restrictionService.UpdateRestrictionAsync(restriction);
@@ -46,10 +47,11 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpDelete]
         [Route("delete")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> DeleteRestriction(int restrictionId)
         {
-            await _restrictionService.DeleteRestrictionByIdAsync(restrictionId);
-            return Ok();
+            var restriction = await _restrictionService.DeleteRestrictionByIdAsync(restrictionId);
+            return Ok(restriction);
         }
     }
 }
