@@ -8,11 +8,11 @@ namespace SchoolManagement.Domain.Entities
 {
     public class Administrator
     {
-        public int AdminId = 0;
-        public string AdminName = string.Empty;
-        public string AdminLastName = string.Empty;
-        public int AdminSalary = 0;
-        public bool IsDeleted = false;
+        public int AdminId {  get; set; }
+        public string UserId {  get; set; }
+        public string AdminName {  get; set; }
+        public int AdminSalary { get; set; }
+        public bool IsDeleted { get; set; }
         
     }
 }

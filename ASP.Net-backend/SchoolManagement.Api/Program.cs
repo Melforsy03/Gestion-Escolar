@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.DataProtection.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SchoolManagement.Application;
 using SchoolManagement.Application.ApplicationServices.IServices;
@@ -9,13 +12,13 @@ using SchoolManagement.Application.Authentication;
 using SchoolManagement.Application.Interfaces;
 using SchoolManagement.Infrastructure;
 using Swashbuckle.AspNetCore.Filters;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
 
-builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 builder.Services.AddControllers();
 
 var services = builder.Services;
@@ -24,6 +27,11 @@ services.AddHttpContextAccessor();
 services.AddApplicationServices(builder.Configuration);
 services.AddInfraestructureServices();
 
+// Añade Identity
+builder.Services.AddIdentityCore<IdentityUser>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<Context>()
+    .AddDefaultTokenProviders();
 
 //builder.Services.AddInfraestructureServices();
 
@@ -31,6 +39,7 @@ builder.Services.AddDbContext<Context>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("SchoolManagement.Api"));
 });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -63,6 +72,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 app.UseCors();
 app.UseHttpsRedirection();
 app.UseAuthentication();

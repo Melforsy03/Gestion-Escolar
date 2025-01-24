@@ -10,7 +10,7 @@ namespace SchoolManagement.Domain.Entities
     public class Secretary
     {
         public int IdS { get; set; } = 0;
-        public string userId { get; set; }
+        public string UserId { get; set; }
         public string NameS { get; set; } = string.Empty;
         public string LastNameS { get; set; } = string.Empty;
         public int SalaryS { get; set; } = 0;

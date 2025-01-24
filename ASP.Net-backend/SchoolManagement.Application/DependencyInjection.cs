@@ -43,6 +43,7 @@ namespace SchoolManagement.Application
             services.AddScoped<IStudentSubjectService, StudentSubjectService>();
             services.AddScoped<ISubjectService, SubjectService>();
             services.AddScoped<ITechnologicalMeansService, TechnologicalMeansService>();
+            services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
             services.AddScoped<Triggers>();
 
 

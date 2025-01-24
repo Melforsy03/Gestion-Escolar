@@ -12,7 +12,7 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<AdministratorDto> CreateAdministratorAsync(AdministratorDto administratorDto);
         Task<AdministratorDto> UpdateAdministratorAsync(AdministratorDto administratorDto);
         Task<IEnumerable<AdministratorDto>> ListAdministratorAsync();
-        Task DeleteAdministratorByIdAsync(int administratorDto);
+        Task<AdministratorDto> DeleteAdministratorByIdAsync(int administratorId);
     }
 
 }

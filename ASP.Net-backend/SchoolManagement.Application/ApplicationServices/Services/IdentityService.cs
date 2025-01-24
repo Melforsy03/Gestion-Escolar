@@ -36,7 +36,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
                 var userId = _identityManager.ListUsersAsync().FirstOrDefault(x => x.UserName == user.UserName)!.Id;
                 user.Id = userId;
                 var adminRole = await _identityManager.IsInRoleAsync(userId, Role.Admin);
-                var deanRole = await _identityManager.IsInRoleAsync(userId, Role.SuperAdmin);
+                var superAdmin = await _identityManager.IsInRoleAsync(userId, Role.SuperAdmin);
                 var secretaryRole = await _identityManager.IsInRoleAsync(userId, Role.Secretary);
                 var professorRole = await _identityManager.IsInRoleAsync(userId, Role.Professor);
                 var studentRole = await _identityManager.IsInRoleAsync(userId, Role.Student);
@@ -46,7 +46,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
                     var token = _jwtTokenGenerator.GenerateToken(user, Role.Admin);
                     return (savedUser, token);
                 }
-                else if (deanRole)
+                else if (superAdmin)
                 {
                     var token = _jwtTokenGenerator.GenerateToken(user, Role.SuperAdmin);
                     return (savedUser, token);

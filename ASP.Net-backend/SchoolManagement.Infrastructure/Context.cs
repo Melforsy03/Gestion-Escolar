@@ -52,8 +52,8 @@ namespace SchoolManagement.Infrastructure
             modelBuilder.Entity<Administrator>(entity =>
             {
                 entity.HasKey(e => e.AdminId);
-                entity.Property(e => e.AdminName).IsRequired().HasMaxLength(16);
-                entity.Property(e => e.AdminLastName).IsRequired().HasMaxLength(32);
+                entity.Property(e => e.AdminName).IsRequired().HasMaxLength(64);
+                entity.Property(e => e.UserId).IsRequired().HasMaxLength(64);
                 entity.Property(e => e.AdminSalary).IsRequired();
                 entity.Property(e => e.IsDeleted);
             }
@@ -79,8 +79,8 @@ namespace SchoolManagement.Infrastructure
             modelBuilder.Entity<Professor>(entity =>
             {
                 entity.HasKey(e => e.IdProf);
-                entity.Property(e => e.UserId).IsRequired();
-                entity.Property(e => e.NameProf).IsRequired().HasMaxLength(16);
+                entity.Property(e => e.UserId).IsRequired().HasMaxLength(64);
+                entity.Property(e => e.NameProf).IsRequired().HasMaxLength(64);
                 entity.Property(e => e.Contract).IsRequired().HasMaxLength(20);
                 entity.Property(e => e.Salary).IsRequired();
                 entity.Property(e => e.IsDean).IsRequired();
@@ -142,8 +142,8 @@ namespace SchoolManagement.Infrastructure
             modelBuilder.Entity<Secretary>(entity =>
             {
                 entity.HasKey(e => e.IdS);
-                entity.Property(e => e.NameS).IsRequired().HasMaxLength(16);
-                entity.Property(e => e.LastNameS).IsRequired().HasMaxLength(16);
+                entity.Property(e => e.NameS).IsRequired().HasMaxLength(64);
+                entity.Property(e => e.UserId).IsRequired();
                 entity.Property(e => e.SalaryS).IsRequired();
                 //Relacion de secretario con evaluaciones(profesor con estudiante en asignatura)
                 entity.HasMany(s => s.Evaluations).WithMany(ev => ev.Secretaries).UsingEntity<SecretaryProfessorStudentSubject>(
@@ -228,7 +228,8 @@ namespace SchoolManagement.Infrastructure
             modelBuilder.Entity<Student>(entity =>
             {
                 entity.HasKey(e => e.IdStud);
-                entity.Property(e => e.NameStud).IsRequired().HasMaxLength(32);
+                entity.Property(e => e.NameStud).IsRequired().HasMaxLength(64);
+                entity.Property(e => e.UserId).IsRequired();
                 entity.Property(e => e.Age).IsRequired();
                 entity.Property(e => e.EActivity).IsRequired();
                 //Relacion Estudiante con Curso

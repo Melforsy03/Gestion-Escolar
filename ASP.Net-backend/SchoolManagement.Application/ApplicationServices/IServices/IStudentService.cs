@@ -13,6 +13,6 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<StudentDto> CreateStudentAsync(StudentDto studentDto);
         Task<StudentDto> UpdateStudentAsync(StudentDto studentDto);
         Task<IEnumerable<StudentDto>> ListStudentAsync();
-        Task DeleteStudentByIdAsync(int studentDto);
+        Task<StudentDto> DeleteStudentByIdAsync(int studentDto);
     }
 }

@@ -105,7 +105,7 @@ namespace SchoolManagement.Infrastructure
                 await _userManager.CreateAsync(superadmin, "Superadminpassword1*");
                 if (!string.IsNullOrWhiteSpace(superadminRole.Name))
                 {
-                    await _userManager.AddToRolesAsync(superadmin, new[] { superadminRole.Name });
+                    await _userManager.AddToRoleAsync(superadmin, superadminRole.Name);
                 }
             }
             //!Also we can define here default data.

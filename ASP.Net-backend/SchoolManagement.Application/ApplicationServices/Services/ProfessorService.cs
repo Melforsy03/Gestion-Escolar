@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
@@ -28,7 +29,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _trigger = trigger;
         }
 
-        public async Task<(ProfessorDto, (string, string))> CreateProfessorAsync(ProfessorDto professorDto)
+        public async Task<ProfessorDto> CreateProfessorAsync(ProfessorDto professorDto)
         {
             var professor = _mapper.Map<Professor>(professorDto);
             User User = await _trigger.RegisterUser(professorDto.NameProf, "Professor");
@@ -36,13 +37,22 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             var savedProfessor = await _professorRepository.CreateAsync(professor);
 
             professorDto = _mapper.Map<ProfessorDto>(savedProfessor);
-            return (professorDto, (User.UserName, User.PasswordHash));
+            professorDto.UserName = User.UserName;
+            professorDto.PasswordHash = User.PasswordHash;
+            return professorDto;
             
         }
 
-        public async Task DeleteProfessorByIdAsync(int professorDto)
+        public async Task<ProfessorDto> DeleteProfessorByIdAsync(int professorId)
         {
-            await _professorRepository.DeleteByIdAsync(professorDto);
+            var professor =  _professorRepository.GetById(professorId);
+            if (professor.IsDeleted)
+            {
+                return null;
+            }
+            professor.IsDeleted = true;
+            await _professorRepository.UpdateAsync(professor);
+            return _mapper.Map<ProfessorDto>(professor);
         }
 
         public async Task<IEnumerable<ProfessorDto>> ListProfessorAsync()
@@ -52,7 +62,11 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             List<ProfessorDto> Professors_List = new();
             for (int i = 0; i < professors.Count(); i++)
             {
-                Professors_List.Add(_mapper.Map<ProfessorDto>(list[i]));
+                if (!list[i].IsDeleted)
+                {
+                    Professors_List.Add(_mapper.Map<ProfessorDto>(list[i]));
+                }
+                
             }
 
             return Professors_List;
@@ -61,9 +75,14 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         public async Task<ProfessorDto> UpdateProfessorAsync(ProfessorDto professorDto)
         {
             var professor = _professorRepository.GetById(professorDto.IdProf);
+            if (!professor.IsDeleted)
+            {
+                return null;
+            }
             _mapper.Map(professorDto, professor);
             await _professorRepository.UpdateAsync(professor);
             return _mapper.Map<ProfessorDto>(professor);
+
         }
     }
 }

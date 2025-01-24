@@ -21,7 +21,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        [Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin, Secretary")]
         public async Task<IActionResult> CreateProfessor(ProfessorDto professor)
         {
             var professor2 = await _professorService.CreateProfessorAsync(professor);
@@ -30,7 +30,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        [Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin, Scretary")]
         public async Task<ActionResult<IEnumerable<Professor>>> ListProfessor()
         {
             var professor = await _professorService.ListProfessorAsync();
@@ -39,7 +39,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
-        [Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin, Secretary")]
         public async Task<ActionResult> UpdateProfessor(ProfessorDto professor)
         {
             var _professor = await _professorService.UpdateProfessorAsync(professor);

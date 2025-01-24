@@ -13,6 +13,6 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<SecretaryDto> CreateSecretaryAsync(SecretaryDto secretaryDto);
         Task<SecretaryDto> UpdateSecretaryAsync(SecretaryDto secretaryDto);
         Task<IEnumerable<SecretaryDto>> ListSecretariesAsync();
-        Task DeleteSecretaryByIdAsync(int secretaryDto);
+        Task<SecretaryDto> DeleteSecretaryByIdAsync(int secretaryId);
     }
 }

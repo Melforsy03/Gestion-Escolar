@@ -62,7 +62,7 @@ namespace SchoolManagement.Application.Common
             User User = new User();
             User.UserName = CandidateName;
             await _userManager.CreateAsync(User, Password);
-            await _userManager.AddToRolesAsync(User, new[] { Role });
+            await _userManager.AddToRoleAsync(User, Role);
 
             return User;
         }
