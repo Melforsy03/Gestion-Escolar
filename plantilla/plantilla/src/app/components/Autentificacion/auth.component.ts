@@ -11,15 +11,17 @@ import { AuthGuard } from './auth.service';
 
 export class AuthComponent {
   loginForm: FormGroup;
-  userData = { email: '', password: '' };
+  userData = {userName : '', password: '' };
   rememberMe = false;
   constructor(private fb: FormBuilder, private authGuard: AuthGuard) {
+  }
+
+  ngOnInit() {
     this.loginForm = this.fb.group({
-      email: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
-
   // Título de la aplicación
   title = 'Escuela';
 
@@ -42,12 +44,31 @@ export class AuthComponent {
   }
   onSubmit() {
     if (this.loginForm.valid) {
-      this.userData.email = this.loginForm.get('email')?.value;
-      this.userData.password = this.loginForm.get('password')?.value;
-       this.authGuard.login(this.userData).subscribe(
-        response => console.log(response),
-        error => console.error(error)
-      );
+      const username = this.loginForm.get('username');
+      const password = this.loginForm.get('password');
+      console.log('enviando');
+      if (username && password) {
+        this.userData = {
+          userName: username.value,
+          password: password.value
+        };
+  
+        console.log('Sending data:', this.userData);
+  
+        this.authGuard.login(this.userData).subscribe(
+          response => console.log(response),
+          error => {
+            console.error('Error al iniciar sesión:', error);
+            alert('Ha ocurrido un error al iniciar sesión. Por favor, inténtelo nuevamente.');
+          }
+        );
+      } else {
+        console.error('No se pudo obtener los controles del formulario');
+        alert('Ha habido un error al procesar su solicitud.');
+      }
+    } else {
+      console.log('Form is invalid:', this.loginForm.errors);
+      alert('Por favor, complete todos los campos obligatorios.');
     }
- }
+  }
 }
