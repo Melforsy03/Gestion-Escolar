@@ -26,10 +26,11 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _jwtTokenGenerator = jwtTokenGenerator;
         }
 
-        public async Task<(bool, string)> CheckCredentialsAsync(LoginDto userDto)
+        public async Task<(bool, string, string)> CheckCredentialsAsync(LoginDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
-            if (user == null) return (false, "");
+            string role = string.Empty;
+            if (user == null) return (false, "", "");
             var savedUser = await _identityManager.CheckCredentialsAsync(user.UserName!, userDto.Password);
             if (savedUser)
             {
@@ -44,31 +45,31 @@ namespace SchoolManagement.Application.ApplicationServices.Services
                 if (adminRole)
                 {
                     var token = _jwtTokenGenerator.GenerateToken(user, Role.Admin);
-                    return (savedUser, token);
+                    return (savedUser, token, Role.Admin);
                 }
                 else if (superAdmin)
                 {
                     var token = _jwtTokenGenerator.GenerateToken(user, Role.SuperAdmin);
-                    return (savedUser, token);
+                    return (savedUser, token, Role.SuperAdmin);
                 }
                  else if (secretaryRole)
                 {
                     var token = _jwtTokenGenerator.GenerateToken(user, Role.Secretary);
-                    return (savedUser, token);
+                    return (savedUser, token, Role.Secretary);
                 }
                  else if (professorRole)
                 {
                     var token = _jwtTokenGenerator.GenerateToken(user, Role.Professor);
-                    return (savedUser, token);
+                    return (savedUser, token, Role.Professor);
                 }
                 else
                 {
                     var token = _jwtTokenGenerator.GenerateToken(user, Role.Student);
-                    return (savedUser, token);
+                    return (savedUser, token, Role.Student);
                 }
 
             }
-            return (false, "Your credentials are incorrect");
+            return (false, "Your credentials are incorrect", "");
         }
 
         public async Task<(string,string)> CreateUserAsync(RegisterDto userDto)

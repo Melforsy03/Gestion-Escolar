@@ -41,7 +41,8 @@ namespace SchoolManagement.Api.Controllers
 
             return Ok(new
             {
-                verificstion = user.Item1,
+                verification = user.Item1,
+                role = user.Item3,
                 token = user.Item2
             });
         }

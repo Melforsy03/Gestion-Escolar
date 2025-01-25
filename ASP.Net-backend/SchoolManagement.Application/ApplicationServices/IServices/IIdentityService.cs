@@ -11,7 +11,7 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
     public interface IIdentityService
     {
         Task<(string, string)> CreateUserAsync(RegisterDto userDto);
-        Task<(bool, string)> CheckCredentialsAsync(LoginDto userDto);
+        Task<(bool, string, string)> CheckCredentialsAsync(LoginDto userDto);
         Task<IEnumerable<User>> ListUsersAsync();
     }
 }
