@@ -191,7 +191,8 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.NameMean).IsRequired().HasMaxLength(16);
                 entity.Property(e => e.State).IsRequired().HasMaxLength(10);
                 entity.Property(e => e.isActive);
-                entity.Property(e => e.isAviable);
+                entity.Property(e => e.Aviable);
+                entity.HasKey(e => e.Ammount);
                 entity.Property(e => e.isDeleted);
     });
 
@@ -201,7 +202,8 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.NameMean).IsRequired().HasMaxLength(16);
                 entity.Property(e => e.State).IsRequired().HasMaxLength(10);
                 entity.Property(e => e.isActive);
-                entity.Property(e => e.isAviable);
+                entity.Property(e => e.Aviable);
+                entity.Property(e => e.Ammount);
                 entity.Property(e => e.isDeleted);
                 entity.Property(e => e.Type).IsRequired().HasMaxLength(10);
 

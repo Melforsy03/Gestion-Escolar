@@ -9,10 +9,9 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
 {
     public class ClassRoomMeanRequestDto
     {
-        public int ClassRoomId { get; set; }
-        public List<string> MeanName { get; set; }
-        public int[] MeanAmmount { get; set; }
-        public  string UserId { get; set; }
+        public string UserName { get; set; }
+        public int ClassRoom {  get; set; }
+        public List<(string, int)> AuxMean { get; set; }
 
     }
 }
