@@ -194,7 +194,7 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.Aviable);
                 entity.HasKey(e => e.Ammount);
                 entity.Property(e => e.isDeleted);
-    });
+            });
 
             modelBuilder.Entity<AuxiliaryMeans>(entity =>
             {

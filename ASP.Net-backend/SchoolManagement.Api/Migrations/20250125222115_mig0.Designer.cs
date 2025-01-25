@@ -12,8 +12,8 @@ using SchoolManagement.Infrastructure;
 namespace SchoolManagement.Api.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20250122090741_mig4")]
-    partial class mig4
+    [Migration("20250125222115_mig0")]
+    partial class mig0
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,6 +158,35 @@ namespace SchoolManagement.Api.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("SchoolManagement.Domain.Entities.Administrator", b =>
+                {
+                    b.Property<int>("AdminId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdminId"));
+
+                    b.Property<string>("AdminName")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<int>("AdminSalary")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.HasKey("AdminId");
+
+                    b.ToTable("Administrator");
+                });
+
             modelBuilder.Entity("SchoolManagement.Domain.Entities.AuxiliaryMeans", b =>
                 {
                     b.Property<int>("IdMean")
@@ -165,6 +194,12 @@ namespace SchoolManagement.Api.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMean"));
+
+                    b.Property<int>("Ammount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Aviable")
+                        .HasColumnType("int");
 
                     b.Property<int>("IdMaintenance")
                         .HasColumnType("int");
@@ -187,9 +222,6 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<bool>("isActive")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("isAviable")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("isDeleted")
                         .HasColumnType("bit");
 
@@ -207,6 +239,9 @@ namespace SchoolManagement.Api.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdClassR"));
 
                     b.Property<bool>("IsAviable")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Location")
@@ -230,6 +265,9 @@ namespace SchoolManagement.Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("IdC");
 
                     b.ToTable("Courses");
@@ -251,6 +289,9 @@ namespace SchoolManagement.Api.Migrations
 
                     b.Property<int>("IdTechMean")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<DateOnly>("MaintenanceDate")
                         .HasColumnType("date");
@@ -289,15 +330,10 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<int>("LaboralExperience")
                         .HasColumnType("int");
 
-                    b.Property<string>("LastNameProf")
-                        .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
-
                     b.Property<string>("NameProf")
                         .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
 
                     b.Property<int>("Salary")
                         .HasColumnType("int");
@@ -305,9 +341,10 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<int?>("StudentIdStud")
                         .HasColumnType("int");
 
-                    b.Property<string>("uderId")
+                    b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
 
                     b.HasKey("IdProf");
 
@@ -323,6 +360,9 @@ namespace SchoolManagement.Api.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdRes"));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("NameRes")
                         .IsRequired()
@@ -347,16 +387,19 @@ namespace SchoolManagement.Api.Migrations
 
                     b.Property<string>("LastNameS")
                         .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameS")
                         .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
 
                     b.Property<int>("SalaryS")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdS");
 
@@ -385,8 +428,12 @@ namespace SchoolManagement.Api.Migrations
 
                     b.Property<string>("NameStud")
                         .IsRequired()
-                        .HasMaxLength(32)
-                        .HasColumnType("nvarchar(32)");
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdStud");
 
@@ -409,6 +456,9 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<int>("IdClassRoom")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("NameSub")
                         .IsRequired()
                         .HasMaxLength(16)
@@ -428,13 +478,19 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.TechnologicalMeans", b =>
                 {
-                    b.Property<int>("IdMean")
+                    b.Property<int>("Ammount")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMean"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Ammount"));
+
+                    b.Property<int>("Aviable")
+                        .HasColumnType("int");
 
                     b.Property<int>("IdMaintenance")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdMean")
                         .HasColumnType("int");
 
                     b.Property<string>("NameMean")
@@ -450,13 +506,10 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<bool>("isActive")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("isAviable")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("isDeleted")
                         .HasColumnType("bit");
 
-                    b.HasKey("IdMean");
+                    b.HasKey("Ammount");
 
                     b.ToTable("TechnologicalMeans");
                 });
@@ -681,9 +734,8 @@ namespace SchoolManagement.Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
@@ -703,7 +755,6 @@ namespace SchoolManagement.Api.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PasswordHash")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
@@ -719,9 +770,8 @@ namespace SchoolManagement.Api.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
