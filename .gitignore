@@ -1,5 +1,5 @@
-**/.vs
-**/.vscode
-**/bin
+**/.vs/
+**/.vscode/
+**/bin/
 **/obj/
 **/.cache/
