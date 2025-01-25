@@ -1,4 +1,5 @@
 ﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IClassRoomMeanRequestService
     {
-        Task<ClassRoomMeanRequestDto> GetAviableClassRoomMean(ClassRoomMeanRequestDto classRoomMeanRequestDto);
+        Task<ClassRoomMeanRequestDto> GetAviableClassRoomMean(ClassRoomMeanRequestDto classRoomMeanRequestDto, Context context);
     }
 }

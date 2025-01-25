@@ -12,6 +12,7 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
         public int ClassRoomId { get; set; }
         public List<string> MeanName { get; set; }
         public int[] MeanAmmount { get; set; }
+        public  string UserId { get; set; }
 
     }
 }
