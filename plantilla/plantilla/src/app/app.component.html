@@ -1,26 +1,8 @@
 <div class="app-container">
   <app-auth *ngIf="!authService.isAuthenticated()"></app-auth>
   <div *ngIf="authService.isAuthenticated()">
-  
-    <div *ngIf="authService.getUserRole() === 'profesor'">
       <router-outlet></router-outlet>
-    </div>
-
-    <div *ngIf="authService.getUserRole() === 'administrador'">
-      <router-outlet></router-outlet>
-    </div>
-
-    <div *ngIf="authService.getUserRole() === 'secretaria'">
-      <router-outlet></router-outlet>
-    </div>
-
-    <div *ngIf="authService.getUserRole() === 'decano'">
-      <router-outlet></router-outlet>
-    </div>
-
   </div>
-
-    
 </div>
 
  

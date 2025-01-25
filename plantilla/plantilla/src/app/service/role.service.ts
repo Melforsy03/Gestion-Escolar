@@ -7,7 +7,7 @@ import { RolePermissions, MenuItem } from '../models/role-permissions.model';
 export class RoleService {
    private rolePermissions: RolePermissions[] = [
     {
-      role: 'profesor',
+      role: 'professor',
       menuItems: [
         { label: 'Solicitud', path: '/solicitar', icon: 'bx bx-chalkboard' },
         { label: 'Gestionar Calificaciones', path: '/info-estudiantes', icon: 'bx bx-edit' },
@@ -15,7 +15,7 @@ export class RoleService {
       ],
     },
     {
-      role: 'secretaria',
+      role: 'Secretary',
       menuItems: [
         { label: 'Gestionar Calificaciones', path: '/info-estudiantes', icon: 'bx bx-user' },
         { label: 'Informacion-Estudiantes', path: '/estudiantes', icon: 'bx bx-edit' },
@@ -29,7 +29,7 @@ export class RoleService {
         ],
       },
       {
-        role: 'decano',
+        role: 'SuperAdmin',
         menuItems: [
           { label: 'Solicitud', path: '/solicitar', icon: 'bx bx-chalkboard' },
           { label: 'Inventario', path: '/inventario', icon: 'inventory' },
@@ -43,7 +43,7 @@ export class RoleService {
 
   getMenuItemsForRole(role: string): MenuItem[] {
     
-    const permissions = this.rolePermissions.find((perm) => perm.role === 'decano');
+    const permissions = this.rolePermissions.find((perm) => perm.role === role);
     return permissions ? permissions.menuItems : [];
   }
   
