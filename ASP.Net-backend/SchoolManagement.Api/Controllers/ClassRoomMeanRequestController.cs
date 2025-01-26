@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.RequestDto.ClassRoomMeanRequest;
 
 namespace SchoolManagement.Api.Controllers
 {
@@ -19,7 +19,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpGet]
         [Route("checkAviableClassRoomsAndMeans")]
         [Authorize(Roles = "SuperAdmin,Professor")]
-        public async Task<IActionResult> CreateClassRoomMeanRequest(ClassRoomMeanRequestDto classRoomMeanRequest)
+        public async Task<IActionResult> CreateClassRoomMeanRequest(ClassRoomMeanRequestGetAviableDto classRoomMeanRequest)
         {
             var aviableClassRoomsAndMeans = await _classRoomMeanRequestService.GetAviableClassRoomMeanAsync(classRoomMeanRequest);
             return Ok(aviableClassRoomsAndMeans);
@@ -28,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPost]
         [Route("reserveClassRoomAndMeans")]
         [Authorize(Roles = "SuperAdmin,Professor")]
-        public async Task<IActionResult> ReserveClassRoomAndMean (ClassRoomMeanRequestDto classRoomMeanRequest)
+        public async Task<IActionResult> ReserveClassRoomAndMean (ClassRoomMeanRequestGetAviableDto classRoomMeanRequest)
         {
             var answer = await _classRoomMeanRequestService.ReserveClassRoomAndMeanAsync(classRoomMeanRequest);
             return Ok(answer);

@@ -5,13 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
+namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.RequestDto.ClassRoomMeanRequest
 {
-    public class ClassRoomMeanRequestDto
+    public class ClassRoomMeanRequestGetAviableDto
     {
         public string UserName { get; set; }
-        public int ClassRoom {  get; set; }
-        public List<(string, int)> AuxMean { get; set; }
 
     }
 }

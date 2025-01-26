@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Secretary;
 using SchoolManagement.Application.ApplicationServices.Services;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.Identity;
@@ -40,7 +41,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPut]
         [Route("update")]
         [Authorize(Roles = "SuperAdmin")]
-        public async Task<ActionResult> UpdateSecretary((int Id, SecretaryDto secretary) secretaryInfo)
+        public async Task<ActionResult> UpdateSecretary(SecretaryResponseDto secretaryInfo)
         {
             var updatedSecretary = await _secretaryService.UpdateSecretaryAsync(secretaryInfo);
             return Ok(updatedSecretary);

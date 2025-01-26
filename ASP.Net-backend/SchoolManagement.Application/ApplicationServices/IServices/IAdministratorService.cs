@@ -1,4 +1,5 @@
 ﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Administrator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,11 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IAdministratorService
     {
-        Task<(int Id, AdministratorDto administrator, string UserName, string Password)> CreateAdministratorAsync(AdministratorDto administratorDto);
-        Task<(int Id, AdministratorDto administrator)> UpdateAdministratorAsync((int Id, AdministratorDto administratorDto) administratorInfo);
-        Task<IEnumerable<(int Id, AdministratorDto administrator)>> ListAdministratorAsync();
-        Task<(int Id, AdministratorDto administrator)> DeleteAdministratorByIdAsync(int administratorId);
+        Task<AdministratorCreateResponseDto> CreateAdministratorAsync(AdministratorDto administratorDto);
+        Task<AdministratorResponseDto> UpdateAdministratorAsync(AdministratorResponseDto administratorInfo);
+        Task<IEnumerable<AdministratorResponseDto>> ListAdministratorsAsync();
+        Task<AdministratorResponseDto> DeleteAdministratorByIdAsync(int administratorId);
     }
+
 
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Administrator;
 using SchoolManagement.Domain.Entities;
 
 namespace SchoolManagement.Api.Controllers
@@ -22,23 +23,23 @@ namespace SchoolManagement.Api.Controllers
         [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateAdministrator(AdministratorDto administrator)
         {
-            var createdAdministrator = await _administratorService.CreateAdministratorAsync(administrator);
-            return Ok(createdAdministrator);
+            var administratorCreated = await _administratorService.CreateAdministratorAsync(administrator);
+            return Ok(administratorCreated);
         }
 
         [HttpGet]
         [Route("list")]
         [Authorize(Roles = "SuperAdmin")]
-        public async Task<ActionResult<IEnumerable<Administrator>>> ListAdministrator()
+        public async Task<ActionResult<IEnumerable<AdministratorResponseDto>>> ListAdministrators()
         {
-            var administratorList = await _administratorService.ListAdministratorAsync();
-            return Ok(administratorList);
+            var administrators = await _administratorService.ListAdministratorsAsync();
+            return Ok(administrators);
         }
 
         [HttpPut]
         [Route("update")]
         [Authorize(Roles = "SuperAdmin")]
-        public async Task<ActionResult> UpdateAdministrator((int Id, AdministratorDto administrator) administratorInfo)
+        public async Task<ActionResult> UpdateAdministrator(AdministratorResponseDto administratorInfo)
         {
             var updatedAdministrator = await _administratorService.UpdateAdministratorAsync(administratorInfo);
             return Ok(updatedAdministrator);
@@ -46,6 +47,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpDelete]
         [Route("delete")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> DeleteAdministrator(int administratorId)
         {
             var administrator = await _administratorService.DeleteAdministratorByIdAsync(administratorId);

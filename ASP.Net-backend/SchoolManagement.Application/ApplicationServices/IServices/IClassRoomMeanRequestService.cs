@@ -1,4 +1,5 @@
-﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto.RequestDto.ClassRoomMeanRequest;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.ClassRoomMeanRequest;
 using SchoolManagement.Application.ApplicationServices.Services;
 using SchoolManagement.Infrastructure;
 using System;
@@ -11,7 +12,7 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IClassRoomMeanRequestService
     {
-        Task<(Dictionary<string, List<(string, int)>>, int[])> GetAviableClassRoomMeanAsync(ClassRoomMeanRequestDto classRoomMeanRequestService);
-        Task<(bool, string)> ReserveClassRoomAndMeanAsync(ClassRoomMeanRequestDto classRoomMeanRequestDto);
+        Task<ClassroomMeanRequestGetAviableResponseDto> GetAviableClassRoomMeanAsync(ClassRoomMeanRequestGetAviableDto classRoomMeanRequestService);
+        Task<ClassRoommeanRequestReserveResponseDto> ReserveClassRoomAndMeanAsync(ClassRoomMeanRequestReserveDto classRoomMeanRequestDto);
     }
 }

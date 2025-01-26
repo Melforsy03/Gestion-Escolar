@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Secretary;
 using SchoolManagement.Application.Common;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
@@ -27,56 +28,68 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _trigger = trigger;
         }
 
-        public async Task<(int Id, SecretaryDto secretary, string UserName, string Password)> CreateSecretaryAsync(SecretaryDto secretaryDto)
+        public async Task<SecretaryCreateResponseDto> CreateSecretaryAsync(SecretaryDto secretaryDto)
         {
             var secretary = _mapper.Map<Secretary>(secretaryDto);
             (User, string) User = await _trigger.RegisterUser(secretaryDto.NameS, "Secretary");
             secretary.UserId = User.Item1.Id;
             var savedSecretary = await _secretaryRepository.CreateAsync(secretary);
-
-            secretaryDto = _mapper.Map<SecretaryDto>(savedSecretary);
-            return (secretary.IdS, secretaryDto, User.Item1.UserName, User.Item2);
+            SecretaryCreateResponseDto answer = new SecretaryCreateResponseDto();
+            answer.Id = secretary.IdS;
+            answer.secretary = _mapper.Map<SecretaryDto>(savedSecretary);
+            answer.UserName = User.Item1.UserName;
+            answer.Password = User.Item2;
+            return answer;
         }
 
-        public async Task<(int Id, SecretaryDto secretary)> DeleteSecretaryByIdAsync(int secretaryId)
+        public async Task<SecretaryResponseDto> DeleteSecretaryByIdAsync(int secretaryId)
         {
             var secretary = _secretaryRepository.GetById(secretaryId);
             if (secretary.IsDeleted)
             {
-                return (0,null);
+                return null;
             }
             secretary.IsDeleted = true;
             await _secretaryRepository.UpdateAsync(secretary);
-            return (secretary.IdS, _mapper.Map<SecretaryDto>(secretary));
+            SecretaryResponseDto answer = new SecretaryResponseDto();
+            answer.Id = secretary.IdS;
+            answer.secretary = _mapper.Map<SecretaryDto>(secretary);
+            return answer;
         }
 
-        public async Task<IEnumerable<(int Id, SecretaryDto secretary)>> ListSecretariesAsync()
+        public async Task<IEnumerable<SecretaryResponseDto>> ListSecretariesAsync()
         {
             var secretaries = await _secretaryRepository.ListAsync();
             var list = secretaries.ToList();
-            List<(int Id, SecretaryDto secretary)> Secretaries_List = new List<(int Id, SecretaryDto secretary)>();
+            List<SecretaryResponseDto> Secretaries_List = new List<SecretaryResponseDto>();
 
             for (int i = 0; i < secretaries.Count(); i++)
             {
                 if (!list[i].IsDeleted)
                 {
-                    Secretaries_List.Add((list[i].IdS, _mapper.Map<SecretaryDto>(list[i])));
+                    SecretaryResponseDto answer = new SecretaryResponseDto();
+                    answer.Id = list[i].IdS;
+                    answer.secretary = _mapper.Map<SecretaryDto>(list[i]);
+                    Secretaries_List.Add(answer);
                 }
             }
 
             return Secretaries_List;
         }
 
-        public async Task<(int Id, SecretaryDto secretary)> UpdateSecretaryAsync((int Id, SecretaryDto secretaryDto) secretaryInfo)
+        public async Task<SecretaryResponseDto> UpdateSecretaryAsync(SecretaryResponseDto secretaryInfo)
         {
             var secretary = _secretaryRepository.GetById(secretaryInfo.Id);
-            if (!secretary.IsDeleted)
+            if (secretary.IsDeleted)
             {
-                return (0, null);
+                return null;
             }
-            _mapper.Map(secretaryInfo.secretaryDto, secretary);
+            _mapper.Map(secretaryInfo.secretary, secretary);
             await _secretaryRepository.UpdateAsync(secretary);
-            return (secretary.IdS, _mapper.Map<SecretaryDto>(secretary));
+            SecretaryResponseDto answer = new SecretaryResponseDto();
+            answer.Id = secretary.IdS;
+            answer.secretary = _mapper.Map<SecretaryDto>(secretary);
+            return answer;
         }
 
 

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Administrator;
 
 namespace SchoolManagement.Application.ApplicationServices.Services
 {
@@ -20,66 +21,76 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         private readonly Triggers _trigger;
         private readonly IMapper _mapper;
 
-        public AdministratorService(IAdministratorRepository administratorRepository, IMapper mapper, Triggers triggers)
+        public AdministratorService(IAdministratorRepository administratorRepository, IMapper mapper, Triggers trigger)
         {
             _administratorRepository = administratorRepository;
-            _trigger = triggers;
             _mapper = mapper;
+            _trigger = trigger;
         }
 
-        public async Task<(int Id, AdministratorDto administrator, string UserName, string Password)> CreateAdministratorAsync(AdministratorDto administratorDto)
+        public async Task<AdministratorCreateResponseDto> CreateAdministratorAsync(AdministratorDto administratorDto)
         {
             var administrator = _mapper.Map<Administrator>(administratorDto);
             (User, string) User = await _trigger.RegisterUser(administratorDto.AdminName, "Admin");
             administrator.UserId = User.Item1.Id;
             var savedAdministrator = await _administratorRepository.CreateAsync(administrator);
-
-            administratorDto = _mapper.Map<AdministratorDto>(savedAdministrator);
-
-            return (administrator.AdminId, administratorDto, User.Item1.UserName, User.Item2);
+            AdministratorCreateResponseDto answer = new AdministratorCreateResponseDto();
+            answer.Id = administrator.AdminId;
+            answer.Administrator = _mapper.Map<AdministratorDto>(savedAdministrator);
+            answer.UserName = User.Item1.UserName;
+            answer.Password = User.Item2;
+            return answer;
         }
 
-        public async Task<(int Id, AdministratorDto administrator)> DeleteAdministratorByIdAsync(int administratorId)
+        public async Task<AdministratorResponseDto> DeleteAdministratorByIdAsync(int administratorId)
         {
             var administrator = _administratorRepository.GetById(administratorId);
             if (administrator.IsDeleted)
             {
-                return (0, null);
+                return null;
             }
             administrator.IsDeleted = true;
             await _administratorRepository.UpdateAsync(administrator);
-            return (administrator.AdminId, _mapper.Map<AdministratorDto>(administrator));
+            AdministratorResponseDto answer = new AdministratorResponseDto();
+            answer.Id = administrator.AdminId;
+            answer.Administrator = _mapper.Map<AdministratorDto>(administrator);
+            return answer;
         }
 
-
-        public async Task<IEnumerable<(int Id, AdministratorDto administrator)>> ListAdministratorAsync()
+        public async Task<IEnumerable<AdministratorResponseDto>> ListAdministratorsAsync()
         {
             var administrators = await _administratorRepository.ListAsync();
             var list = administrators.ToList();
-            List<(int Id, AdministratorDto administrator)> Administrators_List = new();
+            List<AdministratorResponseDto> Administrators_List = new List<AdministratorResponseDto>();
+
             for (int i = 0; i < administrators.Count(); i++)
             {
                 if (!list[i].IsDeleted)
                 {
-                    Administrators_List.Add((list[i].AdminId, _mapper.Map<AdministratorDto>(list[i])));
+                    AdministratorResponseDto answer = new AdministratorResponseDto();
+                    answer.Id = list[i].AdminId;
+                    answer.Administrator = _mapper.Map<AdministratorDto>(list[i]);
+                    Administrators_List.Add(answer);
                 }
             }
 
             return Administrators_List;
         }
 
-        public async Task<(int Id, AdministratorDto administrator)> UpdateAdministratorAsync((int Id, AdministratorDto administratorDto) administratorInfo)
+        public async Task<AdministratorResponseDto> UpdateAdministratorAsync(AdministratorResponseDto administratorInfo)
         {
             var administrator = _administratorRepository.GetById(administratorInfo.Id);
-            if (!administrator.IsDeleted)
+            if (administrator.IsDeleted)
             {
-                return (0, null);
+                return null;
             }
-            _mapper.Map(administratorInfo.administratorDto, administrator);
+            _mapper.Map(administratorInfo.Administrator, administrator);
             await _administratorRepository.UpdateAsync(administrator);
-            return (administrator.AdminId, _mapper.Map<AdministratorDto>(administrator));
+            AdministratorResponseDto answer = new AdministratorResponseDto();
+            answer.Id = administrator.AdminId;
+            answer.Administrator = _mapper.Map<AdministratorDto>(administrator);
+            return answer;
         }
-
-
     }
+
 }

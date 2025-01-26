@@ -20,6 +20,9 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
             CreateMap<RegisterDto, User>();
             CreateMap<LoginDto, User>();
 
+            CreateMap<AdministratorDto, Administrator>();
+            CreateMap<Administrator, AdministratorDto>();
+
             CreateMap<ProfessorDto, Professor>();
             CreateMap<Professor, ProfessorDto>();
 
