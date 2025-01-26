@@ -26,7 +26,7 @@ export class AuthGuard implements CanActivate {
     }
   }
 
-  
+
   login(credentials: { userName: string; password: string }) {
     console.log("Intentando iniciar sesión...");
     return this.http.post('http://localhost:5164/identity/login', credentials).pipe(
@@ -42,19 +42,24 @@ export class AuthGuard implements CanActivate {
       tap((response) => {
         console.log("Respuesta en tap:");
         console.dir(response, { depth: null });
-        
+
         const role = response.role;
-        localStorage.setItem('role', role);
-        this.isLoggedIn = true;
-        console.log("Rol obtenido:", role);
-        
+      const token = response.token;
+
+      // Guardar el token en localStorage
+      localStorage.setItem('token', token); // Aquí se guarda el token
+      localStorage.setItem('role', role); // Guardar el rol en localStorage
+      this.isLoggedIn = true;
+      console.log("Rol obtenido:", role);
+      console.log("Token guardado:", token);
+
         // Aquí llamamos a redirectUser con el rol
         this.redirectUser(role);
       }),
      )
     ;
   }
- 
+
   logout() {
     this.isLoggedIn = false;
     this.userRole = null;
