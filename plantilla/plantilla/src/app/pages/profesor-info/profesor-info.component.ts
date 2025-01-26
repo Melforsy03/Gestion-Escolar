@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, AfterViewChecked} from "@angular/core";
+import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { Chart } from "chart.js";
 import { ProfesorService } from "src/app/service/profesor-info.service";
 
@@ -7,12 +7,11 @@ import { ProfesorService } from "src/app/service/profesor-info.service";
   templateUrl: "profesor-info.component.html",
   styleUrls: ["./profesor-info.component.css"],
 })
-export class ProfesorComponent implements OnInit, AfterViewInit, AfterViewChecked {
+export class ProfesorComponent implements OnInit, AfterViewInit {
   globalSearchQuery: string = "";
   profesores: any[] = [];
   filteredProfesores: any[] = [];
   graficosVisibles: boolean[] = [];
-  renderedCharts: Set<number> = new Set();
   searchQuery: string = "";
   showAddProfesorForm: boolean = false;
   newProfesor = {
@@ -34,48 +33,23 @@ export class ProfesorComponent implements OnInit, AfterViewInit, AfterViewChecke
   constructor(private profesorService: ProfesorService) {}
 
   ngOnInit(): void {
-    this.profesorService.listProfesores().subscribe(
-      (data) => {
-        console.log('Datos recibidos del servicio:', data);
-        this.profesores = Array.isArray(data) ? data : [data]; // Verifica si es un arreglo
-        this.filteredProfesores = [...this.profesores]; // Asegúrate de inicializar también los datos filtrados
-      },
-      (error) => {
-        console.error('Error al obtener profesores:', error);
-      }
-    );
-  }
-
-
-  ngAfterViewChecked(): void {
-    // Asegurarse de que los gráficos se renderizan al mostrar el contenedor
-    this.graficosVisibles.forEach((visible, index) => {
-      if (visible && !this.renderedCharts.has(index)) {
-        const canvas = document.getElementById(`graficoProfesor${index}`) as HTMLCanvasElement;
-        if (canvas) {
-          this.renderGrafico(index); // Renderiza el gráfico
-          this.renderedCharts.add(index); // Marca el gráfico como renderizado
-        }
-      }
-    });
+    this.loadProfesores();
   }
   ngAfterViewInit(): void {
     // Inicialización, si fuera necesario
   }
 
 
-
-
   // Cargar profesores desde el servicio
   loadProfesores(): void {
     this.profesorService.listProfesores().subscribe(
       (data) => {
-        console.log('Datos recibidos del servicio:', data);
-        this.profesores = data; // Asigna los datos a la variable profesores
-        this.filteredProfesores = [...this.profesores]; // Inicializa la lista filtrada
+        this.profesores = data;
+        this.filteredProfesores = [...this.profesores];
+        this.graficosVisibles = new Array(this.profesores.length).fill(false);
       },
       (error) => {
-        console.error('Error al obtener profesores:', error);
+        console.error("Error al cargar profesores:", error);
       }
     );
   }
@@ -98,7 +72,7 @@ export class ProfesorComponent implements OnInit, AfterViewInit, AfterViewChecke
   filterProfesores(): void {
     if (this.searchQuery) {
       this.filteredProfesores = this.profesores.filter((profesor) =>
-        (`${profesor.nombre} ${profesor.apellidos}`)
+        `${profesor.nombre} ${profesor.apellidos}`
           .toLowerCase()
           .includes(this.searchQuery.toLowerCase())
       );
@@ -108,41 +82,30 @@ export class ProfesorComponent implements OnInit, AfterViewInit, AfterViewChecke
   }
 
   addProfesor(): void {
-    if (!this.newProfesor.nombre || !this.newProfesor.apellidos || !this.newProfesor.especialidad) {
-      console.error("Faltan datos obligatorios para crear un profesor.");
-      return;
+    if (this.newProfesor.nombre && this.newProfesor.apellidos && this.newProfesor.especialidad) {
+      this.profesorService.createProfesor(this.newProfesor).subscribe(
+        (profesorCreado) => {
+          this.profesores.push(profesorCreado);
+          this.filteredProfesores = [...this.profesores];
+          this.newProfesor = { nombre: "", apellidos: "", especialidad: "", contrato: "Tiempo Completo", asignaturas: [] }; // Reset form
+          this.selectedAsignaturas = [];
+          this.showAddProfesorForm = false; // Cerrar el modal después de guardar
+        },
+        (error) => {
+          console.error("Error al agregar profesor:", error);
+        }
+      );
     }
-
-    this.profesorService.createProfesor(this.newProfesor).subscribe(
-      (profesorCreado) => {
-        this.profesores.push(profesorCreado);
-        this.filteredProfesores = [...this.profesores];
-        this.newProfesor = { nombre: "", apellidos: "", especialidad: "", contrato: "Tiempo Completo", asignaturas: [] };
-        this.selectedAsignaturas = [];
-        this.showAddProfesorForm = false;
-      },
-      (error) => {
-        console.error("Error al agregar profesor:", error);
-      }
-    );
   }
 
-
   toggleGrafico(index: number): void {
-    if (!this.profesores[index] || !this.profesores[index].asignaturas) {
-      console.error('Datos incompletos para renderizar gráfico.');
-      return;
-    }
-
     this.graficosVisibles[index] = !this.graficosVisibles[index];
     if (this.graficosVisibles[index]) {
       setTimeout(() => {
         this.renderGrafico(index);
-      }, 0); // Espera un ciclo para asegurar que el DOM se haya actualizado.
+      }, 0);
     }
   }
-
-
 
   calcularPromedio(calificaciones: number[]): number {
     const suma = calificaciones.reduce((acc, curr) => acc + curr, 0);
@@ -150,21 +113,12 @@ export class ProfesorComponent implements OnInit, AfterViewInit, AfterViewChecke
   }
 
   renderGrafico(index: number): void {
-
-
     const profesor = this.profesores[index];
-    const canvasId = `graficoProfesor${index}`;
-    const ctx = document.getElementById(canvasId) as HTMLCanvasElement;
-    if (!profesor.asignaturas || profesor.asignaturas.length === 0) {
-      console.warn(`El profesor ${profesor.nameProf} no tiene asignaturas.`);
-      return;
-    }
-    if (!ctx) {
-      console.error(`No se encontró el elemento con ID: ${canvasId}`);
-      return;
-    }
+    const ctx = document.getElementById(`graficoProfesor${index}`) as HTMLCanvasElement;
 
-    // Resto del código para crear el gráfico
+    if (!ctx) return;
+
+    // Calcular el promedio de las calificaciones de cada curso
     const promedios = profesor.asignaturas.map((asignatura: any) =>
       this.calcularPromedio(asignatura.calificaciones)
     );
@@ -196,15 +150,12 @@ export class ProfesorComponent implements OnInit, AfterViewInit, AfterViewChecke
     });
   }
 
-
   updateDisplayProfesor(): void {
     const query = this.globalSearchQuery.toLowerCase();
-
-    this.filteredProfesores = this.profesores.filter((profesor) => {
-      const nombre = profesor.nombre ? profesor.nombre.toLowerCase() : '';
-      const apellidos = profesor.apellidos ? profesor.apellidos.toLowerCase() : '';
-
-      return nombre.includes(query) || apellidos.includes(query);
-    });
+    this.filteredProfesores = this.profesores.filter(
+      (profesor) =>
+        profesor.nombre.toLowerCase().includes(query) ||
+        profesor.apellidos.toLowerCase().includes(query)
+    );
   }
 }

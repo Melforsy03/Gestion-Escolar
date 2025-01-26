@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-solicitud',
   templateUrl: './solicitud.component.html',
@@ -9,39 +9,44 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 })
 export class SolicitudComponent implements OnInit {
   solicitudForm: FormGroup;
+  result: any = null; // Para almacenar los resultados del endpoint
 
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder, private http: HttpClient) {
     this.solicitudForm = this.fb.group({
-      aula: ['', Validators.required],
-      medios: this.fb.array([this.createMedio()])
+      aula: [''],
+      medios: this.fb.array([]),
     });
   }
 
-  get medios(): FormArray {
+  get medios() {
     return this.solicitudForm.get('medios') as FormArray;
   }
 
-  createMedio(): FormGroup {
-    return this.fb.group({
-      nombre: ['', Validators.required],
-      cantidad: [1, [Validators.required, Validators.min(1)]]
+  addMedio() {
+    const medioForm = this.fb.group({
+      nombre: [''],
+      cantidad: ['']
     });
+    this.medios.push(medioForm);
   }
 
-  addMedio(): void {
-    this.medios.push(this.createMedio());
-  }
-
-  removeMedio(index: number): void {
+  removeMedio(index: number) {
     this.medios.removeAt(index);
   }
+ngOnInit(): void {
+    
+}
+  onSubmit() {
+    const userName = 'ProfesorX'; // Reemplazar con el nombre del profesor dinámico si es necesario
+    const payload = { userName };
 
-  onSubmit(): void {
-    if (this.solicitudForm.valid) {
-      console.log(this.solicitudForm.value);
-      // Aquí puedes manejar el envío del formulario, por ejemplo, enviarlo a una API
-    }
+    this.http.post('http://localhost:3000/checkAviableClassRoomsAndMeans', payload).subscribe(
+      (response) => {
+        this.result = response; // Guardar la respuesta para visualizarla
+      },
+      (error) => {
+        console.error('Error en la solicitud:', error);
+      }
+    );
   }
 }

@@ -31,6 +31,43 @@
           <button type="button" class="custom-butto" (click)="addMedio()">Agregar Medio</button>
           <button type="submit" class="custom-butto">Enviar Solicitud</button>
         </form>
+          <!-- Sección para mostrar los resultados -->
+  <div class="result-container mt-4" *ngIf="result">
+    <h3>Resultados del Endpoint</h3>
+    <div>
+      <h4>Medios Disponibles</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Asignatura</th>
+            <th>Medio</th>
+            <th>Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entry of result.dictionary | keyvalue">
+            <td rowspan="{{ entry.value.length }}">{{ entry.key }}</td>
+            <td *ngFor="let medio of entry.value; let i = index">
+              {{ medio[0] }}
+            </td>
+            <td *ngFor="let medio of entry.value; let i = index">
+              {{ medio[1] }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <h4>Aulas Disponibles</h4>
+      <ul>
+        <li *ngFor="let aula of result.availableRooms">
+          Aula {{ aula }}
+        </li>
+      </ul>
+    </div>
+  </div>
       </div>
     </div>
   </div>
+
