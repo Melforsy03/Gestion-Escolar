@@ -1,4 +1,6 @@
 ﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Professor;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Student;
 using SchoolManagement.Infrastructure.Identity;
 using System;
 using System.Collections.Generic;
@@ -10,9 +12,9 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IStudentService
     {
-        Task<(int Id, StudentDto student, string UserName, string Password)> CreateStudentAsync(StudentDto studentDto);
-        Task<(int Id, StudentDto student)> UpdateStudentAsync((int Id, StudentDto studentDto) studentInfo);
-        Task<IEnumerable<(int Id, StudentDto student)>> ListStudentAsync();
-        Task<(int Id, StudentDto student)> DeleteStudentByIdAsync(int studentDto);
+        Task<StudentCreateResponseDto> CreateStudentAsync(StudentDto studentDto);
+        Task<StudentResponseDto> UpdateStudentAsync(StudentResponseDto studentInfo);
+        Task<IEnumerable<StudentResponseDto>> ListStudentAsync();
+        Task<StudentResponseDto> DeleteStudentByIdAsync(int studentDto);
     }
 }

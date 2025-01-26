@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Professor;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Student;
 using SchoolManagement.Application.Common;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
@@ -27,7 +29,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _trigger = trigger;
         }
 
-        public async Task<(int Id, StudentDto student, string UserName, string Password)> CreateStudentAsync(StudentDto studentDto)
+        public async Task<StudentCreateResponseDto> CreateStudentAsync(StudentDto studentDto)
         {
             var student = _mapper.Map<Student>(studentDto);
             (User, string) User = await _trigger.RegisterUser(studentDto.NameStud, "Student");
@@ -35,48 +37,62 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             var savedStudent = await _studentRepository.CreateAsync(student);
 
             studentDto = _mapper.Map<StudentDto>(savedStudent);
-            return (student.IdStud, studentDto, User.Item1.UserName, User.Item2);
+            StudentCreateResponseDto answer = new StudentCreateResponseDto();
+            answer.Id = student.IdStud;
+            answer.student = studentDto;
+            answer.UserName = User.Item1.UserName;
+            answer.Password = User.Item2;
+            return answer;
         }
 
-        public async Task<(int Id, StudentDto student)> DeleteStudentByIdAsync(int studentId)
+        public async Task<StudentResponseDto> DeleteStudentByIdAsync(int studentId)
         {
             var student = _studentRepository.GetById(studentId);
             if (student.IsDeleted)
             {
-                return (0,null);
+                return null;
             }
             student.IsDeleted = true;
             await _studentRepository.UpdateAsync(student);
-            return (student.IdStud, _mapper.Map<StudentDto>(student));
+            StudentResponseDto answer = new StudentResponseDto();
+            answer.Id = student.IdStud;
+            answer.student = _mapper.Map<StudentDto>(student);
+            return answer;
         }
 
-        public async Task<IEnumerable<(int Id, StudentDto student)>> ListStudentAsync()
+        public async Task<IEnumerable<StudentResponseDto>> ListStudentAsync()
         {
             var students = await _studentRepository.ListAsync();
             var list = students.ToList();
-            List<(int Id, StudentDto student)> Students_List = new();
+            List<StudentResponseDto> Students_List = new();
 
             for (int i = 0; i < students.Count(); i++)
             {
                 if (!list[i].IsDeleted)
                 {
-                    Students_List.Add((list[i].IdStud, _mapper.Map<StudentDto>(list[i])));
+                    StudentResponseDto answer = new StudentResponseDto();
+                    answer.Id = list[i].IdStud;
+                    answer.student = _mapper.Map<StudentDto>(list[i]);
+                    Students_List.Add(answer);
                 }
             }
 
             return Students_List;
         }
 
-        public async Task<(int Id, StudentDto student)> UpdateStudentAsync((int Id, StudentDto studentDto) studentInfo)
+        public async Task<StudentResponseDto> UpdateStudentAsync(StudentResponseDto studentInfo)
         {
             var student = _studentRepository.GetById(studentInfo.Id);
-            if (!student.IsDeleted)
+            if (student.IsDeleted)
             {
-                return (0,null);
+                return null;
             }
-            _mapper.Map(studentInfo.studentDto, student);
+            _mapper.Map(studentInfo.student, student);
             await _studentRepository.UpdateAsync(student);
-            return (student.IdStud, _mapper.Map<StudentDto>(student));
+            StudentResponseDto answer = new StudentResponseDto();
+            answer.Id = student.IdStud;
+            answer.student = _mapper.Map<StudentDto>(student);
+            return answer;
         }
 
     }
