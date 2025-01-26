@@ -17,6 +17,8 @@ import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InventarioComponent } from './pages/inventario/inventario.component';
 import { PeticionesComponent } from './pages/peticiones/peticiones.component';
+import { InfoSecretariaComponent } from './pages/info-secretaria/info-secretaria.component';
+import { InfoAdministradorComponent } from './pages/info-administrador/info-administrador.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -32,7 +34,7 @@ import { PeticionesComponent } from './pages/peticiones/peticiones.component';
    
 
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, InventarioComponent, PeticionesComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, InventarioComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent],
   providers: [StudentService],
   bootstrap: [AppComponent]
 })

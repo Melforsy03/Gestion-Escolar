@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const userRole = localStorage.getItem('role');
     const expectedRole = route.data['role'];
-
+    const token  = localStorage.getItem('token');
     if (userRole === expectedRole) {
       return true;
     } else {
@@ -44,7 +44,9 @@ export class AuthGuard implements CanActivate {
         console.dir(response, { depth: null });
         
         const role = response.role;
+        const token = response.token;
         localStorage.setItem('role', role);
+        localStorage.setItem('token',token);
         this.isLoggedIn = true;
         console.log("Rol obtenido:", role);
         
@@ -63,7 +65,9 @@ export class AuthGuard implements CanActivate {
   isAuthenticated(): boolean {
     return this.isLoggedIn;
   }
-
+  getToken () : string | null{
+    return localStorage.getItem('token');
+  }
   getUserRole(): string | null {
     console.log("llego")
     return localStorage.getItem('role');

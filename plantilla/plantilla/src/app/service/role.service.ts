@@ -37,6 +37,9 @@ export class RoleService {
           { label: 'Informacion-Estudiantes', path: '/estudiantes', icon: 'person' },
           { label: 'Gestionar Calificaciones', path: '/info-estudiantes', icon: 'bx bx-user' },
           { label: 'Peticiones', path: '/peticiones', icon: 'bx bx-user' },
+          { label: 'info-secretaria', path: '/info-secretaria', icon: 'bx bx-user' },
+          { label: 'info-administrador', path: '/info-administrador', icon: 'bx bx-user' },
+
         ],
       },
   ];
