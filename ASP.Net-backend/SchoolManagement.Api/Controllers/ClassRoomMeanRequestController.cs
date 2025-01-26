@@ -28,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPost]
         [Route("reserveClassRoomAndMeans")]
         [Authorize(Roles = "SuperAdmin,Professor")]
-        public async Task<IActionResult> ReserveClassRoomAndMean (ClassRoomMeanRequestGetAviableDto classRoomMeanRequest)
+        public async Task<IActionResult> ReserveClassRoomAndMean (ClassRoomMeanRequestReserveDto classRoomMeanRequest)
         {
             var answer = await _classRoomMeanRequestService.ReserveClassRoomAndMeanAsync(classRoomMeanRequest);
             return Ok(answer);
