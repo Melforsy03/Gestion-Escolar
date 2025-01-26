@@ -38,9 +38,9 @@ namespace SchoolManagement.Api.Controllers
         [HttpPut]
         [Route("update")]
         [Authorize(Roles = "SuperAdmin")]
-        public async Task<ActionResult> UpdateAdministrator(AdministratorDto administrator)
+        public async Task<ActionResult> UpdateAdministrator((int Id, AdministratorDto administrator) administratorInfo)
         {
-            var updatedAdministrator = await _administratorService.UpdateAdministratorAsync(administrator);
+            var updatedAdministrator = await _administratorService.UpdateAdministratorAsync(administratorInfo);
             return Ok(updatedAdministrator);
         }
 

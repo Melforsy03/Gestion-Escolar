@@ -27,58 +27,56 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _trigger = trigger;
         }
 
-        public async Task<StudentDto> CreateStudentAsync(StudentDto studentDto)
+        public async Task<(int Id, StudentDto student, string UserName, string Password)> CreateStudentAsync(StudentDto studentDto)
         {
             var student = _mapper.Map<Student>(studentDto);
-            User User = await _trigger.RegisterUser(studentDto.NameStud, "Student");
-            student.UserId = User.Id;
+            (User, string) User = await _trigger.RegisterUser(studentDto.NameStud, "Student");
+            student.UserId = User.Item1.Id;
             var savedStudent = await _studentRepository.CreateAsync(student);
 
             studentDto = _mapper.Map<StudentDto>(savedStudent);
-            studentDto.UserName = User.UserName;
-            studentDto.PasswordHash = User.PasswordHash;
-            return studentDto;
+            return (student.IdStud, studentDto, User.Item1.UserName, User.Item2);
         }
 
-        public async Task<StudentDto> DeleteStudentByIdAsync(int studentId)
+        public async Task<(int Id, StudentDto student)> DeleteStudentByIdAsync(int studentId)
         {
             var student = _studentRepository.GetById(studentId);
             if (student.IsDeleted)
             {
-                return null;
+                return (0,null);
             }
             student.IsDeleted = true;
             await _studentRepository.UpdateAsync(student);
-            return _mapper.Map<StudentDto>(student);
+            return (student.IdStud, _mapper.Map<StudentDto>(student));
         }
 
-        public async Task<IEnumerable<StudentDto>> ListStudentAsync()
+        public async Task<IEnumerable<(int Id, StudentDto student)>> ListStudentAsync()
         {
             var students = await _studentRepository.ListAsync();
             var list = students.ToList();
-            List<StudentDto> Students_List = new();
+            List<(int Id, StudentDto student)> Students_List = new();
 
             for (int i = 0; i < students.Count(); i++)
             {
                 if (!list[i].IsDeleted)
                 {
-                    Students_List.Add(_mapper.Map<StudentDto>(list[i]));
+                    Students_List.Add((list[i].IdStud, _mapper.Map<StudentDto>(list[i])));
                 }
             }
 
             return Students_List;
         }
 
-        public async Task<StudentDto> UpdateStudentAsync(StudentDto studentDto)
+        public async Task<(int Id, StudentDto student)> UpdateStudentAsync((int Id, StudentDto studentDto) studentInfo)
         {
-            var student = _studentRepository.GetById(studentDto.IdStud);
+            var student = _studentRepository.GetById(studentInfo.Id);
             if (!student.IsDeleted)
             {
-                return null;
+                return (0,null);
             }
-            _mapper.Map(studentDto, student);
+            _mapper.Map(studentInfo.studentDto, student);
             await _studentRepository.UpdateAsync(student);
-            return _mapper.Map<StudentDto>(student);
+            return (student.IdStud, _mapper.Map<StudentDto>(student));
         }
 
     }

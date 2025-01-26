@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Professor;
 using SchoolManagement.Application.ApplicationServices.Services;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.Identity;
@@ -22,16 +23,16 @@ namespace SchoolManagement.Api.Controllers
         [HttpPost]
         [Route("create")]
         [Authorize(Roles = "SuperAdmin, Secretary")]
-        public async Task<IActionResult> CreateProfessor(ProfessorDto professor)
+        public async Task<IActionResult> CreateProfessor(ProfessorDto professorDto)
         {
-            var professor2 = await _professorService.CreateProfessorAsync(professor);
+            var professor2 = await _professorService.CreateProfessorAsync(professorDto);
             return Ok(professor2);
         }
 
         [HttpGet]
         [Route("list")]
         [Authorize(Roles = "SuperAdmin, Scretary")]
-        public async Task<ActionResult<IEnumerable<Professor>>> ListProfessor()
+        public async Task<ActionResult<IEnumerable<ProfessorResponseDto>>> ListProfessor()
         {
             var professor = await _professorService.ListProfessorAsync();
             return Ok(professor);
@@ -40,10 +41,10 @@ namespace SchoolManagement.Api.Controllers
         [HttpPut]
         [Route("update")]
         [Authorize(Roles = "SuperAdmin, Secretary")]
-        public async Task<ActionResult> UpdateProfessor(ProfessorDto professor)
+        public async Task<ActionResult> UpdateProfessor(ProfessorResponseDto professorInfo)
         {
-            var _professor = await _professorService.UpdateProfessorAsync(professor);
-            return Ok(_professor);
+            var professor = await _professorService.UpdateProfessorAsync(professorInfo);
+            return Ok(professor);
         }
 
         [HttpDelete]

@@ -10,9 +10,9 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IStudentService
     {
-        Task<StudentDto> CreateStudentAsync(StudentDto studentDto);
-        Task<StudentDto> UpdateStudentAsync(StudentDto studentDto);
-        Task<IEnumerable<StudentDto>> ListStudentAsync();
-        Task<StudentDto> DeleteStudentByIdAsync(int studentDto);
+        Task<(int Id, StudentDto student, string UserName, string Password)> CreateStudentAsync(StudentDto studentDto);
+        Task<(int Id, StudentDto student)> UpdateStudentAsync((int Id, StudentDto studentDto) studentInfo);
+        Task<IEnumerable<(int Id, StudentDto student)>> ListStudentAsync();
+        Task<(int Id, StudentDto student)> DeleteStudentByIdAsync(int studentDto);
     }
 }

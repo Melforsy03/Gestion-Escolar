@@ -3,6 +3,7 @@ using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Domain.Relations;
+using SchoolManagement.Infrastructure;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using SchoolManagement.Infrastructure.DataAccess.Repository;
 using System;
@@ -19,19 +20,24 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         private readonly IProfessorRepository _professorRepository;
         private readonly ISubjectRepository _subjectRepository;
         private readonly IMapper _mapper;
+        private readonly Context _context;
 
-        public ProfessorSubjectService(IProfessorSubjectRepository professorSubjectRepository, ISubjectRepository subjectRepository, IProfessorRepository professorRepository, IMapper mapper)
+        public ProfessorSubjectService(Context context, IProfessorSubjectRepository professorSubjectRepository, ISubjectRepository subjectRepository, IProfessorRepository professorRepository, IMapper mapper)
         {
             _professorSubjectRepository = professorSubjectRepository;
             _professorRepository = professorRepository;
             _subjectRepository = subjectRepository;
             _mapper = mapper;
+            _context = context;
         }
 
         public async Task<ProfessorSubjectDto> CreateProfessorSubjectAsync(ProfessorSubjectDto professorSubjectDto)
         {
 
             var professorSubject = _mapper.Map<ProfessorSubject>(professorSubjectDto);
+
+            if (_context.Professors.Find(professorSubject.IdProf) == null || _context.Subjects.Find(professorSubject.IdSub) == null) return null;
+
             professorSubject.Professor = _professorRepository.GetById(professorSubjectDto.IdProf);
             professorSubject.Subject = _subjectRepository.GetById(professorSubjectDto.IdSub);
             var savedProfessorSubject = await _professorSubjectRepository.CreateAsync(professorSubject);

@@ -17,6 +17,6 @@ namespace SchoolManagement.Domain.Entities
         public ClassRoom classRoom { get; set; } = new ClassRoom();
         public List<Professor> Professors { get; set; } = new List<Professor>();
         public List<Student> Students { get; set; } = new List<Student>();
-        public List<AuxiliaryMeans> AuxiliaryMeans { get; set; } = new List<AuxiliaryMeans> { };
+        public List<AuxiliaryMeans> AuxiliaryMeans { get; set; } = new List<AuxiliaryMeans>();
     }
 }

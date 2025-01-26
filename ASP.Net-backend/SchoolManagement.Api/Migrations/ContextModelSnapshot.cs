@@ -192,12 +192,6 @@ namespace SchoolManagement.Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMean"));
 
-                    b.Property<int>("Ammount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Aviable")
-                        .HasColumnType("int");
-
                     b.Property<int>("IdMaintenance")
                         .HasColumnType("int");
 
@@ -217,6 +211,9 @@ namespace SchoolManagement.Api.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<bool>("isActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isAviable")
                         .HasColumnType("bit");
 
                     b.Property<bool>("isDeleted")
@@ -475,19 +472,13 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.TechnologicalMeans", b =>
                 {
-                    b.Property<int>("Ammount")
+                    b.Property<int>("IdMean")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Ammount"));
-
-                    b.Property<int>("Aviable")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMean"));
 
                     b.Property<int>("IdMaintenance")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdMean")
                         .HasColumnType("int");
 
                     b.Property<string>("NameMean")
@@ -503,10 +494,13 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<bool>("isActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("isAviable")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("isDeleted")
                         .HasColumnType("bit");
 
-                    b.HasKey("Ammount");
+                    b.HasKey("IdMean");
 
                     b.ToTable("TechnologicalMeans");
                 });

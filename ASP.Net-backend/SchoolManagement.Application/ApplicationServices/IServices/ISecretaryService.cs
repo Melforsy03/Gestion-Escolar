@@ -10,9 +10,9 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface ISecretaryService
     {
-        Task<SecretaryDto> CreateSecretaryAsync(SecretaryDto secretaryDto);
-        Task<SecretaryDto> UpdateSecretaryAsync(SecretaryDto secretaryDto);
-        Task<IEnumerable<SecretaryDto>> ListSecretariesAsync();
-        Task<SecretaryDto> DeleteSecretaryByIdAsync(int secretaryId);
+        Task<(int Id, SecretaryDto secretary, string UserName, string Password)> CreateSecretaryAsync(SecretaryDto secretaryDto);
+        Task<(int Id, SecretaryDto secretary)> UpdateSecretaryAsync((int Id, SecretaryDto secretaryDto) professorInfo);
+        Task<IEnumerable<(int Id, SecretaryDto secretary)>> ListSecretariesAsync();
+        Task<(int Id, SecretaryDto secretary)> DeleteSecretaryByIdAsync(int secretaryId);
     }
 }

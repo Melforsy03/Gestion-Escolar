@@ -8,14 +8,9 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
 {
     public class ProfessorDto
     {
-        public int IdProf {  get; set; }
-        public string UserId { get; set; }
-        public string UserName { get; set; }
-        public string PasswordHash { get; set; }
         public string NameProf { get; set; }
         public string Contract { get; set; }
         public int Salary { get; set; }
-        public bool IsDean { get; set; }
         public int LaboralExperience { get; set; }
         
     }

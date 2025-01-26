@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SchoolManagement.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class mig0 : Migration
+    public partial class mig1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -73,8 +73,7 @@ namespace SchoolManagement.Api.Migrations
                     IdMean = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Type = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    Ammount = table.Column<int>(type: "int", nullable: false),
-                    Aviable = table.Column<int>(type: "int", nullable: false),
+                    isAviable = table.Column<bool>(type: "bit", nullable: false),
                     isActive = table.Column<bool>(type: "bit", nullable: false),
                     isDeleted = table.Column<bool>(type: "bit", nullable: false),
                     NameMean = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
@@ -150,10 +149,9 @@ namespace SchoolManagement.Api.Migrations
                 name: "TechnologicalMeans",
                 columns: table => new
                 {
-                    Ammount = table.Column<int>(type: "int", nullable: false)
+                    IdMean = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdMean = table.Column<int>(type: "int", nullable: false),
-                    Aviable = table.Column<int>(type: "int", nullable: false),
+                    isAviable = table.Column<bool>(type: "bit", nullable: false),
                     isActive = table.Column<bool>(type: "bit", nullable: false),
                     isDeleted = table.Column<bool>(type: "bit", nullable: false),
                     NameMean = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
@@ -162,7 +160,7 @@ namespace SchoolManagement.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TechnologicalMeans", x => x.Ammount);
+                    table.PrimaryKey("PK_TechnologicalMeans", x => x.IdMean);
                 });
 
             migrationBuilder.CreateTable(
@@ -366,7 +364,7 @@ namespace SchoolManagement.Api.Migrations
                         name: "FK_ClassRoomTechMeans_TechnologicalMeans_IdClassRoom",
                         column: x => x.IdClassRoom,
                         principalTable: "TechnologicalMeans",
-                        principalColumn: "Ammount",
+                        principalColumn: "IdMean",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -396,7 +394,7 @@ namespace SchoolManagement.Api.Migrations
                         name: "FK_Maintenances_TechnologicalMeans_IdTechMean",
                         column: x => x.IdTechMean,
                         principalTable: "TechnologicalMeans",
-                        principalColumn: "Ammount",
+                        principalColumn: "IdMean",
                         onDelete: ReferentialAction.Cascade);
                 });
 

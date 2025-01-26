@@ -9,10 +9,10 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IAdministratorService
     {
-        Task<AdministratorDto> CreateAdministratorAsync(AdministratorDto administratorDto);
-        Task<AdministratorDto> UpdateAdministratorAsync(AdministratorDto administratorDto);
-        Task<IEnumerable<AdministratorDto>> ListAdministratorAsync();
-        Task<AdministratorDto> DeleteAdministratorByIdAsync(int administratorId);
+        Task<(int Id, AdministratorDto administrator, string UserName, string Password)> CreateAdministratorAsync(AdministratorDto administratorDto);
+        Task<(int Id, AdministratorDto administrator)> UpdateAdministratorAsync((int Id, AdministratorDto administratorDto) administratorInfo);
+        Task<IEnumerable<(int Id, AdministratorDto administrator)>> ListAdministratorAsync();
+        Task<(int Id, AdministratorDto administrator)> DeleteAdministratorByIdAsync(int administratorId);
     }
 
 }

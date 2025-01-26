@@ -22,7 +22,7 @@ namespace SchoolManagement.Application.Common
             _roleManager = roleManager;
         }
 
-        public async Task<User> RegisterUser(string Name, string Role)
+        public async Task<(User, string)> RegisterUser(string Name, string Role)
         {
             string ReducedName = string.Empty;
             string Password = string.Empty;
@@ -64,7 +64,7 @@ namespace SchoolManagement.Application.Common
             await _userManager.CreateAsync(User, Password);
             await _userManager.AddToRoleAsync(User, Role);
 
-            return User;
+            return (User, Password);
         }
 
         private static string GenerateStrongPassword(int length)

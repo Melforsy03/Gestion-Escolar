@@ -9,8 +9,7 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
     public class AuxiliaryMeansDto
     {
         public int IdMean { get; set; } =0;
-        public int Aviable { get; set; } = 0;
-        public int Ammount { get; set; } = 0;
+        public bool Aviable { get; set; } = true;
         public string NameMean { get; set; } = string.Empty;
         public string State { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
