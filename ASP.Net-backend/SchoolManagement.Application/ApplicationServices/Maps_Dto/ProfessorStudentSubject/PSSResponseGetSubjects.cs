@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SchoolManagement.Domain.Entities;
 namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfessorStudentSubject
 {
-    public class ProfessorStudentSubjectDto
-    { 
-        public int IdProf { get; set; }
-        public int IdStudSub { get; set; }
-        public float StudentGrades { get; set; }
+    public class PSSResponseGetSubjects
+    {   
+        public List<Domain.Entities.Subject> subjects {  get; set; }
     }
 }

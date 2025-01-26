@@ -12,5 +12,7 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<ProfessorStudentSubjectResponseDto> CreateProfessorStudentSubjectAsync(ProfessorStudentSubjectDto professorStudentSubjectDto);
         Task<ProfessorStudentSubjectResponseDto> UpdateProfessorStudentSubjectAsync(ProfessorStudentSubjectResponseDto professorStudentSubjectDto);
         Task<IEnumerable<ProfessorStudentSubjectResponseDto>> ListProfessorStudentSubjectAsync();
+
+        //Task<PSSResponseGetSubjects> GetSubjectsOfProfessorAsync(string professorName);
     }
 }

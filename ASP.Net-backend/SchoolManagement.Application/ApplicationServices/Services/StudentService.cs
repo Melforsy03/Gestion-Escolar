@@ -93,6 +93,9 @@ namespace SchoolManagement.Application.ApplicationServices.Services
                 return null;
             }
             _mapper.Map(studentInfo.student, student);
+            var course = _courseRepository.GetById(studentInfo.Idc);
+            if (course == null) return null;
+            student.Course = course;
             await _studentRepository.UpdateAsync(student);
             StudentResponseDto answer = new StudentResponseDto();
             answer.Id = student.IdStud;
