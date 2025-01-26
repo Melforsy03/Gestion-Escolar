@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
+namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfStudSubCourse
 {
     public class ProfStudSubCourseDto
     {
-        public int IdProfStudSubCourse { get; set; } = 0;
         public int IdProf { get; set; } = 0;
         public int IdStud { get; set; } = 0;
         public int IdSub { get; set; } = 0;

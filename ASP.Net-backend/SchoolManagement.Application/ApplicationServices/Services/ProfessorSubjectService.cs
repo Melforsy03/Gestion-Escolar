@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomRestriction;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfessorSubject;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Domain.Relations;
 using SchoolManagement.Infrastructure;
@@ -31,7 +32,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _context = context;
         }
 
-        public async Task<ProfessorSubjectDto> CreateProfessorSubjectAsync(ProfessorSubjectDto professorSubjectDto)
+        public async Task<ProfessorSubjectResponseDto> CreateProfessorSubjectAsync(ProfessorSubjectDto professorSubjectDto)
         {
 
             var professorSubject = _mapper.Map<ProfessorSubject>(professorSubjectDto);
@@ -41,22 +42,25 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             professorSubject.Professor = _professorRepository.GetById(professorSubjectDto.IdProf);
             professorSubject.Subject = _subjectRepository.GetById(professorSubjectDto.IdSub);
             var savedProfessorSubject = await _professorSubjectRepository.CreateAsync(professorSubject);
-            return _mapper.Map<ProfessorSubjectDto>(savedProfessorSubject);
+            return _mapper.Map<ProfessorSubjectResponseDto>(savedProfessorSubject);
         }
 
-        public async Task DeleteProfessorSubjectByIdAsync(int professorSubjectId)
+        public async Task<ProfessorSubjectResponseDto> DeleteProfessorSubjectByIdAsync(int id)
         {
-            await _professorSubjectRepository.DeleteByIdAsync(professorSubjectId);
+            var professorSubject = _professorSubjectRepository.GetById(id);
+            var professorSubjectDto = _mapper.Map<ProfessorSubjectResponseDto>(professorSubject);
+            await _professorSubjectRepository.DeleteByIdAsync(id);
+            return professorSubjectDto;
         }
 
-        public async Task<IEnumerable<ProfessorSubjectDto>> ListProfessorSubjectAsync()
+        public async Task<IEnumerable<ProfessorSubjectResponseDto>> ListProfessorSubjectAsync()
         {
             var professorSubjects = await _professorSubjectRepository.ListAsync();
             var list = professorSubjects.ToList();
-            List<ProfessorSubjectDto> professorSubjects_List = new();
+            List<ProfessorSubjectResponseDto> professorSubjects_List = new();
             for (int i = 0; i < professorSubjects.Count(); i++)
             {
-                professorSubjects_List.Add(_mapper.Map<ProfessorSubjectDto>(list[i]));
+                professorSubjects_List.Add(_mapper.Map<ProfessorSubjectResponseDto>(list[i]));
             }
 
             return professorSubjects_List;

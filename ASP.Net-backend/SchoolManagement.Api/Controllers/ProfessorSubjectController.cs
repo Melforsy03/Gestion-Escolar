@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfessorSubject;
 using SchoolManagement.Domain.Relations;
 
 namespace SchoolManagement.Api.Controllers
@@ -29,7 +29,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpGet]
         [Route("list")]
         //[Authorize(Roles = "SuperAdmin")]
-        public async Task<ActionResult<IEnumerable<ProfessorSubject>>> ListProfessorSubjects()
+        public async Task<ActionResult<IEnumerable<ProfessorSubjectResponseDto>>> ListProfessorSubjects()
         {
             var professorSubjects = await _professorSubjectService.ListProfessorSubjectAsync();
             return Ok(professorSubjects);

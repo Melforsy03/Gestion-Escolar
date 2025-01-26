@@ -29,7 +29,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpGet]
         [Route("list")]
         [Authorize(Roles = "SuperAdmin, Professor")]
-        public async Task<ActionResult<IEnumerable<ClassRoom>>> ListClassRoom()
+        public async Task<ActionResult<IEnumerable<ClassRoomResponseDto>>> ListClassRoom()
         {
             var classRoom = await _classRoomService.ListClassRoomAsync();
             return Ok(classRoom);

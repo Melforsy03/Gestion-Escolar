@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfStudSubCourse;
 using SchoolManagement.Domain.Relations;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
@@ -30,7 +30,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public async Task<ProfStudSubCourseDto> CreateProfStudSubCourseAsync(ProfStudSubCourseDto profStudSubCourseDto)
+        public async Task<ProfStudSubCourseResponseDto> CreateProfStudSubCourseAsync(ProfStudSubCourseDto profStudSubCourseDto)
         {
             var profStudSubCourse = _mapper.Map<ProfStudSubCourse>(profStudSubCourseDto);
             profStudSubCourse.Course = await _courseRepository.GetByIdAsync(profStudSubCourseDto.IdCourse);
@@ -39,7 +39,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             profStudSubCourse.Subject = await _subjectRepository.GetByIdAsync(profStudSubCourseDto.IdSub);
 
             var savedProfStudSubCourse = await _profStudSubCourseRepository.CreateAsync(profStudSubCourse);
-            return _mapper.Map<ProfStudSubCourseDto>(savedProfStudSubCourse);
+            return _mapper.Map<ProfStudSubCourseResponseDto>(savedProfStudSubCourse);
         }
 
         public async Task DeleteProfStudSubCourseByIdAsync(int id)
@@ -47,26 +47,26 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             await _profStudSubCourseRepository.DeleteByIdAsync(id);
         }
 
-        public async Task<IEnumerable<ProfStudSubCourseDto>> ListProfStudSubCoursesAsync()
+        public async Task<IEnumerable<ProfStudSubCourseResponseDto>> ListProfStudSubCoursesAsync()
         {
             var profStudSubCourses = await _profStudSubCourseRepository.ListAsync();
             var list = profStudSubCourses.ToList();
-            List<ProfStudSubCourseDto> profStudSubCoursesList = new();
+            List<ProfStudSubCourseResponseDto> profStudSubCoursesList = new();
 
             for (int i = 0; i < list.Count; i++)
             {
-                profStudSubCoursesList.Add(_mapper.Map<ProfStudSubCourseDto>(list[i]));
+                profStudSubCoursesList.Add(_mapper.Map<ProfStudSubCourseResponseDto>(list[i]));
             }
 
             return profStudSubCoursesList;
         }
 
-        public async Task<ProfStudSubCourseDto> UpdateProfStudSubCourseAsync(ProfStudSubCourseDto profStudSubCourseDto)
+        public async Task<ProfStudSubCourseResponseDto> UpdateProfStudSubCourseAsync(ProfStudSubCourseResponseDto profStudSubCourseDto)
         {
             var profStudSubCourse = await _profStudSubCourseRepository.GetByIdAsync(profStudSubCourseDto.IdProfStudSubCourse);
             _mapper.Map(profStudSubCourseDto, profStudSubCourse);
             await _profStudSubCourseRepository.UpdateAsync(profStudSubCourse);
-            return _mapper.Map<ProfStudSubCourseDto>(profStudSubCourse);
+            return _mapper.Map<ProfStudSubCourseResponseDto>(profStudSubCourse);
         }
     }
 

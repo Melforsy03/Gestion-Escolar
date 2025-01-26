@@ -1,4 +1,4 @@
-﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto.TechnologicalMeans;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +9,9 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface ITechnologicalMeansService
     {
-        Task<TechnologicalMeansDto> CreateTechnologicalMeansAsync(TechnologicalMeansDto technologicalMeansDto);
-        Task<TechnologicalMeansDto> UpdateTechnologicalMeansAsync(TechnologicalMeansDto technologicalMeansDto);
-        Task<IEnumerable<TechnologicalMeansDto>> ListTechnologicalMeansAsync();
-        Task <TechnologicalMeansDto> DeleteTechnologicalMeansByIdAsync(int technologicalMeansDto);
+        Task<TechnologicalMeansResponseDto> CreateTechnologicalMeansAsync(TechnologicalMeansDto technologicalMeansDto);
+        Task<TechnologicalMeansResponseDto> UpdateTechnologicalMeansAsync(TechnologicalMeansResponseDto technologicalMeansDto);
+        Task<IEnumerable<TechnologicalMeansResponseDto>> ListTechnologicalMeansAsync();
+        Task <TechnologicalMeansResponseDto> DeleteTechnologicalMeansByIdAsync(int technologicalMeansDto);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.SecretaryProfessorStudentSubject;
 
 namespace SchoolManagement.Api.Controllers
 {
@@ -28,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpGet]
         [Route("list")]
         //[Authorize(Roles = "SuperAdmin")]
-        public async Task<ActionResult<IEnumerable<SecretaryProfessorStudentSubjectDto>>> ListSecretariesProfessorStudentSubjects()
+        public async Task<ActionResult<IEnumerable<SecretaryProfessorStudentSubjectResponseDto>>> ListSecretariesProfessorStudentSubjects()
         {
             var secretaries = await _secretaryProfessorStudentSubjectService.ListSecretariesProfessorStudentSubjectsAsync();
             return Ok(secretaries);
@@ -36,19 +36,12 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
-        public async Task<ActionResult> UpdateSecretaryProfessorStudentSubject(SecretaryProfessorStudentSubjectDto secretaryProfessorStudentSubject)
+        public async Task<ActionResult> UpdateSecretaryProfessorStudentSubject(SecretaryProfessorStudentSubjectResponseDto secretaryProfessorStudentSubject)
         {
             var updatedSecretary = await _secretaryProfessorStudentSubjectService.UpdateSecretaryProfessorStudentSubjectAsync(secretaryProfessorStudentSubject);
             return Ok(updatedSecretary);
         }
 
-        [HttpDelete]
-        [Route("delete")]
-        public async Task<IActionResult> DeleteSecretaryProfessorStudentSubject(int id)
-        {
-            await _secretaryProfessorStudentSubjectService.DeleteSecretaryProfessorStudentSubjectByIdAsync(id);
-            return Ok();
-        }
     }
 
 }

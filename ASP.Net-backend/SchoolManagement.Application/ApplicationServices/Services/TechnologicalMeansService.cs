@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.TechnologicalMeans;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
 using System.Collections.Generic;
@@ -21,42 +21,42 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public async Task<TechnologicalMeansDto> CreateTechnologicalMeansAsync(TechnologicalMeansDto technologicalMeansDto)
+        public async Task<TechnologicalMeansResponseDto> CreateTechnologicalMeansAsync(TechnologicalMeansDto technologicalMeansDto)
         {
             var technologicalMeans = _mapper.Map<Domain.Entities.TechnologicalMeans>(technologicalMeansDto);
             var savedTechnologicalMeans = await _technologicalMeansRepository.CreateAsync(technologicalMeans);
-            return _mapper.Map<TechnologicalMeansDto>(savedTechnologicalMeans);
+            return _mapper.Map<TechnologicalMeansResponseDto>(savedTechnologicalMeans);
         }
 
-        public async Task<TechnologicalMeansDto> DeleteTechnologicalMeansByIdAsync(int technologicalMeansId)
+        public async Task<TechnologicalMeansResponseDto> DeleteTechnologicalMeansByIdAsync(int technologicalMeansId)
         {
             var technologicalMean = _technologicalMeansRepository.GetById(technologicalMeansId);
             if (technologicalMean.isDeleted) return null;
             technologicalMean.isDeleted = true;
             await _technologicalMeansRepository.UpdateAsync(technologicalMean);
-            return _mapper.Map<TechnologicalMeansDto>(technologicalMean);
+            return _mapper.Map<TechnologicalMeansResponseDto>(technologicalMean);
         }
 
-        public async Task<IEnumerable<TechnologicalMeansDto>> ListTechnologicalMeansAsync()
+        public async Task<IEnumerable<TechnologicalMeansResponseDto>> ListTechnologicalMeansAsync()
         {
             var technologicalMeansList = await _technologicalMeansRepository.ListAsync();
             var list = technologicalMeansList.ToList();
-            List<TechnologicalMeansDto> technologicalMeansDtos = new();
+            List<TechnologicalMeansResponseDto> technologicalMeansDtos = new();
             for (int i = 0; i < technologicalMeansList.Count(); i++)
             {
-                if(!list[i].isDeleted) technologicalMeansDtos.Add(_mapper.Map<TechnologicalMeansDto>(list[i]));
+                if(!list[i].isDeleted) technologicalMeansDtos.Add(_mapper.Map<TechnologicalMeansResponseDto>(list[i]));
             }
 
             return technologicalMeansDtos;
         }
 
-        public async Task<TechnologicalMeansDto> UpdateTechnologicalMeansAsync(TechnologicalMeansDto technologicalMeansDto)
+        public async Task<TechnologicalMeansResponseDto> UpdateTechnologicalMeansAsync(TechnologicalMeansResponseDto technologicalMeansDto)
         {
             var technologicalMeans =  _technologicalMeansRepository.GetById(technologicalMeansDto.IdMean);
             if (technologicalMeans.isDeleted) return null;
             _mapper.Map(technologicalMeansDto, technologicalMeans);
             await _technologicalMeansRepository.UpdateAsync(technologicalMeans);
-            return _mapper.Map<TechnologicalMeansDto>(technologicalMeans);
+            return _mapper.Map<TechnologicalMeansResponseDto>(technologicalMeans);
         }
     }
 }

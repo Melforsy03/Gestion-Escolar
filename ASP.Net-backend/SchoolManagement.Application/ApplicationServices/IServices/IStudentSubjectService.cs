@@ -1,4 +1,5 @@
 ﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.StudentSubject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IStudentSubjectService
     {
-        Task<StudentSubjectDto> CreateStudentSubjectAsync(StudentSubjectDto studentSubjectDto);
-        Task<StudentSubjectDto> UpdateStudentSubjectAsync(StudentSubjectDto studentSubjectDto);
-        Task<IEnumerable<StudentSubjectDto>> ListStudentSubjectAsync();
+        Task<StudentSubjectResponseDto> CreateStudentSubjectAsync(StudentSubjectDto studentSubjectDto);
+        Task<StudentSubjectResponseDto> UpdateStudentSubjectAsync(StudentSubjectResponseDto studentSubjectDto);
+        Task<IEnumerable<StudentSubjectResponseDto>> ListStudentSubjectAsync();
     }
 }

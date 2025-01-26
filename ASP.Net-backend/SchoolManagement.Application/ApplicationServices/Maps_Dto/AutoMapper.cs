@@ -21,6 +21,12 @@ using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomTechMea
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.Maintenance;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.Restriction;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.Subject;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfessorStudentSubject;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfessorSubject;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.StudentSubject;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.TechnologicalMeans;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfStudSubCourse;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.SecretaryProfessorStudentSubject;
 
 namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
 {
@@ -47,11 +53,10 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
             CreateMap<Domain.Entities.Student, StudentDto>();
 
 
-            CreateMap<ProfessorSubjectDto, ProfessorSubject>();
-            CreateMap<ProfessorSubject, ProfessorSubjectDto>();
-
 
             //Entradas y salidas de Entidades(optimizacion)
+
+
 
             //Curso
             CreateMap<CourseDto, Domain.Entities.Course>();
@@ -103,27 +108,59 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
             CreateMap<SubjectResponseDto, Domain.Entities.Subject>();
             CreateMap<Domain.Entities.Subject, SubjectResponseDto>();
 
+            //Notas
+            CreateMap<ProfessorStudentSubjectDto, Domain.Relations.ProfessorStudentSubject>();
+            CreateMap<Domain.Relations.ProfessorStudentSubject, ProfessorStudentSubjectDto>();
 
-            //space
+            CreateMap<ProfessorStudentSubjectResponseDto, Domain.Relations.ProfessorStudentSubject>();
+            CreateMap<Domain.Relations.ProfessorStudentSubject, ProfessorStudentSubjectResponseDto>();
+
+            //Estudiante en Asignatura
+            CreateMap<StudentSubjectResponseDto, Domain.Relations.StudentSubject>();
+            CreateMap<Domain.Relations.StudentSubject, StudentSubjectResponseDto>();
+
+            CreateMap<StudentSubjectDto, Domain.Relations.StudentSubject>();
+            CreateMap<Domain.Relations.StudentSubject, StudentSubjectDto>();
+
+
+            //asignaturas del profesor
+            CreateMap<ProfessorSubjectDto, Domain.Relations.ProfessorSubject>();
+            CreateMap<Domain.Relations.ProfessorSubject, ProfessorSubjectDto>();
+
+            CreateMap<ProfessorSubjectDto, Domain.Relations.ProfessorSubject>();
+            CreateMap<Domain.Relations.ProfessorSubject, ProfessorSubjectDto>();
+
+
+            //medios tecnologicos
+            CreateMap<TechnologicalMeansResponseDto, Domain.Entities.TechnologicalMeans>();
+            CreateMap<Domain.Entities.TechnologicalMeans, TechnologicalMeansResponseDto>();
+
+            CreateMap<TechnologicalMeansDto, Domain.Entities.TechnologicalMeans>();
+            CreateMap<Domain.Entities.TechnologicalMeans, TechnologicalMeansDto>();
+
+
+            //Asignatura y medios auxiliares
+
+            CreateMap<SubjectAuxMeanDto, Domain.Relations.SubjectAuxMean>();
+            CreateMap<Domain.Relations.SubjectAuxMean, SubjectAuxMeanResponseDto>();
 
             CreateMap<SubjectAuxMeanResponseDto, Domain.Relations.SubjectAuxMean>();
             CreateMap< Domain.Relations.SubjectAuxMean, SubjectAuxMeanResponseDto >();
 
-            CreateMap<SecretaryProfessorStudentSubjectDto, SecretaryProfessorStudentSubject>();
-            CreateMap<SecretaryProfessorStudentSubject, SecretaryProfessorStudentSubjectDto>();
+            //Secretario asignando Notas
+            CreateMap<SecretaryProfessorStudentSubjectDto, Domain.Relations.SecretaryProfessorStudentSubject>();
+            CreateMap<Domain.Relations.SecretaryProfessorStudentSubject, SecretaryProfessorStudentSubjectDto>();
 
-            CreateMap<TechnologicalMeansDto, TechnologicalMeans>();
-            CreateMap<TechnologicalMeans, TechnologicalMeansDto>();
-
-            CreateMap<StudentSubjectDto, StudentSubject>();
-            CreateMap<StudentSubject, StudentSubjectDto>();
+            CreateMap<SecretaryProfessorStudentSubjectResponseDto, Domain.Relations.SecretaryProfessorStudentSubject>();
+            CreateMap<Domain.Relations.SecretaryProfessorStudentSubject, SecretaryProfessorStudentSubjectResponseDto>();
 
 
-            CreateMap<ProfessorStudentSubjectDto, ProfessorStudentSubject>();
-            CreateMap<ProfessorStudentSubject, ProfessorStudentSubjectDto>();
+            //relacion de profesor con asignatura en curso
+            CreateMap<ProfStudSubCourseResponseDto, Domain.Relations.ProfStudSubCourse>();
+            CreateMap<Domain.Relations.ProfStudSubCourse, ProfStudSubCourseResponseDto>();
 
-            CreateMap<ProfStudSubCourseDto, ProfStudSubCourse>();
-            CreateMap<ProfStudSubCourse, ProfStudSubCourseDto>();
+            CreateMap<ProfStudSubCourseDto,Domain.Relations.ProfStudSubCourse>();
+            CreateMap<Domain.Relations.ProfStudSubCourse, ProfStudSubCourseDto>();
         }
     }
 }

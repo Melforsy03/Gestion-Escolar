@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.SecretaryProfessorStudentSubject;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
 using System.Collections.Generic;
@@ -25,40 +25,35 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public async Task<SecretaryProfessorStudentSubjectDto> CreateSecretaryProfessorStudentSubjectAsync(SecretaryProfessorStudentSubjectDto secretaryProfessorStudentSubjectDto)
+        public async Task<SecretaryProfessorStudentSubjectResponseDto> CreateSecretaryProfessorStudentSubjectAsync(SecretaryProfessorStudentSubjectDto secretaryProfessorStudentSubjectDto)
         {
             var secretaryProfessorStudentSubject = _mapper.Map<Domain.Relations.SecretaryProfessorStudentSubject>(secretaryProfessorStudentSubjectDto);
             secretaryProfessorStudentSubject.Secretary = await _secretaryRepository.GetByIdAsync(secretaryProfessorStudentSubject.IdSec);
             secretaryProfessorStudentSubject.Evaluation = await _professorStudentSubjectRepository.GetByIdAsync(secretaryProfessorStudentSubject.IdProfStudSub);
             var savedSecretaryProfessorStudentSubject = await _secretaryProfessorStudentSubjectRepository.CreateAsync(secretaryProfessorStudentSubject);
-            return _mapper.Map<SecretaryProfessorStudentSubjectDto>(savedSecretaryProfessorStudentSubject);
+            return _mapper.Map<SecretaryProfessorStudentSubjectResponseDto>(savedSecretaryProfessorStudentSubject);
         }
 
-        public async Task DeleteSecretaryProfessorStudentSubjectByIdAsync(int id)
-        {
-            await _secretaryProfessorStudentSubjectRepository.DeleteByIdAsync(id);
-        }
-
-        public async Task<IEnumerable<SecretaryProfessorStudentSubjectDto>> ListSecretariesProfessorStudentSubjectsAsync()
+        public async Task<IEnumerable<SecretaryProfessorStudentSubjectResponseDto>> ListSecretariesProfessorStudentSubjectsAsync()
         {
             var secretaryProfessorStudentSubjects = await _secretaryProfessorStudentSubjectRepository.ListAsync();
             var list = secretaryProfessorStudentSubjects.ToList();
-            List<SecretaryProfessorStudentSubjectDto> secretaryProfessorStudentSubjectList = new();
+            List<SecretaryProfessorStudentSubjectResponseDto> secretaryProfessorStudentSubjectList = new();
 
             for (int i = 0; i < list.Count; i++)
             {
-                secretaryProfessorStudentSubjectList.Add(_mapper.Map<SecretaryProfessorStudentSubjectDto>(list[i]));
+                secretaryProfessorStudentSubjectList.Add(_mapper.Map<SecretaryProfessorStudentSubjectResponseDto>(list[i]));
             }
 
             return secretaryProfessorStudentSubjectList;
         }
 
-        public async Task<SecretaryProfessorStudentSubjectDto> UpdateSecretaryProfessorStudentSubjectAsync(SecretaryProfessorStudentSubjectDto secretaryProfessorStudentSubjectDto)
+        public async Task<SecretaryProfessorStudentSubjectResponseDto> UpdateSecretaryProfessorStudentSubjectAsync(SecretaryProfessorStudentSubjectResponseDto secretaryProfessorStudentSubjectDto)
         {
             var secretaryProfessorStudentSubject = await _secretaryRepository.GetByIdAsync(secretaryProfessorStudentSubjectDto.IdSecProfStudSub);
             _mapper.Map(secretaryProfessorStudentSubjectDto, secretaryProfessorStudentSubject);
             await _secretaryRepository.UpdateAsync(secretaryProfessorStudentSubject);
-            return _mapper.Map<SecretaryProfessorStudentSubjectDto>(secretaryProfessorStudentSubject);
+            return _mapper.Map<SecretaryProfessorStudentSubjectResponseDto>(secretaryProfessorStudentSubject);
         }
 
 

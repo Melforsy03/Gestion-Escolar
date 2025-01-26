@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfessorStudentSubject;
 
 namespace SchoolManagement.Api.Controllers
 {
@@ -30,7 +30,7 @@ namespace SchoolManagement.Api.Controllers
         [Route("list")]
         
         //[Authorize(Roles = "SuperAdmin")]
-        public async Task<ActionResult<IEnumerable<ProfessorStudentSubjectDto>>> ListProfessorStudentSubjects()
+        public async Task<ActionResult<IEnumerable<ProfessorStudentSubjectResponseDto>>> ListProfessorStudentSubjects()
         {
             var professorStudentSubject = await _professorStudentSubjectService.ListProfessorStudentSubjectAsync();
             return Ok(professorStudentSubject);
@@ -38,7 +38,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
-        public async Task<ActionResult> UpdateProfessorStudentSubject(ProfessorStudentSubjectDto professorStudentSubject)
+        public async Task<ActionResult> UpdateProfessorStudentSubject(ProfessorStudentSubjectResponseDto professorStudentSubject)
         {
             var updatedProfessorStudentSubject = await _professorStudentSubjectService.UpdateProfessorStudentSubjectAsync(professorStudentSubject);
             return Ok(updatedProfessorStudentSubject);

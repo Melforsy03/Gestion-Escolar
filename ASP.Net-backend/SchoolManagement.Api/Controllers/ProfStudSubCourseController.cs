@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfStudSubCourse;
 
 namespace SchoolManagement.Api.Controllers
 {
@@ -28,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpGet]
         [Route("list")]
         //[Authorize(Roles = "SuperAdmin")]
-        public async Task<ActionResult<IEnumerable<ProfStudSubCourseDto>>> ListProfStudSubCourses()
+        public async Task<ActionResult<IEnumerable<ProfStudSubCourseResponseDto>>> ListProfStudSubCourses()
         {
             var profStudSubCourses = await _profStudSubCourseService.ListProfStudSubCoursesAsync();
             return Ok(profStudSubCourses);
@@ -36,7 +36,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
-        public async Task<ActionResult> UpdateProfStudSubCourse(ProfStudSubCourseDto profStudSubCourseDto)
+        public async Task<ActionResult> UpdateProfStudSubCourse(ProfStudSubCourseResponseDto profStudSubCourseDto)
         {
             var updatedProfStudSubCourse = await _profStudSubCourseService.UpdateProfStudSubCourseAsync(profStudSubCourseDto);
             return Ok(updatedProfStudSubCourse);

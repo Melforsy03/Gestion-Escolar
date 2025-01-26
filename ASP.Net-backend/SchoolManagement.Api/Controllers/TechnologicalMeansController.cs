@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.TechnologicalMeans;
 using SchoolManagement.Domain.Entities;
 
 namespace SchoolManagement.Api.Controllers
@@ -38,7 +38,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPut]
         [Route("update")]
         [Authorize(Roles = "SuperAdmin, Admin")]
-        public async Task<ActionResult> UpdateTechnologicalMeans(TechnologicalMeansDto technologicalMeans)
+        public async Task<ActionResult> UpdateTechnologicalMeans(TechnologicalMeansResponseDto technologicalMeans)
         {
             var updatedTechnologicalMeans = await _technologicalMeansService.UpdateTechnologicalMeansAsync(technologicalMeans);
             return Ok(updatedTechnologicalMeans);

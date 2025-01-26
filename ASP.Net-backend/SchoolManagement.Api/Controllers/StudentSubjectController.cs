@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.StudentSubject;
 using SchoolManagement.Domain.Relations;
 
 namespace SchoolManagement.Api.Controllers
@@ -37,7 +38,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
-        public async Task<ActionResult> UpdateStudentSubject(StudentSubjectDto studentSubject)
+        public async Task<ActionResult> UpdateStudentSubject(StudentSubjectResponseDto studentSubject)
         {
             var updatedStudentSubject = await _studentSubjectService.UpdateStudentSubjectAsync(studentSubject);
             return Ok(updatedStudentSubject);
