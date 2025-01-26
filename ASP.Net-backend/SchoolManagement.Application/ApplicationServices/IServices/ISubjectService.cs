@@ -1,4 +1,4 @@
-﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto.Subject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +9,9 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface ISubjectService
     {
-        Task<SubjectDto> CreateSubjectAsync(SubjectDto subjectDto);
-        Task<SubjectDto> UpdateSubjectAsync(SubjectDto subjectDto);
-        Task<IEnumerable<SubjectDto>> ListSubjectAsync();
-        Task<SubjectDto> DeleteSubjectByIdAsync(int subjectDto);
+        Task<SubjectResponseDto> CreateSubjectAsync(SubjectDto subjectDto);
+        Task<SubjectResponseDto> UpdateSubjectAsync(SubjectResponseDto subjectDto);
+        Task<IEnumerable<SubjectResponseDto>> ListSubjectAsync();
+        Task<SubjectResponseDto> DeleteSubjectByIdAsync(int subjectDto);
     }
 }

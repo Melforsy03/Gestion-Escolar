@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoom;
 using SchoolManagement.Application.ApplicationServices.Services;
 using SchoolManagement.Domain.Entities;
 
@@ -38,7 +38,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPut]
         [Route("update")]
         [Authorize (Roles = "SuperAdmin")]
-        public async Task<ActionResult> UpdateClassRoom(ClassRoomDto classRoom)
+        public async Task<ActionResult> UpdateClassRoom(ClassRoomResponseDto classRoom)
         {
             var _classRoom = await _classRoomService.UpdateClassRoomAsync(classRoom);
             return Ok(_classRoom);

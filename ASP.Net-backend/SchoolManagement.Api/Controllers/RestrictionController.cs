@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.Restriction;
 using SchoolManagement.Application.ApplicationServices.Services;
 using SchoolManagement.Domain.Entities;
 
@@ -30,7 +30,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpGet]
         [Route("list")]
         [Authorize(Roles = "SuperAdmin")]
-        public async Task<ActionResult<IEnumerable<Restriction>>> ListRestrictions()
+        public async Task<ActionResult<IEnumerable<RestrictionResponseDto>>> ListRestrictions()
         {
             var restrictions = await _restrictionService.ListRestrictionAsync();
             return Ok(restrictions);
@@ -39,7 +39,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPut]
         [Route("update")]
         [Authorize(Roles = "SuperAdmin")]
-        public async Task<ActionResult> UpdateRestriction(RestrictionDto restriction)
+        public async Task<ActionResult> UpdateRestriction(RestrictionResponseDto restriction)
         {
             var updatedRestriction = await _restrictionService.UpdateRestrictionAsync(restriction);
             return Ok(updatedRestriction);

@@ -1,4 +1,4 @@
-﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto.Restriction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +9,9 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IRestrictionService
     {
-        Task<RestrictionDto> CreateRestrictionAsync(RestrictionDto restrictionDto);
-        Task<RestrictionDto> UpdateRestrictionAsync(RestrictionDto restrictionDto);
-        Task<IEnumerable<RestrictionDto>> ListRestrictionAsync();
-        Task<RestrictionDto> DeleteRestrictionByIdAsync(int restrictionDto);
+        Task<RestrictionResponseDto> CreateRestrictionAsync(RestrictionDto restrictionDto);
+        Task<RestrictionResponseDto> UpdateRestrictionAsync(RestrictionResponseDto restrictionDto);
+        Task<IEnumerable<RestrictionResponseDto>> ListRestrictionAsync();
+        Task<RestrictionResponseDto> DeleteRestrictionByIdAsync(int restrictionDto);
     }
 }

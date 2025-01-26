@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto.RequestDto.ClassRoomMeanRequest;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomMeanRequest;
 
 namespace SchoolManagement.Api.Controllers
 {

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoom;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
 using System.Collections.Generic;
@@ -21,14 +21,14 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public async Task<ClassRoomDto> CreateClassRoomAsync(ClassRoomDto classRoomDto)
+        public async Task<ClassRoomResponseDto> CreateClassRoomAsync(ClassRoomDto classRoomDto)
         {
             var classRoom = _mapper.Map<Domain.Entities.ClassRoom>(classRoomDto);
             var savedClassR = await _classRoomRepository.CreateAsync(classRoom);
-            return _mapper.Map<ClassRoomDto>(savedClassR);
+            return _mapper.Map<ClassRoomResponseDto>(savedClassR);
         }
 
-        public async Task<ClassRoomDto> DeleteClassRoomByIdAsync(int ClassRoomDto)
+        public async Task<ClassRoomResponseDto> DeleteClassRoomByIdAsync(int ClassRoomDto)
         {
             var classRoom = _classRoomRepository.GetById(ClassRoomDto);
             if (classRoom.IsDeleted)
@@ -37,32 +37,32 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             }
             classRoom.IsDeleted = true;
             await _classRoomRepository.UpdateAsync(classRoom);
-            return _mapper.Map<ClassRoomDto>(classRoom);
+            return _mapper.Map<ClassRoomResponseDto>(classRoom);
         }
 
-        public async Task<IEnumerable<ClassRoomDto>> ListClassRoomAsync()
+        public async Task<IEnumerable<ClassRoomResponseDto>> ListClassRoomAsync()
         {
             var classRooms = await _classRoomRepository.ListAsync();
             var list = classRooms.ToList();
-            List<ClassRoomDto> classRooms_List = new();
+            List<ClassRoomResponseDto> classRooms_List = new();
             for (int i = 0; i < classRooms.Count(); i++)
             {
                 if (!list[i].IsDeleted)
                 {
-                    classRooms_List.Add(_mapper.Map<ClassRoomDto>(list[i]));
+                    classRooms_List.Add(_mapper.Map<ClassRoomResponseDto>(list[i]));
                 }
             }
 
             return classRooms_List;
         }
 
-        public async Task<ClassRoomDto> UpdateClassRoomAsync(ClassRoomDto ClassRoomDto)
+        public async Task<ClassRoomResponseDto> UpdateClassRoomAsync(ClassRoomResponseDto ClassRoomDto)
         {
             var ClassRoom = _classRoomRepository.GetById(ClassRoomDto.IdClassR);
             if (ClassRoom.IsDeleted) return null;
             _mapper.Map(ClassRoomDto, ClassRoom);
             await _classRoomRepository.UpdateAsync(ClassRoom);
-            return _mapper.Map<ClassRoomDto>(ClassRoom);
+            return _mapper.Map<ClassRoomResponseDto>(ClassRoom);
         }
     }
 }

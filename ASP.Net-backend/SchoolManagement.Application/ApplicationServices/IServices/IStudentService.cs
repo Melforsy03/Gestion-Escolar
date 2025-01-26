@@ -1,6 +1,4 @@
-﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Professor;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Student;
+﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto.Student;
 using SchoolManagement.Infrastructure.Identity;
 using System;
 using System.Collections.Generic;

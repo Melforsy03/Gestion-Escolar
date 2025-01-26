@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
 using SchoolManagement.Application.Common;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
@@ -11,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Administrator;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.Administrator;
 
 namespace SchoolManagement.Application.ApplicationServices.Services
 {

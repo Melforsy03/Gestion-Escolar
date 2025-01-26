@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Administrator;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.Administrator;
 using SchoolManagement.Domain.Entities;
 
 namespace SchoolManagement.Api.Controllers

@@ -1,4 +1,4 @@
-﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto.Maintenance;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +9,9 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IMaintenanceService
     {
-        Task<MaintenanceDto> CreateMaintenanceAsync(MaintenanceDto maintenanceDto);
-        Task<MaintenanceDto> UpdateMaintenanceAsync(MaintenanceDto maintenanceDto);
-        Task<IEnumerable<MaintenanceDto>> ListMaintenancesAsync();
-        Task<MaintenanceDto> DeleteMaintenanceByIdAsync(int maintenanceDto);
+        Task<MaintenanceResponseDto> CreateMaintenanceAsync(MaintenanceDto maintenanceDto);
+        Task<MaintenanceResponseDto> UpdateMaintenanceAsync(MaintenanceResponseDto maintenanceDto);
+        Task<IEnumerable<MaintenanceResponseDto>> ListMaintenancesAsync();
+        Task<MaintenanceResponseDto> DeleteMaintenanceByIdAsync(int maintenanceDto);
     }
 }

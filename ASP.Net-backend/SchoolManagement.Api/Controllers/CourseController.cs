@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.Course;
 using SchoolManagement.Domain.Entities;
 
 namespace SchoolManagement.Api.Controllers
@@ -29,7 +29,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpGet]
         [Route("list")]
         [Authorize(Roles = "SuperAdmin, Secretary")]
-        public async Task<ActionResult<IEnumerable<Course>>> ListCourses()
+        public async Task<ActionResult<IEnumerable<CourseResponseDto>>> ListCourses()
         {
             var courses = await _courseService.ListCoursesAsync();
             return Ok(courses);
@@ -38,7 +38,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPut]
         [Route("update")]
         [Authorize(Roles = "SuperAdmin, Secretary")]
-        public async Task<ActionResult> UpdateCourse(CourseDto course)
+        public async Task<ActionResult> UpdateCourse(CourseResponseDto course)
         {
             var updatedCourse = await _courseService.UpdateCourseAsync(course);
             return Ok(updatedCourse);

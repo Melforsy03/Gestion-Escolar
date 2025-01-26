@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomRestriction;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
 using System.Collections.Generic;
@@ -25,43 +25,43 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public async Task<ClassRoomRestrictionDto> CreateClassRoomRestrictionAsync(ClassRoomRestrictionDto classRoomRestrictionDto)
+        public async Task<ClassRoomRestrictionResponseDto> CreateClassRoomRestrictionAsync(ClassRoomRestrictionDto classRoomRestrictionDto)
         {
             var classRoomRestriction = _mapper.Map<Domain.Relations.ClassRoomRestriction>(classRoomRestrictionDto);
             classRoomRestriction.Restriction = await _restrictionRepository.GetByIdAsync(classRoomRestriction.IdRest);
             classRoomRestriction.ClassRoom = await _classRoomRepository.GetByIdAsync(classRoomRestriction.IdClassRoom);
             var savedClassR = await _classRoomRestrictionRepository.CreateAsync(classRoomRestriction);
-            return _mapper.Map<ClassRoomRestrictionDto>(savedClassR);
+            return _mapper.Map<ClassRoomRestrictionResponseDto>(savedClassR);
         }
 
-        public async Task<ClassRoomRestrictionDto> DeleteClassRoomRestrictionByIdAsync(int id)
+        public async Task<ClassRoomRestrictionResponseDto> DeleteClassRoomRestrictionByIdAsync(int id)
         {
             var classRoomRestriction = _classRoomRestrictionRepository.GetById(id);
-            var classRoomRestrictionDto = _mapper.Map<ClassRoomRestrictionDto>(classRoomRestriction);
+            var classRoomRestrictionDto = _mapper.Map<ClassRoomRestrictionResponseDto>(classRoomRestriction);
             await _classRoomRestrictionRepository.DeleteByIdAsync(id);
             return classRoomRestrictionDto;
         }
 
-        public async Task<IEnumerable<ClassRoomRestrictionDto>> ListClassRoomRestrictionsAsync()
+        public async Task<IEnumerable<ClassRoomRestrictionResponseDto>> ListClassRoomRestrictionsAsync()
         {
             var classRoomRestrictions = await _classRoomRestrictionRepository.ListAsync();
             var list = classRoomRestrictions.ToList();
-            List<ClassRoomRestrictionDto> classRoomRestrictionsList = new();
+            List<ClassRoomRestrictionResponseDto> classRoomRestrictionsList = new();
 
             for (int i = 0; i < list.Count; i++)
             {
-                classRoomRestrictionsList.Add(_mapper.Map<ClassRoomRestrictionDto>(list[i]));
+                classRoomRestrictionsList.Add(_mapper.Map<ClassRoomRestrictionResponseDto>(list[i]));
             }
 
             return classRoomRestrictionsList;
         }
 
-        public async Task<ClassRoomRestrictionDto> UpdateClassRoomRestrictionAsync(ClassRoomRestrictionDto classRoomRestrictionDto)
+        public async Task<ClassRoomRestrictionResponseDto> UpdateClassRoomRestrictionAsync(ClassRoomRestrictionResponseDto classRoomRestrictionDto)
         {
             var classRoomRestriction = await _classRoomRestrictionRepository.GetByIdAsync(classRoomRestrictionDto.IdClassRoomRest);
             _mapper.Map(classRoomRestrictionDto, classRoomRestriction);
             await _classRoomRestrictionRepository.UpdateAsync(classRoomRestriction);
-            return _mapper.Map<ClassRoomRestrictionDto>(classRoomRestriction);
+            return _mapper.Map<ClassRoomRestrictionResponseDto>(classRoomRestriction);
         }
     }
 

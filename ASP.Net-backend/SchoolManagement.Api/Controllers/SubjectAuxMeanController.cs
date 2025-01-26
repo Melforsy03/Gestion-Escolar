@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.SubjectAuxMean;
 
 namespace SchoolManagement.Api.Controllers
 {
@@ -37,7 +37,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPut]
         [Route("update")]
         //[Authorize(Roles = "SuperAdmin")]
-        public async Task<ActionResult> UpdateSubjectAuxMean(SubjectAuxMeanDto subjectAuxMean)
+        public async Task<ActionResult> UpdateSubjectAuxMean(SubjectAuxMeanResponseDto subjectAuxMean)
         {
             var updatedSubjectAuxMean = await _subjectAuxMeanService.UpdateSubjectAuxMeanAsync(subjectAuxMean);
             return Ok(updatedSubjectAuxMean);

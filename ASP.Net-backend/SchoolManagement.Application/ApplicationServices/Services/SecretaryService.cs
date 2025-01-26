@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Secretary;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.Secretary;
 using SchoolManagement.Application.Common;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;

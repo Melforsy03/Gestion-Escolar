@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomTechMean;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
 using System.Collections.Generic;
@@ -25,43 +25,43 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public async Task<ClassRoomTechMeanDto> CreateClassRoomTechMeanAsync(ClassRoomTechMeanDto classRoomTechMeanDto)
+        public async Task<ClassRoomTechMeanResponseDto> CreateClassRoomTechMeanAsync(ClassRoomTechMeanDto classRoomTechMeanDto)
         {
             var classRoomTechMean = _mapper.Map<Domain.Relations.ClassRoomTechMean>(classRoomTechMeanDto);
             classRoomTechMean.TechnologicalMeans = await _technologicalMeansRepository.GetByIdAsync(classRoomTechMean.IdTechMean);
             classRoomTechMean.ClassRoom = await _classRoomRepository.GetByIdAsync(classRoomTechMean.IdClassRoom);
             var savedClassR = await _classRoomTechMeanRepository.CreateAsync(classRoomTechMean);
-            return _mapper.Map<ClassRoomTechMeanDto>(savedClassR);
+            return _mapper.Map<ClassRoomTechMeanResponseDto>(savedClassR);
         }
 
-        public async Task<ClassRoomTechMeanDto> DeleteClassRoomTechMeanByIdAsync(int id)
+        public async Task<ClassRoomTechMeanResponseDto> DeleteClassRoomTechMeanByIdAsync(int id)
         {
             var classRoomTeachMean = _classRoomTechMeanRepository.GetById(id);
-            var classRoomTechMeanDto = _mapper.Map<ClassRoomTechMeanDto>(classRoomTeachMean);
+            var classRoomTechMeanDto = _mapper.Map<ClassRoomTechMeanResponseDto>(classRoomTeachMean);
             await _classRoomTechMeanRepository.DeleteByIdAsync(id);
             return classRoomTechMeanDto;
         }
 
-        public async Task<IEnumerable<ClassRoomTechMeanDto>> ListClassRoomTechMeansAsync()
+        public async Task<IEnumerable<ClassRoomTechMeanResponseDto>> ListClassRoomTechMeansAsync()
         {
             var classRoomTechMeans = await _classRoomTechMeanRepository.ListAsync();
             var list = classRoomTechMeans.ToList();
-            List<ClassRoomTechMeanDto> classRoomTechMeansList = new();
+            List<ClassRoomTechMeanResponseDto> classRoomTechMeansList = new();
 
             for (int i = 0; i < list.Count; i++)
             {
-                classRoomTechMeansList.Add(_mapper.Map<ClassRoomTechMeanDto>(list[i]));
+                classRoomTechMeansList.Add(_mapper.Map<ClassRoomTechMeanResponseDto>(list[i]));
             }
 
             return classRoomTechMeansList;
         }
 
-        public async Task<ClassRoomTechMeanDto> UpdateClassRoomTechMeanAsync(ClassRoomTechMeanDto classRoomTechMeanDto)
+        public async Task<ClassRoomTechMeanResponseDto> UpdateClassRoomTechMeanAsync(ClassRoomTechMeanResponseDto classRoomTechMeanDto)
         {
             var classRoomTechMean = await _classRoomTechMeanRepository.GetByIdAsync(classRoomTechMeanDto.IdClassRoomTech);
             _mapper.Map(classRoomTechMeanDto, classRoomTechMean);
             await _classRoomTechMeanRepository.UpdateAsync(classRoomTechMean);
-            return _mapper.Map<ClassRoomTechMeanDto>(classRoomTechMean);
+            return _mapper.Map<ClassRoomTechMeanResponseDto>(classRoomTechMean);
         }
     }
 

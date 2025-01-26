@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.Restriction;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using SchoolManagement.Infrastructure.DataAccess.Repository;
@@ -23,42 +23,42 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public async Task<RestrictionDto> CreateRestrictionAsync(RestrictionDto restrictionDto)
+        public async Task<RestrictionResponseDto> CreateRestrictionAsync(RestrictionDto restrictionDto)
         {
             var restriction = _mapper.Map<Domain.Entities.Restriction>(restrictionDto);
             var savedAgency = await _restrictionRepository.CreateAsync(restriction);
-            return _mapper.Map<RestrictionDto>(savedAgency);
+            return _mapper.Map<RestrictionResponseDto>(savedAgency);
         }
 
-        public async Task<RestrictionDto> DeleteRestrictionByIdAsync(int restrictionId)
+        public async Task<RestrictionResponseDto> DeleteRestrictionByIdAsync(int restrictionId)
         {   
             var restriction = _restrictionRepository.GetById(restrictionId);
             if (restriction.IsDeleted) return null;
             restriction.IsDeleted = true;
             await _restrictionRepository.UpdateAsync(restriction);
-            return _mapper.Map<RestrictionDto>(restriction);
+            return _mapper.Map<RestrictionResponseDto>(restriction);
         }
 
-        public async Task<IEnumerable<RestrictionDto>> ListRestrictionAsync()
+        public async Task<IEnumerable<RestrictionResponseDto>> ListRestrictionAsync()
         {
             var restrictions = await _restrictionRepository.ListAsync();
             var list = restrictions.ToList();
-            List<RestrictionDto> Restriction_List = new();
+            List<RestrictionResponseDto> Restriction_List = new();
             for (int i = 0; i < restrictions.Count(); i++)
             {
-                if(!list[i].IsDeleted) Restriction_List.Add(_mapper.Map<RestrictionDto>(list[i]));
+                if(!list[i].IsDeleted) Restriction_List.Add(_mapper.Map<RestrictionResponseDto>(list[i]));
             }
 
             return Restriction_List;
         }
 
-        public async Task<RestrictionDto> UpdateRestrictionAsync(RestrictionDto restrictionDto)
+        public async Task<RestrictionResponseDto> UpdateRestrictionAsync(RestrictionResponseDto restrictionDto)
         {
             var restriction = _restrictionRepository.GetById(restrictionDto.IdRes);
             if (restriction.IsDeleted) return null;
             _mapper.Map(restrictionDto, restriction);
             await _restrictionRepository.UpdateAsync(restriction);
-            return _mapper.Map<RestrictionDto>(restriction);
+            return _mapper.Map<RestrictionResponseDto>(restriction);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto.Course;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +9,9 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface ICourseService
     {
-        Task<CourseDto> CreateCourseAsync(CourseDto courseDto);
-        Task<CourseDto> UpdateCourseAsync(CourseDto courseDto);
-        Task<IEnumerable<CourseDto>> ListCoursesAsync();
-        Task<CourseDto> DeleteCourseByIdAsync(int courseDto);
+        Task<CourseResponseDto> CreateCourseAsync(CourseDto courseDto);
+        Task<CourseResponseDto> UpdateCourseAsync(CourseResponseDto courseDto);
+        Task<IEnumerable<CourseResponseDto>> ListCoursesAsync();
+        Task<CourseResponseDto> DeleteCourseByIdAsync(int courseDto);
     }
 }

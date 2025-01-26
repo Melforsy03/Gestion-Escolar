@@ -1,4 +1,4 @@
-﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomRestriction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,10 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IClassRoomRestrictionService
     {
-        Task<ClassRoomRestrictionDto> CreateClassRoomRestrictionAsync(ClassRoomRestrictionDto classRoomRestrictionDto);
-        Task<ClassRoomRestrictionDto> UpdateClassRoomRestrictionAsync(ClassRoomRestrictionDto classRoomRestrictionDto);
-        Task<IEnumerable<ClassRoomRestrictionDto>> ListClassRoomRestrictionsAsync();
-        Task<ClassRoomRestrictionDto> DeleteClassRoomRestrictionByIdAsync(int id);
+        Task<ClassRoomRestrictionResponseDto> CreateClassRoomRestrictionAsync(ClassRoomRestrictionDto classRoomRestrictionDto);
+        Task<ClassRoomRestrictionResponseDto> UpdateClassRoomRestrictionAsync(ClassRoomRestrictionResponseDto classRoomRestrictionDto);
+        Task<IEnumerable<ClassRoomRestrictionResponseDto>> ListClassRoomRestrictionsAsync();
+        Task<ClassRoomRestrictionResponseDto> DeleteClassRoomRestrictionByIdAsync(int id);
     }
 
 }

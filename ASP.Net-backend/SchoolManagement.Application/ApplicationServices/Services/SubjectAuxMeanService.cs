@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.SubjectAuxMean;
+using SchoolManagement.Domain.Relations;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
 using System.Collections.Generic;
@@ -25,40 +26,44 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _subjectRepository = subjectRepository;
         }
 
-        public async Task<SubjectAuxMeanDto> CreateSubjectAuxMeanAsync(SubjectAuxMeanDto subjectAuxMeanDto)
+        public async Task<SubjectAuxMeanResponseDto> CreateSubjectAuxMeanAsync(SubjectAuxMeanDto subjectAuxMeanDto)
         {
             var subjectAuxMean = _mapper.Map<Domain.Relations.SubjectAuxMean>(subjectAuxMeanDto);
             subjectAuxMean.Subject = await _subjectRepository.GetByIdAsync(subjectAuxMean.IdSub);
             subjectAuxMean.AuxMean = await _auxiliaryMeansRepository.GetByIdAsync(subjectAuxMean.IdAuxMean);
             var savedSubjectAuxMean = await _subjectAuxMeanRepository.CreateAsync(subjectAuxMean);
-            return _mapper.Map<SubjectAuxMeanDto>(savedSubjectAuxMean);
+            return new SubjectAuxMeanResponseDto { IdAuxMean = savedSubjectAuxMean.IdAuxMean, IdSub = savedSubjectAuxMean.IdSub, IdSubAuxMean = savedSubjectAuxMean.IdSubAuxMean };
         }
 
-        public async Task DeleteSubjectAuxMeanByIdAsync(int id)
+        public async Task<SubjectAuxMeanResponseDto> DeleteSubjectAuxMeanByIdAsync(int id)
         {
+            var subjectAuxMean = _subjectAuxMeanRepository.GetById(id);
+            if (subjectAuxMean == null) return null;
+            SubjectAuxMeanResponseDto subjectAuxMeanResponse = new SubjectAuxMeanResponseDto { IdAuxMean = subjectAuxMean.IdAuxMean, IdSub = subjectAuxMean.IdSub, IdSubAuxMean = subjectAuxMean.IdSubAuxMean };
             await _subjectAuxMeanRepository.DeleteByIdAsync(id);
+            return subjectAuxMeanResponse;
         }
 
-        public async Task<IEnumerable<SubjectAuxMeanDto>> ListSubjectAuxMeansAsync()
+        public async Task<IEnumerable<SubjectAuxMeanResponseDto>> ListSubjectAuxMeansAsync()
         {
             var subjectAuxMeans = await _subjectAuxMeanRepository.ListAsync();
             var list = subjectAuxMeans.ToList();
-            List<SubjectAuxMeanDto> subjectAuxMeansList = new();
+            List<SubjectAuxMeanResponseDto> subjectAuxMeansList = new();
 
             for (int i = 0; i < list.Count; i++)
             {
-                subjectAuxMeansList.Add(_mapper.Map<SubjectAuxMeanDto>(list[i]));
+                subjectAuxMeansList.Add(new SubjectAuxMeanResponseDto { IdAuxMean =  list[i].IdAuxMean, IdSub = list[i].IdSub, IdSubAuxMean = list[i].IdSubAuxMean });
             }
 
             return subjectAuxMeansList;
         }
 
-        public async Task<SubjectAuxMeanDto> UpdateSubjectAuxMeanAsync(SubjectAuxMeanDto subjectAuxMeanDto)
+        public async Task<SubjectAuxMeanResponseDto> UpdateSubjectAuxMeanAsync(SubjectAuxMeanResponseDto subjectAuxMeanResponseDto)
         {
-            var subjectAuxMean = await _subjectAuxMeanRepository.GetByIdAsync(subjectAuxMeanDto.IdSub);
-            _mapper.Map(subjectAuxMeanDto, subjectAuxMean);
+            var subjectAuxMean = await _subjectAuxMeanRepository.GetByIdAsync(subjectAuxMeanResponseDto.IdSubAuxMean);
+            _mapper.Map(subjectAuxMeanResponseDto, subjectAuxMean);
             await _subjectAuxMeanRepository.UpdateAsync(subjectAuxMean);
-            return _mapper.Map<SubjectAuxMeanDto>(subjectAuxMean);
+            return new SubjectAuxMeanResponseDto { IdSubAuxMean = subjectAuxMean.IdSubAuxMean, IdAuxMean = subjectAuxMean.IdAuxMean, IdSub = subjectAuxMean.IdSub };
         }
     }
 

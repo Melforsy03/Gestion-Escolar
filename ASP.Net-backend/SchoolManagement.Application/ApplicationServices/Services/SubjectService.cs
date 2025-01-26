@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.Subject;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using SchoolManagement.Infrastructure.DataAccess.Repository;
@@ -25,43 +25,43 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _classRoomRepository = classRoomRepository;
         }
 
-        public async Task<SubjectDto> CreateSubjectAsync(SubjectDto subjectDto)
+        public async Task<SubjectResponseDto> CreateSubjectAsync(SubjectDto subjectDto)
         {
             var subject = _mapper.Map<Domain.Entities.Subject>(subjectDto);
             subject.classRoom = await _classRoomRepository.GetByIdAsync(subject.IdClassRoom);
             var savedAgency = await _subjectRepository.CreateAsync(subject);
-            return _mapper.Map<SubjectDto>(savedAgency);
+            return _mapper.Map<SubjectResponseDto>(savedAgency);
         }
 
-        public async Task<SubjectDto> DeleteSubjectByIdAsync(int subjectId)
+        public async Task<SubjectResponseDto> DeleteSubjectByIdAsync(int subjectId)
         {
             var subject = _subjectRepository.GetById(subjectId);
             if (subject.IsDeleted) return null;
             subject.IsDeleted = true;
             await _subjectRepository.UpdateAsync(subject);
-            return _mapper.Map<SubjectDto>(subject);
+            return _mapper.Map<SubjectResponseDto>(subject);
         }
 
-        public async Task<IEnumerable<SubjectDto>> ListSubjectAsync()
+        public async Task<IEnumerable<SubjectResponseDto>> ListSubjectAsync()
         {
             var subjects = await _subjectRepository.ListAsync();
             var list = subjects.ToList();
-            List<SubjectDto> Subject_List = new();
+            List<SubjectResponseDto> Subject_List = new();
             for (int i = 0; i < subjects.Count(); i++)
             {
-                if(!list[i].IsDeleted) Subject_List.Add(_mapper.Map<SubjectDto>(list[i]));
+                if(!list[i].IsDeleted) Subject_List.Add(_mapper.Map<SubjectResponseDto>(list[i]));
             }
 
             return Subject_List;
         }
 
-        public async Task<SubjectDto> UpdateSubjectAsync(SubjectDto subjectDto)
+        public async Task<SubjectResponseDto> UpdateSubjectAsync(SubjectResponseDto subjectDto)
         {
             var subject = _subjectRepository.GetById(subjectDto.IdSub);
             if (subject.IsDeleted) return null;
             _mapper.Map(subjectDto, subject);
             await _subjectRepository.UpdateAsync(subject);
-            return _mapper.Map<SubjectDto>(subject);
+            return _mapper.Map<SubjectResponseDto>(subject);
         }
     }
 }

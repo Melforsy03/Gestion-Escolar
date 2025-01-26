@@ -1,5 +1,4 @@
-﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto.RequestDto.ClassRoomMeanRequest;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.ClassRoomMeanRequest;
+﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomMeanRequest;
 using SchoolManagement.Application.ApplicationServices.Services;
 using SchoolManagement.Infrastructure;
 using System;

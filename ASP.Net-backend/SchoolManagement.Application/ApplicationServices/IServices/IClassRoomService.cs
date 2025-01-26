@@ -1,4 +1,4 @@
-﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoom;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +9,9 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IClassRoomService
     {
-        Task<ClassRoomDto> CreateClassRoomAsync(ClassRoomDto classRoomDto);
-        Task<ClassRoomDto> UpdateClassRoomAsync(ClassRoomDto classRoomDto);
-        Task<IEnumerable<ClassRoomDto>> ListClassRoomAsync();
-        Task<ClassRoomDto> DeleteClassRoomByIdAsync(int classRoomDto);
+        Task<ClassRoomResponseDto> CreateClassRoomAsync(ClassRoomDto classRoomDto);
+        Task<ClassRoomResponseDto> UpdateClassRoomAsync(ClassRoomResponseDto classRoomDto);
+        Task<IEnumerable<ClassRoomResponseDto>> ListClassRoomAsync();
+        Task<ClassRoomResponseDto> DeleteClassRoomByIdAsync(int classRoomDto);
     }
 }

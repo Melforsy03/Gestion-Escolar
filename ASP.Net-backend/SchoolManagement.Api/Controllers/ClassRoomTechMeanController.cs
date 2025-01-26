@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomTechMean;
 
 namespace SchoolManagement.Api.Controllers
 {
@@ -28,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpGet]
         [Route("list")]
         //[Authorize(Roles = "SuperAdmin")]
-        public async Task<ActionResult<IEnumerable<ClassRoomTechMeanDto>>> ListClassRoomTechMeans()
+        public async Task<ActionResult<IEnumerable<ClassRoomTechMeanResponseDto>>> ListClassRoomTechMeans()
         {
             var classRoomTechMeans = await _classRoomTechMeanService.ListClassRoomTechMeansAsync();
             return Ok(classRoomTechMeans);
@@ -36,7 +36,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
-        public async Task<ActionResult> UpdateClassRoomTechMean(ClassRoomTechMeanDto classRoomTechMean)
+        public async Task<ActionResult> UpdateClassRoomTechMean(ClassRoomTechMeanResponseDto classRoomTechMean)
         {
             var updatedClassRoomTechMean = await _classRoomTechMeanService.UpdateClassRoomTechMeanAsync(classRoomTechMean);
             return Ok(updatedClassRoomTechMean);

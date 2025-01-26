@@ -1,5 +1,4 @@
-﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.Administrator;
+﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto.Administrator;
 using System;
 using System.Collections.Generic;
 using System.Linq;

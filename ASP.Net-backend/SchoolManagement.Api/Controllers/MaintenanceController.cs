@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.Maintenance;
 using SchoolManagement.Domain.Entities;
 
 namespace SchoolManagement.Api.Controllers
@@ -29,7 +29,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpGet]
         [Route("list")]
         [Authorize(Roles = "SuperAdmin, Admin")]
-        public async Task<ActionResult<IEnumerable<Maintenance>>> ListMaintenances()
+        public async Task<ActionResult<IEnumerable<MaintenanceResponseDto>>> ListMaintenances()
         {
             var maintenances = await _maintenanceService.ListMaintenancesAsync();
             return Ok(maintenances);
@@ -38,7 +38,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPut]
         [Route("update")]
         [Authorize(Roles = "SuperAdmin, Admin")]
-        public async Task<ActionResult> UpdateMaintenance(MaintenanceDto maintenance)
+        public async Task<ActionResult> UpdateMaintenance(MaintenanceResponseDto maintenance)
         {
             var updatedMaintenance = await _maintenanceService.UpdateMaintenanceAsync(maintenance);
             return Ok(updatedMaintenance);

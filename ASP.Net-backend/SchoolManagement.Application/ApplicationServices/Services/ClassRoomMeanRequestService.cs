@@ -10,8 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SchoolManagement.Domain.Role;
 using SchoolManagement.Domain.Relations;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto.ResponseDto.ClassRoomMeanRequest;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto.RequestDto.ClassRoomMeanRequest;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomMeanRequest;
 namespace SchoolManagement.Application.ApplicationServices.Services
 {
     public class ClassRoomMeanRequestService(Context context) : IClassRoomMeanRequestService

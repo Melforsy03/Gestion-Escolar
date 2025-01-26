@@ -1,4 +1,4 @@
-﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+﻿using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomTechMean;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,10 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IClassRoomTechMeanService
     {
-        Task<ClassRoomTechMeanDto> CreateClassRoomTechMeanAsync(ClassRoomTechMeanDto classRoomTechMeanDto);
-        Task<ClassRoomTechMeanDto> UpdateClassRoomTechMeanAsync(ClassRoomTechMeanDto classRoomTechMeanDto);
-        Task<IEnumerable<ClassRoomTechMeanDto>> ListClassRoomTechMeansAsync();
-        Task<ClassRoomTechMeanDto> DeleteClassRoomTechMeanByIdAsync(int id);
+        Task<ClassRoomTechMeanResponseDto> CreateClassRoomTechMeanAsync(ClassRoomTechMeanDto classRoomTechMeanDto);
+        Task<ClassRoomTechMeanResponseDto> UpdateClassRoomTechMeanAsync(ClassRoomTechMeanResponseDto classRoomTechMeanDto);
+        Task<IEnumerable<ClassRoomTechMeanResponseDto>> ListClassRoomTechMeansAsync();
+        Task<ClassRoomTechMeanResponseDto> DeleteClassRoomTechMeanByIdAsync(int id);
     }
 
 }

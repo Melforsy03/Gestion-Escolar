@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagement.Application.ApplicationServices.IServices;
-using SchoolManagement.Application.ApplicationServices.Maps_Dto;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomRestriction;
 
 namespace SchoolManagement.Api.Controllers
 {
@@ -28,7 +28,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpGet]
         [Route("list")]
         //[Authorize(Roles = "SuperAdmin")]
-        public async Task<ActionResult<IEnumerable<ClassRoomRestrictionDto>>> ListClassRoomRestrictions()
+        public async Task<ActionResult<IEnumerable<ClassRoomRestrictionResponseDto>>> ListClassRoomRestrictions()
         {
             var classRoomRestrictions = await _classRoomRestrictionService.ListClassRoomRestrictionsAsync();
             return Ok(classRoomRestrictions);
@@ -36,7 +36,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpPut]
         [Route("update")]
-        public async Task<ActionResult> UpdateClassRoomRestriction(ClassRoomRestrictionDto classRoomRestriction)
+        public async Task<ActionResult> UpdateClassRoomRestriction(ClassRoomRestrictionResponseDto classRoomRestriction)
         {
             var updatedClassRoomRestriction = await _classRoomRestrictionService.UpdateClassRoomRestrictionAsync(classRoomRestriction);
             return Ok(updatedClassRoomRestriction);
