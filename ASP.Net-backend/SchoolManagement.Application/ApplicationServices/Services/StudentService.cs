@@ -19,12 +19,14 @@ namespace SchoolManagement.Application.ApplicationServices.Services
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _studentRepository;
+        private readonly ICourseRepository _courseRepository;
         private readonly Triggers _trigger;
         private readonly IMapper _mapper;
 
-        public StudentService(IStudentRepository studentRepository, IMapper mapper, Triggers trigger)
+        public StudentService(IStudentRepository studentRepository, IMapper mapper, Triggers trigger, ICourseRepository courseRepository)
         {
             _studentRepository = studentRepository;
+            _courseRepository = courseRepository;
             _mapper = mapper;
             _trigger = trigger;
         }
@@ -34,6 +36,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             var student = _mapper.Map<Student>(studentDto);
             (User, string) User = await _trigger.RegisterUser(studentDto.NameStud, "Student");
             student.UserId = User.Item1.Id;
+            student.Course = _courseRepository.GetById(student.IdC);
             var savedStudent = await _studentRepository.CreateAsync(student);
 
             studentDto = _mapper.Map<StudentDto>(savedStudent);
