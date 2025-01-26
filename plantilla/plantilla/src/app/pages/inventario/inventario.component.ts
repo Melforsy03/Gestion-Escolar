@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-
+import { TechnologicalMeansService } from 'src/app/service/inventario.service';
 @Component({
   selector: 'app-inventario',
   templateUrl: './inventario.component.html',
@@ -13,67 +13,37 @@ export class InventarioComponent implements OnInit {
   isEditMode = false;
   currentMedio: any = null;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder , private medio : TechnologicalMeansService) {}
 
-  ngOnInit(): void {
-    this.medioForm = this.fb.group({
-      nombre: ['', Validators.required],
-      tipo: ['', Validators.required],
-      estado: [''],
-      ubicacion: [''],
-      asignatura: [''],
-      costoMantenimiento: [''],
-      fechasMantenimiento: this.fb.array([]),
-      fechaReemplazo: ['']
-    });
-
-    // Datos de ejemplo
-    this.medios = [
-      {
-        id: '1',
-        nombre: 'Proyector',
-        tipo: 'tecnologico',
-        estado: 'funcionando',
-        ubicacion: 'Aula 101',
-        asignatura: 'Matemáticas',
-        costoMantenimiento: 50,
-        fechasMantenimiento: [{ fecha: '2023-01-01' }, { fecha: '2023-06-01' }],
-        fechaReemplazo: '2024-01-01',
-        isEditing: false,
-        showFechasMantenimiento: false,
-        newFechaMantenimiento: ''
-      },
-      {
-        id: '2',
-        nombre: 'Computadora',
-        tipo: 'tecnologico',
-        estado: 'enMantenimiento',
-        ubicacion: 'Laboratorio de Informática',
-        asignatura: 'Informática',
-        costoMantenimiento: 100,
-        fechasMantenimiento: [{ fecha: '2023-02-01' }, { fecha: '2023-07-01' }],
-        fechaReemplazo: '2024-02-01',
-        isEditing: false,
-        showFechasMantenimiento: false,
-        newFechaMantenimiento: ''
-      },
-      {
-        id: '3',
-        nombre: 'Pizarra',
-        tipo: 'materialDidactico',
-        estado: 'funcionando',
-        ubicacion: 'Aula 202',
-        asignatura: 'Historia',
-        costoMantenimiento: 20,
-        fechasMantenimiento: [{ fecha: '2023-03-01' }, { fecha: '2023-08-01' }],
-        fechaReemplazo: '2024-03-01',
-        isEditing: false,
-        showFechasMantenimiento: false,
-        newFechaMantenimiento: ''
+  
+    ngOnInit(): void {
+      this.medioForm = this.fb.group({
+        nameMean: ['', Validators.required],
+        state: ['', Validators.required],
+        type: ['', Validators.required]
+      });
+  
+      // ... rest of your existing code ...
+    }
+  
+    onSubmit(): void {
+      if (this.medioForm.valid) {
+        const mediumData = this.medioForm.value;
+        
+        this.medio.createMean(mediumData).subscribe(
+          response => {
+            console.log('Medium created successfully:', response);
+            this.medios.push(response);
+            this.toggleForm();
+          },
+          error => {
+            console.error('Error creating medium:', error);
+            // Handle error (e.g., show error message to user)
+          }
+        );
       }
-    ];
-  }
-
+    }
+  
   get fechasMantenimiento(): FormArray {
     return this.medioForm.get('fechasMantenimiento') as FormArray;
   }
@@ -118,10 +88,5 @@ export class InventarioComponent implements OnInit {
     medio.showFechasMantenimiento = !medio.showFechasMantenimiento;
   }
 
-  onSubmit(): void {
-    if (this.medioForm.valid) {
-      this.medios.push(this.medioForm.value);
-      this.toggleForm();
-    }
-  }
+
 }

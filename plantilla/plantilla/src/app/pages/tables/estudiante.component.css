@@ -68,3 +68,10 @@
   border-color: #32325d;
   box-shadow: 0 0 5px rgba(50, 50, 93, 0.5);
 }
+.modal .form-control {
+  color: black; /* Cambia el color del texto a negro */
+}
+#studentActivity {
+  width: 30px;
+  height: 30px;
+}

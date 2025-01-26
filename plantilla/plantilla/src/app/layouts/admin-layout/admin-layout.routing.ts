@@ -17,5 +17,5 @@ export const AdminLayoutRoutes: Routes = [
   { path : "inventario" , component :InventarioComponent},
   { path : "peticiones" , component : PeticionesComponent },
   { path : "info-secretaria" , component :InfoSecretariaComponent},
-  { path : "info-administrador" , component :InfoAdministradorComponent}
+  {path : "info-administrador" , component :InfoAdministradorComponent}
 ];

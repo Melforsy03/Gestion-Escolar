@@ -10,7 +10,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
-import { StudentService } from "./pages/tables/estudiante.service";
+import { EstudentService } from "./service/estudiante.service";
 import { AuthComponent } from "./components/Autentificacion/auth.component";
 import { CommonModule } from '@angular/common';
 import { SolicitudComponent } from './pages/solicitud/solicitud.component';
@@ -35,7 +35,7 @@ import { InfoAdministradorComponent } from './pages/info-administrador/info-admi
 
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, InventarioComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent],
-  providers: [StudentService],
+  providers: [EstudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

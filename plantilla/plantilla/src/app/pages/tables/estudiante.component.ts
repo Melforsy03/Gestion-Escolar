@@ -1,94 +1,110 @@
-import { Component, OnInit } from "@angular/core";
-import { StudentService } from "./estudiante.service";
-import { ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
+import { EstudentService } from '../../service/estudiante.service';
+
 @Component({
-  selector: "app-estudiante",
-  templateUrl: "estudiante.component.html",
-  styleUrls: ["./estudiante.component.css"]
-  
+  selector: 'app-estudiante',
+  templateUrl: './estudiante.component.html',
+  styleUrls: ['./estudiante.component.css'],
 })
 export class TablesComponent implements OnInit {
-  students: any[] = [];
-  expandedIndexes: boolean[] = [];
-  newStudent = { name: '', age: null, course: '', activities: '' };
+  students: Array<{  id: number; idc: number; student: { nameStud: string; age: number; eActivity: boolean } }> = [];
+  newStudent = { nameStud: '', age: 0, eActivity: false, idC: 0 };
+  editingStudent: { id: number; idc: number; student: { nameStud: string; age: number; eActivity: boolean }  } | null = null;
   isAddStudentModalOpen = false;
-  showConfirmModal = false;
-  studentToDelete: any = null;
-  filteredStudents = [];  // Estudiantes filtrados
-  courses = ['Primero' ,'Segundo'];  // Lista de cursos disponibles
-  searchQuery = '';  // Término de búsqueda
-  selectedCourse = '';  // Curso seleccionado
-  displayedStudents = [...this.students];
-  globalSearchQuery: string = '';
-  constructor(private studentService: StudentService ,private cdr: ChangeDetectorRef) {}
+  constructor(private estudianteService: EstudentService) {}
 
-  ngOnInit(): void {
-    this.studentService.getStudents().subscribe((data) => {
-      this.students = data;
-      this.updateDisplayedStudents(); 
+  ngOnInit() {
+    this.loadStudents();
+  }
 
-    });
-  }
-  updateDisplayedStudents() {
-    this.filteredStudents = this.students.filter((student) => {
-      const matchesCourse =
-        !this.selectedCourse || student.course === this.selectedCourse;
-      const matchesSearch =
-        student.name
-          .toLowerCase()
-          .includes(this.globalSearchQuery.toLowerCase());
-      return matchesCourse && matchesSearch;
-    });
-  }
-  filterStudents() {
-    this.filteredStudents = this.students.filter(student => {
-      const matchesName = student.name.toLowerCase().includes(this.searchQuery.toLowerCase());
-      const matchesCourse = this.selectedCourse ? student.course === this.selectedCourse : true;
-      return matchesName && matchesCourse;
-    });
-  }
-  toggleSubjects(index: number): void {
-    console.log('Before toggle:', this.expandedIndexes[index]);
-    this.expandedIndexes[index] = !this.expandedIndexes[index];
-    console.log('Índice expandido:', index, 'Estado:', this.expandedIndexes[index]);
-  
-  }
-    // Función para confirmar la eliminación del estudiante
-    confirmDelete(student: any, index: number) {
-      this.studentToDelete = student;
-      this.showConfirmModal = true;
-    }
-    // Función para eliminar el estudiante
-  // Función para eliminar el estudiante
-  deleteStudent() {
-    if (this.studentToDelete) {
-      const index = this.students.indexOf(this.studentToDelete);
-      if (index > -1) {
-        this.students.splice(index, 1);
+  // Cargar estudiantes
+  loadStudents() {
+    this.estudianteService.getStudents().subscribe(
+      (data) => {
+        this.students = data;
+      },
+      (error) => {
+        console.error('Error al cargar estudiantes:', error);
       }
-    }
-    this.closeConfirmModal(); // Cierra el modal después de eliminar
+    );
   }
 
-  // Función para cerrar el modal de confirmación
-  closeConfirmModal() {
-    this.showConfirmModal = false;
-    this.studentToDelete = null;
+  openAddStudentModal() {
+    this.isAddStudentModalOpen = true;
   }
-    // Abrir modal para agregar estudiante
-    openAddStudentModal() {
-      this.isAddStudentModalOpen = true;
-    }
   
-    // Cerrar modal
-    closeAddStudentModal() {
-      this.isAddStudentModalOpen = false;
-    }
+  closeAddStudentModal() {
+    this.isAddStudentModalOpen = false;
+  }
   
-    // Agregar nuevo estudiante
-    addStudent() {
-      this.students.push({ ...this.newStudent });
-      this.closeAddStudentModal();
-      this.newStudent = { name: '', age: null, course: '', activities: '' };  // Resetear los campos
+  addStudent() {
+    if (this.newStudent.nameStud && this.newStudent.age > 0 && this.newStudent.idC > 0) {
+      this.estudianteService.createStudent(this.newStudent).subscribe(
+        (response) => {
+          this.loadStudents(); // Recargar la lista
+          this.newStudent = { nameStud: '', age: 0, eActivity: false, idC: 0 }; // Limpiar formulario
+          this.isAddStudentModalOpen = false; // Cerrar el modal
+        },
+        (error) => {
+          console.error('Error al agregar el estudiante:', error);
+        }
+      );
+    } else {
+      alert('Por favor, completa todos los campos correctamente.');
     }
+  }
+
+  // Editar estudiante
+  editStudent(student: { id: number; idc: number; student: { nameStud: string; age: number; eActivity: boolean }  }) {
+    this.editingStudent = { ...student }; // Clonar el objeto para evitar cambios inmediatos
+  }
+
+  // Guardar cambios del estudiante
+  saveStudent() {
+    if (this.editingStudent) {
+      // Construir el cuerpo de la petición
+      const studentUpdate = {
+        id: this.editingStudent.id,
+        idc: this.editingStudent.idc, // Incluye el idc
+        student: {
+          nameStud: this.editingStudent.student.nameStud,
+          age: this.editingStudent.student.age,
+          eActivity: this.editingStudent.student.eActivity,
+        },
+      };
+  
+      // Llamar al servicio para actualizar el estudiante
+      this.estudianteService.updateStudent(studentUpdate).subscribe(
+        (response) => {
+          alert('Estudiante actualizado con éxito.');
+          this.editingStudent = null; // Salir del modo edición
+          this.loadStudents(); // Recargar la lista
+        },
+        (error) => {
+          console.error('Error al actualizar estudiante:', error);
+        }
+      );
+    }
+  }
+  
+
+  // Cancelar edición
+  cancelEdit() {
+    this.editingStudent = null; // Salir del modo edición sin guardar
+  }
+
+  // Eliminar estudiante
+  deleteStudent(studentId: number) {
+    if (confirm('¿Estás seguro de que deseas eliminar este estudiante?')) {
+      this.estudianteService.deleteStudent(studentId).subscribe(
+        (response) => {
+          alert('Estudiante eliminado con éxito.');
+          this.loadStudents(); // Recargar la lista
+        },
+        (error) => {
+          console.error('Error al eliminar estudiante:', error);
+        }
+      );
+    }
+  }
 }
