@@ -1,57 +1,60 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
-import { Chart } from 'chart.js';
+import { Chart } from "chart.js";
+import { ProfesorService } from "src/app/service/profesor-info.service";
 
 @Component({
   selector: "app-profesor",
   templateUrl: "profesor-info.component.html",
-  styleUrls : ["./profesor-info.component.css"]
+  styleUrls: ["./profesor-info.component.css"],
 })
 export class ProfesorComponent implements OnInit, AfterViewInit {
-  globalSearchQuery: string = '';
-  profesores = [
-    {
-      nombre: 'Juan',
-      apellidos: 'Pérez',
-      especialidad: 'Matemáticas',
-      contrato: 'Tiempo Completo',
-      asignaturas: [
-        { nombre: 'Álgebra', calificaciones: [8, 9, 7, 6] },
-        { nombre: 'Cálculo', calificaciones: [9, 9.5, 8.7, 9] },
-      ],
-    },
-    {
-      nombre: 'Ana',
-      apellidos: 'Gómez',
-      especialidad: 'Física',
-      contrato: 'Parcial',
-      asignaturas: [
-        { nombre: 'Mecánica', calificaciones: [7.5, 8.1, 7.9] },
-        { nombre: 'Termodinámica', calificaciones: [8, 8.2, 8.5] },
-      ],
-    },
-  ];
+  globalSearchQuery: string = "";
+  profesores: any[] = [];
+  filteredProfesores: any[] = [];
   graficosVisibles: boolean[] = [];
-
-  filteredProfesores = this.profesores;
-  searchQuery: string = '';
+  searchQuery: string = "";
   showAddProfesorForm: boolean = false;
-  newAsignatura: string = '';
-  newProfesor = { nombre: '', apellidos: '', especialidad: '', contrato: 'Tiempo Completo' ,asignaturas: []  };
+  newProfesor = {
+    nombre: "",
+    apellidos: "",
+    especialidad: "",
+    contrato: "Tiempo Completo",
+    asignaturas: [],
+  };
   selectedAsignaturas: string[] = []; // Para las asignaturas seleccionadas
-    // Lista de asignaturas disponibles
-    availableAsignaturas = [
-      { id: 1, nombre: 'Matemáticas' },
-      { id: 2, nombre: 'Física' },
-      { id: 3, nombre: 'Química' },
-      { id: 4, nombre: 'Historia' },
-      { id: 5, nombre: 'Lengua y Literatura' }
-    ];
-  constructor() {}
+  availableAsignaturas = [
+    { id: 1, nombre: "Matemáticas" },
+    { id: 2, nombre: "Física" },
+    { id: 3, nombre: "Química" },
+    { id: 4, nombre: "Historia" },
+    { id: 5, nombre: "Lengua y Literatura" },
+  ];
+
+  constructor(private profesorService: ProfesorService) {}
 
   ngOnInit(): void {
-    this.graficosVisibles = new Array(this.profesores.length).fill(false);
+    this.loadProfesores();
   }
-  toggleAsignatura(event: any) {
+  ngAfterViewInit(): void {
+    // Inicialización, si fuera necesario
+  }
+
+
+  // Cargar profesores desde el servicio
+  loadProfesores(): void {
+    this.profesorService.listProfesores().subscribe(
+      (data) => {
+        this.profesores = data;
+        this.filteredProfesores = [...this.profesores];
+        this.graficosVisibles = new Array(this.profesores.length).fill(false);
+      },
+      (error) => {
+        console.error("Error al cargar profesores:", error);
+      }
+    );
+  }
+
+  toggleAsignatura(event: any): void {
     const asignatura = event.target.value;
 
     if (event.target.checked) {
@@ -65,6 +68,7 @@ export class ProfesorComponent implements OnInit, AfterViewInit {
       }
     }
   }
+
   filterProfesores(): void {
     if (this.searchQuery) {
       this.filteredProfesores = this.profesores.filter((profesor) =>
@@ -73,22 +77,25 @@ export class ProfesorComponent implements OnInit, AfterViewInit {
           .includes(this.searchQuery.toLowerCase())
       );
     } else {
-      this.filteredProfesores = this.profesores;
+      this.filteredProfesores = [...this.profesores];
     }
   }
 
   addProfesor(): void {
     if (this.newProfesor.nombre && this.newProfesor.apellidos && this.newProfesor.especialidad) {
-      this.profesores.push({ ...this.newProfesor, asignaturas: [] });
-      this.filteredProfesores = [...this.profesores];
-      this.showAddProfesorForm = false;
-      this.newProfesor = { nombre: '', apellidos: '', especialidad: '', contrato: 'Tiempo Completo' ,asignaturas: []  }; // Reset form
-      this.newProfesor.asignaturas = [...this.selectedAsignaturas];
-      this.showAddProfesorForm = false; // Cerrar el modal después de guardar
+      this.profesorService.createProfesor(this.newProfesor).subscribe(
+        (profesorCreado) => {
+          this.profesores.push(profesorCreado);
+          this.filteredProfesores = [...this.profesores];
+          this.newProfesor = { nombre: "", apellidos: "", especialidad: "", contrato: "Tiempo Completo", asignaturas: [] }; // Reset form
+          this.selectedAsignaturas = [];
+          this.showAddProfesorForm = false; // Cerrar el modal después de guardar
+        },
+        (error) => {
+          console.error("Error al agregar profesor:", error);
+        }
+      );
     }
-  }
-  ngAfterViewInit(): void {
-    // Inicialización, si fuera necesario
   }
 
   toggleGrafico(index: number): void {
@@ -112,19 +119,19 @@ export class ProfesorComponent implements OnInit, AfterViewInit {
     if (!ctx) return;
 
     // Calcular el promedio de las calificaciones de cada curso
-    const promedios = profesor.asignaturas.map((asignatura) =>
+    const promedios = profesor.asignaturas.map((asignatura: any) =>
       this.calcularPromedio(asignatura.calificaciones)
     );
 
     new Chart(ctx, {
-      type: 'bar',
+      type: "bar",
       data: {
-        labels: profesor.asignaturas.map((a) => a.nombre),
+        labels: profesor.asignaturas.map((a: any) => a.nombre),
         datasets: [
           {
-            label: 'Promedio de Calificaciones',
-           backgroundColor: '#42a5f5',
-           borderColor: '#1e88e5',
+            label: "Promedio de Calificaciones",
+            backgroundColor: "#42a5f5",
+            borderColor: "#1e88e5",
             data: promedios,
           },
         ],
@@ -142,12 +149,13 @@ export class ProfesorComponent implements OnInit, AfterViewInit {
       },
     });
   }
-  updateDisplayProfesor() {
+
+  updateDisplayProfesor(): void {
     const query = this.globalSearchQuery.toLowerCase();
-    this.filteredProfesores = this.profesores.filter(profesor =>
-      profesor.nombre.toLowerCase().includes(query) || profesor.apellidos.toLowerCase().includes(query)
+    this.filteredProfesores = this.profesores.filter(
+      (profesor) =>
+        profesor.nombre.toLowerCase().includes(query) ||
+        profesor.apellidos.toLowerCase().includes(query)
     );
   }
 }
-
-
