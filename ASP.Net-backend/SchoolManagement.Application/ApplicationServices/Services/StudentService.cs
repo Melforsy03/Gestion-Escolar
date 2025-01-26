@@ -35,12 +35,13 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             var student = _mapper.Map<Student>(studentDto);
             (User, string) User = await _trigger.RegisterUser(studentDto.NameStud, "Student");
             student.UserId = User.Item1.Id;
-            student.Course = _courseRepository.GetById(student.IdC);
+            student.Course = _courseRepository.GetById(1);
             var savedStudent = await _studentRepository.CreateAsync(student);
 
             studentDto = _mapper.Map<StudentDto>(savedStudent);
             StudentCreateResponseDto answer = new StudentCreateResponseDto();
             answer.Id = student.IdStud;
+            answer.IdC = student.IdC;
             answer.student = studentDto;
             answer.UserName = User.Item1.UserName;
             answer.Password = User.Item2;
@@ -58,6 +59,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             await _studentRepository.UpdateAsync(student);
             StudentResponseDto answer = new StudentResponseDto();
             answer.Id = student.IdStud;
+            answer.Idc = student.IdC;
             answer.student = _mapper.Map<StudentDto>(student);
             return answer;
         }
@@ -74,6 +76,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
                 {
                     StudentResponseDto answer = new StudentResponseDto();
                     answer.Id = list[i].IdStud;
+                    answer.Idc = list[i].IdC;
                     answer.student = _mapper.Map<StudentDto>(list[i]);
                     Students_List.Add(answer);
                 }
@@ -93,6 +96,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             await _studentRepository.UpdateAsync(student);
             StudentResponseDto answer = new StudentResponseDto();
             answer.Id = student.IdStud;
+            answer.Idc = student.IdC;
             answer.student = _mapper.Map<StudentDto>(student);
             return answer;
         }

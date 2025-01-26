@@ -12,7 +12,6 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.Student
         public string NameStud { get; set; }
         public int Age { get; set; }
         public bool EActivity { get; set; }
-        public int IdC { get; set; }
 
         //public List<Subject> Subjects { get; set; } = new List<Subject>();
     }

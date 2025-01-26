@@ -9,6 +9,7 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.Student
     public class StudentResponseDto
     {
         public int Id { get; set; }
+        public int Idc {  get; set; }
         public StudentDto student { get; set; }
     }
 }
