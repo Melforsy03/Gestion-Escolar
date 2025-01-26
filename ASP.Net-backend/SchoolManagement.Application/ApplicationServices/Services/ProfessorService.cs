@@ -87,7 +87,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         public async Task<ProfessorResponseDto> UpdateProfessorAsync(ProfessorResponseDto professorInfo)
         {
             var professor = _professorRepository.GetById(professorInfo.Id);
-            if (!professor.IsDeleted)
+            if (professor.IsDeleted)
             {
                 return null;
             }
