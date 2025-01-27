@@ -15,10 +15,11 @@ import { AuthComponent } from "./components/Autentificacion/auth.component";
 import { CommonModule } from '@angular/common';
 import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { InventarioComponent } from './pages/inventario/inventario.component';
+import { MedioAuxiliarComponent } from './pages/medios-auxiliares/mediosAuxiliares.component';
 import { PeticionesComponent } from './pages/peticiones/peticiones.component';
 import { InfoSecretariaComponent } from './pages/info-secretaria/info-secretaria.component';
 import { InfoAdministradorComponent } from './pages/info-administrador/info-administrador.component';
+import { MediosTecnologicosComponent } from './pages/medios-tecnologicos/medios-tecnologicos.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -34,7 +35,7 @@ import { InfoAdministradorComponent } from './pages/info-administrador/info-admi
    
 
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, InventarioComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent],
   providers: [EstudentService],
   bootstrap: [AppComponent]
 })

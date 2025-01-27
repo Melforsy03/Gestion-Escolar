@@ -17,7 +17,7 @@ export class TechnologicalMeansService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.post(`${this.apiBaseUrl}/technologicalmeans/create`, mean, { headers });
+    return this.http.post(`${this.apiBaseUrl}/auxiliarymeans/create`, mean, { headers });
   }
 
   // Obtener el token de autenticación

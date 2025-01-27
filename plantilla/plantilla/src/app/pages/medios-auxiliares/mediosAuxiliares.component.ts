@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { TechnologicalMeansService } from 'src/app/service/inventario.service';
 @Component({
-  selector: 'app-inventario',
-  templateUrl: './inventario.component.html',
-  styleUrls: ['./inventario.component.css']
+  selector: 'app-medioAuxiliar',
+  templateUrl: './mediosAuxiliares.component.html',
+  styleUrls: ['./mediosAuxiliares.component.css']
 })
-export class InventarioComponent implements OnInit {
+export class MedioAuxiliarComponent implements OnInit {
   medios: any[] = [];
   medioForm: FormGroup;
   isFormVisible = false;

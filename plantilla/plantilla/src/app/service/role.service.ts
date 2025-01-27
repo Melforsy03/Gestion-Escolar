@@ -25,20 +25,21 @@ export class RoleService {
     {
         role: 'administrador',
         menuItems: [
-          { label: 'Inventario', path: '/inventario', icon: 'inventory' },
+          { label: 'medios-auxiliares', path: '/medio-auxiliar', icon: 'inventory' },
         ],
       },
       {
         role: 'SuperAdmin',
         menuItems: [
           { label: 'Solicitud', path: '/solicitar', icon: 'bx bx-chalkboard' },
-          { label: 'Inventario', path: '/inventario', icon: 'inventory' },
-          { label: 'Información Profesores', path: '/profesor', icon: 'person' },
-          { label: 'Informacion-Estudiantes', path: '/estudiantes', icon: 'person' },
           { label: 'Gestionar Calificaciones', path: '/info-estudiantes', icon: 'bx bx-user' },
-          { label: 'Peticiones', path: '/peticiones', icon: 'bx bx-user' },
+          { label: 'medios-auxiliares', path: '/medio-auxiliar', icon: 'inventory' },
+          { label: 'medios-tecnologicos', path: '/medio-tecnologico', icon: 'inventory' },
+          { label: 'Informacion-Estudiantes', path: '/estudiantes', icon: 'person' },
+          { label: 'Información Profesores', path: '/profesor', icon: 'person' },
           { label: 'info-secretaria', path: '/info-secretaria', icon: 'bx bx-user' },
           { label: 'info-administrador', path: '/info-administrador', icon: 'bx bx-user' },
+          { label: 'Peticiones', path: '/peticiones', icon: 'bx bx-user' },
 
         ],
       },
