@@ -31,14 +31,14 @@ export class RoleService {
       {
         role: 'SuperAdmin',
         menuItems: [
-          { label: 'Solicitud', path: '/solicitar', icon: 'bx bx-chalkboard' },
-          { label: 'Gestionar Calificaciones', path: '/info-estudiantes', icon: 'bx bx-user' },
-          { label: 'medios-auxiliares', path: '/medio-auxiliar', icon: 'inventory' },
-          { label: 'medios-tecnologicos', path: '/medio-tecnologico', icon: 'inventory' },
-          { label: 'Informacion-Estudiantes', path: '/estudiantes', icon: 'person' },
-          { label: 'Información Profesores', path: '/profesor', icon: 'person' },
-          { label: 'info-secretaria', path: '/info-secretaria', icon: 'bx bx-user' },
-          { label: 'info-administrador', path: '/info-administrador', icon: 'bx bx-user' },
+          { label: 'Solicitud', path: '/solicitar', icon: 'icon-components' },
+          { label: 'Gestionar Calificaciones', path: '/info-estudiantes', icon: 'icon-paper' },
+          { label: 'medios-auxiliares', path: '/medio-auxiliar', icon: 'icon-app' },
+          { label: 'medios-tecnologicos', path: '/medio-tecnologico', icon: 'icon-app' },
+          { label: 'Informacion-Estudiantes', path: '/estudiantes', icon: 'icon-single-copy-04' },
+          { label: 'Información Profesores', path: '/profesor', icon: 'icon-notes' },
+          { label: 'info-secretaria', path: '/info-secretaria', icon: 'icon-badge' },
+          { label: 'info-administrador', path: '/info-administrador', icon: 'icon-badge' },
           { label: 'Peticiones', path: '/peticiones', icon: 'bx bx-user' },
 
         ],
