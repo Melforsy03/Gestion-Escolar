@@ -9,6 +9,7 @@ namespace SchoolManagement.Domain.Entities
     public class AuxiliaryMeans:Mean
     {
         public string Type { get; set; } = string.Empty;
-        public List<Subject> Subjects { get; set; } = new List<Subject> { };
+        public List<Subject> Subjects { get; set; } = new List<Subject>();
+        public List<Professor> Professors { get; set;} = new List<Professor>();
     }
 }
