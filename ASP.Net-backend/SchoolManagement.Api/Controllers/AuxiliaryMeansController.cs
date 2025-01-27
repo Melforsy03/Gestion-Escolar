@@ -22,7 +22,9 @@ namespace SchoolManagement.Api.Controllers
         [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> CreateAuxiliaryMeans(AuxiliaryMeansDto auxiliaryMeans)
         {
+           
             var createdAuxiliaryMeans = await _auxiliaryMeansService.CreateAuxiliaryMeansAsync(auxiliaryMeans);
+            
             return Ok(createdAuxiliaryMeans);
         }
 
