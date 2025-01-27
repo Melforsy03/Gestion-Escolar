@@ -88,7 +88,7 @@ namespace SchoolManagement.Infrastructure
 
                 //Relacion de profesor con Medios Auxiliares Reservados
                 entity.HasMany(p => p.AuxiliaryMeans).WithMany(am => am.Professors).UsingEntity<AuxMeansProfessor>(
-                 p => p.HasOne(prop => prop.AuxiliaryMeans).WithMany()
+                 p => p.HasOne(prop => prop.AuxiliaryMean).WithMany()
                  .HasForeignKey(prop => prop.IdProf),
                  p => p.HasOne(prop => prop.Professors).WithMany()
                  .HasForeignKey(prop => prop.IdAuxMean),
