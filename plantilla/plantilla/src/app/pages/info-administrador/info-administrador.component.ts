@@ -76,7 +76,6 @@ export class InfoAdministradorComponent implements OnInit {
     if (confirm('¿Estás seguro de que deseas eliminar este administrador?')) {
       this.administratorService.deleteAdministrator(administratorId).subscribe(
         (response) => {
-          alert('Administrador eliminado con éxito.');
           this.loadAdministrators(); // Recargar la lista
         },
         (error) => {

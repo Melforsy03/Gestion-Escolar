@@ -38,6 +38,6 @@ export class SecretaryService {
   }
 
   deleteSecretary(secretaryId: number): Observable<any> {
-    return this.http.delete(`${this.apiBaseUrl}/secretary/delete/${secretaryId}`, { headers:this.headers });
+    return this.http.delete(`${this.apiBaseUrl}/secretary/delete?secretaryId=${secretaryId}`, { headers:this.headers });
   }
 }

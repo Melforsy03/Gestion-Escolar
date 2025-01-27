@@ -41,7 +41,7 @@ export class AdministratorService {
 
   // Método para eliminar un administrador
   deleteAdministrator(administratorId: number): Observable<any> {
-    return this.http.delete(`${this.apiBaseUrl}/administrator/delete/${administratorId}` ,{
+    return this.http.delete(`${this.apiBaseUrl}/administrator/delete?administratorId=${administratorId}` ,{
         headers: this.headers, // Usa this.headers
       });
   }
