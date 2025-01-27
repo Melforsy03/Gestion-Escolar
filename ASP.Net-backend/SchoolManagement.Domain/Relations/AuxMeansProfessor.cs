@@ -13,6 +13,6 @@ namespace SchoolManagement.Domain.Relations
         public int IdAuxMean { get; set; } = 0;
         public int IdProf { get; set; } = 0;
         public Professor Professors { get; set; }
-        public AuxiliaryMeans AuxiliaryMeans { get; set; }
+        public AuxiliaryMeans AuxiliaryMean { get; set; }
     }
 }
