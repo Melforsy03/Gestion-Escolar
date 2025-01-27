@@ -30,6 +30,7 @@ namespace SchoolManagement.Application
             services.AddScoped<IClassRoomService, ClassRoomService>();
             services.AddScoped<IClassRoomRestrictionService, ClassRoomRestrictionService>();
             services.AddScoped<IClassRoomTechMeanService, ClassRoomTechMeanService>();
+            services.AddScoped<IClassRoomMeanRequestService, ClassRoomMeanRequestService>();
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<IMaintenanceService, MaintenanceService>();
             services.AddScoped<IProfessorService, ProfessorService>();
@@ -42,6 +43,7 @@ namespace SchoolManagement.Application
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IStudentSubjectService, StudentSubjectService>();
             services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<ISubjectAuxMeanService, SubjectAuxMeanService>();
             services.AddScoped<ITechnologicalMeansService, TechnologicalMeansService>();
             services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
             services.AddScoped<Triggers>();

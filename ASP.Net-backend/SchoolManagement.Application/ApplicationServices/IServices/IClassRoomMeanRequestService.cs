@@ -11,7 +11,8 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
 {
     public interface IClassRoomMeanRequestService
     {
-        Task<ClassroomMeanRequestGetAviableResponseDto> GetAviableClassRoomMeanAsync(ClassRoomMeanRequestGetAviableDto classRoomMeanRequestService);
+        Task<CMRGetAviableOrNotResponseDto> GetAviableClassRoomMeanAsync(ClassRoomMeanRequestGetAviableDto classRoomMeanRequestService);
         Task<ClassRoommeanRequestReserveResponseDto> ReserveClassRoomAndMeanAsync(ClassRoomMeanRequestReserveDto classRoomMeanRequestDto);
+        Task<CMRGetAviableOrNotResponseDto> GetNotAviableClassRoomMeanAsync (ClassRoomMeanRequestGetAviableDto classRoomMeanRequestService);
     }
 }

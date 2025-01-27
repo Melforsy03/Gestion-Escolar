@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomMeanRequest
 {
-    public class ClassroomMeanRequestGetAviableResponseDto
+    public class CMRGetAviableOrNotResponseDto
     {
         public Dictionary<string, List<(string, int)>> data { get; set; }
 
