@@ -2,6 +2,7 @@
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfessorStudentSubject;
 using SchoolManagement.Domain.Relations;
+using SchoolManagement.Infrastructure;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,14 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         private readonly IProfessorStudentSubjectRepository _professorStudentSubjectRepository;
         private readonly IProfessorRepository _professorRepository;
         private readonly IStudentSubjectRepository _studentSubjectRepository;
+        private readonly ISubjectRepository _subjectRepository;
+        private readonly Context _context;
         private readonly IMapper _mapper;
 
-        public ProfessorStudentSubjectService(IProfessorStudentSubjectRepository professorStudentSubjectRepository, IProfessorRepository professorRepository, IStudentSubjectRepository studentSubjectRepository,IMapper mapper)
+        public ProfessorStudentSubjectService(Context context, ISubjectRepository subjectRepository, IProfessorStudentSubjectRepository professorStudentSubjectRepository, IProfessorRepository professorRepository, IStudentSubjectRepository studentSubjectRepository,IMapper mapper)
         {
+            _subjectRepository = subjectRepository;
+            _context = context;
             _professorStudentSubjectRepository = professorStudentSubjectRepository;
             _professorRepository = professorRepository;
             _studentSubjectRepository = studentSubjectRepository;
@@ -33,6 +38,24 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             professorStudentSubject.StudentSubject = _studentSubjectRepository.GetById(professorStudentSubjectDto.IdStudSub);            
             var savedProfessorStudentSubject = await _professorStudentSubjectRepository.CreateAsync(professorStudentSubject);
             return _mapper.Map<ProfessorStudentSubjectResponseDto>(savedProfessorStudentSubject);
+        }
+
+        public async Task<PSSResponseGetStudents> GetStudentsForSubjectAsync(int subjectId)
+        {   
+            var subject = _subjectRepository.GetById(subjectId);
+            var students = _context.Students.Where(st => st.Subjects.Contains(subject)).ToList();
+            if (students == null) return null;
+            return new PSSResponseGetStudents { students = students };
+        }
+
+        public async Task<PSSResponseGetSubjects> GetSubjectsOfProfessorAsync(string userName)
+        {   
+            var professor = _context.Professors.Where(p => p.UserId == _context.Users.Where(u => u.UserName == userName).FirstOrDefault().Id).FirstOrDefault();
+            if (professor == null) return null;
+            var subjects = _context.Subjects.Where(s => s.Professors.Contains(professor)).ToList();
+            
+            return new PSSResponseGetSubjects { subjects = subjects};
+        
         }
 
         public async Task<IEnumerable<ProfessorStudentSubjectResponseDto>> ListProfessorStudentSubjectAsync()
