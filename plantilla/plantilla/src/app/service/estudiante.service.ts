@@ -6,7 +6,7 @@ import { AuthGuard } from 'src/app/components/Autentificacion/auth.service';
   providedIn: 'root',
 })
 export class EstudentService {
-  private apiBaseUrl = 'http://localhost:5164'; // Reemplaza con tu URL base
+  private apiBaseUrl = 'http://localhost:5164'; 
 
   constructor(private http: HttpClient , private Authservice: AuthGuard) {}
 
@@ -28,11 +28,10 @@ export class EstudentService {
     return this.http.put(`${this.apiBaseUrl}/student/update`, studentUpdate, { headers });
   }
   
-
   // Eliminar un estudiante
   deleteStudent(studentId: number): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.delete(`${this.apiBaseUrl}/student/delete/${studentId}`, { headers });
+    return this.http.delete(`${this.apiBaseUrl}/student/delete?studentId=${studentId}`, { headers });
   }
 
   // Obtener los encabezados de autenticación

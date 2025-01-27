@@ -32,6 +32,6 @@ export class ProfesorService {
   }
 
   deleteProfesor(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/professor/delete?id=${id}`, { headers: this.getHeaders() });
+    return this.http.delete(`${this.baseUrl}/professor/delete?professorId=${id}`, { headers: this.getHeaders() });
   }
 }

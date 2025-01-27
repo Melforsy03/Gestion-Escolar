@@ -98,7 +98,6 @@ export class TablesComponent implements OnInit {
     if (confirm('¿Estás seguro de que deseas eliminar este estudiante?')) {
       this.estudianteService.deleteStudent(studentId).subscribe(
         (response) => {
-          alert('Estudiante eliminado con éxito.');
           this.loadStudents(); // Recargar la lista
         },
         (error) => {
@@ -106,5 +105,6 @@ export class TablesComponent implements OnInit {
         }
       );
     }
+    
   }
 }
