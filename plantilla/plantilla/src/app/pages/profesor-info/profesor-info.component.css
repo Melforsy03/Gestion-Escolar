@@ -19,7 +19,9 @@
     background-color: #212345; /* Color más oscuro al presionar */
     transform: scale(0.98); /* Pequeño efecto de presión */
   }
-  
+  .modal .form-control {
+    color: black; /* Cambia el color del texto a negro */
+  }
   .form-contro {
     display: block;
     width: 100%;
@@ -68,4 +70,7 @@
     align-items: center;
     height: 100%; /* Opcional, ajusta según tu diseño */
   }
+ 
+  
+ 
   

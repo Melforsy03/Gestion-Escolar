@@ -1,161 +1,117 @@
-import { Component, OnInit, AfterViewInit } from "@angular/core";
-import { Chart } from "chart.js";
-import { ProfesorService } from "src/app/service/profesor-info.service";
+import { Component, OnInit } from '@angular/core';
+import { ProfesorService } from 'src/app/service/profesor-info.service';
 
 @Component({
-  selector: "app-profesor",
-  templateUrl: "profesor-info.component.html",
-  styleUrls: ["./profesor-info.component.css"],
+  selector: 'app-profesor-info',
+  templateUrl: './profesor-info.component.html',
+  styleUrls: ['./profesor-info.component.css']
 })
-export class ProfesorComponent implements OnInit, AfterViewInit {
-  globalSearchQuery: string = "";
+export class ProfesorComponent implements OnInit {
   profesores: any[] = [];
-  filteredProfesores: any[] = [];
-  graficosVisibles: boolean[] = [];
-  searchQuery: string = "";
-  showAddProfesorForm: boolean = false;
-  newProfesor = {
-    nombre: "",
-    apellidos: "",
-    especialidad: "",
-    contrato: "Tiempo Completo",
-    asignaturas: [],
-  };
-  selectedAsignaturas: string[] = []; // Para las asignaturas seleccionadas
-  availableAsignaturas = [
-    { id: 1, nombre: "Matemáticas" },
-    { id: 2, nombre: "Física" },
-    { id: 3, nombre: "Química" },
-    { id: 4, nombre: "Historia" },
-    { id: 5, nombre: "Lengua y Literatura" },
-  ];
+  globalSearchQuery: string = '';
+  showModal: boolean = false; // Controla la visibilidad del modal
+  newProfesor: any = { nameProf: '', contract: '', salary: 0, laboralExperience: 0 }; // Datos del nuevo profesor
 
   constructor(private profesorService: ProfesorService) {}
 
   ngOnInit(): void {
     this.loadProfesores();
   }
-  ngAfterViewInit(): void {
-    // Inicialización, si fuera necesario
-  }
 
-
-  // Cargar profesores desde el servicio
   loadProfesores(): void {
     this.profesorService.listProfesores().subscribe(
       (data) => {
-        this.profesores = data;
-        this.filteredProfesores = [...this.profesores];
-        this.graficosVisibles = new Array(this.profesores.length).fill(false);
+        this.profesores = data.map((profesor: any) => ({
+          ...profesor,
+          isEditing: false // Agregar propiedad para controlar el estado de edición
+        }));
       },
       (error) => {
-        console.error("Error al cargar profesores:", error);
+        console.error('Error al listar profesores:', error);
       }
     );
   }
 
-  toggleAsignatura(event: any): void {
-    const asignatura = event.target.value;
+  openModal(): void {
+    console.log('Modal abierto'); // Depuración
+    this.showModal = true;
+    console.log(this.showModal)
+    this.newProfesor = { nameProf: '', contract: '', salary: 0, laboralExperience: 0 }; // Limpiar el formulario
+  }
 
-    if (event.target.checked) {
-      // Agregar la asignatura seleccionada
-      this.newProfesor.asignaturas.push(asignatura);
-    } else {
-      // Eliminar la asignatura si se deselecciona
-      const index = this.newProfesor.asignaturas.indexOf(asignatura);
-      if (index > -1) {
-        this.newProfesor.asignaturas.splice(index, 1);
+  closeModal(): void {
+    this.showModal = false;
+  }
+
+  saveProfesor(): void {
+    this.profesorService.createProfesor(this.newProfesor).subscribe(
+      (response) => {
+        console.log('Profesor agregado:', response);
+        this.loadProfesores();
+        this.closeModal();
+      },
+      (error) => {
+        console.error('Error al agregar profesor:', error);
       }
-    }
+    );
   }
 
-  filterProfesores(): void {
-    if (this.searchQuery) {
-      this.filteredProfesores = this.profesores.filter((profesor) =>
-        `${profesor.nombre} ${profesor.apellidos}`
-          .toLowerCase()
-          .includes(this.searchQuery.toLowerCase())
-      );
-    } else {
-      this.filteredProfesores = [...this.profesores];
-    }
+  toggleEdit(profesor: any): void {
+    profesor.isEditing = !profesor.isEditing; // Cambiar el estado de edición
   }
 
-  addProfesor(): void {
-    if (this.newProfesor.nombre && this.newProfesor.apellidos && this.newProfesor.especialidad) {
-      this.profesorService.createProfesor(this.newProfesor).subscribe(
-        (profesorCreado) => {
-          this.profesores.push(profesorCreado);
-          this.filteredProfesores = [...this.profesores];
-          this.newProfesor = { nombre: "", apellidos: "", especialidad: "", contrato: "Tiempo Completo", asignaturas: [] }; // Reset form
-          this.selectedAsignaturas = [];
-          this.showAddProfesorForm = false; // Cerrar el modal después de guardar
+  saveChanges(profesor: any): void {
+    if (!profesor.id) {
+      // Crear nuevo profesor
+      this.profesorService.createProfesor(profesor.professor).subscribe(
+        (response) => {
+          console.log('Profesor agregado:', response);
+          this.loadProfesores();
         },
         (error) => {
-          console.error("Error al agregar profesor:", error);
+          console.error('Error al agregar profesor:', error);
+        }
+      );
+    } else {
+      // Actualizar profesor existente
+      const updatedProfesor = {
+        id: profesor.id,
+        professor: {
+          nameProf: profesor.professor.nameProf,
+          contract: profesor.professor.contract,
+          salary: profesor.professor.salary,
+          laboralExperience: profesor.professor.laboralExperience
+        }
+      };
+
+      this.profesorService.updateProfesor(updatedProfesor).subscribe(
+        (response) => {
+          console.log('Profesor actualizado:', response);
+          profesor.isEditing = false; // Salir del modo de edición
+        },
+        (error) => {
+          console.error('Error al actualizar profesor:', error);
         }
       );
     }
   }
 
-  toggleGrafico(index: number): void {
-    this.graficosVisibles[index] = !this.graficosVisibles[index];
-    if (this.graficosVisibles[index]) {
-      setTimeout(() => {
-        this.renderGrafico(index);
-      }, 0);
-    }
-  }
-
-  calcularPromedio(calificaciones: number[]): number {
-    const suma = calificaciones.reduce((acc, curr) => acc + curr, 0);
-    return suma / calificaciones.length;
-  }
-
-  renderGrafico(index: number): void {
-    const profesor = this.profesores[index];
-    const ctx = document.getElementById(`graficoProfesor${index}`) as HTMLCanvasElement;
-
-    if (!ctx) return;
-
-    // Calcular el promedio de las calificaciones de cada curso
-    const promedios = profesor.asignaturas.map((asignatura: any) =>
-      this.calcularPromedio(asignatura.calificaciones)
+  deleteProfesor(id: number): void {
+    this.profesorService.deleteProfesor(id).subscribe(
+      (response) => {
+        console.log('Profesor eliminado:', response);
+        this.loadProfesores();
+      },
+      (error) => {
+        console.error('Error al eliminar profesor:', error);
+      }
     );
-
-    new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: profesor.asignaturas.map((a: any) => a.nombre),
-        datasets: [
-          {
-            label: "Promedio de Calificaciones",
-            backgroundColor: "#42a5f5",
-            borderColor: "#1e88e5",
-            data: promedios,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: true },
-          tooltip: { enabled: true },
-        },
-        scales: {
-          x: { grid: { display: false } },
-          y: { beginAtZero: true },
-        },
-      },
-    });
   }
 
   updateDisplayProfesor(): void {
-    const query = this.globalSearchQuery.toLowerCase();
-    this.filteredProfesores = this.profesores.filter(
-      (profesor) =>
-        profesor.nombre.toLowerCase().includes(query) ||
-        profesor.apellidos.toLowerCase().includes(query)
+    // Filtrar la lista de profesores según la consulta de búsqueda global.
+    this.profesores = this.profesores.filter(profesor =>
+      profesor.professor.nameProf.toLowerCase().includes(this.globalSearchQuery.toLowerCase())
     );
   }
 }

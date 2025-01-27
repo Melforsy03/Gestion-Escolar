@@ -1,32 +1,37 @@
+// profesor.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { AuthGuard } from '../components/Autentificacion/auth.service';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProfesorService {
-  private baseUrl = 'http://localhost:5000'; // URL base del backend, ajusta el puerto si es necesario
+  private baseUrl = 'http://localhost:5164';
 
-  constructor(private http: HttpClient) {}
 
-  // Obtener la lista de profesores
-  listProfesores(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/professor/list`);
+  constructor(private http: HttpClient , private Authtoken :AuthGuard) {}
+  private token = this.Authtoken.getToken(); 
+  private getHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+      'Content-Type': 'application/json'
+    });
   }
 
-  // Crear un nuevo profesor
+  listProfesores(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/professor/list`, { headers: this.getHeaders() });
+  }
+
   createProfesor(profesor: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/professor/create`, profesor);
+    return this.http.post(`${this.baseUrl}/professor/create`, profesor, { headers: this.getHeaders() });
   }
 
-  // Actualizar la información de un profesor
   updateProfesor(profesor: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/professor/update`, profesor);
+    return this.http.put(`${this.baseUrl}/professor/update`, profesor, { headers: this.getHeaders() });
   }
 
-  // Eliminar un profesor
-  deleteProfesor(profesorId: number): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}/professor/delete?professorId=${profesorId}`);
+  deleteProfesor(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/professor/delete?id=${id}`, { headers: this.getHeaders() });
   }
 }
