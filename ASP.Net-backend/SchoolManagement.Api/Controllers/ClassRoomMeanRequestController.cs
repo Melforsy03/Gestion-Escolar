@@ -19,7 +19,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPost]
         [Route("checkAviableClassRoomsAndMeans")]
         [Authorize(Roles = "SuperAdmin,Professor")]
-        public async Task<IActionResult> CreateClassRoomMeanRequest(ClassRoomMeanRequestGetAviableDto classRoomMeanRequest)
+        public async Task<IActionResult> GetAviableClassRoomMean(ClassRoomMeanRequestGetAviableDto classRoomMeanRequest)
         {
             var aviableClassRoomsAndMeans = await _classRoomMeanRequestService.GetAviableClassRoomMeanAsync(classRoomMeanRequest);
             return Ok(aviableClassRoomsAndMeans);
