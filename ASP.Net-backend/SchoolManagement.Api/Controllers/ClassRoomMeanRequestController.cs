@@ -16,7 +16,7 @@ namespace SchoolManagement.Api.Controllers
             _classRoomMeanRequestService = classRoomMeanRequestService;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("checkAviableClassRoomsAndMeans")]
         [Authorize(Roles = "SuperAdmin,Professor")]
         public async Task<IActionResult> CreateClassRoomMeanRequest(ClassRoomMeanRequestGetAviableDto classRoomMeanRequest)
@@ -34,7 +34,7 @@ namespace SchoolManagement.Api.Controllers
             return Ok(answer);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("checkNotAviableClassRoomsAndMeans")]
         [Authorize(Roles = "SuperAdmin, Professor")]
         public async Task<IActionResult> CheckNotAviableClassRoomMean(ClassRoomMeanRequestGetAviableDto classRoomMeanRequest)
