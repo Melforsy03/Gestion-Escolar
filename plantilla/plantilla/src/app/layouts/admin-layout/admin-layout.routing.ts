@@ -1,8 +1,7 @@
 
 import { Routes } from "@angular/router";
-
 import { ProfesorComponent } from "../../pages/profesor-info/profesor-info.component";
-import { NotasComponent } from "../../pages/notas/info-estudiantes.component";
+import { InfoEstudiantesComponent } from "../../pages/notas/info-estudiantes.component";
 import { TablesComponent } from "../../pages/tables/estudiante.component";
 import { SolicitudComponent } from "src/app/pages/solicitud/solicitud.component";
 import {MedioAuxiliarComponent } from "src/app/pages/medios-auxiliares/mediosAuxiliares.component";
@@ -15,7 +14,7 @@ import { EstudiantesProfesor } from "src/app/pages/estudiantes-profesor/estudian
 export const AdminLayoutRoutes: Routes = [
 
   { path: "profesor", component: ProfesorComponent },
-  { path: "info-estudiantes", component: NotasComponent },
+  { path: "info-estudiantes", component: InfoEstudiantesComponent },
   { path: "estudiantes", component: TablesComponent },
   { path : "solicitar", component : SolicitudComponent},
   { path : "medio-auxiliar" , component :MedioAuxiliarComponent},

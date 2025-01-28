@@ -52,12 +52,12 @@ describe('SolicitudComponent', () => {
         { nombre: 'sillas', cantidad: '30' },
       ],
     };
-    spyOn(component, 'onSubmit');
+    spyOn(component, 'CargarInfo');
 
     component.solicitudForm.patchValue(mockFormValue);
     fixture.debugElement.query(By.css('form')).triggerEventHandler('ngSubmit', null);
 
-    expect(component.onSubmit).toHaveBeenCalled();
+    expect(component.CargarInfo).toHaveBeenCalled();
   });
 
   it('should display results when result is available', () => {

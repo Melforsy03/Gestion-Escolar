@@ -1,73 +1,31 @@
 <div class="content">
-    <div class="row">
-      <div class="container mt-4">
-        <h2>Solicitud de Aula y Medios</h2>
-        <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="aula">Aula</label>
-            <input type="text" class="form-control" id="aula" formControlName="aula" placeholder="Ingrese el aula" required>
-          </div>
-  
-          <div formArrayName="medios">
-            <div *ngFor="let medio of medios.controls; let i = index" [formGroupName]="i" class="form-group">
-              <label for="medio">Medio de Apoyo</label>
-              <select class="form-control custom-select" formControlName="nombre" required>
-                <option value="" disabled selected hidden>Seleccione un medio</option>
-                <option value="proyector">Proyector</option>
-                <option value="computadora">Computadora</option>
-                <option value="pizarra">Pizarra</option>
-                <option value="altavoces">Altavoces</option>
-                <option value="mesas">Mesas</option>
-                <option value="sillas">Sillas</option>
-              </select>
-  
-              <label for="cantidad">Cantidad</label>
-              <input type="text" class="form-control" formControlName="cantidad" placeholder="Ingrese la cantidad requerida" min="1" required>
-  
-              <button type="button" class="custom-butto" (click)="removeMedio(i)">Eliminar</button>
-            </div>
-          </div>
-  
-          <button type="button" class="custom-butto" (click)="addMedio()">Agregar Medio</button>
-          <button type="submit" class="custom-butto">Enviar Solicitud</button>
-        </form>
-          <!-- Sección para mostrar los resultados -->
-  <div class="result-container mt-4" *ngIf="result">
-    <h3>Resultados del Endpoint</h3>
-    <div>
-      <h4>Medios Disponibles</h4>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Asignatura</th>
-            <th>Medio</th>
-            <th>Cantidad</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let entry of result.dictionary | keyvalue">
-            <td rowspan="{{ entry.value.length }}">{{ entry.key }}</td>
-            <td *ngFor="let medio of entry.value; let i = index">
-              {{ medio[0] }}
-            </td>
-            <td *ngFor="let medio of entry.value; let i = index">
-              {{ medio[1] }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div>
-      <h4>Aulas Disponibles</h4>
-      <ul>
-        <li *ngFor="let aula of result.availableRooms">
-          Aula {{ aula }}
-        </li>
-      </ul>
-    </div>
-  </div>
+  <div class="row">
+    <div class="container mt-4">
+      <h3>Solicitud de Aulas y Medios </h3>
+      <!-- Sección para mostrar los resultados -->
+      <div class="result-container mt-4" *ngIf="result">
+        <div>
+          <h4>Asignaturas y Medios Disponibles</h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Asignatura</th>
+                <th>Medio</th>
+                <th>Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let entry of result.dictionary | keyvalue">
+                <td rowspan="{{ entry.value.length }}">{{ entry.key }}</td>
+                <ng-container *ngFor="let medio of entry.value">
+                  <td>{{ medio[0] }}</td>
+                  <td>{{ medio[1] }}</td>
+                </ng-container>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-
+</div>

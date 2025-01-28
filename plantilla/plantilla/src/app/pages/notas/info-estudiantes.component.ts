@@ -1,101 +1,89 @@
-import { Component, OnInit } from "@angular/core";
-import { ToastrService } from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core';
+import { StudentGradingService } from 'src/app/service/generaStud.service';
 
 @Component({
-  selector: "app-info-estudiantes",
-  templateUrl: "info-estudiantes.component.html",
-  styleUrls : ["./info-estudiantes.component.css"]
+  selector: 'app-info-estudiantes',
+  templateUrl: './info-estudiantes.component.html',
+  styleUrls: ['./info-estudiantes.component.css']
 })
-export class NotasComponent implements OnInit {
-
-  subjects = ['Matemáticas', 'Ciencias', 'Historia']; // Opciones de asignaturas
-  courses = ['Primero', 'Segundo', 'Tercero' ,'Cuarto']; // Opciones de cursos
-
-  selectedSubject: string = ''; // Asignatura seleccionada
-  selectedCourse: string = ''; // Curso seleccionado
-
-  students: any[] = [
-    { name: 'Carlos Pérez', subject: 'Matemáticas', course: 'Primero', attendance: 90, average: 8.5 },
-    { name: 'Ana García', subject: 'Matemáticas', course: 'Segundo', attendance: 85, average: 9.0 },
-    { name: 'Luis Martínez', subject: 'Ciencias', course: 'Primero', attendance: 95, average: 7.5 },
-    { name: 'María López', subject: 'Ciencias', course: 'Segundo', attendance: 80, average: 6.8 },
-    { name: 'Sofía Rodríguez', subject: 'Historia', course: 'Tercero', attendance: 88, average: 7.2 },
-    { name: 'Pedro González', subject: 'Historia', course: 'Cuarto', attendance: 70, average: 6.0 },
-    { name: 'Lucía Fernández', subject: 'Inglés', course: 'Primero', attendance: 92, average: 8.9 },
-    { name: 'Javier Ramírez', subject: 'Inglés', course: 'Segundo', attendance: 78, average: 7.6 },
-  ];
-  filteredStudents = [...this.students]; // Estudiantes filtrados por asignatura y curso
-  displayedStudents = [...this.students];
-  globalSearchQuery: string = '';
+export class InfoEstudiantesComponent implements OnInit {
+  subjects: any[] = [];
+  students: any[] = [];
+  results: any[] = [];
+  role : string ='';
+  displayedStudents = [];
+  globalSearchQuery = '';
+  selectedSubject = '';
   editMode: boolean[] = [];
-  constructor() {
+
+  constructor(private gradingService: StudentGradingService) {}
+
+  ngOnInit(): void {
+    this.role = this.gradingService.getRole();
+    this.getSubjects(this.role); // Replace 'currentUser' with the actual username logic
     
-    // Inicializa el estado de edición como falso para todos los estudiantes
-    this.editMode = this.students.map(() => false);
   }
-
-  ngOnInit() {
-    // Establecer la primera asignatura como valor por defecto
-    if (this.subjects.length > 0) {
-      this.selectedSubject = this.subjects[0];
-    }
-
-    // Realizar un filtrado inicial
-    this.filterStudents();
-  }
-
-  onFilterChange() {
-    this.filterStudents();
-  }
-
-  filterStudents() {
-    // Lógica para filtrar estudiantes según la asignatura y curso
-    this.filteredStudents = this.students.filter(
-      (student) =>
-        (this.selectedSubject ? student.subject === this.selectedSubject : true) &&
-        (this.selectedCourse ? student.course === this.selectedCourse : true)
+  getSubjects(userName: string): void {
+    this.gradingService.getSubjects(userName).subscribe(
+      (response: any) => {
+        this.subjects = response.subjects || []; // Asigna el array de subjects o un array vacío si no hay datos
+        if (this.subjects.length > 0) {
+          // Selecciona la primera asignatura por defecto
+          this.selectedSubject = this.subjects[0].IdSub;
+          this.getStudents(this.selectedSubject); // Pasa el idSub de la primera asignatura
+        } else {
+          this.selectedSubject = ''; // Deja en blanco si no hay asignaturas
+        }
+      },
+      (error) => console.error('Error fetching subjects:', error)
     );
   }
+  
 
-  searchQuery: string = '';
-
+  getStudents(subjectId: string): void {
+    console.log(subjectId);
+    this.gradingService.getStudents(+subjectId).subscribe(
+      (response: any) => {
+        console.log('Respuesta del servidor para estudiantes:', response);
+  
+        // Manejo flexible de la respuesta
+        if (Array.isArray(response)) {
+          this.students = response;
+        } else if (response.students && Array.isArray(response.students)) {
+          this.students = response.students;
+        } else {
+          console.error('La respuesta no contiene un array válido:', response);
+          this.students = [];
+        }
+  
+        this.updateDisplayedStudents();
+      },
+      (error) => console.error('Error fetching students:', error)
+    );
+  }
+  
   updateDisplayedStudents(): void {
-    const query = this.globalSearchQuery.trim().toLowerCase();
-
+    if (!Array.isArray(this.students)) {
+      console.error('this.students no es un array:', this.students);
+      return;
+    }
+  
     this.displayedStudents = this.students.filter((student) => {
-      // Filtrado por búsqueda global
-      const matchesSearch = !query || student.name.toLowerCase().includes(query);
-
-      // Filtrado por asignatura y curso
-      const subjectMatch =
-        !this.selectedSubject || this.selectedSubject === student.subject; // Lógica de asignatura
-      const courseMatch =
-        !this.selectedCourse || this.selectedCourse === student.course; // Lógica de curso
-
-      return matchesSearch && subjectMatch && courseMatch;
+      const matchesSearch =
+        !this.globalSearchQuery ||
+        student.nameStud.toLowerCase().includes(this.globalSearchQuery.toLowerCase());
+      return matchesSearch;
     });
   }
-
-/**
- * Llama al actualizar la búsqueda global.
- */
-onGlobalSearch(): void {
-  this.updateDisplayedStudents();
-}
-  editStudent(index: number): void {
-    const student = this.filteredStudents[index];
-    console.log('Editar estudiante:', student);
-    // Lógica para editar estudiante
+  onSubjectChange(subjectId: string): void {
+    this.selectedSubject = subjectId;
+    this.getStudents(subjectId);
   }
 
-
-   toggleEditMode(index: number): void {
-     // Cambia el estado de edición para el estudiante específico
-     this.editMode[index] = !this.editMode[index];
-     if (!this.editMode[index]) {
-       // Aquí puedes guardar los cambios en un backend, si es necesario
-       console.log('Datos guardados:', this.students[index]);
-     }
-   }
-
+  toggleEditMode(index: number): void {
+    this.editMode[index] = !this.editMode[index];
+    if (!this.editMode[index]) {
+      console.log('Guardando datos:', this.displayedStudents[index]);
+    }
+  }
 }

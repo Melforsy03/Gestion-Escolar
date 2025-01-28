@@ -38,11 +38,10 @@ export class RoleService {
           { label: 'Informacion-Estudiantes', path: '/estudiantes', icon: 'icon-single-copy-04' },
           { label: 'Información Profesores', path: '/profesor', icon: 'icon-notes' },
           { label: 'info-secretaria', path: '/info-secretaria', icon: 'icon-badge' },
-
           { label: 'Peticiones', path: '/peticiones', icon: 'icon-bullet-list-67'},
-          {label: 'Calificaciones Profesores', path: '/calificaciones-profesores', icon: 'icon-notes' },
-          {label: 'Estudiantes Profesor', path: '/estudiantes-profesor', icon: 'icon-paper' },
-          { label: 'info-administrador', path: '/info-administrador', icon: 'icon-badge' },
+          { label:  'calificaciones profesores', path: '/calificaciones-profesores', icon: 'icon-notes' },
+          { label:  'estudiantes profesor', path: '/estudiantes-profesor', icon: 'icon-paper' },
+          { label: ' info-administrador', path: '/info-administrador', icon: 'icon-badge' },
         ],
       },
   ];

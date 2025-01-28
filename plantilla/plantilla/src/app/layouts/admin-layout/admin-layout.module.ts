@@ -5,7 +5,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { ProfesorComponent } from "../../pages/profesor-info/profesor-info.component";
-import { NotasComponent } from "../../pages/notas/info-estudiantes.component";
+import { InfoEstudiantesComponent } from "../../pages/notas/info-estudiantes.component";
 import { TablesComponent } from "../../pages/tables/estudiante.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
@@ -22,7 +22,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
   
     TablesComponent,
     ProfesorComponent,
-    NotasComponent,
+    InfoEstudiantesComponent,
     
   ]
 })

@@ -3,10 +3,11 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Estudiantes</h4>
+          <h4 class="card-title">Gestión de Estudiantes</h4>
         </div>
         <div class="card-body">
-          <!-- Búsqueda global -->
+
+          <!-- Barra de búsqueda -->
           <div class="search-bar mb-3 d-flex align-items-center">
             <input
               type="text"
@@ -19,57 +20,48 @@
             <i class="fa fa-search ml-2"></i>
           </div>
 
-          <!-- Filtros -->
+          <!-- Filtro por asignatura -->
           <div class="filter-section mb-3">
             <label for="subjectFilter">Asignatura:</label>
             <select
               id="subjectFilter"
               class="form-select"
               [(ngModel)]="selectedSubject"
-              (change)="updateDisplayedStudents()"
+              (change)="onSubjectChange($event.target.value)"
             >
-              <option value="">Todas</option>
-              <option *ngFor="let subject of subjects" [value]="subject">{{ subject }}</option>
-            </select>
-
-            <label for="courseFilter">Curso:</label>
-            <select
-              id="courseFilter"
-              class="form-select"
-              [(ngModel)]="selectedCourse"
-              (change)="updateDisplayedStudents()"
-            >
-              <option value="">Todos</option>
-              <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
+              <option value="" disabled [selected]="!subjects.length">
+                {{ subjects.length ? 'Seleccione una asignatura' : 'No hay asignaturas disponibles' }}
+              </option>
+              <option *ngFor="let subject of subjects" [value]="subject.idSub">
+                {{ subject.nameSub }}
+              </option>
             </select>
           </div>
 
           <!-- Tabla de estudiantes -->
-          <div class="table-responsive" *ngIf="displayedStudents.length > 0">
+          <div class="table-responsive">
             <table class="table tablesorter">
               <thead class="text-primary">
                 <tr>
                   <th>Nombre</th>
-                  <th>Asistencia</th>
-                  <th>Promedio</th>
+                  <th>Edad</th>
+                  <th>Actividad</th>
+                  <th>Curso</th>
+                  <th>Nota</th>
                   <th>Acción</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let student of displayedStudents; let i = index">
-                  <td>{{ student.name }}</td>
-                  <td>
-                    <input
-                      type="text"
-                      [(ngModel)]="student.attendance"
-                      [ngClass]="{ 'input-editable': editMode[i], 'input-readonly': !editMode[i] }"
-                      [readonly]="!editMode[i]"
-                    />
-                  </td>
+                  <td>{{ student.nameStud }}</td>
+                  <td>{{ student.age }}</td>
+                  <td>{{ student.eActivity ? 'Activo' : 'Inactivo' }}</td>
+                  <td>{{ student.course?.courseName || 'Sin curso' }}</td>
                   <td>
                     <input
                       type="number"
-                      [(ngModel)]="student.average"
+                      class="form-control"
+                      [(ngModel)]="student.grade"
                       [ngClass]="{ 'input-editable': editMode[i], 'input-readonly': !editMode[i] }"
                       [readonly]="!editMode[i]"
                       step="0.1"
@@ -79,7 +71,7 @@
                   </td>
                   <td>
                     <button
-                      class="custom-button"
+                      class="btn btn-primary"
                       (click)="toggleEditMode(i)"
                     >
                       {{ editMode[i] ? 'Guardar' : 'Editar' }}
@@ -90,8 +82,6 @@
             </table>
           </div>
 
-          <!-- Mensaje si no hay estudiantes -->
-          <p *ngIf="displayedStudents.length === 0">No se encontraron estudiantes.</p>
         </div>
       </div>
     </div>
