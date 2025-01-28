@@ -12,16 +12,23 @@ export class CalificacionesComponent implements OnInit {
   constructor(private calificacionesService: CalificacionesService) {}
 
   ngOnInit(): void {
-    this.loadCalificaciones();
+    console.log('Componente cargado');
+    // Inicialmente podríamos cargar las calificaciones al cargar el componente si se quiere
+    // this.loadCalificaciones();  // Puedes descomentar esto si deseas cargar automáticamente las calificaciones al inicio
   }
 
+  // Método para cargar las calificaciones
   loadCalificaciones(): void {
+    console.log('Cargando las calificaciones...');
     this.calificacionesService.listCalificaciones().subscribe(
       (response) => {
+        console.log('Datos recibidos del backend:', response);
         this.calificaciones = response;
+        console.log('Calificaciones asignadas:', this.calificaciones);
       },
       (error) => {
         console.error('Error al cargar las calificaciones:', error);
+        alert('Error al cargar las calificaciones. Por favor, inténtalo de nuevo.');
       }
     );
   }

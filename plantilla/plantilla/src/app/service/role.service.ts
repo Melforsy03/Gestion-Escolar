@@ -40,14 +40,15 @@ export class RoleService {
           { label: 'info-secretaria', path: '/info-secretaria', icon: 'icon-badge' },
           { label: 'info-administrador', path: '/info-administrador', icon: 'icon-badge' },
           { label: 'Peticiones', path: '/peticiones', icon: 'icon-bullet-list-67'},
+          {label: 'Calificaciones Profesores', path: '/calificaciones-profesores', icon: 'icon-notes' },
         ],
       },
   ];
 
   getMenuItemsForRole(role: string): MenuItem[] {
-    
+
     const permissions = this.rolePermissions.find((perm) => perm.role === role);
     return permissions ? permissions.menuItems : [];
   }
-  
+
 }

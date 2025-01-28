@@ -22,12 +22,14 @@ export class CalificacionesService {
   // Listar calificaciones
   listCalificaciones(): Observable<Calificacion[]> {
     const headers = this.getAuthHeaders();
+    console.log('Haciendo la petición con los encabezados:', headers);
     return this.http.get<Calificacion[]>(`${this.baseUrl}/list`, { headers });
   }
 
   // Obtener los encabezados de autenticación
   private getAuthHeaders(): HttpHeaders {
     const token = this.Authservice.getToken(); // Obtiene el token desde AuthGuard
+    console.log('Token de autenticación:', token);
     return new HttpHeaders({
       Authorization: `Bearer ${token}`, // Incluye el token en los encabezados
     });
