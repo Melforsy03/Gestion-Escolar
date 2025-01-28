@@ -39,8 +39,7 @@ export class RoleService {
           { label: 'Información Profesores', path: '/profesor', icon: 'icon-notes' },
           { label: 'info-secretaria', path: '/info-secretaria', icon: 'icon-badge' },
           { label: 'info-administrador', path: '/info-administrador', icon: 'icon-badge' },
-          { label: 'Peticiones', path: '/peticiones', icon: 'bx bx-user' },
-
+          { label: 'Peticiones', path: '/peticiones', icon: 'icon-bullet-list-67'},
         ],
       },
   ];
