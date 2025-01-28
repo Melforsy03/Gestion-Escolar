@@ -19,7 +19,7 @@ namespace SchoolManagement.Api.Controllers
         [HttpPost]
         [Route("givenote")]
         
-        [Authorize(Roles = "SuperAdmin, Professor")]
+        [Authorize(Roles = "SuperAdmin, Professor, Secretary")]
         public async Task<IActionResult> CreateProfessorStudentSubject(ProfessorStudentSubjectDto professorStudentSubject)
         {
             var createdProfessorStudentSubject = await _professorStudentSubjectService.CreateProfessorStudentSubjectAsync(professorStudentSubject);
