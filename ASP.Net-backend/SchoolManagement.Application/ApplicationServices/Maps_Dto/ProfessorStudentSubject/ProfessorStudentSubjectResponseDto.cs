@@ -9,5 +9,8 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfessorStu
     public class ProfessorStudentSubjectResponseDto: ProfessorStudentSubjectDto
     {
         public int IdProfStudSub { get; set; }
+        public string studentName { get; set; }
+        public string professorName { get; set; }
+        public string subjectName { get; set; }
     }
 }

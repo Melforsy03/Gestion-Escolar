@@ -26,8 +26,8 @@ namespace SchoolManagement.Api.Controllers
             return Ok(createdProfessorStudentSubject);
         }
 
-        [HttpGet]
-        [Route("list")]
+        [HttpPost]
+        [Route("listnotes")]
         
         [Authorize(Roles = "SuperAdmin, Professor, Secretary")]
         public async Task<ActionResult<IEnumerable<ProfessorStudentSubjectResponseDto>>> ListProfessorStudentSubjects()
@@ -36,17 +36,17 @@ namespace SchoolManagement.Api.Controllers
             return Ok(professorStudentSubject);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("getsubjects")]
 
         [Authorize(Roles = "SuperAdmin, Professor, Secretary")]
-        public async Task<ActionResult> GetSubjects(string UserName)
+        public async Task<ActionResult> GetSubjects(ProfessorStudentSubjectConsultDto professorStudentSubjectConsultDto)
         {
-            var professorStudentSubject = await _professorStudentSubjectService.GetSubjectsOfProfessorAsync(UserName);
+            var professorStudentSubject = await _professorStudentSubjectService.GetSubjectsOfProfessorAsync(professorStudentSubjectConsultDto);
             return Ok(professorStudentSubject);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("getstudents")]
 
         [Authorize(Roles = "SuperAdmin, Professor, Secretary")]
@@ -56,12 +56,12 @@ namespace SchoolManagement.Api.Controllers
             return Ok(professorStudentSubject);
         }
 
-        [HttpPut]
-        [Route("update")]
+        [HttpPost]
+        [Route("getnotesByProfessor")]
         [Authorize(Roles = "SuperAdmin, Professor, Secretary")]
-        public async Task<ActionResult> UpdateProfessorStudentSubject(ProfessorStudentSubjectResponseDto professorStudentSubject)
+        public async Task<ActionResult> GetProfesssorStudentSubjectByUser(ProfessorStudentSubjectConsultDto professorStudentSubject)
         {
-            var updatedProfessorStudentSubject = await _professorStudentSubjectService.UpdateProfessorStudentSubjectAsync(professorStudentSubject);
+            var updatedProfessorStudentSubject = await _professorStudentSubjectService.ListProfessorStudentSubjectByUserNameAsync(professorStudentSubject);
             return Ok(updatedProfessorStudentSubject);
         }
     }
