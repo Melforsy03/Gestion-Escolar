@@ -33,7 +33,14 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-puzzle-10",
     class: ""
   },
+  {
+    path: "/calificaciones",
+    title: "Calificaciones Profesores", // Título para el menú
+    icon: "icon-pencil", // Icono para la opción
+    class: ""
+  }
 ];
+
 
 @Component({
   selector: "app-sidebar",
@@ -56,5 +63,5 @@ export class SidebarComponent implements OnInit {
     }
     return true;
   }
-  
+
 }

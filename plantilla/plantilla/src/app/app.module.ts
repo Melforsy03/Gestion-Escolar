@@ -21,6 +21,7 @@ import { InfoSecretariaComponent } from './pages/info-secretaria/info-secretaria
 import { InfoAdministradorComponent } from './pages/info-administrador/info-administrador.component';
 import { MediosTecnologicosComponent } from './pages/medios-tecnologicos/medios-tecnologicos.component';
 import { GeneralEstudiantesComponent } from './pages/general-estudiantes/general-estudiantes.component';
+import { CalificacionesComponent } from './pages/calificaciones-profesores/calificacionesProfesores.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -33,10 +34,10 @@ import { GeneralEstudiantesComponent } from './pages/general-estudiantes/general
     ToastrModule.forRoot(),
     CommonModule,
     ReactiveFormsModule,
-   
+
 
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, GeneralEstudiantesComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, GeneralEstudiantesComponent, CalificacionesComponent],
   providers: [EstudentService],
   bootstrap: [AppComponent]
 })
