@@ -20,7 +20,7 @@ export class StudentGradingService {
   getSubjects(userName: string): Observable<any[]> {
     const url = `${this.apiUrl}/professorStudentSubject/getsubjects`;
     const params = new HttpParams().set('userName', userName);
-    return this.http.post<any[]>(url, { headers: this.headers, params });
+    return this.http.get<any[]>(url, { headers: this.headers, params });
   }
 
   getStudents(IdSub: number): Observable<any[]> {
@@ -33,6 +33,11 @@ export class StudentGradingService {
     const url = `${this.apiUrl}/professorStudentSubject/update`;
     return this.http.post<void>(url, payload, { headers: this.headers });
   }
+  assignGrade(payload: any): Observable<void> {
+    const url = `${this.apiUrl}/professorStudentSubject/givenote`;
+    return this.http.post<void>(url, payload, { headers: this.headers });
+  }
+  
 
   listResults(): Observable<any[]> {
     const url = `${this.apiUrl}/profstudsubcourse/list`;

@@ -40,9 +40,9 @@ namespace SchoolManagement.Api.Controllers
         [Route("getsubjects")]
 
         [Authorize(Roles = "SuperAdmin, Professor, Secretary")]
-        public async Task<ActionResult> GetSubjects(ProfessorStudentSubjectConsultDto professorStudentSubjectConsultDto)
+        public async Task<ActionResult> GetSubjects(string UserName)
         {
-            var professorStudentSubject = await _professorStudentSubjectService.GetSubjectsOfProfessorAsync(professorStudentSubjectConsultDto);
+            var professorStudentSubject = await _professorStudentSubjectService.GetSubjectsOfProfessorAsync(UserName);
             return Ok(professorStudentSubject);
         }
 

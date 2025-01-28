@@ -75,6 +75,25 @@ export class InfoEstudiantesComponent implements OnInit {
       return matchesSearch;
     });
   }
+  assignGrade(student: any): void {
+    const payload = {
+      userName: this.role, // Reemplazar con la lógica de usuario actual
+      idSub: this.selectedSubject,
+      idStud: student.idStud,
+      studentGrades: student.grade
+    };
+
+    this.gradingService.assignGrade(payload).subscribe(
+      () => {
+        console.log('Nota asignada correctamente:', payload);
+        alert('Nota asignada correctamente');
+      },
+      (error) => {
+        console.error('Error asignando la nota:', error);
+        alert('Ocurrió un error al asignar la nota');
+      }
+    );
+  }
   onSubjectChange(subjectId: string): void {
     this.selectedSubject = subjectId;
     this.getStudents(subjectId);

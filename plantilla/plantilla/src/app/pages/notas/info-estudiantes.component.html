@@ -72,7 +72,7 @@
                   <td>
                     <button
                       class="btn btn-primary"
-                      (click)="toggleEditMode(i)"
+                      (click)="editMode[i] ? assignGrade(student) : toggleEditMode(i)"
                     >
                       {{ editMode[i] ? 'Guardar' : 'Editar' }}
                     </button>
