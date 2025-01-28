@@ -1,4 +1,3 @@
-/* Estilos para los botones */
 .custom-button {
   background-color: #32325d; /* Color de fondo */
   color: white; /* Color del texto */
@@ -9,7 +8,6 @@
   cursor: pointer; /* Cambia el cursor al pasar el mouse */
   transition: all 0.3s ease; /* Transición suave para efectos */
   margin-bottom: 20px;
-  margin-top: 10px;
 }
 
 .custom-button:hover {
@@ -22,59 +20,27 @@
   transform: scale(0.98); /* Pequeño efecto de presión */
 }
 
-/* Estilos de la tabla */
-.table {
+.form-contro {
+  display: block;
   width: 100%;
-  margin-top: 10px;
-  border-collapse: collapse;
+  height: calc(2.249999625rem + 2px);
+  padding: 0.5rem 0.7rem;
+  font-size: 0.875rem;
+  line-height: 1.428571;
+  color: black;
+  background-color: transparent;
+  background-clip: padding-box;
+  border: 1px solid #cad1d7;
+  border-radius: 0.25rem;
+  box-shadow: none;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.table th, .table td {
-  text-align: left;
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
+.form-contro:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.table th {
-  background-color: #f4f6f9;
-  font-weight: bold;
-  color: #333;
-}
-
-.table tbody tr:hover {
-  background-color: #f1f1f1;
-}
-
-.table-responsive {
-  overflow-x: auto;
-}
-
-/* Estilos generales del contenido */
-.content {
-  padding: 20px;
-}
-
-.card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  margin-top: 20px;
-}
-
-.card-header {
-  background-color: #f8f9fa;
-  padding: 15px;
-  border-bottom: 1px solid #ddd;
-}
-
-.card-title {
-  margin: 0;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-/* Sección de filtro */
 .filter-section {
   margin-bottom: 30px;
   display: flex;
@@ -102,13 +68,9 @@
   border-color: #32325d;
   box-shadow: 0 0 5px rgba(50, 50, 93, 0.5);
 }
-
-/* Modal */
 .modal .form-control {
   color: black; /* Cambia el color del texto a negro */
 }
-
-/* Estilo para icono de actividad de estudiantes */
 #studentActivity {
   width: 30px;
   height: 30px;

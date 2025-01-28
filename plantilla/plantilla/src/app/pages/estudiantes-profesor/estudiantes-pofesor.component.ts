@@ -13,24 +13,19 @@ export class EstudiantesProfesor implements OnInit {
   constructor(private estudianteService: EstudentService) {}
 
   ngOnInit() {
-    // No cargar estudiantes automáticamente, solo cuando se presiona el botón "Listar"
+    // No cargamos estudiantes automáticamente
   }
 
-  // Cargar estudiantes filtrados por nombre de usuario
+  // Método para cargar estudiantes al presionar el botón "Listar"
   loadStudents() {
-    const username = localStorage.getItem('username');  // Obtener el nombre de usuario desde localStorage
-    if (username) {
-      this.estudianteService.getStudentsByUser(username).subscribe(
-        (data) => {
-          console.log('Estudiantes recibidos:', data);
-          this.students = data;
-        },
-        (error) => {
-          console.error('Error al cargar estudiantes:', error);
-        }
-      );
-    } else {
-      console.error('Usuario no encontrado en localStorage');
-    }
+    this.estudianteService.getStudents().subscribe(
+      (data) => {
+        console.log('Estudiantes recibidos:', data);
+        this.students = data;
+      },
+      (error) => {
+        console.error('Error al cargar estudiantes:', error);
+      }
+    );
   }
 }

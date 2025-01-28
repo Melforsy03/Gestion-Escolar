@@ -46,6 +46,7 @@ export class AuthGuard implements CanActivate {
         const role = response.role;
         const token = response.token;
         localStorage.setItem('role', role);
+        console.log("USer Name:"+credentials.userName);
         localStorage.setItem('userName', credentials.userName);
         localStorage.setItem('token',token);
         this.isLoggedIn = true;
