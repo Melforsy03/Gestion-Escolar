@@ -2,6 +2,7 @@
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfStudSubCourse;
 using SchoolManagement.Domain.Relations;
+using SchoolManagement.Infrastructure;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
 using System.Collections.Generic;
@@ -18,15 +19,17 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         private readonly IProfessorRepository _professorRepository;
         private readonly IStudentRepository _studentRepository;
         private readonly ISubjectRepository _subjectRepository;
+        private readonly Context _context;
         private readonly IMapper _mapper;
 
-        public ProfStudSubCourseService(IProfStudSubCourseRepository profStudSubCourseRepository, ISubjectRepository subjectRepository, IStudentRepository studentRepository, IProfessorRepository professorRepository, ICourseRepository courseRepository, IMapper mapper)
+        public ProfStudSubCourseService(Context context, IProfStudSubCourseRepository profStudSubCourseRepository, ISubjectRepository subjectRepository, IStudentRepository studentRepository, IProfessorRepository professorRepository, ICourseRepository courseRepository, IMapper mapper)
         {
             _profStudSubCourseRepository = profStudSubCourseRepository;
             _courseRepository = courseRepository;
             _studentRepository = studentRepository;
             _subjectRepository = subjectRepository;
             _professorRepository = professorRepository;
+            _context = context;
             _mapper = mapper;
         }
 
@@ -55,7 +58,13 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
             for (int i = 0; i < list.Count; i++)
             {
-                profStudSubCoursesList.Add(_mapper.Map<ProfStudSubCourseResponseDto>(list[i]));
+                var temp = _mapper.Map<ProfStudSubCourseResponseDto>(list[i]);
+                temp.StudentName = _context.Students.Find(temp.IdStud).NameStud;
+                temp.CourseName = _context.Courses.Find(temp.IdCourse).CourseName;
+                temp.SubjectName = _context.Subjects.Find(temp.IdSub).NameSub;
+                temp.ProfessorName = _context.Professors.Find(temp.IdProf).NameProf;
+
+                profStudSubCoursesList.Add(temp);
             }
 
             return profStudSubCoursesList;
@@ -67,6 +76,12 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             _mapper.Map(profStudSubCourseDto, profStudSubCourse);
             await _profStudSubCourseRepository.UpdateAsync(profStudSubCourse);
             return _mapper.Map<ProfStudSubCourseResponseDto>(profStudSubCourse);
+        }
+
+        public async Task<ProfStudSubCouseConsultResponseDto> GetEvaluationByCourse(ProfStudSubCourseConsultDto profStudSubCourseConsultDto)
+        {
+
+            throw new NotImplementedException();
         }
     }
 
