@@ -8,7 +8,7 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomMea
 {
     public class CMRGetAviableOrNotResponseDto
     {
-        public Dictionary<string, List<(string, int)>> data { get; set; }
+        public Dictionary<string, Dictionary<string, int>> data { get; set; } = new Dictionary<string, Dictionary<string, int>>();
 
     }
 }

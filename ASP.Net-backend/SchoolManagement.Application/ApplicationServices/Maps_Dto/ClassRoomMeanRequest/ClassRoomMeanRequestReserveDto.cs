@@ -10,7 +10,7 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomMea
     {   
         public string userName {  get; set; }
         public string subjectName { get; set; }
-        public List<(string MeanName, int Ammount)> reserveMeans { get; set; }
+        public Dictionary<string, int> reserveMeans { get; set; }
         public bool reserve { get; set; }
     }
 }

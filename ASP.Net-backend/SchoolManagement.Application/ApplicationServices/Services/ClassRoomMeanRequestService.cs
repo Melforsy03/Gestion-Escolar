@@ -41,16 +41,26 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
             for (int i = 0; i < professorSubjects.Count(); i++)
             {
-                var subject = _context.Subjects.Find(professorSubjects[i].IdSub);
+                var subject = _context.Subjects.Where(s => s.IdSub == professorSubjects[i].IdSub).First();
                 var auxSub = _context.SubjectAuxMeans.Where(p => p.IdSub == subject.IdSub).ToList();
-                var auxMean = _context.AuxiliaryMeans.Where(p => p.Subjects.Contains(subject));
+                var auxMean = new List<AuxiliaryMeans>();
+                for(int j = 0; j < auxSub.Count(); j++)
+                {
+                    auxMean.Add(_context.AuxiliaryMeans.Where(a => a.IdMean == auxSub[j].IdAuxMean).First());
+                }
+
                 var auxMeanAndAmmount = auxMean.Where(am => am.isAviable).GroupBy(am => am.NameMean).Select(g => new { Name = g.Key, Ammount = g.Count()}).ToList();
-                List<(string, int)> list = new List<(string, int)> ();
+                Dictionary<string, int> list = new Dictionary<string, int>();
+
                 for(int j = 0; j <  auxMeanAndAmmount.Count(); j++)
                 {
-                    list.Add((auxMeanAndAmmount[j].Name, auxMeanAndAmmount[j].Ammount));                   
+                    (string, int) item = (auxMeanAndAmmount[j].Name, auxMeanAndAmmount[j].Ammount);
+                    Console.WriteLine(auxMeanAndAmmount[j].Name + "lala " + auxMeanAndAmmount[j].Ammount);
+                    Console.WriteLine(item.Item1 + " " + item.Item2);
+                    list.Add(item.Item1, item.Item2);
                 }
-                answer.data.Add(subject.NameSub, list);
+                Console.WriteLine(list.Count);
+                answer.data.Add(subject.NameSub, list );
             }
 
             return answer;
@@ -64,21 +74,33 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             
             var professor = _context.Professors.Where(p => p.UserId == User.Id).First();
             var professorSubjects = _context.ProfessorSubjects.Where(ps => ps.IdProf == professor.IdProf).ToList();
-            var subjects = _context.Subjects.Where(s => professorSubjects.Select(ps => ps.IdSub).ToList().Contains(s.IdSub) && !_context.ClassRooms.Where(c => c.Subjects.Where(sa => sa.IdSub == s.IdSub) != null).First().IsAviable).ToList();
+            List<Subject> subjects = new List<Subject>();
+            for(int i = 0; i < professorSubjects.Count(); i++)
+            {
+                subjects.AddRange(_context.Subjects.Where(s => s.IdSub == professorSubjects[i].IdSub).ToList());
+            }
+            List<Subject> subjectsWithAviableClassRoom = new List<Subject>();
+            for(int i = 0; i < subjects.Count(); i++)
+            {
+                if (subjects[i].classRoom.IsAviable)
+                {
+                    subjectsWithAviableClassRoom.Add(subjects[i]);
+                }
+            }
             
             CMRGetAviableOrNotResponseDto answer = new CMRGetAviableOrNotResponseDto();
 
-            for(int i = 0; i < subjects.Count(); i++)
+            for(int i = 0; i < subjectsWithAviableClassRoom.Count(); i++)
             {
-                var auxSub = _context.SubjectAuxMeans.Where(p => p.IdSub == subjects[i].IdSub).ToList();
-                var auxMean = _context.AuxiliaryMeans.Where(p => p.Subjects.Contains(subjects[i]));
+                var auxSub = _context.SubjectAuxMeans.Where(p => p.IdSub == subjectsWithAviableClassRoom[i].IdSub).ToList();
+                var auxMean = _context.AuxiliaryMeans.Where(p => p.Subjects.Contains(subjectsWithAviableClassRoom[i]));
                 var auxMeanAndAmmmount = auxMean.Where(am => !(am.isAviable)).GroupBy(am => am.NameMean).Select(g => new { Name = g.Key, Ammount = g.Count() }).ToList();
 
-                List<(string, int)> list = new List<(string, int)>();
+                Dictionary<string, int> list = new Dictionary<string, int>();
 
                 for(int j = 0; j < auxMeanAndAmmmount.Count(); j++)
                 {
-                    list.Add((auxMeanAndAmmmount[j].Name, auxMeanAndAmmmount[j].Ammount));
+                    list.Add(auxMeanAndAmmmount[j].Name, auxMeanAndAmmmount[j].Ammount);
                 }
                 answer.data.Add(subjects[i].NameSub, list);
             }
@@ -103,32 +125,39 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             var User = _context.Users.Where(u => u.UserName == classRoomMeanRequestReserveDto.userName).FirstOrDefault();
             var professor = _context.Professors.Where(p => p.UserId == User.Id).First();
 
-            List<(List<AuxiliaryMeans>, int)> AuxMean = new List<(List<AuxiliaryMeans>, int)>();
+            Dictionary<List<AuxiliaryMeans>, int> AuxMean = new Dictionary<List<AuxiliaryMeans>, int>();
 
-            for (int i = 0; i < classRoomMeanRequestReserveDto.reserveMeans.Count(); i++)
+            int i = 0;
+            foreach(var rm in classRoomMeanRequestReserveDto.reserveMeans)
             {
                 if (classRoomMeanRequestReserveDto.reserve)
                 {
-                    AuxMean.Add((_context.AuxiliaryMeans.Where(am => am.NameMean == classRoomMeanRequestReserveDto.reserveMeans[i].Item1 && am.isAviable).ToList(), classRoomMeanRequestReserveDto.reserveMeans[i].Item2));
+                    AuxMean.Add(_context.AuxiliaryMeans.Where(am => am.NameMean == rm.Key && am.isAviable).ToList(), rm.Value);
                 }
                 else
                 {
-                    AuxMean.Add((_context.AuxiliaryMeans.Where(am => am.NameMean == classRoomMeanRequestReserveDto.reserveMeans[i].Item1 && !am.isAviable).ToList(), classRoomMeanRequestReserveDto.reserveMeans[i].Item2));
+                    AuxMean.Add(_context.AuxiliaryMeans.Where(am => am.NameMean == rm.Key && !am.isAviable).ToList(), rm.Value);
                 }
-                if (!(AuxMean[i].Item1.Count() < AuxMean[i].Item2)) return new ClassRoommeanRequestReserveResponseDto { success = false, message = "Fail!. Some AuxMean is not aviable anymore." };
 
-                for (int j = 0; j < AuxMean[i].Item2; j++)
+                foreach(var am in AuxMean)
                 {
-                    if (classRoomMeanRequestReserveDto.reserve)
-                    {
-                        AuxMean[i].Item1[j].isAviable = false;
-                    }
-                    else
-                    {
+                    if (am.Key.Count() < am.Value) return new ClassRoommeanRequestReserveResponseDto { success = false, message = "Fail!. Some AuxMean is not aviable anymore." };
 
-                        AuxMean[i].Item1[j].isAviable = true;
+                    for (int j = 0; j < am.Value; j++)
+                    {
+                        if (classRoomMeanRequestReserveDto.reserve)
+                        {
+                            am.Key[j].isAviable = false;
+                        }
+                        else
+                        {
+
+                            am.Key[j].isAviable = true;
+                        }
                     }
                 }
+               
+                
             }
 
             _context.SaveChanges();
