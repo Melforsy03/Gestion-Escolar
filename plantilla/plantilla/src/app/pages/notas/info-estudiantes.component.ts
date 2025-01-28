@@ -120,8 +120,8 @@ export class InfoEstudiantesComponent implements OnInit {
   }
 
   getNotes(): void {
-    const userName = this.role;
-    this.gradingService.getNotes(userName).subscribe(
+    const UserName = this.role;
+    this.gradingService.getNotes(UserName).subscribe(
       (notes: any[]) => {
         this.notes = notes;
       },
