@@ -36,7 +36,7 @@ namespace SchoolManagement.Api.Controllers
             return Ok(professorStudentSubject);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("getsubjects")]
 
         [Authorize(Roles = "SuperAdmin, Professor, Secretary")]
@@ -46,7 +46,7 @@ namespace SchoolManagement.Api.Controllers
             return Ok(professorStudentSubject);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("getstudents")]
 
         [Authorize(Roles = "SuperAdmin, Professor, Secretary")]
@@ -59,9 +59,9 @@ namespace SchoolManagement.Api.Controllers
         [HttpPost]
         [Route("getnotesByProfessor")]
         [Authorize(Roles = "SuperAdmin, Professor, Secretary")]
-        public async Task<ActionResult> GetProfesssorStudentSubjectByUser(ProfessorStudentSubjectConsultDto professorStudentSubject)
+        public async Task<ActionResult> GetProfesssorStudentSubjectByUser(string UserName )
         {
-            var updatedProfessorStudentSubject = await _professorStudentSubjectService.ListProfessorStudentSubjectByUserNameAsync(professorStudentSubject);
+            var updatedProfessorStudentSubject = await _professorStudentSubjectService.ListProfessorStudentSubjectByUserNameAsync(UserName);
             return Ok(updatedProfessorStudentSubject);
         }
     }

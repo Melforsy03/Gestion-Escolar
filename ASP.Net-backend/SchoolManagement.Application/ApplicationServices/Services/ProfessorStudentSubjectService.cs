@@ -63,9 +63,9 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             return new PSSResponseGetStudents { students = students };
         }
 
-        public async Task<PSSResponseGetSubjects> GetSubjectsOfProfessorAsync(ProfessorStudentSubjectConsultDto professorStudentSubjectConsultDto)
+        public async Task<PSSResponseGetSubjects> GetSubjectsOfProfessorAsync(string UserName)
         {   
-            var professor = _context.Professors.Where(p => p.UserId == _context.Users.Where(u => u.UserName == professorStudentSubjectConsultDto.UserName).FirstOrDefault().Id).FirstOrDefault();
+            var professor = _context.Professors.Where(p => p.UserId == _context.Users.Where(u => u.UserName == UserName).FirstOrDefault().Id).FirstOrDefault();
             if (professor == null) return null;
             var subjects = _context.Subjects.Where(s => s.Professors.Contains(professor)).ToList();
             
@@ -81,17 +81,10 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             List<ProfessorStudentSubjectResponseDto> professorStudentSubjects_List = new List<ProfessorStudentSubjectResponseDto>();
             for (int i = 0; i < list.Count(); i++)
             {
-                professorStudentSubjects_List.Add(new ProfessorStudentSubjectResponseDto {
-                    studentName = list[i].StudentSubject.Student.NameStud,
-                    subjectName = list[i].StudentSubject.Subject.NameSub,
-                    professorName = list[i].Professor.NameProf,
-                    IdProfStudSub = list[i].IdProfStudSub,
-                    IdStud = list[i].StudentSubject.IdStud,
-                    IdSub = list[i].StudentSubject.IdSub,
-                    StudentGrades = list[i].StudentGrades
-                    
-                });
-                Console.WriteLine(list[i].StudentSubject.IdStud);
+                var student = await _context.Students.FindAsync(list[i].StudentSubject.Student.IdStud);
+                var result = new ProfessorStudentSubjectResponseDto();
+                result.studentName = student.NameStud;
+                professorStudentSubjects_List.Add(result);
             }
 
             return professorStudentSubjects_List;
