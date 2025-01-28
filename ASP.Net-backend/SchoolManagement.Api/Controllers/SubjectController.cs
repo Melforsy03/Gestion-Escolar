@@ -29,7 +29,7 @@ namespace SchoolManagement.Api.Controllers
 
         [HttpGet]
         [Route("list")]
-        [Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin, Secretary")]
         public async Task<ActionResult<IEnumerable<SubjectResponseDto>>> ListSubjects()
         {
             var subjects = await _subjectService.ListSubjectAsync();
