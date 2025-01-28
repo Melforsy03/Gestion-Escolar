@@ -20,7 +20,7 @@ export class StudentGradingService {
   getSubjects(userName: string): Observable<any[]> {
     const url = `${this.apiUrl}/professorStudentSubject/getsubjects`;
     const params = new HttpParams().set('userName', userName);
-    return this.http.get<any[]>(url, { headers: this.headers, params });
+    return this.http.post<any[]>(url, { headers: this.headers, params });
   }
 
   getStudents(IdSub: number): Observable<any[]> {
