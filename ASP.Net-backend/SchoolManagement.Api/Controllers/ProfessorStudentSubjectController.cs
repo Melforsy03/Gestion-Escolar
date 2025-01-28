@@ -55,6 +55,14 @@ namespace SchoolManagement.Api.Controllers
             var professorStudentSubject = await _professorStudentSubjectService.GetStudentsForSubjectAsync(IdSub);
             return Ok(professorStudentSubject);
         }
+        [HttpPost]
+        [Route("updateStudentNote")]
+        [Authorize(Roles="SuperAdmin, Secretary")]
+        public async Task<ActionResult> UpdateStudentNote(int profStudSubId, float studentGrade)
+        {
+            var result = await _professorStudentSubjectService.UpdateProfessorStudentSubjectAsync(profStudSubId, studentGrade);
+            return Ok(result);
+        }
 
         [HttpGet]
         [Route("getnotesByProfessor")]

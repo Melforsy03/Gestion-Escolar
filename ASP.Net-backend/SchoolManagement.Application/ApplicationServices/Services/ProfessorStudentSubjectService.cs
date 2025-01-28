@@ -146,6 +146,15 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             return professorStudentSubjects_List;
         }
 
+        public async Task<bool> UpdateProfessorStudentSubjectAsync(int profStudSubID, float studentGrade)
+        {
+            var profStudSub = await _context.ProfessorStudentSubjects.FindAsync(profStudSubID);
+            profStudSub.StudentGrades = studentGrade;
+            _context.SaveChanges();
+
+            return true;
+        }
+
 
         public async Task<IEnumerable<ProfessorStudentSubjectResponseDto>> ListProfessorStudentSubjectByUserNameAsync(string UserName)
         {
