@@ -1,0 +1,35 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <button class="custom-button" (click)="loadStudents()">Listar</button>
+          <h4 class="card-title">Estudiantes</h4>
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <tr>
+                  <th>Nombre</th>
+                  <th>Edad</th>
+                  <th>Extracurriculares</th>
+                  <th>Curso</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let student of students">
+                  <td>{{ student.student.nameStud }}</td>
+                  <td>{{ student.student.age }}</td>
+                  <td>{{ student.student.eActivity ? 'Sí' : 'No' }}</td>
+                  <td>{{ student.idc }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -12,7 +12,6 @@ namespace SchoolManagement.Domain.Entities
         public int IdS { get; set; } = 0;
         public string UserId { get; set; }
         public string NameS { get; set; } = string.Empty;
-        public string LastNameS { get; set; } = string.Empty;
         public int SalaryS { get; set; } = 0;
         public bool IsDeleted { get; set; } = false;
         public List<ProfessorStudentSubject> Evaluations { get; set; } = new List<ProfessorStudentSubject>();   

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SchoolManagement.Domain.Entities;
+using SchoolManagement.Domain.Relations;
 using SchoolManagement.Domain.Role;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using SchoolManagement.Infrastructure.Identity;
@@ -35,12 +36,14 @@ namespace SchoolManagement.Infrastructure
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IStudentRepository _studentRepository;
+        private readonly IProfessorRepository _professorRepository;
         private readonly ICourseRepository _courseRepository;
         private readonly IClassRoomRepository _classRoomRepository;
         private readonly ITechnologicalMeansRepository _technologicalMeansRepository;
         private readonly ISubjectRepository _subjectRepository;
+        private readonly IAuxiliaryMeansRepository _auxiliaryMeansRepository;
 
-        public ContextInitializer(ITechnologicalMeansRepository technologicalMeansRepository, IClassRoomRepository classRoomRepository, ICourseRepository courseRepository, IStudentRepository studentRepository, ILogger<ContextInitializer> logger, Context context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        public ContextInitializer(IProfessorRepository professorRepository, IAuxiliaryMeansRepository auxiliaryMeansRepository, ITechnologicalMeansRepository technologicalMeansRepository, IClassRoomRepository classRoomRepository, ICourseRepository courseRepository, IStudentRepository studentRepository, ILogger<ContextInitializer> logger, Context context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             _logger = logger;
             _context = context;
@@ -50,6 +53,8 @@ namespace SchoolManagement.Infrastructure
             _courseRepository = courseRepository;
             _classRoomRepository = classRoomRepository;
             _technologicalMeansRepository = technologicalMeansRepository;
+            _professorRepository = professorRepository;
+            _auxiliaryMeansRepository = auxiliaryMeansRepository;
         }
 
         public async Task InitializeAsync()
@@ -121,147 +126,117 @@ namespace SchoolManagement.Infrastructure
                 _context.Professors.Add(new Domain.Entities.Professor { IsDean = true , NameProf="Pepe Gonzalez", UserId = superadmin.Id, LaboralExperience = 15, Salary = 10000, IsDeleted = false, Contract = "Tiempo Completo"});
             }
 
-
-            //!Also we can define here default data.
-            //Profesores
-
-            var user1 = new User { UserName = "Pepe0"};
-
-            if (_userManager.Users.All(u => u.UserName != user1.UserName))
-            {
-                await _userManager.CreateAsync(user1, "Pepe0password1*");
-                if (!string.IsNullOrWhiteSpace(professorRole.Name))
-                {
-                    await _userManager.AddToRoleAsync(user1, professorRole.Name);
-                }
-                _context.Professors.Add(new Domain.Entities.Professor { IsDean = false, NameProf = "Pepe0 Gonzalez", UserId = user1.Id, LaboralExperience = 5, Salary = 10000, IsDeleted = false, Contract = "Tiempo Completo" });
+            //Administrador
+            if(_context.Administrators.Count() == 0)
+            {   
+                var admin = new User { UserName = "Admin", Email = "admin@localhost" };
+                await _userManager.CreateAsync(admin, "Adminpassword1*");
+                await _userManager.AddToRoleAsync(admin, adminRole.Name);
+                _context.Administrators.Add(new Administrator { AdminName = "PedroAdmin", AdminSalary = 1500, IsDeleted = false, UserId = admin.Id });
             }
-
-            var user2 = new User { UserName = "Pepe2" };
-
-            if (_userManager.Users.All(u => u.UserName != user2.UserName))
-            {
-                await _userManager.CreateAsync(user2, "Pepe2password*");
-                if (!string.IsNullOrWhiteSpace(professorRole.Name))
-                {
-                    await _userManager.AddToRoleAsync(user2, professorRole.Name);
-                }
-                _context.Professors.Add(new Domain.Entities.Professor { IsDean = false, NameProf = "Pepe2 Gonzalez", UserId = user2.Id, LaboralExperience = 5, Salary = 10000, IsDeleted = false, Contract = "Tiempo Completo" });
-            }
-
-            var user3 = new User { UserName = "Pepe3" };
-
-            if (_userManager.Users.All(u => u.UserName != user3.UserName))
-            {
-                await _userManager.CreateAsync(user3, "Pepe3password*");
-                if (!string.IsNullOrWhiteSpace(professorRole.Name))
-                {
-                    await _userManager.AddToRoleAsync(user3, professorRole.Name);
-                }
-                _context.Professors.Add(new Domain.Entities.Professor
-                {
-                    IsDean = false,
-                    NameProf = "Pepe3 Gonzalez",
-                    UserId = user3.Id,
-                    LaboralExperience = 5,
-                    Salary = 10000,
-                    IsDeleted = false,
-                    Contract = "Tiempo Completo"
-                });
-            }
-
-            var user4 = new User { UserName = "Pepe4" };
-
-            if (_userManager.Users.All(u => u.UserName != user4.UserName))
-            {
-                await _userManager.CreateAsync(user4, "Pepe4password*");
-                if (!string.IsNullOrWhiteSpace(professorRole.Name))
-                {
-                    await _userManager.AddToRoleAsync(user4, professorRole.Name);
-                }
-                _context.Professors.Add(new Domain.Entities.Professor
-                {
-                    IsDean = false,
-                    NameProf = "Pepe4 Gonzalez",
-                    UserId = user4.Id,
-                    LaboralExperience = 5,
-                    Salary = 10000,
-                    IsDeleted = false,
-                    Contract = "Tiempo Completo"
-                });
-            }
-
-            var user5 = new User { UserName = "Pepe5" };
-
-            if (_userManager.Users.All(u => u.UserName != user5.UserName))
-            {
-                await _userManager.CreateAsync(user5, "Pepe5password*");
-                if (!string.IsNullOrWhiteSpace(professorRole.Name))
-                {
-                    await _userManager.AddToRoleAsync(user1, professorRole.Name);
-                }
-                _context.Professors.Add(new Domain.Entities.Professor
-                {
-                    IsDean = false,
-                    NameProf = "Pepe5 Gonzalez",
-                    UserId = user5.Id,
-                    LaboralExperience = 5,
-                    Salary = 10000,
-                    IsDeleted = false,
-                    Contract = "Tiempo Completo"
-                });
-            }
-            //Medios Tecnologicos
-            var medio1 = new TechnologicalMeans();
-            var medio2 = new TechnologicalMeans();
-            var medio3 = new TechnologicalMeans();
-            if(_context.TechnologicalMeans.Count() == 0)
-            {
-                medio1.State = "ok";
-                medio1.NameMean = "medio1";
-                await _technologicalMeansRepository.CreateAsync(medio1);
-                medio2.State = "ok";
-                medio2.NameMean = "medio2";
-                await _technologicalMeansRepository.CreateAsync(medio2);
-                medio3.State = "ok";
-                medio3.State = "medio3";
-            }
-
-
-
-            //Aulas y materias
-            var classRoom1 = new ClassRoom();
-            var classRoom2 = new ClassRoom();
-
-            var subject1 = new Subject();
-            var subject2 = new Subject();
-
-            if (_context.ClassRooms.Count() == 0)
-            {
-                
-                classRoom1.Location = "A";
-                
-                classRoom2.Location = "B";
-                await _classRoomRepository.CreateAsync(classRoom1);
-                await _classRoomRepository.CreateAsync(classRoom2);
-               
-                //subject1.CourseLoad = 10;
-                //subject1.NameSub = "subject1";
-                //subject1.classRoom = 
-
-                //                subject2.CourseLoad = 10;
-                //              subject2.NameSub = "subject2";
-                //            subject2.classRoom = 
-
-                //          _subjectRepository.CreateAsync(subject1).Wait();
-
-                //        _subjectRepository.CreateAsync(subject2).Wait();
-
-
-            }
-         
 
             _context.SaveChanges();
+
+            //Secretary
+            if (_context.Secretaries.Count() == 0)
+            {
+                var secretary = new User { UserName = "Secretary", Email = "secretary@localhost" };
+                await _userManager.CreateAsync(secretary, "Secretarypassword1*");
+                await _userManager.AddToRoleAsync(secretary, secretaryRole.Name);
+                _context.Secretaries.Add(new Secretary { NameS = "Armando", SalaryS = 1500, IsDeleted = false , UserId = secretary.Id});
+            }
+            _context.SaveChanges();
+
+            //Profesores
+            if (_context.Professors.Count() < 2)
+            {
+                for (int i = 1; i < 10; i++)
+                {
+                    var user = new User { UserName = "pepe" + i };
+                    await _userManager.CreateAsync(user, "Pepe0password1*");
+                    if (!string.IsNullOrWhiteSpace(professorRole.Name))
+                    {
+                        await _userManager.AddToRoleAsync(user, professorRole.Name);
+
+                        _context.Professors.Add(new Domain.Entities.Professor { IsDean = false, NameProf = "Pepe" + i + " Gonzalez", UserId = user.Id, LaboralExperience = 5, Salary = 10000, IsDeleted = false, Contract = "Tiempo Completo" });
+                    }
+                }
+                _context.SaveChanges();
+            }
+         
+            //Medios Tecnologicos
+            
+            if(_context.TechnologicalMeans.Count() == 0)
+            {
+                for(int i = 0; i < 5; i++)
+                {
+
+                    var medio = new TechnologicalMeans();
+                    medio.State = "ok";
+                    medio.NameMean = "medio" + i;
+                    for(int j = 0; j < 10; j++)
+                    {
+                        var medio2 = new TechnologicalMeans();
+                        medio2.State = medio.State;
+                        medio2.NameMean = medio.NameMean;
+                        await _technologicalMeansRepository.CreateAsync(medio2);
+                    }
+                }
+            }
+
+            _context.SaveChanges();
+            
+            //Medios Auxiliares
+            if(_context.AuxiliaryMeans.Count() == 0) 
+            { 
+                for(int i =0; i < 5; i++)
+                {
+
+                    var medioaux = new AuxiliaryMeans();
+                    medioaux.NameMean = "auxmedio" + 1;
+                    for(int j = 0; j < 10; j++)
+                    {
+                        var medioaux2 = new AuxiliaryMeans();
+                        medioaux2.NameMean = medioaux.NameMean;
+                        await _auxiliaryMeansRepository.CreateAsync(medioaux2);
+                    }
+                }
+            }
+
+            _context.SaveChanges();
+            
+            //Aulas 
+            if (_context.ClassRooms.Count() == 0)
+            {             
+
+                for(int i = 0; i < 5; i++)
+                {
+
+                    var classRoom = new ClassRoom();
+                    classRoom.Location = i.ToString();
+                    await _classRoomRepository.CreateAsync(classRoom);
+                }
+            }
+            _context.SaveChanges();
+            
+            //Materias
+            if(_context.Subjects.Count() == 0)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    var subject = new Subject();
+                    subject.CourseLoad = 10;
+                    subject.NameSub = "subject" + i;
+                    subject.IdClassRoom = i + 1;
+                    subject.IsDeleted = false;
+                    subject.StudyProgram = "studyprogram1";
+                    subject.classRoom = await _classRoomRepository.GetByIdAsync(subject.IdClassRoom);
+                    _context.Subjects.Add(subject);
+                }
+            }
+            
+            _context.SaveChanges();
+         
             //Cursos
             var course = new Course();
             var course1 = new Course();
@@ -272,259 +247,156 @@ namespace SchoolManagement.Infrastructure
                 course1.CourseName = "2024-2025";
                 await _courseRepository.CreateAsync(course1);
             }
-            _context.SaveChanges();
+         
             //Estudiantes 
-
-            var user6 = new User { UserName = "Pepe6" };
-
-            if (_userManager.Users.All(u => u.UserName != user6.UserName))
+            for(int i = 0; i < 500; i++)
             {
-                await _userManager.CreateAsync(user6, "Pepe6password*");
-                if (!string.IsNullOrWhiteSpace(studentRole.Name))
+                var user = new User { UserName = "pedro"+i};
+                if(_userManager.Users.All(u=>u.UserName != user.UserName))
                 {
-                    await _userManager.AddToRoleAsync(user6, studentRole.Name);
+                    await _userManager.CreateAsync(user, "Pedropassword1*");
+                    var mycourse = new Course();
+                    if (i % 2 == 0) {
+                        mycourse = await _courseRepository.GetByIdAsync(1);
+                    }
+                    else
+                    {
+                        mycourse = await _courseRepository.GetByIdAsync(2);
+                    }
+
+                    var student = new Student
+                    {
+                        NameStud = "Pedro" + i + "Gonzalez",
+                        Age = 15,
+                        EActivity = true,
+                        UserId = user.Id,
+                        Course = mycourse
+
+                    };
+                    _context.Students.Add(student);
                 }
-
-                var student = new Student
+            }
+            _context.SaveChanges();
+            
+            //Relacion de Aula con Medios Tecnicos
+            if(_context.ClassRoomTechMeans.Count() == 0)
+            {
+                for(int i = 0; i < 5; i++)
                 {
-                    NameStud = "Pepe6",
-                    Age = 5,
-                    EActivity = true,
-                    UserId = user6.Id,
-                    Course = _courseRepository.GetById(2)
-
-                };
-                await _studentRepository.CreateAsync(student);
+                    var crtm = new ClassRoomTechMean();
+                    crtm.TechnologicalMeans = await _technologicalMeansRepository.GetByIdAsync(i + 1);
+                    crtm.ClassRoom = await _classRoomRepository.GetByIdAsync(i + 1);
+                    crtm.IdTechMean = i + 1;
+                    crtm.IdClassRoom = i + 1;
+                    _context.ClassRoomTechMeans.Add(crtm);
+                }
             }
             _context.SaveChanges();
 
-            var user7 = new User { UserName = "Pepe7" };
-
-            if (_userManager.Users.All(u => u.UserName != user7.UserName))
+            //Relacion Profesor con Asignatura
+            if(_context.ProfessorSubjects.Count() == 0)
             {
-                await _userManager.CreateAsync(user7, "Pepe7password*");
-                if (!string.IsNullOrWhiteSpace(studentRole.Name))
+                for (int i = 0; i < 5; i++)
                 {
-                    await _userManager.AddToRoleAsync(user7, studentRole.Name);
+                    var subject = _context.Subjects.ToList()[i];
+                    int j = 2 * (i+1);
+                    
+                    var professor1 = await _professorRepository.GetByIdAsync(j - 1);
+                    var professor2 = await _professorRepository.GetByIdAsync(j);
+                    var profSub1 = new ProfessorSubject();
+                    var profSub2 = new ProfessorSubject();
+
+                    profSub1.Subject = subject;
+                    profSub1.Professor = professor1;
+                    profSub1.IdProf = professor1.IdProf;
+                    profSub1.IdSub = subject.IdSub;
+
+                    profSub2.Subject = subject;
+                    profSub2.Professor = professor2;
+                    profSub1.IdProf = professor2.IdProf;
+                    profSub1.IdSub = subject.IdSub;
+
+                    _context.ProfessorSubjects.Add(profSub1);
+
+                    _context.ProfessorSubjects.Add(profSub2);
+
+                    
                 }
-
-                var student = new Student
-                {
-                    NameStud = "Pepe7",
-                    Age = 5,
-                    EActivity = true,
-                    UserId = user7.Id,
-                    Course = _courseRepository.GetById(2)
-
-                };
-                await _studentRepository.CreateAsync(student);
             }
             _context.SaveChanges();
 
-            var user8 = new User { UserName = "Pepe8" };
-
-            if (_userManager.Users.All(u => u.UserName != user8.UserName))
+            //Relacion Estudiante con asignatura
+            if (_context.StudentSubjects.Count() == 0)
             {
-                await _userManager.CreateAsync(user8, "Pepe8password*");
-                if (!string.IsNullOrWhiteSpace(studentRole.Name))
+                for(int i = 0; i < 500; i++)
                 {
-                    await _userManager.AddToRoleAsync(user8, studentRole.Name);
+                    var student = _context.Students.ToList()[i];
+                    List<Subject> subjects = new List<Subject>();
+                    if(i%2 == 0)
+                    {
+                        subjects = _context.Subjects.ToList().GetRange(0,2);
+                    }
+                    else
+                    {
+                        subjects = _context.Subjects.ToList().GetRange(2,2);
+                    }
+                    for(int j = 0; j < 2; j++) 
+                    {
+
+                        var studentSubject = new StudentSubject();
+                        studentSubject.Subject = subjects[j];
+                        studentSubject.Student = student;
+                        studentSubject.IdStud = student.IdStud;
+                        studentSubject.IdSub = subjects[j].IdSub;
+
+                        _context.StudentSubjects.Add(studentSubject);
+
+                    }
                 }
-
-                var student = new Student
-                {
-                    NameStud = "Pepe8",
-                    Age = 5,
-                    EActivity = true,
-                    UserId = user8.Id,
-                    Course = _courseRepository.GetById(2)
-
-                };
-                await _studentRepository.CreateAsync(student);
             }
             _context.SaveChanges();
 
-
-            var user9 = new User { UserName = "Pepe9" };
-
-            if (_userManager.Users.All(u => u.UserName != user9.UserName))
+            //Relacion Materia con medios auxiliares
+            if(_context.SubjectAuxMeans.Count() == 0)
             {
-                await _userManager.CreateAsync(user9, "Pepe9password*");
-                if (!string.IsNullOrWhiteSpace(studentRole.Name))
+                for(int i = 0; i <  5; i ++)
                 {
-                    await _userManager.AddToRoleAsync(user9, studentRole.Name);
+                    var subjectAux = new SubjectAuxMean();
+                    subjectAux.Subject = _context.Subjects.ToList()[i];
+                    subjectAux.AuxMean = _context.AuxiliaryMeans.ToList()[i];
+                    subjectAux.IdSub = subjectAux.Subject.IdSub;
+                    subjectAux.IdAuxMean = subjectAux.AuxMean.IdMean;
+
+                    _context.SubjectAuxMeans.Add(subjectAux);
+
                 }
-
-                var student = new Student
-                {
-                    NameStud = "Pepe9",
-                    Age = 5,
-                    EActivity = true,
-                    UserId = user9.Id,
-                    Course = _courseRepository.GetById(2)
-
-                };
-                await _studentRepository.CreateAsync(student);
             }
+
             _context.SaveChanges();
 
-            var user10 = new User { UserName = "Pepe10" };
-
-            if (_userManager.Users.All(u => u.UserName != user10.UserName))
+            //Nota
+            if(_context.ProfessorStudentSubjects.Count() == 0)
             {
-                await _userManager.CreateAsync(user10, "Pepe10password*");
-                if (!string.IsNullOrWhiteSpace(studentRole.Name))
+                var professor = _context.Professors.ToList();
+
+                for(int i = 0; i < professor.Count(); i++)
                 {
-                    await _userManager.AddToRoleAsync(user10, studentRole.Name);
+                    var studentSubject = _context.StudentSubjects.Where(ss => ss.IdSub == _context.ProfessorSubjects.Where(ps => ps.IdProf == professor[i].IdProf).First().IdSub).ToList();
+
+                    if (studentSubject.Count() == 0) break;
+                    for(int j = 0; j < studentSubject.Count(); j++)
+                    {
+                        var profStudentSubject = new ProfessorStudentSubject();
+                        profStudentSubject.Professor = professor[i];
+                        profStudentSubject.StudentSubject = studentSubject[j];
+                        profStudentSubject.IdProf = professor[i].IdProf;
+                        profStudentSubject.IdStudSub = studentSubject[j].IdSub;
+                        profStudentSubject.StudentGrades = 8;
+
+                        _context.ProfessorStudentSubjects.Add(profStudentSubject);
+                    }
+                    
                 }
-
-                var student = new Student
-                {
-                    NameStud = "Pepe10",
-                    Age = 5,
-                    EActivity = true,
-                    UserId = user10.Id,
-                    Course = _courseRepository.GetById(2)
-
-                };
-                await _studentRepository.CreateAsync(student);
-            }
-            _context.SaveChanges();
-
-            var user11 = new User { UserName = "Pepe11" };
-
-            if (_userManager.Users.All(u => u.UserName != user11.UserName))
-            {
-                await _userManager.CreateAsync(user11, "Pepe11password*");
-                if (!string.IsNullOrWhiteSpace(studentRole.Name))
-                {
-                    await _userManager.AddToRoleAsync(user11, studentRole.Name);
-                }
-
-                var student = new Student
-                {
-                    NameStud = "Pepe11",
-                    Age = 5,
-                    EActivity = true,
-                    UserId = user11.Id,
-                    Course = _courseRepository.GetById(2)
-
-                };
-                await _studentRepository.CreateAsync(student);
-            }
-            _context.SaveChanges();
-            var user12 = new User { UserName = "Pepe12" };
-
-            if (_userManager.Users.All(u => u.UserName != user12.UserName))
-            {
-                await _userManager.CreateAsync(user12, "Pepe12password*");
-                if (!string.IsNullOrWhiteSpace(studentRole.Name))
-                {
-                    await _userManager.AddToRoleAsync(user12, studentRole.Name);
-                }
-
-                var student = new Student
-                {
-                    NameStud = "Pepe12",
-                    Age = 5,
-                    EActivity = true,
-                    UserId = user12.Id,
-                    Course = _courseRepository.GetById(2)
-
-                };
-                await _studentRepository.CreateAsync(student);
-            }
-            _context.SaveChanges();
-
-            var user13 = new User { UserName = "Pepe13" };
-
-            if (_userManager.Users.All(u => u.UserName != user13.UserName))
-            {
-                await _userManager.CreateAsync(user13, "Pepe13password*");
-                if (!string.IsNullOrWhiteSpace(studentRole.Name))
-                {
-                    await _userManager.AddToRoleAsync(user13, studentRole.Name);
-                }
-
-                var student = new Student
-                {
-                    NameStud = "Pepe13",
-                    Age = 5,
-                    EActivity = true,
-                    UserId = user13.Id,
-                    Course = _courseRepository.GetById(2)
-
-                };
-                await _studentRepository.CreateAsync(student);
-            }
-            _context.SaveChanges();
-
-            var user14 = new User { UserName = "Pepe14" };
-
-            if (_userManager.Users.All(u => u.UserName != user14.UserName))
-            {
-                await _userManager.CreateAsync(user14, "Pepe14password*");
-                if (!string.IsNullOrWhiteSpace(studentRole.Name))
-                {
-                    await _userManager.AddToRoleAsync(user14, studentRole.Name);
-                }
-
-                var student = new Student
-                {
-                    NameStud = "Pepe14",
-                    Age = 5,
-                    EActivity = true,
-                    UserId = user14.Id,
-                    Course = _courseRepository.GetById(2)
-
-                };
-                await _studentRepository.CreateAsync(student);
-            }
-            _context.SaveChanges();
-
-            var user15 = new User { UserName = "Pepe15" };
-
-            if (_userManager.Users.All(u => u.UserName != user15.UserName))
-            {
-                await _userManager.CreateAsync(user15, "Pepe15password*");
-                if (!string.IsNullOrWhiteSpace(studentRole.Name))
-                {
-                    await _userManager.AddToRoleAsync(user15, studentRole.Name);
-                }
-
-                var student = new Student
-                {
-                    NameStud = "Pepe15",
-                    Age = 5,
-                    EActivity = true,
-                    UserId = user15.Id,
-                    Course = _courseRepository.GetById(2)
-
-                };
-                await _studentRepository.CreateAsync(student);
-            }
-            _context.SaveChanges();
-
-            var user16 = new User { UserName = "Pepe16" };
-
-            if (_userManager.Users.All(u => u.UserName != user16.UserName))
-            {
-                await _userManager.CreateAsync(user16, "Pepe16password*");
-                if (!string.IsNullOrWhiteSpace(studentRole.Name))
-                {
-                    await _userManager.AddToRoleAsync(user16, studentRole.Name);
-                }
-
-                var student = new Student
-                {
-                    NameStud = "Pepe16",
-                    Age = 5,
-                    EActivity = true,
-                    UserId = user16.Id,
-                    Course = _courseRepository.GetById(2)
-
-                };
-                await _studentRepository.CreateAsync(student);
             }
             _context.SaveChanges();
         }

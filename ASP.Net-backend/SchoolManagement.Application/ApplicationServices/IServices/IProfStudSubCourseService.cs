@@ -12,6 +12,7 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<ProfStudSubCourseResponseDto> CreateProfStudSubCourseAsync(ProfStudSubCourseDto profStudSubCourseDto);
         Task<ProfStudSubCourseResponseDto> UpdateProfStudSubCourseAsync(ProfStudSubCourseResponseDto profStudSubCourseDto);
         Task<IEnumerable<ProfStudSubCourseResponseDto>> ListProfStudSubCoursesAsync();
+        Task<IEnumerable<ProfStudSubCourseResponseDto>> ListProfStudSubCoursesByProfAsync(ProfStudSubCourseConsultDto profStudSubCourseConsultDto);
         Task DeleteProfStudSubCourseByIdAsync(int id);
     }
 

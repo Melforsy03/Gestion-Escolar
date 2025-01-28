@@ -69,7 +69,26 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
             return profStudSubCoursesList;
         }
+        public async Task<IEnumerable<ProfStudSubCourseResponseDto>> ListProfStudSubCoursesByProfAsync(ProfStudSubCourseConsultDto profStudSubCourseConsultDto)
+        {
+            var list = _context.ProfStudSubCourses.Where(pssc => pssc.IdProf == _context.Professors.Where(p => p.UserId == _context.Users.Where(u => u.UserName == profStudSubCourseConsultDto.UserName).First().Id).First().IdProf).ToList();
+           
+            List<ProfStudSubCourseResponseDto> profStudSubCoursesList = new();
 
+            for (int i = 0; i < list.Count; i++)
+            {
+                var temp = _mapper.Map<ProfStudSubCourseResponseDto>(list[i]);
+                temp.StudentName = _context.Students.Find(temp.IdStud).NameStud;
+                temp.CourseName = _context.Courses.Find(temp.IdCourse).CourseName;
+                temp.SubjectName = _context.Subjects.Find(temp.IdSub).NameSub;
+                temp.ProfessorName = _context.Professors.Find(temp.IdProf).NameProf;
+
+                profStudSubCoursesList.Add(temp);
+            }
+
+            return profStudSubCoursesList;
+        }
+        
         public async Task<ProfStudSubCourseResponseDto> UpdateProfStudSubCourseAsync(ProfStudSubCourseResponseDto profStudSubCourseDto)
         {
             var profStudSubCourse = await _profStudSubCourseRepository.GetByIdAsync(profStudSubCourseDto.IdProfStudSubCourse);

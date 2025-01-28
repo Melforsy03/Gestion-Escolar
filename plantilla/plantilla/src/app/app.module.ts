@@ -20,7 +20,6 @@ import { PeticionesComponent } from './pages/peticiones/peticiones.component';
 import { InfoSecretariaComponent } from './pages/info-secretaria/info-secretaria.component';
 import { InfoAdministradorComponent } from './pages/info-administrador/info-administrador.component';
 import { MediosTecnologicosComponent } from './pages/medios-tecnologicos/medios-tecnologicos.component';
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,

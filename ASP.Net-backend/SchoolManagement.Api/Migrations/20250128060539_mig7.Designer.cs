@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolManagement.Infrastructure;
 
@@ -11,9 +12,11 @@ using SchoolManagement.Infrastructure;
 namespace SchoolManagement.Api.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250128060539_mig7")]
+    partial class mig7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -934,13 +937,13 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ClassRoomRestriction", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Entities.ClassRoom", "ClassRoom")
+                    b.HasOne("SchoolManagement.Domain.Entities.Restriction", "Restriction")
                         .WithMany()
                         .HasForeignKey("IdClassRoom")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Domain.Entities.Restriction", "Restriction")
+                    b.HasOne("SchoolManagement.Domain.Entities.ClassRoom", "ClassRoom")
                         .WithMany()
                         .HasForeignKey("IdRest")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -953,13 +956,13 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ClassRoomTechMean", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Entities.ClassRoom", "ClassRoom")
+                    b.HasOne("SchoolManagement.Domain.Entities.TechnologicalMeans", "TechnologicalMeans")
                         .WithMany()
                         .HasForeignKey("IdClassRoom")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Domain.Entities.TechnologicalMeans", "TechnologicalMeans")
+                    b.HasOne("SchoolManagement.Domain.Entities.ClassRoom", "ClassRoom")
                         .WithMany()
                         .HasForeignKey("IdTechMean")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1026,13 +1029,13 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfessorSubject", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Entities.Professor", "Professor")
+                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("IdProf")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
+                    b.HasOne("SchoolManagement.Domain.Entities.Professor", "Professor")
                         .WithMany()
                         .HasForeignKey("IdSub")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1045,13 +1048,13 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.SecretaryProfessorStudentSubject", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Relations.ProfessorStudentSubject", "Evaluation")
+                    b.HasOne("SchoolManagement.Domain.Entities.Secretary", "Secretary")
                         .WithMany()
                         .HasForeignKey("IdProfStudSub")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Domain.Entities.Secretary", "Secretary")
+                    b.HasOne("SchoolManagement.Domain.Relations.ProfessorStudentSubject", "Evaluation")
                         .WithMany()
                         .HasForeignKey("IdSec")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1064,13 +1067,13 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.StudentSubject", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Entities.Student", "Student")
+                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("IdStud")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
+                    b.HasOne("SchoolManagement.Domain.Entities.Student", "Student")
                         .WithMany()
                         .HasForeignKey("IdSub")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1083,13 +1086,13 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.SubjectAuxMean", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Entities.AuxiliaryMeans", "AuxMean")
+                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("IdAuxMean")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
+                    b.HasOne("SchoolManagement.Domain.Entities.AuxiliaryMeans", "AuxMean")
                         .WithMany()
                         .HasForeignKey("IdSub")
                         .OnDelete(DeleteBehavior.Cascade)
