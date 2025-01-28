@@ -1,3 +1,5 @@
+
+<!--
 <div class="content">
   <div class="row">
     <div class="col-md-12">
@@ -6,7 +8,7 @@
           <h4 class="card-title">Estudiantes</h4>
         </div>
         <div class="card-body">
-          <!-- Búsqueda global -->
+          =
           <div class="search-bar mb-3 d-flex align-items-center">
             <input
               type="text"
@@ -19,7 +21,6 @@
             <i class="fa fa-search ml-2"></i>
           </div>
 
-          <!-- Filtros -->
           <div class="filter-section mb-3">
             <label for="subjectFilter">Asignatura:</label>
             <select
@@ -28,23 +29,11 @@
               [(ngModel)]="selectedSubject"
               (change)="updateDisplayedStudents()"
             >
-              <option value="">Todas</option>
               <option *ngFor="let subject of subjects" [value]="subject">{{ subject }}</option>
-            </select>
-
-            <label for="courseFilter">Curso:</label>
-            <select
-              id="courseFilter"
-              class="form-select"
-              [(ngModel)]="selectedCourse"
-              (change)="updateDisplayedStudents()"
-            >
-              <option value="">Todos</option>
-              <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
             </select>
           </div>
 
-          <!-- Tabla de estudiantes -->
+         
           <div class="table-responsive" *ngIf="displayedStudents.length > 0">
             <table class="table tablesorter">
               <thead class="text-primary">
@@ -90,11 +79,11 @@
             </table>
           </div>
 
-          <!-- Mensaje si no hay estudiantes -->
+          
           <p *ngIf="displayedStudents.length === 0">No se encontraron estudiantes.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-
+-->
