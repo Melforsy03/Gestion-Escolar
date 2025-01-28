@@ -189,8 +189,8 @@ namespace SchoolManagement.Infrastructure
             modelBuilder.Entity<TechnologicalMeans>(entity =>
             {
                 entity.HasKey(e => e.IdMean);
-                entity.Property(e => e.NameMean).IsRequired().HasMaxLength(16);
-                entity.Property(e => e.State).IsRequired().HasMaxLength(10);
+                entity.Property(e => e.NameMean).IsRequired().HasMaxLength(32);
+                entity.Property(e => e.State).IsRequired().HasMaxLength(32);
                 entity.Property(e => e.isActive);
                 entity.Property(e => e.isAviable);
                 entity.Property(e => e.isDeleted);
@@ -199,12 +199,12 @@ namespace SchoolManagement.Infrastructure
             modelBuilder.Entity<AuxiliaryMeans>(entity =>
             {
                 entity.HasKey(e => e.IdMean);
-                entity.Property(e => e.NameMean).IsRequired().HasMaxLength(16);
-                entity.Property(e => e.State).IsRequired().HasMaxLength(10);
+                entity.Property(e => e.NameMean).IsRequired().HasMaxLength(32);
+                entity.Property(e => e.State).IsRequired().HasMaxLength(32);
                 entity.Property(e => e.isActive);
                 entity.Property(e => e.isAviable);
                 entity.Property(e => e.isDeleted);
-                entity.Property(e => e.Type).IsRequired().HasMaxLength(10);
+                entity.Property(e => e.Type).IsRequired().HasMaxLength(16);
 
             });
 
