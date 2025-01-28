@@ -1,0 +1,29 @@
+<div class="content">
+  <div class="row">
+    <div class="container mt-4">
+      <h2>Calificaciones de Profesores</h2>
+
+      <!-- Tabla de calificaciones -->
+      <table class="table mt-4">
+        <thead>
+          <tr>
+            <th>Profesor</th>
+            <th>Estudiante</th>
+            <th>Asignatura</th>
+            <th>Curso</th>
+            <th>Evaluación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let calificacion of calificaciones">
+            <td>{{ calificacion.profesor }}</td>
+            <td>{{ calificacion.estudiante }}</td>
+            <td>{{ calificacion.asignatura }}</td>
+            <td>{{ calificacion.curso }}</td>
+            <td>{{ calificacion.evaluacion }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
