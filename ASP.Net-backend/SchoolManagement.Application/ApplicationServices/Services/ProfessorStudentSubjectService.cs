@@ -3,6 +3,7 @@ using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfessorStudentSubject;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Domain.Relations;
+using SchoolManagement.Domain.Role;
 using SchoolManagement.Infrastructure;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
@@ -34,31 +35,66 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<ProfessorStudentSubjectResponseDto> CreateProfessorStudentSubjectAsync(ProfessorStudentSubjectDto professorStudentSubjectDto)
         {
-            var professor = _context.Professors.Where(p => p.UserId == _context.Users.Where(u=>u.UserName == professorStudentSubjectDto.UserName).First().Id).First();
-            var studentSubject = _context.StudentSubjects.Where(ss => ss.IdStud == professorStudentSubjectDto.IdStud && ss.IdStud == professorStudentSubjectDto.IdStud).First();
-            var profStudSub = new ProfessorStudentSubject
+            var user = _context.Users.Where(u => u.UserName == professorStudentSubjectDto.UserName).FirstOrDefault();
+            string role = _context.Roles.Where(r => r.Id == _context.UserRoles.Where(ur => ur.UserId == user.Id).FirstOrDefault().RoleId).FirstOrDefault().Name;
+            if (role == Role.Professor || role == Role.SuperAdmin)
             {
-                IdProf = professor.IdProf,
-                IdStudSub = studentSubject.IdStudSub,
-                Professor = professor,
-                StudentSubject = studentSubject,
-                StudentGrades = professorStudentSubjectDto.StudentGrades
-            };
-            _context.ProfessorStudentSubjects.Add(profStudSub);
-            _context.SaveChanges();
+                var professor = _context.Professors.Where(p => p.UserId == _context.Users.Where(u => u.UserName == professorStudentSubjectDto.UserName).First().Id).First();
+                var studentSubject = _context.StudentSubjects.Where(ss => ss.IdStud == professorStudentSubjectDto.IdStud && ss.IdStud == professorStudentSubjectDto.IdStud).First();
+                var profStudSub = new ProfessorStudentSubject
+                {
+                    IdProf = professor.IdProf,
+                    IdStudSub = studentSubject.IdStudSub,
+                    Professor = professor,
+                    StudentSubject = studentSubject,
+                    StudentGrades = professorStudentSubjectDto.StudentGrades
+                };
+                _context.ProfessorStudentSubjects.Add(profStudSub);
+                _context.SaveChanges();
 
 
-            return new ProfessorStudentSubjectResponseDto
+                return new ProfessorStudentSubjectResponseDto
+                {
+                    IdProfStudSub = profStudSub.IdProfStudSub,
+                    IdStud = studentSubject.IdStud,
+                    IdSub = studentSubject.IdSub,
+                    studentName = _context.Students.Where(s => s.IdStud == studentSubject.IdStud).First().NameStud,
+                    subjectName = _context.Subjects.Where(s => s.IdSub == studentSubject.IdSub).First().NameSub,
+                    professorName = professor.NameProf,
+                    StudentGrades = professorStudentSubjectDto.StudentGrades
+
+                };
+            }
+            else if (role == Role.Secretary)
             {
-                IdProfStudSub = profStudSub.IdProfStudSub,
-                IdStud = studentSubject.IdStud,
-                IdSub = studentSubject.IdSub,
-                studentName = _context.Students.Where(s => s.IdStud == studentSubject.IdStud).First().NameStud,
-                subjectName = _context.Subjects.Where(s => s.IdSub == studentSubject.IdSub).First().NameSub,
-                professorName = professor.NameProf,
-                StudentGrades = professorStudentSubjectDto.StudentGrades
-                
-            };
+                var studentSubject = _context.StudentSubjects.Where(ss => ss.IdStud == professorStudentSubjectDto.IdStud && ss.IdStud == professorStudentSubjectDto.IdStud).First();
+                var profStudSub = new ProfessorStudentSubject
+                {
+                    IdProf = 0,
+                    IdStudSub = studentSubject.IdStudSub,
+                    Professor = new Professor(),
+                    StudentSubject = studentSubject,
+                    StudentGrades = professorStudentSubjectDto.StudentGrades
+                };
+                _context.ProfessorStudentSubjects.Add(profStudSub);
+                _context.SaveChanges();
+
+                var secretary = _context.Secretaries.Where(s => s.UserId == user.Id).First();
+                return new ProfessorStudentSubjectResponseDto
+                {
+                    IdProfStudSub = profStudSub.IdProfStudSub,
+                    IdStud = studentSubject.IdStud,
+                    IdSub = studentSubject.IdSub,
+                    studentName = _context.Students.Where(s => s.IdStud == studentSubject.IdStud).First().NameStud,
+                    subjectName = _context.Subjects.Where(s => s.IdSub == studentSubject.IdSub).First().NameSub,
+                    professorName = secretary.NameS,
+                    StudentGrades = professorStudentSubjectDto.StudentGrades
+
+                };
+            }
+
+
+            throw new NotImplementedException();
         }
 
         public async Task<PSSResponseGetStudents> GetStudentsForSubjectAsync(int subjectId)
