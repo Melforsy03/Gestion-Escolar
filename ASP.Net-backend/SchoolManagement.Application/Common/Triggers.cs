@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using SchoolManagement.Infrastructure;
+using Microsoft.AspNetCore.Identity;
+using SchoolManagement.Infrastructure;
 using SchoolManagement.Infrastructure.Identity;
 using System;
 using System.Collections.Generic;
@@ -26,9 +28,9 @@ namespace SchoolManagement.Application.Common
         {
             string ReducedName = string.Empty;
             string Password = string.Empty;
-            foreach(char a in Name)
+            foreach (char a in Name)
             {
-                if(a != ' ')
+                if (a != ' ')
                 {
                     ReducedName += a;
                 }
@@ -41,8 +43,8 @@ namespace SchoolManagement.Application.Common
             string CandidateName = ReducedName;
             int i = 0;
 
-           
-           
+
+
             while (true)
             {
                 bool v = _userManager.Users.All(u => u.UserName != CandidateName);

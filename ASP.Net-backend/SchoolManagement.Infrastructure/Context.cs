@@ -86,23 +86,6 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.IsDean).IsRequired();
                 entity.Property(e => e.LaboralExperience).IsRequired();
 
-                //Relacion de profesor con Medios Auxiliares Reservados
-                entity.HasMany(p => p.AuxiliaryMeans).WithMany(am => am.Professors).UsingEntity<AuxMeansProfessor>(
-                 p => p.HasOne(prop => prop.AuxiliaryMean).WithMany()
-                 .HasForeignKey(prop => prop.IdProf),
-                 p => p.HasOne(prop => prop.Professors).WithMany()
-                 .HasForeignKey(prop => prop.IdAuxMean),
-                 p => p.HasKey(prop => prop.IdAuxMeanProf)
-                 );
-
-                //Relacion de profesor con Aulas Reservadas
-                entity.HasMany(p => p.ClassRooms).WithMany(am => am.Professors).UsingEntity<ClassRoomProfessor>(
-                 p => p.HasOne(prop => prop.ClassRoom).WithMany()
-                 .HasForeignKey(prop => prop.IdProf),
-                 p => p.HasOne(prop => prop.Professors).WithMany()
-                 .HasForeignKey(prop => prop.IdClassRoom),
-                 p => p.HasKey(prop => prop.IdClassRoomProf)
-                 );
 
                 //Relacion de Profesor con Asignatura
                 entity.HasMany(p => p.Subjects).WithMany(sub => sub.Professors).UsingEntity<ProfessorSubject>(
