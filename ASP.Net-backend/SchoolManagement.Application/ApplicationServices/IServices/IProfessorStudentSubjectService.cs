@@ -10,10 +10,10 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
     public interface IProfessorStudentSubjectService
     {
         Task<ProfessorStudentSubjectResponseDto> CreateProfessorStudentSubjectAsync(ProfessorStudentSubjectDto professorStudentSubjectDto);
-        Task<ProfessorStudentSubjectResponseDto> UpdateProfessorStudentSubjectAsync(ProfessorStudentSubjectResponseDto professorStudentSubjectDto);
         Task<IEnumerable<ProfessorStudentSubjectResponseDto>> ListProfessorStudentSubjectAsync();
+        Task<IEnumerable<ProfessorStudentSubjectResponseDto>> ListProfessorStudentSubjectByUserNameAsync(ProfessorStudentSubjectConsultDto professorStudentSubjectConsultDto);
 
-        Task<PSSResponseGetSubjects> GetSubjectsOfProfessorAsync(string userName);
+        Task<PSSResponseGetSubjects> GetSubjectsOfProfessorAsync(ProfessorStudentSubjectConsultDto professorStudentSubjectConsultDto);
         Task<PSSResponseGetStudents> GetStudentsForSubjectAsync(int subjectId);
     }
 }

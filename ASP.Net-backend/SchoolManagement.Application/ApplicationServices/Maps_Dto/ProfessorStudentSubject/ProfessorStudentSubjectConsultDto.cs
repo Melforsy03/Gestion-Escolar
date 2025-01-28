@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfessorStudentSubject
 {
-    public class ProfessorStudentSubjectDto
-    {   public string UserName { get; set; }
-        public int IdSub { get; set; }
-        public int IdStud { get; set; }
-        public float StudentGrades { get; set; }
+    public class ProfessorStudentSubjectConsultDto
+    {
+        public string UserName { get; set; }
     }
 }
