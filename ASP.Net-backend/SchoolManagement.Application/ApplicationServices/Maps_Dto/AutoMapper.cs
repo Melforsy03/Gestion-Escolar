@@ -127,8 +127,8 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
             CreateMap<ProfessorSubjectDto, Domain.Relations.ProfessorSubject>();
             CreateMap<Domain.Relations.ProfessorSubject, ProfessorSubjectDto>();
 
-            CreateMap<ProfessorSubjectDto, Domain.Relations.ProfessorSubject>();
-            CreateMap<Domain.Relations.ProfessorSubject, ProfessorSubjectDto>();
+            CreateMap<ProfessorSubjectResponseDto, Domain.Relations.ProfessorSubject>();
+            CreateMap<Domain.Relations.ProfessorSubject, ProfessorSubjectResponseDto>();
 
 
             //medios tecnologicos

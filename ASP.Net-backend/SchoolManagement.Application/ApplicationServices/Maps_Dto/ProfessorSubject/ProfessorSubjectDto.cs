@@ -11,5 +11,6 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfessorSub
     {
         public int IdProf { get; set; } = 0;
         public int IdSub { get; set; } = 0;
+
     }
 }
