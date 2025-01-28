@@ -10,7 +10,9 @@ import { AuxiliaryMeansService, AuxiliaryMeans } from 'src/app/service/mediosAux
 export class MedioAuxiliarComponent implements OnInit {
   medios: AuxiliaryMeans[] = [];
   medioForm: FormGroup;
+  isEditModalVisible = false; // Controla la visibilidad del modal de edición
   isModalVisible = false; // Controla la visibilidad del modal
+  selectedMedio: AuxiliaryMeans | null = null; // Almacena el medio seleccionado para editar
 
   constructor(private fb: FormBuilder, private medioService: AuxiliaryMeansService) {}
 
@@ -96,4 +98,57 @@ export class MedioAuxiliarComponent implements OnInit {
       this.toggleModal(); // Cierra el modal si se hace clic fuera del contenido
     }
   }
+  openEditModal(medio: AuxiliaryMeans): void {
+    this.selectedMedio = medio;
+    this.isEditModalVisible = true;
+
+    // Precarga los datos del medio seleccionado en el formulario
+    this.medioForm.patchValue({
+      nameMean: medio.nameMean,
+      state: medio.state,
+      type: medio.type,
+    });
+  }
+
+  toggleEditModal(): void {
+    this.isEditModalVisible = !this.isEditModalVisible;
+    if (!this.isEditModalVisible) {
+      this.medioForm.reset();
+    }
+  }
+
+  closeEditModal(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    if (target.classList.contains('modal')) {
+      this.toggleEditModal();
+    }
+  }
+
+  updateMedio(): void {
+    if (this.selectedMedio && this.medioForm.valid) {
+      // Actualiza los datos del medio seleccionado
+      this.selectedMedio.nameMean = this.medioForm.get('nameMean')?.value;
+      this.selectedMedio.state = this.medioForm.get('state')?.value;
+      this.selectedMedio.type = this.medioForm.get('type')?.value;
+
+      this.medioService.updateAuxiliaryMeans(this.selectedMedio).subscribe(
+        (updatedMedio) => {
+          console.log('Medio actualizado:', updatedMedio);
+          // Actualiza la lista local de medios con los cambios
+          const index = this.medios.findIndex((m) => m.idMean === updatedMedio.idMean);
+          if (index !== -1) {
+            this.medios[index] = updatedMedio;
+          }
+          this.toggleEditModal(); // Cierra el modal tras guardar
+        },
+        (error) => {
+          console.error('Error al actualizar el medio:', error);
+          alert('No se pudo actualizar el medio. Por favor, inténtalo de nuevo.');
+        }
+      );
+    } else {
+      console.warn('El formulario no es válido o no hay un medio seleccionado.');
+    }
+  }
+
 }

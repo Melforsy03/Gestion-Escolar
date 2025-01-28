@@ -56,6 +56,7 @@
             <td>{{ medio.state }}</td>
             <td>{{ medio.type }}</td>
             <td>
+              <button class="custom-butt" (click)="openEditModal(medio)">Editar</button>
               <button class="custom-butt" (click)="deleteMedio(medio)">Eliminar</button>
             </td>
           </tr>
@@ -64,3 +65,39 @@
     </div>
   </div>
 </div>
+<!-- Modal para editar medio -->
+<div class="modal" [ngClass]="{ 'show': isEditModalVisible }" (click)="closeEditModal($event)">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Medio</h5>
+        <button type="button" class="close" (click)="toggleEditModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="medioForm" (ngSubmit)="updateMedio()">
+          <div class="form-group">
+            <label for="nameMean">Nombre</label>
+            <input type="text" class="form-control" formControlName="nameMean" required />
+          </div>
+
+          <div class="form-group">
+            <label for="state">Estado</label>
+            <select class="form-control" formControlName="state">
+              <option value="funcionando">Funcionando</option>
+              <option value="enMantenimiento">En Mantenimiento</option>
+              <option value="reemplazado">Reemplazado</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="type">Tipo</label>
+            <input type="text" class="form-control" formControlName="type" required />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
