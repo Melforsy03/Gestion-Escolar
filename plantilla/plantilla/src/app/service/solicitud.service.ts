@@ -24,7 +24,6 @@ export class SolicitudService {
         headers: this.headers, 
       });
   }
-
   getUser() {
     return this.Authservice.getUserRole();
   }

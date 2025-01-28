@@ -11,10 +11,12 @@ import { InfoAdministradorComponent } from "src/app/pages/info-administrador/inf
 import { MediosTecnologicosComponent } from "src/app/pages/medios-tecnologicos/medios-tecnologicos.component";
 import { CalificacionesComponent } from "src/app/pages/calificaciones-profesores/calificacionesProfesores.component";
 import { EstudiantesProfesor } from "src/app/pages/estudiantes-profesor/estudiantes-pofesor.component";
+import { EvaluacionOtorgadaComponent } from "src/app/pages/evaluacion-otorgada/evaluacion-otorgada.component";
+import { RegistarMantenimientoComponent } from "src/app/pages/registar-mantenimiento/registar-mantenimiento.component";
 export const AdminLayoutRoutes: Routes = [
 
   { path: "profesor", component: ProfesorComponent },
-  { path: "info-estudiantes", component: InfoEstudiantesComponent },
+  { path: "calificacion-estudiantes", component: InfoEstudiantesComponent },
   { path: "estudiantes", component: TablesComponent },
   { path : "solicitar", component : SolicitudComponent},
   { path : "medio-auxiliar" , component :MedioAuxiliarComponent},
@@ -23,6 +25,7 @@ export const AdminLayoutRoutes: Routes = [
   { path : "info-administrador" , component :InfoAdministradorComponent},
   { path : "medio-tecnologico" , component :MediosTecnologicosComponent},
   { path : "calificaciones-profesores" , component :CalificacionesComponent},
-  { path : "estudiantes-profesor" , component :EstudiantesProfesor}
-
+  { path : "estudiantes-profesor" , component :EstudiantesProfesor},
+  { path : "evaluacion-otorgada" , component :EvaluacionOtorgadaComponent},
+  { path :  "registrar-mantenimiento" , component : RegistarMantenimientoComponent}
 ];

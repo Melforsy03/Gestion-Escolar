@@ -15,15 +15,13 @@
                   <th>Nombre</th>
                   <th>Edad</th>
                   <th>Extracurriculares</th>
-                  <th>Curso</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let student of students">
-                  <td>{{ student.student.nameStud }}</td>
-                  <td>{{ student.student.age }}</td>
-                  <td>{{ student.student.eActivity ? 'Sí' : 'No' }}</td>
-                  <td>{{ student.idc }}</td>
+                  <td>{{ students.student.nameStud }}</td>
+                  <td>{{ students.student.age }}</td>
+                  <td>{{ students.student.eActivity ? 'Sí' : 'No' }}</td>
                 </tr>
               </tbody>
             </table>

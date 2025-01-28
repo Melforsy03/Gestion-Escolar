@@ -7,15 +7,16 @@ import { AuthGuard } from 'src/app/components/Autentificacion/auth.service';
   providedIn: 'root',
 })
 export class EstudentService {
-  private apiBaseUrl = 'http://localhost:5164/professorStudentSubject'; // URL base del API
+  private apiBaseUrl = 'http://localhost:5164'; // URL base del API
 
   constructor(private http: HttpClient, private authService: AuthGuard) {}
 
   // Obtener la lista de estudiantes (sin enviar UserName)
   getStudents(): Observable<any[]> {
     const headers = this.getAuthHeaders();
-    return this.http.get<any[]>(`${this.apiBaseUrl}/list`, { headers });
+    return this.http.get<any[]>(`${this.apiBaseUrl}/student/list`, { headers });
   }
+
 
   // Obtener los encabezados de autenticación
   private getAuthHeaders(): HttpHeaders {

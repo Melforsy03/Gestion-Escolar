@@ -20,6 +20,8 @@ import { PeticionesComponent } from './pages/peticiones/peticiones.component';
 import { InfoSecretariaComponent } from './pages/info-secretaria/info-secretaria.component';
 import { InfoAdministradorComponent } from './pages/info-administrador/info-administrador.component';
 import { MediosTecnologicosComponent } from './pages/medios-tecnologicos/medios-tecnologicos.component';
+import { EvaluacionOtorgadaComponent } from './pages/evaluacion-otorgada/evaluacion-otorgada.component';
+import { RegistarMantenimientoComponent } from './pages/registar-mantenimiento/registar-mantenimiento.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -34,7 +36,7 @@ import { MediosTecnologicosComponent } from './pages/medios-tecnologicos/medios-
     ReactiveFormsModule,
   
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, EvaluacionOtorgadaComponent, RegistarMantenimientoComponent],
   providers: [EstudentService],
   bootstrap: [AppComponent]
 })
