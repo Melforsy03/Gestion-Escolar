@@ -15,6 +15,7 @@ namespace SchoolManagement.Infrastructure
         {
         }
         //Entities
+        public DbSet<Administrator> Administrators { get; set; }
         public DbSet<AuxiliaryMeans> AuxiliaryMeans { get; set; }
         public DbSet<ClassRoom> ClassRooms { get; set; }
         public DbSet<Course> Courses { get; set; }
@@ -90,9 +91,9 @@ namespace SchoolManagement.Infrastructure
                 //Relacion de Profesor con Asignatura
                 entity.HasMany(p => p.Subjects).WithMany(sub => sub.Professors).UsingEntity<ProfessorSubject>(
                  p => p.HasOne(prop => prop.Subject).WithMany()
-                 .HasForeignKey(prop => prop.IdProf),
-                 p => p.HasOne(prop => prop.Professor).WithMany()
                  .HasForeignKey(prop => prop.IdSub),
+                 p => p.HasOne(prop => prop.Professor).WithMany()
+                 .HasForeignKey(prop => prop.IdProf),
                  p => p.HasKey(prop => prop.IdProfSub)
                  );
 
@@ -125,9 +126,9 @@ namespace SchoolManagement.Infrastructure
                 //Relacion de Asignatura con medios auxiliares
                 entity.HasMany(s => s.AuxiliaryMeans).WithMany(am => am.Subjects).UsingEntity<SubjectAuxMean>(
                   sam => sam.HasOne(prop => prop.AuxMean).WithMany()
-                  .HasForeignKey(prop => prop.IdSub),
-                  sam => sam.HasOne(prop => prop.Subject).WithMany()
                   .HasForeignKey(prop => prop.IdAuxMean),
+                  sam => sam.HasOne(prop => prop.Subject).WithMany()
+                  .HasForeignKey(prop => prop.IdSub),
                   sam => sam.HasKey(prop => prop.IdSubAuxMean)
                   );
 
@@ -151,9 +152,9 @@ namespace SchoolManagement.Infrastructure
                 //Relacion de secretario con evaluaciones(profesor con estudiante en asignatura)
                 entity.HasMany(s => s.Evaluations).WithMany(ev => ev.Secretaries).UsingEntity<SecretaryProfessorStudentSubject>(
                     sev => sev.HasOne(prop => prop.Evaluation).WithMany()
-                    .HasForeignKey(prop => prop.IdSec),
-                    sev => sev.HasOne(prop => prop.Secretary).WithMany()
                     .HasForeignKey(prop => prop.IdProfStudSub),
+                    sev => sev.HasOne(prop => prop.Secretary).WithMany()
+                    .HasForeignKey(prop => prop.IdSec),
                     sev => sev.HasKey(prop => prop.IdSecProfStudSub)
                     );
 
@@ -217,17 +218,17 @@ namespace SchoolManagement.Infrastructure
                 //Relacion aula con restricciones
                 entity.HasMany(c => c.Restrictions).WithMany(r => r.ClassRooms).UsingEntity<ClassRoomRestriction>(
                     cr => cr.HasOne(prop => prop.Restriction).WithMany()
-                    .HasForeignKey(prop => prop.IdClassRoom),
-                    cr => cr.HasOne(prop => prop.ClassRoom).WithMany()
                     .HasForeignKey(prop => prop.IdRest),
+                    cr => cr.HasOne(prop => prop.ClassRoom).WithMany()
+                    .HasForeignKey(prop => prop.IdClassRoom),
                     cr => cr.HasKey(prop => prop.IdClassRoomRest)
                     );
                 //Relacion aula con medios tecnologicos
                 entity.HasMany(c => c.TechnologicalMeans).WithMany(r => r.ClassRooms).UsingEntity<ClassRoomTechMean>(
                     cr => cr.HasOne(prop => prop.TechnologicalMeans).WithMany()
-                    .HasForeignKey(prop => prop.IdClassRoom),
-                    cr => cr.HasOne(prop => prop.ClassRoom).WithMany()
                     .HasForeignKey(prop => prop.IdTechMean),
+                    cr => cr.HasOne(prop => prop.ClassRoom).WithMany()
+                    .HasForeignKey(prop => prop.IdClassRoom),
                     cr => cr.HasKey(prop => prop.IdClassRoomTech)
                     );
             });
@@ -247,8 +248,8 @@ namespace SchoolManagement.Infrastructure
                 //Relacion de Estudiante con Asignatura
                 entity.HasMany(st => st.Subjects).WithMany(sub => sub.Students).UsingEntity<StudentSubject>(
                   ss => ss.HasOne(prop => prop.Subject).WithMany()
-                  .HasForeignKey(prop => prop.IdStud), ss => ss.HasOne(prop => prop.Student).WithMany()
-                  .HasForeignKey(prop => prop.IdSub),
+                  .HasForeignKey(prop => prop.IdSub), ss => ss.HasOne(prop => prop.Student).WithMany()
+                  .HasForeignKey(prop => prop.IdStud),
                   ss =>
                   {
                       ss.Property(prop => prop.NJAbsents).HasDefaultValue(0);
