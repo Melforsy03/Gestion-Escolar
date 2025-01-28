@@ -15,7 +15,8 @@ export class InfoEstudiantesComponent implements OnInit {
   globalSearchQuery = '';
   selectedSubject = '';
   editMode: boolean[] = [];
-
+  viewMode: string = 'assign'; // Alterna entre 'assign' y 'list'
+  notes: any[] = []; // Almacena las notas obtenidas de la API
   constructor(private gradingService: StudentGradingService) {}
 
   ngOnInit(): void {
@@ -75,7 +76,7 @@ export class InfoEstudiantesComponent implements OnInit {
       return matchesSearch;
     });
   }
-  assignGrade(student: any): void {
+  assignGrade(student: any , index: number): void {
     const payload = {
       userName: this.role, // Reemplazar con la lógica de usuario actual
       idSub: this.selectedSubject,
@@ -86,7 +87,13 @@ export class InfoEstudiantesComponent implements OnInit {
     this.gradingService.assignGrade(payload).subscribe(
       () => {
         console.log('Nota asignada correctamente:', payload);
-        alert('Nota asignada correctamente');
+  
+        // Actualiza la tabla después de guardar
+        this.displayedStudents[index].grade = student.grade;
+  
+        // Desactiva el modo de edición
+        this.editMode[index] = false;
+  
       },
       (error) => {
         console.error('Error asignando la nota:', error);
@@ -104,5 +111,21 @@ export class InfoEstudiantesComponent implements OnInit {
     if (!this.editMode[index]) {
       console.log('Guardando datos:', this.displayedStudents[index]);
     }
+  }
+  toggleViewMode(): void {
+    this.viewMode = this.viewMode === 'assign' ? 'list' : 'assign';
+    if (this.viewMode === 'list') {
+      this.getNotes();
+    }
+  }
+
+  getNotes(): void {
+    const userName = this.role;
+    this.gradingService.getNotes(userName).subscribe(
+      (notes: any[]) => {
+        this.notes = notes;
+      },
+      (error) => console.error('Error fetching notes:', error)
+    );
   }
 }
