@@ -38,6 +38,12 @@ export const ROUTES: RouteInfo[] = [
     title: "Calificaciones Profesores", // Título para el menú
     icon: "icon-pencil", // Icono para la opción
     class: ""
+  },
+  {
+    path: "/estudiantes-profesor",
+    title: "estudiantes-Profesor", // Título para el menú
+    icon: "icon-pencil", // Icono para la opción
+    class: ""
   }
 ];
 

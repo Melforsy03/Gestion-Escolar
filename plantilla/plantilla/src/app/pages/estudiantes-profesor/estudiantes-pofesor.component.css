@@ -1,0 +1,115 @@
+/* Estilos para los botones */
+.custom-button {
+  background-color: #32325d; /* Color de fondo */
+  color: white; /* Color del texto */
+  border: 1px solid #1e1f35; /* Borde */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 8px 16px; /* Espaciado interno */
+  font-size: 14px; /* Tamaño de la fuente */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  transition: all 0.3s ease; /* Transición suave para efectos */
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.custom-button:hover {
+  background-color: #43457a; /* Color más claro al pasar el mouse */
+  border-color: #2e2f50; /* Color del borde al pasar el mouse */
+}
+
+.custom-button:active {
+  background-color: #212345; /* Color más oscuro al presionar */
+  transform: scale(0.98); /* Pequeño efecto de presión */
+}
+
+/* Estilos de la tabla */
+.table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f4f6f9;
+  font-weight: bold;
+  color: #333;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* Estilos generales del contenido */
+.content {
+  padding: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Sección de filtro */
+.filter-section {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.filter-section label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.filter-section .form-select {
+  width: 220px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.filter-section .form-select:focus {
+  outline: none;
+  border-color: #32325d;
+  box-shadow: 0 0 5px rgba(50, 50, 93, 0.5);
+}
+
+/* Modal */
+.modal .form-control {
+  color: black; /* Cambia el color del texto a negro */
+}
+
+/* Estilo para icono de actividad de estudiantes */
+#studentActivity {
+  width: 30px;
+  height: 30px;
+}

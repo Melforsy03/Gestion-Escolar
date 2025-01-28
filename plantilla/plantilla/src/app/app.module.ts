@@ -22,6 +22,7 @@ import { InfoAdministradorComponent } from './pages/info-administrador/info-admi
 import { MediosTecnologicosComponent } from './pages/medios-tecnologicos/medios-tecnologicos.component';
 import { GeneralEstudiantesComponent } from './pages/general-estudiantes/general-estudiantes.component';
 import { CalificacionesComponent } from './pages/calificaciones-profesores/calificacionesProfesores.component';
+import { EstudiantesProfesor } from './pages/estudiantes-profesor/estudiantes-pofesor.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -37,7 +38,7 @@ import { CalificacionesComponent } from './pages/calificaciones-profesores/calif
 
 
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, GeneralEstudiantesComponent, CalificacionesComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, GeneralEstudiantesComponent, CalificacionesComponent, EstudiantesProfesor],
   providers: [EstudentService],
   bootstrap: [AppComponent]
 })

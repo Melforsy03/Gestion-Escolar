@@ -11,6 +11,7 @@ import { InfoSecretariaComponent} from "src/app/pages/info-secretaria/info-secre
 import { InfoAdministradorComponent } from "src/app/pages/info-administrador/info-administrador.component";
 import { MediosTecnologicosComponent } from "src/app/pages/medios-tecnologicos/medios-tecnologicos.component";
 import { CalificacionesComponent } from "src/app/pages/calificaciones-profesores/calificacionesProfesores.component";
+import { EstudiantesProfesor } from "src/app/pages/estudiantes-profesor/estudiantes-pofesor.component";
 export const AdminLayoutRoutes: Routes = [
 
   { path: "profesor", component: ProfesorComponent },
@@ -22,6 +23,7 @@ export const AdminLayoutRoutes: Routes = [
   { path : "info-secretaria" , component :InfoSecretariaComponent},
   { path : "info-administrador" , component :InfoAdministradorComponent},
   { path : "medio-tecnologico" , component :MediosTecnologicosComponent},
-  { path : "calificaciones-profesores" , component :CalificacionesComponent}
+  { path : "calificaciones-profesores" , component :CalificacionesComponent},
+  { path : "estudiantes-profesor" , component :EstudiantesProfesor}
 
 ];
