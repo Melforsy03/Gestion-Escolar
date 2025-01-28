@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfessorStudentSubject;
+using SchoolManagement.Domain.Entities;
 using SchoolManagement.Domain.Relations;
 using SchoolManagement.Infrastructure;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
@@ -34,24 +35,29 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         public async Task<ProfessorStudentSubjectResponseDto> CreateProfessorStudentSubjectAsync(ProfessorStudentSubjectDto professorStudentSubjectDto)
         {
             var professor = _context.Professors.Where(p => p.UserId == _context.Users.Where(u=>u.UserName == professorStudentSubjectDto.UserName).First().Id).First();
-            var studentSubject = _context.StudentSubjects.Where(ss => ss.IdStud == professorStudentSubjectDto.IdStud && ss.IdStud == professorStudentSubjectDto.IdStud).First();            
-            var savedProfessorStudentSubject = await _professorStudentSubjectRepository.CreateAsync(new ProfessorStudentSubject 
+            var studentSubject = _context.StudentSubjects.Where(ss => ss.IdStud == professorStudentSubjectDto.IdStud && ss.IdStud == professorStudentSubjectDto.IdStud).First();
+            var profStudSub = new ProfessorStudentSubject
             {
                 IdProf = professor.IdProf,
                 IdStudSub = studentSubject.IdStudSub,
                 Professor = professor,
                 StudentSubject = studentSubject,
                 StudentGrades = professorStudentSubjectDto.StudentGrades
-            });
+            };
+            _context.ProfessorStudentSubjects.Add(profStudSub);
+            _context.SaveChanges();
+
 
             return new ProfessorStudentSubjectResponseDto
             {
-                IdProfStudSub = savedProfessorStudentSubject.IdProfStudSub,
-                IdStud = savedProfessorStudentSubject.StudentSubject.Student.IdStud,
-                IdSub = savedProfessorStudentSubject.StudentSubject.Subject.IdSub,
+                IdProfStudSub = profStudSub.IdProfStudSub,
+                IdStud = studentSubject.IdStud,
+                IdSub = studentSubject.IdSub,
+                studentName = _context.Students.Where(s => s.IdStud == studentSubject.IdStud).First().NameStud,
+                subjectName = _context.Subjects.Where(s => s.IdSub == studentSubject.IdSub).First().NameSub,
                 professorName = professor.NameProf,
-                studentName = _context.Students.Find(savedProfessorStudentSubject.StudentSubject.Student.IdStud).NameStud,
-                subjectName =  _context.Subjects.Find(savedProfessorStudentSubject.StudentSubject.Subject.IdSub).NameSub
+                StudentGrades = professorStudentSubjectDto.StudentGrades
+                
             };
         }
 
@@ -85,10 +91,20 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             List<ProfessorStudentSubjectResponseDto> professorStudentSubjects_List = new List<ProfessorStudentSubjectResponseDto>();
             for (int i = 0; i < list.Count(); i++)
             {
-                var student = _context.Students.Find(list[i].StudentSubject.Student.IdStud);
-                var result = new ProfessorStudentSubjectResponseDto();
-                result.studentName = student.NameStud;
-                professorStudentSubjects_List.Add(result);
+
+                var studentSubject = _context.StudentSubjects.Where(ss => ss.IdStudSub == list[i].IdStudSub).First();
+
+                professorStudentSubjects_List.Add(new ProfessorStudentSubjectResponseDto
+                {
+                    studentName = _context.Students.Where(s => s.IdStud == studentSubject.IdStud).First().NameStud,
+                    subjectName = _context.Subjects.Where(s => s.IdSub == studentSubject.IdSub).First().NameSub,
+                    professorName = _context.Professors.Where(p => p.IdProf == list[i].IdProf).First().NameProf,
+                    IdProfStudSub = list[i].IdProfStudSub,
+                    IdStud = studentSubject.IdStud,
+                    IdSub = studentSubject.IdSub,
+                    StudentGrades = list[i].StudentGrades
+
+                });
             }
 
             return professorStudentSubjects_List;
@@ -103,14 +119,16 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             List<ProfessorStudentSubjectResponseDto> professorStudentSubjects_List = new();
             for (int i = 0; i < professorStudentSubjects.Count(); i++)
             {
-                professorStudentSubjects_List.Add(new ProfessorStudentSubjectResponseDto
+                var studentSubject = _context.StudentSubjects.Where(ss=>ss.IdStudSub == list[i].IdStudSub).First();
+
+               professorStudentSubjects_List.Add(new ProfessorStudentSubjectResponseDto
                 {
-                    studentName = list[i].StudentSubject.Student.NameStud,
-                    subjectName = list[i].StudentSubject.Subject.NameSub,
-                    professorName = list[i].Professor.NameProf,
+                    studentName = _context.Students.Where(s=>s.IdStud == studentSubject.IdStud).First().NameStud,
+                    subjectName = _context.Subjects.Where(s => s.IdSub == studentSubject.IdSub).First().NameSub,
+                    professorName = professor.NameProf,
                     IdProfStudSub = list[i].IdProfStudSub,
-                    IdStud = list[i].StudentSubject.Student.IdStud,
-                    IdSub = list[i].StudentSubject.Subject.IdSub,
+                    IdStud = studentSubject.IdStud,
+                    IdSub = studentSubject.IdSub,
                     StudentGrades = list[i].StudentGrades
 
                 });
