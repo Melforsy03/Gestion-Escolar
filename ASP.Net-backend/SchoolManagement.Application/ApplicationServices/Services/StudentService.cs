@@ -4,6 +4,7 @@ using SchoolManagement.Application.ApplicationServices.Maps_Dto.Professor;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.Student;
 using SchoolManagement.Application.Common;
 using SchoolManagement.Domain.Entities;
+using SchoolManagement.Infrastructure;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using SchoolManagement.Infrastructure.DataAccess.Repository;
 using SchoolManagement.Infrastructure.Identity;
@@ -19,13 +20,15 @@ namespace SchoolManagement.Application.ApplicationServices.Services
     {
         private readonly IStudentRepository _studentRepository;
         private readonly ICourseRepository _courseRepository;
+        private readonly Context _context;
         private readonly Triggers _trigger;
         private readonly IMapper _mapper;
 
-        public StudentService(IStudentRepository studentRepository, IMapper mapper, Triggers trigger, ICourseRepository courseRepository)
+        public StudentService(Context context, IStudentRepository studentRepository, IMapper mapper, Triggers trigger, ICourseRepository courseRepository)
         {
             _studentRepository = studentRepository;
             _courseRepository = courseRepository;
+            _context = context;
             _mapper = mapper;
             _trigger = trigger;
         }

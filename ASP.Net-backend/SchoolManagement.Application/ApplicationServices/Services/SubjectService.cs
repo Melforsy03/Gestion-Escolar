@@ -29,8 +29,8 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         {
             var subject = _mapper.Map<Domain.Entities.Subject>(subjectDto);
             subject.classRoom = await _classRoomRepository.GetByIdAsync(subject.IdClassRoom);
-            var savedAgency = await _subjectRepository.CreateAsync(subject);
-            return _mapper.Map<SubjectResponseDto>(savedAgency);
+            var savedSubject = await _subjectRepository.CreateAsync(subject);
+            return _mapper.Map<SubjectResponseDto>(savedSubject);
         }
 
         public async Task<SubjectResponseDto> DeleteSubjectByIdAsync(int subjectId)
