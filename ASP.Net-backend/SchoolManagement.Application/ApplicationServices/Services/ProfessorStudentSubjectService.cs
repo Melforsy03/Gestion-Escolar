@@ -73,6 +73,10 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         
         }
 
+        public Task<PSSResponseGetSubjects> GetSubjectsOfProfessorAsync(ProfessorStudentSubjectConsultDto professorStudentSubjectConsultDto)
+        {
+            throw new NotImplementedException();
+        }
 
         public async Task<IEnumerable<ProfessorStudentSubjectResponseDto>> ListProfessorStudentSubjectAsync()
         {
@@ -81,7 +85,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             List<ProfessorStudentSubjectResponseDto> professorStudentSubjects_List = new List<ProfessorStudentSubjectResponseDto>();
             for (int i = 0; i < list.Count(); i++)
             {
-                var student = await _context.Students.FindAsync(list[i].StudentSubject.Student.IdStud);
+                var student = _context.Students.Find(list[i].StudentSubject.Student.IdStud);
                 var result = new ProfessorStudentSubjectResponseDto();
                 result.studentName = student.NameStud;
                 professorStudentSubjects_List.Add(result);
@@ -91,9 +95,9 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         }
 
 
-        public async Task<IEnumerable<ProfessorStudentSubjectResponseDto>> ListProfessorStudentSubjectByUserNameAsync(ProfessorStudentSubjectConsultDto professorStudentSubjectConsultDto)
+        public async Task<IEnumerable<ProfessorStudentSubjectResponseDto>> ListProfessorStudentSubjectByUserNameAsync(string UserName)
         {
-            var professor =  _context.Professors.Where(p => p.UserId == _context.Users.Where(u => u.UserName == professorStudentSubjectConsultDto.UserName).First().Id).First();
+            var professor =  _context.Professors.Where(p => p.UserId == _context.Users.Where(u => u.UserName == UserName).First().Id).First();
             var professorStudentSubjects = _context.ProfessorStudentSubjects.Where(pss=> pss.IdProf == professor.IdProf);
             var list = professorStudentSubjects.ToList();
             List<ProfessorStudentSubjectResponseDto> professorStudentSubjects_List = new();
@@ -114,5 +118,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
             return professorStudentSubjects_List;
         }
+
+       
     }
 }

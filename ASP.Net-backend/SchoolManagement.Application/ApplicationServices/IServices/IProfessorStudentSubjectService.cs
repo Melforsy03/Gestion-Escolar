@@ -13,7 +13,7 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<IEnumerable<ProfessorStudentSubjectResponseDto>> ListProfessorStudentSubjectAsync();
         Task<IEnumerable<ProfessorStudentSubjectResponseDto>> ListProfessorStudentSubjectByUserNameAsync(string UserName);
 
-        Task<PSSResponseGetSubjects> GetSubjectsOfProfessorAsync(ProfessorStudentSubjectConsultDto professorStudentSubjectConsultDto);
+        Task<PSSResponseGetSubjects> GetSubjectsOfProfessorAsync(string UserName);
         Task<PSSResponseGetStudents> GetStudentsForSubjectAsync(int subjectId);
     }
 }
