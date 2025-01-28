@@ -10,16 +10,20 @@ import { TechnologicalMeansService, TechnologicalMeans } from 'src/app/service/m
 export class MediosTecnologicosComponent implements OnInit {
   medios: TechnologicalMeans[] = [];
   medioForm: FormGroup;
-  isModalVisible = false; // Controla la visibilidad del modal
+  isModalVisible = false; // Controla la visibilidad del modal principal
+  isEditModalVisible = false; // Controla la visibilidad del modal de edición
+  selectedMedio: TechnologicalMeans | null = null; // Medio seleccionado para editar
 
   constructor(private fb: FormBuilder, private medioService: TechnologicalMeansService) {}
 
   ngOnInit(): void {
+    // Inicialización del formulario
     this.medioForm = this.fb.group({
       nameMean: ['', Validators.required],
       state: ['', Validators.required],
     });
 
+    // Cargar los medios tecnológicos al iniciar el componente
     this.loadMedios();
   }
 
@@ -37,44 +41,70 @@ export class MediosTecnologicosComponent implements OnInit {
   onSubmit(): void {
     if (this.medioForm.valid) {
       const nuevoMedio: TechnologicalMeans = {
-        idMean: undefined, // La API generará el ID automáticamente
         nameMean: this.medioForm.get('nameMean')?.value,
         state: this.medioForm.get('state')?.value,
       };
-      console.log('Datos del formulario (raw values):', this.medioForm.value);
-      console.log('Nuevo medio (mapeado):', nuevoMedio);
 
       this.medioService.createTechnologicalMeans(nuevoMedio).subscribe(
         (response) => {
           console.log('Medio creado con éxito:', response);
-          this.medios.push(response);
-          this.toggleModal(); // Cierra el modal tras guardar
+          this.medios.push(response); // Añadir el nuevo medio a la lista
+          this.toggleModal(); // Cierra el modal
         },
         (error) => {
           console.error('Error al crear el medio:', error);
         }
       );
     } else {
-      console.warn('El formulario no es válido');
+      console.warn('Formulario inválido');
     }
   }
 
   deleteMedio(medio: TechnologicalMeans): void {
     if (medio.idMean) {
-      if (confirm(`¿Estás seguro de que deseas eliminar el medio "${medio.nameMean}"?`)) {
+      const confirmacion = confirm(`¿Estás seguro de eliminar el medio "${medio.nameMean}"?`);
+      if (confirmacion) {
         this.medioService.deleteTechnologicalMeans(medio.idMean).subscribe(
           () => {
-            console.log(`Medio eliminado con éxito: ${medio.nameMean}`);
+            console.log(`Medio "${medio.nameMean}" eliminado con éxito.`);
             this.medios = this.medios.filter((m) => m.idMean !== medio.idMean);
           },
           (error) => {
             console.error('Error al eliminar el medio:', error);
-            alert('No se pudo eliminar el medio. Por favor, inténtalo de nuevo.');
+            alert('No se pudo eliminar el medio. Intenta nuevamente.');
           }
         );
       }
-    } else {
-      console.warn('El medio no tiene un ID válido y no se puede eliminar:', medio);
+    }
+  }
+
+  editMedio(medio: TechnologicalMeans): void {
+    this.selectedMedio = { ...medio }; // Clonar el objeto seleccionado
+    this.isEditModalVisible = true;
+    this.medioForm.patchValue({
+      nameMean: medio.nameMean,
+      state: medio.state,
+    });
+  }
+
+  updateMedio(): void {
+    if (this.selectedMedio && this.medioForm.valid) {
+      this.selectedMedio.nameMean = this.medioForm.get('nameMean')?.value;
+      this.selectedMedio.state = this.medioForm.get('state')?.value;
+
+      this.medioService.updateTechnologicalMeans(this.selectedMedio).subscribe(
+        (updatedMedio) => {
+          console.log('Medio actualizado:', updatedMedio);
+          const index = this.medios.findIndex((m) => m.idMean === updatedMedio.idMean);
+          if (index !== -1) {
+            this.medios[index] = updatedMedio; // Actualiza la lista con el medio editado
+          }
+          this.closeEditModal();
+        },
+        (error) => {
+          console.error('Error al actualizar el medio:', error);
+        }
+      );
     }
   }
 
@@ -90,5 +120,21 @@ export class MediosTecnologicosComponent implements OnInit {
     if (target.classList.contains('modal')) {
       this.toggleModal();
     }
+  }
+
+  toggleEditModal(): void {
+    this.isEditModalVisible = !this.isEditModalVisible;
+  }
+
+  closeEditModal(event?: MouseEvent): void {
+    if (event) {
+      const target = event.target as HTMLElement;
+      if (!target.classList.contains('modal')) {
+        return;
+      }
+    }
+    this.isEditModalVisible = false;
+    this.selectedMedio = null; // Limpia el medio seleccionado
+    this.medioForm.reset(); // Resetea el formulario
   }
 }
