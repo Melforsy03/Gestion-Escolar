@@ -26,7 +26,7 @@ namespace SchoolManagement.Api.Controllers
             return Ok(createdProfessorStudentSubject);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("listnotes")]
         
         [Authorize(Roles = "SuperAdmin, Professor, Secretary")]
@@ -56,7 +56,7 @@ namespace SchoolManagement.Api.Controllers
             return Ok(professorStudentSubject);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("getnotesByProfessor")]
         [Authorize(Roles = "SuperAdmin, Professor, Secretary")]
         public async Task<ActionResult> GetProfesssorStudentSubjectByUser(string UserName )
