@@ -18,7 +18,6 @@ export class SecretaryService {
       Authorization: `Bearer ${token}`,
     });
   }
-
   // Método para crear una secretaria
   createSecretary(secretary: { nameS: string; salaryS: number }): Observable<any> {
     return this.http.post(`${this.apiBaseUrl}/secretary/create`, secretary, {
@@ -39,5 +38,11 @@ export class SecretaryService {
 
   deleteSecretary(secretaryId: number): Observable<any> {
     return this.http.delete(`${this.apiBaseUrl}/secretary/delete?secretaryId=${secretaryId}`, { headers:this.headers });
+  }
+  getsubject ()
+  {
+    return this.http.get(`${this.apiBaseUrl}/subject/list` , {
+      headers :this.headers ,
+    })
   }
 }

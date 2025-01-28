@@ -23,9 +23,9 @@ export class RoleService {
     {
       role: 'Secretary',
       menuItems: [
-        { label: 'Gestionar Calificaciones', path: '/calificacion-estudiantes', icon: 'bx bx-user' },
-        { label: 'Informacion-Estudiantes', path: '/estudiantes', icon: 'bx bx-edit' },
-        { label: 'Informacion-profesores', path: '/profesor', icon: 'bx bx-edit' },
+        { label: 'Gestionar Calificaciones', path: '/calificacion-estudiantes', icon: 'icon-paper' },
+        { label: 'Info Estudiantes', path: '/estudiantes', icon: 'icon-single-copy-04' },
+        { label: 'Info Profesores', path: '/profesor', icon: 'icon-notes' },
       ],
     },
     {
@@ -41,6 +41,7 @@ export class RoleService {
         menuItems: [
           { label: 'Solicitud', path: '/solicitar', icon: 'icon-components' },
           { label: 'Gestionar Calificaciones', path: '/calificacion-estudiantes', icon: 'icon-paper' },
+          { label :"Mantenimiento" , path : '/registrar-mantenimiento' , icon :'icon-components'},
           { label: 'Medios-auxiliares', path: '/medio-auxiliar', icon: 'icon-app' },
           { label: 'Medios Tecnologicos', path: '/medio-tecnologico', icon: 'icon-app' },
           { label: 'Evaluacion Profesores', path: '/calificaciones-profesores', icon: 'icon-notes' },

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentGradingService } from 'src/app/service/generaStud.service';
-
+import { SecretaryService } from 'src/app/service/secretaria-info.service';
 @Component({
   selector: 'app-info-estudiantes',
   templateUrl: './info-estudiantes.component.html',
@@ -17,30 +17,13 @@ export class InfoEstudiantesComponent implements OnInit {
   editMode: boolean[] = [];
   viewMode: string = 'assign'; // Alterna entre 'assign' y 'list'
   notes: any[] = []; // Almacena las notas obtenidas de la API
-  constructor(private gradingService: StudentGradingService) {}
+  constructor(private gradingService: StudentGradingService , private secretaria :SecretaryService) {}
 
   ngOnInit(): void {
     this.role = this.gradingService.getRole();
-    this.getSubjects(this.role); // Replace 'currentUser' with the actual username logic
+    this.getSubjects(); // Replace 'currentUser' with the actual username logic
     
   }
-  getSubjects(userName: string): void {
-    this.gradingService.getSubjects(userName).subscribe(
-      (response: any) => {
-        this.subjects = response.subjects || []; // Asigna el array de subjects o un array vacío si no hay datos
-        if (this.subjects.length > 0) {
-          // Selecciona la primera asignatura por defecto
-          this.selectedSubject = this.subjects[0].IdSub;
-          this.getStudents(this.selectedSubject); // Pasa el idSub de la primera asignatura
-        } else {
-          this.selectedSubject = ''; // Deja en blanco si no hay asignaturas
-        }
-      },
-      (error) => console.error('Error fetching subjects:', error)
-    );
-  }
-  
-
   getStudents(subjectId: string): void {
     console.log(subjectId);
     this.gradingService.getStudents(+subjectId).subscribe(
@@ -100,6 +83,42 @@ export class InfoEstudiantesComponent implements OnInit {
         alert('Ocurrió un error al asignar la nota');
       }
     );
+  }
+  getSubjects ()
+  {
+    if (this.role === 'Secretary')
+    {
+      console.log ('funciona');
+      this.secretaria.getsubject().subscribe(
+        (response: any) => {
+          this.subjects = response.subjects || []; 
+          if (this.subjects.length > 0) {
+            // Selecciona la primera asignatura por defecto
+            this.selectedSubject = this.subjects[0].IdSub;
+            this.getStudents(this.selectedSubject); // Pasa el idSub de la primera asignatura
+          } else {
+            this.selectedSubject = ''; // Deja en blanco si no hay asignaturas
+          }
+        },
+        (error) => console.error('Error fetching subjects:', error)
+      );
+    }
+    else 
+    {
+      this.gradingService.getSubjects(this.role).subscribe(
+        (response: any) => {
+          this.subjects = response.subjects || []; // Asigna el array de subjects o un array vacío si no hay datos
+          if (this.subjects.length > 0) {
+            // Selecciona la primera asignatura por defecto
+            this.selectedSubject = this.subjects[0].IdSub;
+            this.getStudents(this.selectedSubject); // Pasa el idSub de la primera asignatura
+          } else {
+            this.selectedSubject = ''; // Deja en blanco si no hay asignaturas
+          }
+        },
+        (error) => console.error('Error fetching subjects:', error)
+      );
+    }
   }
   onSubjectChange(subjectId: string): void {
     this.selectedSubject = subjectId;

@@ -13,8 +13,8 @@ export class SidebarComponent implements OnInit {
   constructor(private roleService: RoleService , private authGuard :AuthGuard) {}
 
   ngOnInit():void {
-    const userRole = this.authGuard.getUserRole(); // Implementa este método en AuthService
-    
+    const userRole = this.authGuard.getUserRole(); 
+    console.log(userRole);
     this.menuItems = this.roleService.getMenuItemsForRole(userRole);
   }
 
