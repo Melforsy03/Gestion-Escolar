@@ -10,7 +10,7 @@ export class StudentGradingService {
   private headers: HttpHeaders;
 
   constructor(private http: HttpClient , private Authent :AuthGuard) {
-    const token = this.Authent.getToken(); // Replace with your token retrieval logic
+    const token = this.Authent.getToken(); 
     this.headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -33,7 +33,15 @@ export class StudentGradingService {
     const url = `${this.apiUrl}/professorStudentSubject/update`;
     return this.http.post<void>(url, payload, { headers: this.headers });
   }
-
+  assignGrade(payload: any): Observable<void> {
+    const url = `${this.apiUrl}/professorStudentSubject/givenote`;
+    return this.http.post<void>(url, payload, { headers: this.headers });
+  }
+  getNotes(UserName: string): Observable<any[]> {
+    const url = `${this.apiUrl}/professorStudentSubject/getnotesByProfessor?UserName=${encodeURIComponent(UserName)}`;
+    return this.http.post<any[]>(url, { headers: this.headers });
+  }
+  
   listResults(): Observable<any[]> {
     const url = `${this.apiUrl}/profstudsubcourse/list`;
     return this.http.get<any[]>(url, { headers: this.headers });
