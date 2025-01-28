@@ -22,6 +22,7 @@ export class TablesComponent implements OnInit {
     this.estudianteService.getStudents().subscribe(
       (data) => {
         this.students = data;
+console.log(this.students)
       },
       (error) => {
         console.error('Error al cargar estudiantes:', error);
@@ -32,11 +33,11 @@ export class TablesComponent implements OnInit {
   openAddStudentModal() {
     this.isAddStudentModalOpen = true;
   }
-  
+
   closeAddStudentModal() {
     this.isAddStudentModalOpen = false;
   }
-  
+
   addStudent() {
     if (this.newStudent.nameStud && this.newStudent.age > 0 && this.newStudent.idC > 0) {
       this.estudianteService.createStudent(this.newStudent).subscribe(
@@ -72,7 +73,7 @@ export class TablesComponent implements OnInit {
           eActivity: this.editingStudent.student.eActivity,
         },
       };
-  
+
       // Llamar al servicio para actualizar el estudiante
       this.estudianteService.updateStudent(studentUpdate).subscribe(
         (response) => {
@@ -86,7 +87,7 @@ export class TablesComponent implements OnInit {
       );
     }
   }
-  
+
 
   // Cancelar edición
   cancelEdit() {
@@ -105,6 +106,6 @@ export class TablesComponent implements OnInit {
         }
       );
     }
-    
+
   }
 }

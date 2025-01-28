@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators'; // Importar el operador tap
 import { AuthGuard } from 'src/app/components/Autentificacion/auth.service';
 
 @Injectable({
@@ -11,7 +12,6 @@ export class EstudentService {
 
   constructor(private http: HttpClient, private authService: AuthGuard) {}
 
-  // Obtener la lista de estudiantes (sin enviar UserName)
   getStudents(): Observable<any[]> {
     const headers = this.getAuthHeaders();
     return this.http.get<any[]>(`${this.apiBaseUrl}/student/list`, { headers });

@@ -22,6 +22,9 @@ import { InfoAdministradorComponent } from './pages/info-administrador/info-admi
 import { MediosTecnologicosComponent } from './pages/medios-tecnologicos/medios-tecnologicos.component';
 import { EvaluacionOtorgadaComponent } from './pages/evaluacion-otorgada/evaluacion-otorgada.component';
 import { RegistarMantenimientoComponent } from './pages/registar-mantenimiento/registar-mantenimiento.component';
+
+
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -34,7 +37,7 @@ import { RegistarMantenimientoComponent } from './pages/registar-mantenimiento/r
     ToastrModule.forRoot(),
     CommonModule,
     ReactiveFormsModule,
-  
+
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, EvaluacionOtorgadaComponent, RegistarMantenimientoComponent],
   providers: [EstudentService],
