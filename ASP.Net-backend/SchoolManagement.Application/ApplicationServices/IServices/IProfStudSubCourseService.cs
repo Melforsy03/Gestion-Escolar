@@ -13,6 +13,7 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<ProfStudSubCourseResponseDto> UpdateProfStudSubCourseAsync(ProfStudSubCourseResponseDto profStudSubCourseDto);
         Task<IEnumerable<ProfStudSubCourseResponseDto>> ListProfStudSubCoursesAsync();
         Task<IEnumerable<ProfStudSubCourseResponseDto>> ListProfStudSubCoursesByProfAsync(ProfStudSubCourseConsultDto profStudSubCourseConsultDto);
+        Task<IEnumerable<ProfStudSubCourseConsultResponseDto>> GetProfessors(string UserName);
         Task DeleteProfStudSubCourseByIdAsync(int id);
     }
 
