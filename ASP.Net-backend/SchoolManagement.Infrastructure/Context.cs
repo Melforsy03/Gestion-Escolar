@@ -176,14 +176,10 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.IsDeleted).IsRequired();
                 entity.Property(e => e.typeOfMean).IsRequired();
                 //Relacion de Mantenimiento con medios auxiliares
-                entity.HasOne(e => e.auxMean)
-                .WithMany(m => m.maintenances)
-                .HasForeignKey(e => e.IdAuxMean);
+                entity.Property(e => e.IdAuxMean).IsRequired();
 
                 //Relacion de mantenimiento con medios teconologicos
-                entity.HasOne(e => e.technologicalMean)
-                .WithMany(m => m.maintenances)
-                .HasForeignKey(e => e.IdTechMean);
+                entity.Property(e => e.IdTechMean).IsRequired();
 
             });
 
