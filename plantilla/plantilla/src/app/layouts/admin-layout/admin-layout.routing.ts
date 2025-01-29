@@ -11,8 +11,8 @@ import { InfoAdministradorComponent } from "src/app/pages/info-administrador/inf
 import { MediosTecnologicosComponent } from "src/app/pages/medios-tecnologicos/medios-tecnologicos.component";
 import { CalificacionesComponent } from "src/app/pages/calificaciones-profesores/calificacionesProfesores.component";
 import { EstudiantesProfesor } from "src/app/pages/estudiantes-profesor/estudiantes-pofesor.component";
-import { RegistarMantenimientoComponent } from "src/app/pages/registar-mantenimiento/registar-mantenimiento.component";
 import { EvaluacionComponent } from "src/app/pages/evaluacion/evaluacion.component";
+import { MantenimientoComponent } from "src/app/pages/mantenimiento/mantenimiento.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "profesor", component: ProfesorComponent },
@@ -26,6 +26,6 @@ export const AdminLayoutRoutes: Routes = [
   { path : "medio-tecnologico" , component :MediosTecnologicosComponent},
   { path : "calificaciones-profesores" , component :CalificacionesComponent},
   { path : "estudiantes-profesor" , component :EstudiantesProfesor},
-  { path :  "registrar-mantenimiento" , component : RegistarMantenimientoComponent},
-   {path :   "evaluaciones" , component :EvaluacionComponent}
+  {path :  "evaluaciones" , component :EvaluacionComponent},
+   {path : "mantenimiento" , component :MantenimientoComponent}
 ];

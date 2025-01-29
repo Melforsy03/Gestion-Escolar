@@ -13,7 +13,7 @@ export class CalificacionesService {
 
   // Obtener la lista de profesores, asignaturas y cursos
   getCalificaciones(userName: string): Observable<any[]> {
-    const url = `${this.apiUrl}/professorStudentSubject/getProfSubCourse`;
+    const url = `${this.apiUrl}/profstudsubcourse/listProfessorsByStudent`;
     const params = new HttpParams().set('userName', userName);
     return this.http.get<any[]>(url, { headers: this.headers, params });
   }

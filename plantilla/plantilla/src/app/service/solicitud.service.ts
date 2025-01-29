@@ -11,7 +11,7 @@ export class SolicitudService {
   private headers: HttpHeaders;
 
   constructor(private http: HttpClient, private Authservice: AuthGuard) {
-    const token = this.Authservice.getToken(); // Obtén el token del servicio AuthGuard
+    const token = this.Authservice.getToken();
     this.headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',

@@ -27,7 +27,7 @@ export class RoleService {
         menuItems: [
           { label: 'medios-auxiliares', path: '/medio-auxiliar', icon: 'inventory' },
           { label: 'medios-tecnologicos', path: '/medio-tecnologico', icon: 'icon-app' },
-          { label :"Mantenimiento" , path : '/registrar-mantenimiento' , icon :'icon-components'}
+          { label : "Mantenimiento" , path : '/registrar-mantenimiento' , icon :'icon-components'}
         ],
       },
       {
@@ -35,7 +35,6 @@ export class RoleService {
         menuItems: [
           { label: 'Solicitud', path: '/solicitar', icon: 'icon-components' },
           { label: 'Gestionar Calificaciones', path: '/calificacion-estudiantes', icon: 'icon-paper' },
-          { label :"Mantenimiento" , path : '/registrar-mantenimiento' , icon :'icon-components'},
           { label: 'Medios-auxiliares', path: '/medio-auxiliar', icon: 'icon-app' },
           { label: 'Medios Tecnologicos', path: '/medio-tecnologico', icon: 'icon-app' },
           { label: 'Evaluacion Profesores', path: '/calificaciones-profesores', icon: 'icon-notes' },
@@ -44,7 +43,6 @@ export class RoleService {
           { label: 'Info Profesores', path: '/profesor', icon: 'icon-notes' },
           { label: 'Info Secretaria', path: '/info-secretaria', icon: 'icon-badge' },
           { label: 'Info Administrador', path: '/info-administrador', icon: 'icon-badge' },
-
           { label: 'Mantenimiento', path: '/mantenimiento', icon: 'icon-badge' },
           { label: 'Info Administrador', path: '/info-administrador', icon: 'icon-badge' },
         ],
@@ -59,7 +57,7 @@ export class RoleService {
   ];
 
   getMenuItemsForRole(role: string): MenuItem[] {
-
+    console.log('llego aqui');
     const permissions = this.rolePermissions.find((perm) => perm.role === role);
     return permissions ? permissions.menuItems : [];
   }

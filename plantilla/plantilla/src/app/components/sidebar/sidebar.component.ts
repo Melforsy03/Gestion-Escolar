@@ -14,7 +14,6 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit():void {
     const userRole = this.authGuard.getUserRole(); 
-    console.log(userRole);
     this.menuItems = this.roleService.getMenuItemsForRole(userRole);
   }
 

@@ -52,8 +52,6 @@ export class AuthGuard implements CanActivate {
         this.isLoggedIn = true;
         console.log("Rol obtenido:", role);
 
-        // Aquí llamamos a redirectUser con el rol
-        this.redirectUser(role);
       }),
      )
     ;
@@ -71,28 +69,11 @@ export class AuthGuard implements CanActivate {
     return localStorage.getItem('token');
   }
   getUserRole(): string | null {
-    console.log("llego")
+    
     return localStorage.getItem('role');
   }
-
-  redirectUser(role: string) {
-    switch (role) {
-      case 'professor':
-        this.router.navigate(['/profesor']);
-        break;
-      case 'administrador':
-        this.router.navigate(['/administrador']);
-        break;
-      case 'Secretary':
-        this.router.navigate(['/secretaria']);
-        break;
-      case 'SuperAdmin':
-        this.router.navigate(['/SuperAdmin']);
-        break;
-      default:
-        this.router.navigate(['/login']);
-
-        break;
-    }
+  getUserName(): string | null {
+    
+    return localStorage.getItem('userName');
   }
 }

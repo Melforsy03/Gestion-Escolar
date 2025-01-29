@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CalificacionesService } from 'src/app/service/otergar.service';
+import { AuthGuard } from 'src/app/components/Autentificacion/auth.service';
 @Component({
   selector: 'app-evaluacion',
   templateUrl: './evaluacion.component.html',
@@ -7,10 +8,9 @@ import { CalificacionesService } from 'src/app/service/otergar.service';
 })
 export class EvaluacionComponent implements OnInit {
   calificaciones: any[] = [];
-  userName: string = 'SuperAdmin'; // Reemplaza con la lógica de autenticación
 
-  constructor(private calificacionesService: CalificacionesService) {}
-
+  constructor(private calificacionesService: CalificacionesService , private Autentificacion :AuthGuard) {}
+  userName: string = this.Autentificacion.getUserName(); 
   ngOnInit() {
     this.cargarCalificaciones();
   }
@@ -27,20 +27,36 @@ export class EvaluacionComponent implements OnInit {
     );
   }
 
-  asignarNota(calificacion: any) {
-    const nota = prompt(`Ingrese la nota para ${calificacion.subjectName}:`);
-    if (nota !== null && !isNaN(Number(nota))) {
+  showModal: boolean = false;
+  selectedCalificacion: any = null;
+  notaIngresada: number | null = null;
+  
+  abrirModal(calificacion: any) {
+    this.selectedCalificacion = calificacion;
+    this.notaIngresada = null; // Resetea la nota
+    this.showModal = true;
+  }
+  
+  cerrarModal() {
+    this.showModal = false;
+    this.selectedCalificacion = null;
+    this.notaIngresada = null;
+  }
+  
+  guardarNota() {
+    if (this.notaIngresada !== null && !isNaN(Number(this.notaIngresada))) {
       const payload = {
-        idProf: calificacion.idProf,
-        idStud: calificacion.idStud,
-        idSub: calificacion.idSub,
-        idCourse: calificacion.idCourse,
-        evaluation: Number(nota)
+        idProf: this.selectedCalificacion.idProf,
+        idStud: this.selectedCalificacion.idStud,
+        idSub: this.selectedCalificacion.idSub,
+        idCourse: this.selectedCalificacion.idCourse,
+        evaluation: Number(this.notaIngresada)
       };
-
+  
       this.calificacionesService.asignarNota(payload).subscribe(
         () => {
           alert('✅ Nota asignada con éxito');
+          this.cerrarModal();
         },
         (error) => {
           console.error('❌ Error al asignar la nota:', error);
