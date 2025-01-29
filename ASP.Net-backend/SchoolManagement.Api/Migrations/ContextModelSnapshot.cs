@@ -320,14 +320,20 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<DateOnly>("MaintenanceDate")
                         .HasColumnType("date");
 
+                    b.Property<int>("auxMeanIdMean")
+                        .HasColumnType("int");
+
+                    b.Property<int>("technologicalMeanIdMean")
+                        .HasColumnType("int");
+
                     b.Property<int>("typeOfMean")
                         .HasColumnType("int");
 
                     b.HasKey("IdM");
 
-                    b.HasIndex("IdAuxMean");
+                    b.HasIndex("auxMeanIdMean");
 
-                    b.HasIndex("IdTechMean");
+                    b.HasIndex("technologicalMeanIdMean");
 
                     b.ToTable("Maintenances");
                 });
@@ -888,13 +894,13 @@ namespace SchoolManagement.Api.Migrations
                 {
                     b.HasOne("SchoolManagement.Domain.Entities.AuxiliaryMeans", "auxMean")
                         .WithMany("maintenances")
-                        .HasForeignKey("IdAuxMean")
+                        .HasForeignKey("auxMeanIdMean")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SchoolManagement.Domain.Entities.TechnologicalMeans", "technologicalMean")
                         .WithMany("maintenances")
-                        .HasForeignKey("IdTechMean")
+                        .HasForeignKey("technologicalMeanIdMean")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -11,7 +11,6 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.Maintenance
     {
         public DateOnly MaintenanceDate { get; set; } = new DateOnly();
         public int Cost { get; set; } = 0;
-        public int IdMean { get; set; } = 0;
         public int typeOfMean { get; set; } = 0;
         public int IdAuxMean { get; set; } = 0;
         public int IdTechMean { get; set; } = 0;

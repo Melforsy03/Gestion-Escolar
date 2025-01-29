@@ -12,7 +12,7 @@ namespace SchoolManagement.Api.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Administrator",
+                name: "Administrators",
                 columns: table => new
                 {
                     AdminId = table.Column<int>(type: "int", nullable: false)
@@ -24,7 +24,7 @@ namespace SchoolManagement.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Administrator", x => x.AdminId);
+                    table.PrimaryKey("PK_Administrators", x => x.AdminId);
                 });
 
             migrationBuilder.CreateTable(
@@ -72,12 +72,12 @@ namespace SchoolManagement.Api.Migrations
                 {
                     IdMean = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
                     isAviable = table.Column<bool>(type: "bit", nullable: false),
                     isActive = table.Column<bool>(type: "bit", nullable: false),
                     isDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    NameMean = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
-                    State = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    NameMean = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
+                    State = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
                     IdMaintenance = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -136,7 +136,6 @@ namespace SchoolManagement.Api.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NameS = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
-                    LastNameS = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SalaryS = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -154,8 +153,8 @@ namespace SchoolManagement.Api.Migrations
                     isAviable = table.Column<bool>(type: "bit", nullable: false),
                     isActive = table.Column<bool>(type: "bit", nullable: false),
                     isDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    NameMean = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
-                    State = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    NameMean = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
+                    State = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
                     IdMaintenance = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -329,14 +328,14 @@ namespace SchoolManagement.Api.Migrations
                 {
                     table.PrimaryKey("PK_ClassRoomRestrictions", x => x.IdClassRoomRest);
                     table.ForeignKey(
-                        name: "FK_ClassRoomRestrictions_ClassRooms_IdRest",
-                        column: x => x.IdRest,
+                        name: "FK_ClassRoomRestrictions_ClassRooms_IdClassRoom",
+                        column: x => x.IdClassRoom,
                         principalTable: "ClassRooms",
                         principalColumn: "IdClassR",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ClassRoomRestrictions_Restrictions_IdClassRoom",
-                        column: x => x.IdClassRoom,
+                        name: "FK_ClassRoomRestrictions_Restrictions_IdRest",
+                        column: x => x.IdRest,
                         principalTable: "Restrictions",
                         principalColumn: "IdRes",
                         onDelete: ReferentialAction.Cascade);
@@ -355,14 +354,14 @@ namespace SchoolManagement.Api.Migrations
                 {
                     table.PrimaryKey("PK_ClassRoomTechMeans", x => x.IdClassRoomTech);
                     table.ForeignKey(
-                        name: "FK_ClassRoomTechMeans_ClassRooms_IdTechMean",
-                        column: x => x.IdTechMean,
+                        name: "FK_ClassRoomTechMeans_ClassRooms_IdClassRoom",
+                        column: x => x.IdClassRoom,
                         principalTable: "ClassRooms",
                         principalColumn: "IdClassR",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ClassRoomTechMeans_TechnologicalMeans_IdClassRoom",
-                        column: x => x.IdClassRoom,
+                        name: "FK_ClassRoomTechMeans_TechnologicalMeans_IdTechMean",
+                        column: x => x.IdTechMean,
                         principalTable: "TechnologicalMeans",
                         principalColumn: "IdMean",
                         onDelete: ReferentialAction.Cascade);
@@ -379,20 +378,22 @@ namespace SchoolManagement.Api.Migrations
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     typeOfMean = table.Column<int>(type: "int", nullable: false),
                     IdAuxMean = table.Column<int>(type: "int", nullable: false),
-                    IdTechMean = table.Column<int>(type: "int", nullable: false)
+                    auxMeanIdMean = table.Column<int>(type: "int", nullable: false),
+                    IdTechMean = table.Column<int>(type: "int", nullable: false),
+                    technologicalMeanIdMean = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Maintenances", x => x.IdM);
                     table.ForeignKey(
-                        name: "FK_Maintenances_AuxiliaryMeans_IdAuxMean",
-                        column: x => x.IdAuxMean,
+                        name: "FK_Maintenances_AuxiliaryMeans_auxMeanIdMean",
+                        column: x => x.auxMeanIdMean,
                         principalTable: "AuxiliaryMeans",
                         principalColumn: "IdMean",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Maintenances_TechnologicalMeans_IdTechMean",
-                        column: x => x.IdTechMean,
+                        name: "FK_Maintenances_TechnologicalMeans_technologicalMeanIdMean",
+                        column: x => x.technologicalMeanIdMean,
                         principalTable: "TechnologicalMeans",
                         principalColumn: "IdMean",
                         onDelete: ReferentialAction.Cascade);
@@ -411,14 +412,14 @@ namespace SchoolManagement.Api.Migrations
                 {
                     table.PrimaryKey("PK_SubjectAuxMeans", x => x.IdSubAuxMean);
                     table.ForeignKey(
-                        name: "FK_SubjectAuxMeans_AuxiliaryMeans_IdSub",
-                        column: x => x.IdSub,
+                        name: "FK_SubjectAuxMeans_AuxiliaryMeans_IdAuxMean",
+                        column: x => x.IdAuxMean,
                         principalTable: "AuxiliaryMeans",
                         principalColumn: "IdMean",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SubjectAuxMeans_Subjects_IdAuxMean",
-                        column: x => x.IdAuxMean,
+                        name: "FK_SubjectAuxMeans_Subjects_IdSub",
+                        column: x => x.IdSub,
                         principalTable: "Subjects",
                         principalColumn: "IdSub",
                         onDelete: ReferentialAction.Cascade);
@@ -463,16 +464,64 @@ namespace SchoolManagement.Api.Migrations
                 {
                     table.PrimaryKey("PK_StudentSubjects", x => x.IdStudSub);
                     table.ForeignKey(
-                        name: "FK_StudentSubjects_Students_IdSub",
-                        column: x => x.IdSub,
+                        name: "FK_StudentSubjects_Students_IdStud",
+                        column: x => x.IdStud,
                         principalTable: "Students",
                         principalColumn: "IdStud",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_StudentSubjects_Subjects_IdStud",
-                        column: x => x.IdStud,
+                        name: "FK_StudentSubjects_Subjects_IdSub",
+                        column: x => x.IdSub,
                         principalTable: "Subjects",
                         principalColumn: "IdSub",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AuxiliaryMeansProfessor",
+                columns: table => new
+                {
+                    AuxiliaryMeansIdMean = table.Column<int>(type: "int", nullable: false),
+                    ProfessorsIdProf = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AuxiliaryMeansProfessor", x => new { x.AuxiliaryMeansIdMean, x.ProfessorsIdProf });
+                    table.ForeignKey(
+                        name: "FK_AuxiliaryMeansProfessor_AuxiliaryMeans_AuxiliaryMeansIdMean",
+                        column: x => x.AuxiliaryMeansIdMean,
+                        principalTable: "AuxiliaryMeans",
+                        principalColumn: "IdMean",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AuxiliaryMeansProfessor_Professors_ProfessorsIdProf",
+                        column: x => x.ProfessorsIdProf,
+                        principalTable: "Professors",
+                        principalColumn: "IdProf",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ClassRoomProfessor",
+                columns: table => new
+                {
+                    ClassRoomsIdClassR = table.Column<int>(type: "int", nullable: false),
+                    ProfessorsIdProf = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClassRoomProfessor", x => new { x.ClassRoomsIdClassR, x.ProfessorsIdProf });
+                    table.ForeignKey(
+                        name: "FK_ClassRoomProfessor_ClassRooms_ClassRoomsIdClassR",
+                        column: x => x.ClassRoomsIdClassR,
+                        principalTable: "ClassRooms",
+                        principalColumn: "IdClassR",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ClassRoomProfessor_Professors_ProfessorsIdProf",
+                        column: x => x.ProfessorsIdProf,
+                        principalTable: "Professors",
+                        principalColumn: "IdProf",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -489,14 +538,14 @@ namespace SchoolManagement.Api.Migrations
                 {
                     table.PrimaryKey("PK_ProfessorSubjects", x => x.IdProfSub);
                     table.ForeignKey(
-                        name: "FK_ProfessorSubjects_Professors_IdSub",
-                        column: x => x.IdSub,
+                        name: "FK_ProfessorSubjects_Professors_IdProf",
+                        column: x => x.IdProf,
                         principalTable: "Professors",
                         principalColumn: "IdProf",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProfessorSubjects_Subjects_IdProf",
-                        column: x => x.IdProf,
+                        name: "FK_ProfessorSubjects_Subjects_IdSub",
+                        column: x => x.IdSub,
                         principalTable: "Subjects",
                         principalColumn: "IdSub",
                         onDelete: ReferentialAction.Cascade);
@@ -579,14 +628,14 @@ namespace SchoolManagement.Api.Migrations
                 {
                     table.PrimaryKey("PK_SecretaryProfessorStudentSubjects", x => x.IdSecProfStudSub);
                     table.ForeignKey(
-                        name: "FK_SecretaryProfessorStudentSubjects_ProfessorStudentSubjects_IdSec",
-                        column: x => x.IdSec,
+                        name: "FK_SecretaryProfessorStudentSubjects_ProfessorStudentSubjects_IdProfStudSub",
+                        column: x => x.IdProfStudSub,
                         principalTable: "ProfessorStudentSubjects",
                         principalColumn: "IdProfStudSub",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SecretaryProfessorStudentSubjects_Secretaries_IdProfStudSub",
-                        column: x => x.IdProfStudSub,
+                        name: "FK_SecretaryProfessorStudentSubjects_Secretaries_IdSec",
+                        column: x => x.IdSec,
                         principalTable: "Secretaries",
                         principalColumn: "IdS",
                         onDelete: ReferentialAction.Cascade);
@@ -632,6 +681,16 @@ namespace SchoolManagement.Api.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AuxiliaryMeansProfessor_ProfessorsIdProf",
+                table: "AuxiliaryMeansProfessor",
+                column: "ProfessorsIdProf");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClassRoomProfessor_ProfessorsIdProf",
+                table: "ClassRoomProfessor",
+                column: "ProfessorsIdProf");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ClassRoomRestrictions_IdClassRoom",
                 table: "ClassRoomRestrictions",
                 column: "IdClassRoom");
@@ -652,14 +711,14 @@ namespace SchoolManagement.Api.Migrations
                 column: "IdTechMean");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Maintenances_IdAuxMean",
+                name: "IX_Maintenances_auxMeanIdMean",
                 table: "Maintenances",
-                column: "IdAuxMean");
+                column: "auxMeanIdMean");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Maintenances_IdTechMean",
+                name: "IX_Maintenances_technologicalMeanIdMean",
                 table: "Maintenances",
-                column: "IdTechMean");
+                column: "technologicalMeanIdMean");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Professors_StudentIdStud",
@@ -751,7 +810,7 @@ namespace SchoolManagement.Api.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Administrator");
+                name: "Administrators");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -767,6 +826,12 @@ namespace SchoolManagement.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "AuxiliaryMeansProfessor");
+
+            migrationBuilder.DropTable(
+                name: "ClassRoomProfessor");
 
             migrationBuilder.DropTable(
                 name: "ClassRoomRestrictions");
