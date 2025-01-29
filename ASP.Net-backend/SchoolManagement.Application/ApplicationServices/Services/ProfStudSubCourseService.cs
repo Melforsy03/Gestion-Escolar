@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfStudSubCourse;
+using SchoolManagement.Domain.Entities;
 using SchoolManagement.Domain.Relations;
 using SchoolManagement.Infrastructure;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
@@ -94,7 +95,32 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
             return profStudSubCoursesList;
         }
-        
+        public async Task<IEnumerable<ProfStudSubCourseConsultResponseDto>> GetProfessors (string UserName)
+        {
+            var user = _context.Users.Where(u => u.UserName == UserName).First();
+            var student = _context.Students.Where(s => s.UserId == user.Id).First();
+            var studentSubject = _context.StudentSubjects.Where(ss => ss.IdStud == student.IdStud).ToList();
+            var course = _context.Courses.Where(c => c.IdC == student.IdC).First();
+            List<ProfStudSubCourseConsultResponseDto> list = new List<ProfStudSubCourseConsultResponseDto>();
+            for(int i = 0; i < studentSubject.Count; i++)
+            {
+                var professorSubjects =  _context.ProfessorSubjects.Where(ps => ps.IdSub == studentSubject[i].IdSub).ToList();
+                for (int j = 0; j < professorSubjects.Count(); j++)
+                {
+                    ProfStudSubCourseConsultResponseDto temp = new ProfStudSubCourseConsultResponseDto();
+                    temp.IdSub = professorSubjects[i].IdSub;
+                    temp.IdCourse = course.IdC;
+                    temp.IdStud = student.IdStud;
+                    temp.IdProf = professorSubjects[i].IdProf;
+                    temp.profName = _context.Professors.Where(p => p.IdProf == professorSubjects[i].IdProf).First().NameProf;
+                    temp.subjectName = _context.Subjects.Where(s => s.IdSub == professorSubjects[i].IdSub).First().NameSub;
+                    temp.CourseName = course.CourseName;
+                    list.Add(temp);
+                }
+            }
+
+            return list;
+        }
         public async Task<ProfStudSubCourseResponseDto> UpdateProfStudSubCourseAsync(ProfStudSubCourseResponseDto profStudSubCourseDto)
         {
             var profStudSubCourse = await _profStudSubCourseRepository.GetByIdAsync(profStudSubCourseDto.IdProfStudSubCourse);

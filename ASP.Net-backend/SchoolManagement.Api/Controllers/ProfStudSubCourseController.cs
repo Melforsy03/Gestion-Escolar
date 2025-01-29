@@ -24,7 +24,13 @@ namespace SchoolManagement.Api.Controllers
             var createdProfStudSubCourse = await _profStudSubCourseService.CreateProfStudSubCourseAsync(profStudSubCourseDto);
             return Ok(createdProfStudSubCourse);
         }
+        [HttpGet]
+        [Route("listProfessorsByStudent")]
+        public async Task<ActionResult<IEnumerable<ProfStudSubCourseConsultResponseDto>>> GetProfessorsByStudent (string userName){
 
+            var professorsInfo = await _profStudSubCourseService.GetProfessors(userName);
+            return Ok(professorsInfo);
+        }
         [HttpGet]
         [Route("list")]
         //[Authorize(Roles = "SuperAdmin")]
