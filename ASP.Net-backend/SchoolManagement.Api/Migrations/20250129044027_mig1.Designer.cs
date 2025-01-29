@@ -12,8 +12,8 @@ using SchoolManagement.Infrastructure;
 namespace SchoolManagement.Api.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20250127180640_mig3")]
-    partial class mig3
+    [Migration("20250129044027_mig1")]
+    partial class mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -214,7 +214,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasKey("AdminId");
 
-                    b.ToTable("Administrator");
+                    b.ToTable("Administrators");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Entities.AuxiliaryMeans", b =>
@@ -230,18 +230,18 @@ namespace SchoolManagement.Api.Migrations
 
                     b.Property<string>("NameMean")
                         .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
 
                     b.Property<string>("State")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(16)
+                        .HasColumnType("nvarchar(16)");
 
                     b.Property<bool>("isActive")
                         .HasColumnType("bit");
@@ -323,14 +323,20 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<DateOnly>("MaintenanceDate")
                         .HasColumnType("date");
 
+                    b.Property<int>("auxMeanIdMean")
+                        .HasColumnType("int");
+
+                    b.Property<int>("technologicalMeanIdMean")
+                        .HasColumnType("int");
+
                     b.Property<int>("typeOfMean")
                         .HasColumnType("int");
 
                     b.HasKey("IdM");
 
-                    b.HasIndex("IdAuxMean");
+                    b.HasIndex("auxMeanIdMean");
 
-                    b.HasIndex("IdTechMean");
+                    b.HasIndex("technologicalMeanIdMean");
 
                     b.ToTable("Maintenances");
                 });
@@ -411,10 +417,6 @@ namespace SchoolManagement.Api.Migrations
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<string>("LastNameS")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameS")
                         .IsRequired()
@@ -516,13 +518,13 @@ namespace SchoolManagement.Api.Migrations
 
                     b.Property<string>("NameMean")
                         .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
 
                     b.Property<string>("State")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
 
                     b.Property<bool>("isActive")
                         .HasColumnType("bit");
@@ -895,13 +897,13 @@ namespace SchoolManagement.Api.Migrations
                 {
                     b.HasOne("SchoolManagement.Domain.Entities.AuxiliaryMeans", "auxMean")
                         .WithMany("maintenances")
-                        .HasForeignKey("IdAuxMean")
+                        .HasForeignKey("auxMeanIdMean")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SchoolManagement.Domain.Entities.TechnologicalMeans", "technologicalMean")
                         .WithMany("maintenances")
-                        .HasForeignKey("IdTechMean")
+                        .HasForeignKey("technologicalMeanIdMean")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -941,13 +943,13 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ClassRoomRestriction", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Entities.Restriction", "Restriction")
+                    b.HasOne("SchoolManagement.Domain.Entities.ClassRoom", "ClassRoom")
                         .WithMany()
                         .HasForeignKey("IdClassRoom")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Domain.Entities.ClassRoom", "ClassRoom")
+                    b.HasOne("SchoolManagement.Domain.Entities.Restriction", "Restriction")
                         .WithMany()
                         .HasForeignKey("IdRest")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -960,13 +962,13 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ClassRoomTechMean", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Entities.TechnologicalMeans", "TechnologicalMeans")
+                    b.HasOne("SchoolManagement.Domain.Entities.ClassRoom", "ClassRoom")
                         .WithMany()
                         .HasForeignKey("IdClassRoom")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Domain.Entities.ClassRoom", "ClassRoom")
+                    b.HasOne("SchoolManagement.Domain.Entities.TechnologicalMeans", "TechnologicalMeans")
                         .WithMany()
                         .HasForeignKey("IdTechMean")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1033,13 +1035,13 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfessorSubject", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
+                    b.HasOne("SchoolManagement.Domain.Entities.Professor", "Professor")
                         .WithMany()
                         .HasForeignKey("IdProf")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Domain.Entities.Professor", "Professor")
+                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("IdSub")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1052,13 +1054,13 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.SecretaryProfessorStudentSubject", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Entities.Secretary", "Secretary")
+                    b.HasOne("SchoolManagement.Domain.Relations.ProfessorStudentSubject", "Evaluation")
                         .WithMany()
                         .HasForeignKey("IdProfStudSub")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Domain.Relations.ProfessorStudentSubject", "Evaluation")
+                    b.HasOne("SchoolManagement.Domain.Entities.Secretary", "Secretary")
                         .WithMany()
                         .HasForeignKey("IdSec")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1071,13 +1073,13 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.StudentSubject", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
+                    b.HasOne("SchoolManagement.Domain.Entities.Student", "Student")
                         .WithMany()
                         .HasForeignKey("IdStud")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Domain.Entities.Student", "Student")
+                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("IdSub")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1090,13 +1092,13 @@ namespace SchoolManagement.Api.Migrations
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.SubjectAuxMean", b =>
                 {
-                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
+                    b.HasOne("SchoolManagement.Domain.Entities.AuxiliaryMeans", "AuxMean")
                         .WithMany()
                         .HasForeignKey("IdAuxMean")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagement.Domain.Entities.AuxiliaryMeans", "AuxMean")
+                    b.HasOne("SchoolManagement.Domain.Entities.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("IdSub")
                         .OnDelete(DeleteBehavior.Cascade)

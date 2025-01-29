@@ -9,5 +9,6 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.Maintenance
     public class MaintenanceResponseDto: MaintenanceDto
     {
         public int IdM { get; set; } = 0;
+        public string meanName { get; set; }
     }
 }

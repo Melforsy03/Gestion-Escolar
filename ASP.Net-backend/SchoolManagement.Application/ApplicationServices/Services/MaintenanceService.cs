@@ -29,12 +29,29 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<MaintenanceResponseDto> CreateMaintenanceAsync(MaintenanceDto maintenanceDto)
         {
+            string name = "";
             var maintenance = _mapper.Map<Domain.Entities.Maintenance>(maintenanceDto);
-            if (maintenance.typeOfMean == 0) maintenance.technologicalMean = await _technologicalMeansRepository.GetByIdAsync(maintenance.IdTechMean);
-            else maintenance.auxMean = await _auxiliaryMeansRepository.GetByIdAsync(maintenance.IdTechMean);
+            if (maintenance.typeOfMean == 0)
+            {
+                maintenance.technologicalMean = await _technologicalMeansRepository.GetByIdAsync(maintenance.IdTechMean);
+                if (maintenance.technologicalMean == null) return null;
+                maintenance.IdTechMean = maintenance.technologicalMean.IdMean;
+                name = maintenance.technologicalMean.NameMean;
+            }
+            else
+            {
+                maintenance.auxMean = await _auxiliaryMeansRepository.GetByIdAsync(maintenance.IdTechMean);
+                if (maintenance.auxMean == null) return null;
+                maintenance.IdAuxMean = maintenance.auxMean.IdMean;
+                name = maintenance.auxMean.NameMean;
+
+            }
+
 
             var savedMaintenance = await _maintenanceRepository.CreateAsync(maintenance);
-            return _mapper.Map<MaintenanceResponseDto>(savedMaintenance);
+            var answer = _mapper.Map<MaintenanceResponseDto>(savedMaintenance);
+            answer.meanName = name;
+            return answer;
         }
 
         public async Task<MaintenanceResponseDto> DeleteMaintenanceByIdAsync(int maintenanceId)
@@ -53,7 +70,13 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             List<MaintenanceResponseDto> maintenancesList = new();
             for (int i = 0; i < maintenances.Count(); i++)
             {
-                if(!list[i].IsDeleted) maintenancesList.Add(_mapper.Map<MaintenanceResponseDto>(list[i]));
+                if (!list[i].IsDeleted)
+                {
+                    var maintenance = _mapper.Map<MaintenanceResponseDto>(list[i]);
+                    if (maintenance.typeOfMean == 0) maintenance.meanName = list[i].technologicalMean.NameMean;
+                    else maintenance.meanName = list[i].auxMean.NameMean;
+                    maintenancesList.Add(maintenance);
+                }
             }
 
             return maintenancesList;

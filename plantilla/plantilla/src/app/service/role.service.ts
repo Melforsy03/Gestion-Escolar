@@ -44,6 +44,8 @@ export class RoleService {
           { label: 'Info Profesores', path: '/profesor', icon: 'icon-notes' },
           { label: 'Info Secretaria', path: '/info-secretaria', icon: 'icon-badge' },
           { label: 'Info Administrador', path: '/info-administrador', icon: 'icon-badge' },
+
+          { label: 'Mantenimiento', path: '/mantenimiento', icon: 'icon-badge' },
           { label: 'Info Administrador', path: '/info-administrador', icon: 'icon-badge' },
         ],
       },
