@@ -22,6 +22,7 @@ import { InfoAdministradorComponent } from './pages/info-administrador/info-admi
 import { MediosTecnologicosComponent } from './pages/medios-tecnologicos/medios-tecnologicos.component';
 import { EvaluacionOtorgadaComponent } from './pages/evaluacion-otorgada/evaluacion-otorgada.component';
 import { RegistarMantenimientoComponent } from './pages/registar-mantenimiento/registar-mantenimiento.component';
+import { MantenimientoComponent } from './pages/mantenimiento/mantenimiento.component';
 
 
 
@@ -39,7 +40,7 @@ import { RegistarMantenimientoComponent } from './pages/registar-mantenimiento/r
     ReactiveFormsModule,
 
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, EvaluacionOtorgadaComponent, RegistarMantenimientoComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, EvaluacionOtorgadaComponent, RegistarMantenimientoComponent, MantenimientoComponent],
   providers: [EstudentService],
   bootstrap: [AppComponent]
 })

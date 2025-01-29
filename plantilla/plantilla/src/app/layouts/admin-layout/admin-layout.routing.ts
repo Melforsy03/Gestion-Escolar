@@ -13,6 +13,7 @@ import { CalificacionesComponent } from "src/app/pages/calificaciones-profesores
 import { EstudiantesProfesor } from "src/app/pages/estudiantes-profesor/estudiantes-pofesor.component";
 import { EvaluacionOtorgadaComponent } from "src/app/pages/evaluacion-otorgada/evaluacion-otorgada.component";
 import { RegistarMantenimientoComponent } from "src/app/pages/registar-mantenimiento/registar-mantenimiento.component";
+import { MantenimientoComponent } from "src/app/pages/mantenimiento/mantenimiento.component";
 export const AdminLayoutRoutes: Routes = [
 
   { path: "profesor", component: ProfesorComponent },
@@ -27,5 +28,7 @@ export const AdminLayoutRoutes: Routes = [
   { path : "calificaciones-profesores" , component :CalificacionesComponent},
   { path : "estudiantes-profesor" , component :EstudiantesProfesor},
   { path : "evaluacion-otorgada" , component :EvaluacionOtorgadaComponent},
-  { path :  "registrar-mantenimiento" , component : RegistarMantenimientoComponent}
+  { path :  "registrar-mantenimiento" , component : RegistarMantenimientoComponent},
+  { path :  "mantenimiento" , component : MantenimientoComponent}
+
 ];
