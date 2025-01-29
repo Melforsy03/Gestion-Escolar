@@ -20,10 +20,9 @@ export class CalificacionesService {
   constructor(private http: HttpClient, private Authservice: AuthGuard) {}
 
   // Listar calificaciones
-  listCalificaciones(): Observable<Calificacion[]> {
+  listCalificaciones(): Observable<any[]> {
     const headers = this.getAuthHeaders();
-    console.log('Haciendo la petición con los encabezados:', headers);
-    return this.http.get<Calificacion[]>(`${this.baseUrl}/list`, { headers });
+    return this.http.get<any[]>(`${this.baseUrl}/list`, { headers });
   }
 
   // Obtener los encabezados de autenticación

@@ -7,14 +7,13 @@ import { CalificacionesService, Calificacion } from 'src/app/service/calificacio
   styleUrls: ['./calificacionesProfesores.component.css'],
 })
 export class CalificacionesComponent implements OnInit {
-  calificaciones: Calificacion[] = [];
+  calificaciones: any[] = [];
 
   constructor(private calificacionesService: CalificacionesService) {}
 
   ngOnInit(): void {
-    console.log('Componente cargado');
-    // Inicialmente podríamos cargar las calificaciones al cargar el componente si se quiere
-    // this.loadCalificaciones();  // Puedes descomentar esto si deseas cargar automáticamente las calificaciones al inicio
+  
+     this.loadCalificaciones();  
   }
 
   // Método para cargar las calificaciones
