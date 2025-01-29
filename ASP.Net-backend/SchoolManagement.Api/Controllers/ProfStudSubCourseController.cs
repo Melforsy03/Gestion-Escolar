@@ -33,7 +33,7 @@ namespace SchoolManagement.Api.Controllers
             var profStudSubCourses = await _profStudSubCourseService.ListProfStudSubCoursesAsync();
             return Ok(profStudSubCourses);
         }
-        [HttpGet]
+        [HttpPost]
         [Route("listByProfessor")]
         //[Authorize(Roles = "SuperAdmin")]
         public async Task<ActionResult<IEnumerable<ProfStudSubCourseResponseDto>>> ListProfStudSubCoursesByProf(ProfStudSubCourseConsultDto profStudSubCourseConsultDto)

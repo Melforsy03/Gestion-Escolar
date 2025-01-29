@@ -42,7 +42,13 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             profStudSubCourse.Subject = await _subjectRepository.GetByIdAsync(profStudSubCourseDto.IdSub);
 
             var savedProfStudSubCourse = await _profStudSubCourseRepository.CreateAsync(profStudSubCourse);
-            return _mapper.Map<ProfStudSubCourseResponseDto>(savedProfStudSubCourse);
+            var answer = _mapper.Map<ProfStudSubCourseResponseDto>(savedProfStudSubCourse);
+            answer.StudentName = profStudSubCourse.Student.NameStud;
+            answer.ProfessorName = profStudSubCourse.Professor.NameProf;
+            answer.CourseName = profStudSubCourse.Course.CourseName;
+            answer.SubjectName = profStudSubCourse.Subject.NameSub;
+
+            return answer;
         }
 
         public async Task DeleteProfStudSubCourseByIdAsync(int id)
