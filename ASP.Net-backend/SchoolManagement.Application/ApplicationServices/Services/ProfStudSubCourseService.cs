@@ -105,17 +105,20 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             for(int i = 0; i < studentSubject.Count; i++)
             {
                 var professorSubjects =  _context.ProfessorSubjects.Where(ps => ps.IdSub == studentSubject[i].IdSub).ToList();
+
                 for (int j = 0; j < professorSubjects.Count(); j++)
                 {
                     ProfStudSubCourseConsultResponseDto temp = new ProfStudSubCourseConsultResponseDto();
-                    temp.IdSub = professorSubjects[i].IdSub;
+                   
+                    temp.IdSub = professorSubjects[j].IdSub;
                     temp.IdCourse = course.IdC;
                     temp.IdStud = student.IdStud;
-                    temp.IdProf = professorSubjects[i].IdProf;
-                    temp.profName = _context.Professors.Where(p => p.IdProf == professorSubjects[i].IdProf).First().NameProf;
-                    temp.subjectName = _context.Subjects.Where(s => s.IdSub == professorSubjects[i].IdSub).First().NameSub;
+                    temp.IdProf = professorSubjects[j].IdProf;
+                    temp.profName = _context.Professors.Where(p => p.IdProf == professorSubjects[j].IdProf).First().NameProf;
+                    temp.subjectName = _context.Subjects.Where(s => s.IdSub == professorSubjects[j].IdSub).First().NameSub;
                     temp.CourseName = course.CourseName;
-                    list.Add(temp);
+                    if(!list.Contains(temp)) list.Add(temp);
+
                 }
             }
 
