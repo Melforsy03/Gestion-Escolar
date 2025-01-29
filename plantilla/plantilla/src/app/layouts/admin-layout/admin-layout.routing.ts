@@ -25,7 +25,15 @@ export const AdminLayoutRoutes: Routes = [
   { path : "info-administrador" , component :InfoAdministradorComponent},
   { path : "medio-tecnologico" , component :MediosTecnologicosComponent},
   { path : "calificaciones-profesores" , component :CalificacionesComponent},
+<<<<<<< HEAD
   { path : "estudiantes-profesor" , component :EstudiantesProfesor},
   {path :  "evaluaciones" , component :EvaluacionComponent},
    {path : "mantenimiento" , component :MantenimientoComponent}
+=======
+  { path : "estudiantes-pofesor" , component :EstudiantesProfesor},
+  { path : "evaluacion-otorgada" , component :EvaluacionOtorgadaComponent},
+  { path :  "registrar-mantenimiento" , component : RegistarMantenimientoComponent},
+  { path :  "mantenimiento" , component : MantenimientoComponent}
+
+>>>>>>> ee29d06e812e787d5fbf45c17b1a2a88bf423eb1
 ];

@@ -38,7 +38,7 @@ export class RoleService {
           { label: 'Medios-auxiliares', path: '/medio-auxiliar', icon: 'icon-app' },
           { label: 'Medios Tecnologicos', path: '/medio-tecnologico', icon: 'icon-app' },
           { label: 'Evaluacion Profesores', path: '/calificaciones-profesores', icon: 'icon-notes' },
-          { label: 'General Estudiantes', path: '/estudiantes-profesor', icon: 'icon-paper' },
+          { label: 'General Estudiantes', path: '/estudiantes-pofesor', icon: 'icon-paper' },
           { label: 'Info Estudiantes', path: '/estudiantes', icon: 'icon-single-copy-04' },
           { label: 'Info Profesores', path: '/profesor', icon: 'icon-notes' },
           { label: 'Info Secretaria', path: '/info-secretaria', icon: 'icon-badge' },

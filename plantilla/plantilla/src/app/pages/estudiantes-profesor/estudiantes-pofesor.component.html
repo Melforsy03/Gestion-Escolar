@@ -7,10 +7,7 @@
         </div>
 
         <div class="card-body">
-          <p *ngIf="!students || students.length === 0">No hay estudiantes para mostrar</p> <!-- Paso 1 -->
-
           <div class="table-responsive">
-
             <table class="table">
               <thead class="text-primary">
                 <tr>
@@ -22,10 +19,10 @@
               </thead>
               <tbody>
                 <tr *ngFor="let student of students">
-                  <td>{{ students.student?.nameStud }}</td>
-                  <td>{{ students.student?.age }}</td>
-                  <td>{{ students.student?.eActivity ? 'Sí' : 'No' }}</td>
-                  <td>{{ students.idc }}</td>
+                  <td>{{ student.student.nameStud }}</td>
+                  <td>{{ student.student.age }}</td>
+                  <td>{{ student.student.eActivity ? 'Sí' : 'No' }}</td>
+                  <td>{{ student.idc }}</td>
                 </tr>
               </tbody>
             </table>
