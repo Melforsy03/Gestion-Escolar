@@ -67,12 +67,13 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             }
             else if (role == Role.Secretary)
             {
+                var professor = _context.Professors.Where(p => p.IdProf == _context.ProfessorSubjects.Where(ps => ps.IdSub == professorStudentSubjectDto.IdSub).First().IdProf).FirstOrDefault();
                 var studentSubject = _context.StudentSubjects.Where(ss => ss.IdStud == professorStudentSubjectDto.IdStud && ss.IdStud == professorStudentSubjectDto.IdStud).First();
                 var profStudSub = new ProfessorStudentSubject
                 {
-                    IdProf = 0,
+                    IdProf = professor.IdProf,
                     IdStudSub = studentSubject.IdStudSub,
-                    Professor = new Professor(),
+                    Professor = professor,
                     StudentSubject = studentSubject,
                     StudentGrades = professorStudentSubjectDto.StudentGrades
                 };
