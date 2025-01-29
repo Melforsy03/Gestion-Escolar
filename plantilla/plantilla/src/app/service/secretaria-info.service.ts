@@ -34,8 +34,13 @@ export class SecretaryService {
     return this.http.get<any[]>(`${this.apiBaseUrl}/secretary/list`, { 
         headers :this.headers ,
      });
+     
+  }updateStudentNote(profStudSubId: number, studentGrade: number): Observable<void> {
+    const url = `${this.apiBaseUrl}/professorStudentSubject/updateStudentNote?profStudSubId=${profStudSubId}&studentGrade=${studentGrade}`;
+    return this.http.post<void>(url, null, { headers: this.headers });
   }
-
+  
+  
   deleteSecretary(secretaryId: number): Observable<any> {
     return this.http.delete(`${this.apiBaseUrl}/secretary/delete?secretaryId=${secretaryId}`, { headers:this.headers });
   }
@@ -44,5 +49,10 @@ export class SecretaryService {
     return this.http.get(`${this.apiBaseUrl}/subject/list` , {
       headers :this.headers ,
     })
+  }
+  getSecretNotas(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiBaseUrl}/professorStudentSubject/listnotes`, { 
+        headers :this.headers ,
+     });
   }
 }

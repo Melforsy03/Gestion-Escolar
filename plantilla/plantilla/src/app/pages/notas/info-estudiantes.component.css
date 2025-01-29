@@ -20,7 +20,6 @@
     transform: scale(0.98); /* Pequeño efecto de presión */
   }
   /* Estilo para los inputs en modo edición */
-/* Estilo para campos en modo edición */
 .input-editable {
     background-color: #b5bce3; /* Color claro que combina con #32325d */
     color: #32325d;           /* Texto oscuro para contraste */

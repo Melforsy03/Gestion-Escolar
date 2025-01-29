@@ -28,7 +28,6 @@ export class StudentGradingService {
     const params = new HttpParams().set('IdSub', IdSub.toString());
     return this.http.get<any[]>(url, { headers: this.headers, params });
   }
-
   submitGrade(payload: any): Observable<void> {
     const url = `${this.apiUrl}/professorStudentSubject/update`;
     return this.http.post<void>(url, payload, { headers: this.headers });

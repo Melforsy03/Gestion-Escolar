@@ -18,7 +18,7 @@ export class InfoEstudiantesComponent implements OnInit {
   viewMode: string = 'assign'; // Alterna entre 'assign' y 'list'
   notes: any[] = []; // Almacena las notas obtenidas de la API
   constructor(private gradingService: StudentGradingService , private secretaria :SecretaryService) {}
-
+ 
   ngOnInit(): void {
     this.role = this.gradingService.getRole();
     this.getSubjects(); // Replace 'currentUser' with the actual username logic
@@ -43,6 +43,22 @@ export class InfoEstudiantesComponent implements OnInit {
         this.updateDisplayedStudents();
       },
       (error) => console.error('Error fetching students:', error)
+    );
+  }
+  updateStudentNote(note: any, index: number): void {
+    const profStudSubId: number = note.idProfStudSub;
+    const studentGrade: number = note.studentGrades;
+  
+    this.secretaria.updateStudentNote(profStudSubId, studentGrade).subscribe(
+      () => {
+        console.log('Nota actualizada:', { profStudSubId, studentGrade });
+        this.editMode[index] = false; // Salir del modo edición
+        alert('Nota actualizada correctamente');
+      },
+      (error) => {
+        console.error('Error al actualizar la nota:', error);
+        alert('Error al actualizar la nota');
+      }
     );
   }
   
@@ -84,42 +100,53 @@ export class InfoEstudiantesComponent implements OnInit {
       }
     );
   }
-  getSubjects ()
-  {
-    if (this.role === 'Secretary')
-    {
-      console.log ('funciona');
+  getSubjects() {
+    if (!this.role) {
+      console.error('Role is undefined or invalid');
+      return;
+    }
+  
+    if (this.role === 'Secretary') {
       this.secretaria.getsubject().subscribe(
         (response: any) => {
-          this.subjects = response.subjects || []; 
-          if (this.subjects.length > 0) {
-            // Selecciona la primera asignatura por defecto
-            this.selectedSubject = this.subjects[0].IdSub;
-            this.getStudents(this.selectedSubject); // Pasa el idSub de la primera asignatura
+          if (Array.isArray(response)) {
+            this.subjects = response; // Asigna directamente el array
+            if (this.subjects.length > 0) {
+              this.selectedSubject = this.subjects[0].idSub; // Usa la propiedad idSub
+              this.getStudents(this.selectedSubject); // Pasa el idSub de la primera asignatura
+            } else {
+              this.selectedSubject = ''; // Deja en blanco si no hay asignaturas
+            }
           } else {
-            this.selectedSubject = ''; // Deja en blanco si no hay asignaturas
+            console.error('Response is not an array:', response);
+            this.subjects = [];
+            this.selectedSubject = '';
           }
         },
         (error) => console.error('Error fetching subjects:', error)
       );
-    }
-    else 
-    {
+    } else {
       this.gradingService.getSubjects(this.role).subscribe(
         (response: any) => {
-          this.subjects = response.subjects || []; // Asigna el array de subjects o un array vacío si no hay datos
-          if (this.subjects.length > 0) {
-            // Selecciona la primera asignatura por defecto
-            this.selectedSubject = this.subjects[0].IdSub;
-            this.getStudents(this.selectedSubject); // Pasa el idSub de la primera asignatura
+          if (response && response.subjects) {
+            this.subjects = response.subjects || [];
+            if (this.subjects.length > 0) {
+              this.selectedSubject = this.subjects[0].idSub;
+              this.getStudents(this.selectedSubject);
+            } else {
+              this.selectedSubject = '';
+            }
           } else {
-            this.selectedSubject = ''; // Deja en blanco si no hay asignaturas
+            console.error('Response is invalid or does not contain subjects:', response);
+            this.subjects = [];
+            this.selectedSubject = '';
           }
         },
         (error) => console.error('Error fetching subjects:', error)
       );
     }
   }
+  
   onSubjectChange(subjectId: string): void {
     this.selectedSubject = subjectId;
     this.getStudents(subjectId);
@@ -130,6 +157,9 @@ export class InfoEstudiantesComponent implements OnInit {
     if (!this.editMode[index]) {
       console.log('Guardando datos:', this.displayedStudents[index]);
     }
+    if (this.role === 'secretaria') {
+      this.editMode[index] = !this.editMode[index];
+    }
   }
   toggleViewMode(): void {
     this.viewMode = this.viewMode === 'assign' ? 'list' : 'assign';
@@ -139,12 +169,25 @@ export class InfoEstudiantesComponent implements OnInit {
   }
 
   getNotes(): void {
-    const UserName = this.role;
-    this.gradingService.getNotes(UserName).subscribe(
+    
+    if (this.role === 'Secretary')
+    {
+      console.log('SECRETARIAAA')
+      this.secretaria.getSecretNotas().subscribe(
+        (notes: any[]) => {
+          this.notes = notes;
+        },
+        (error) => console.error('Error fetching notes:', error)
+      );
+    }
+    else
+    {
+    this.gradingService.getNotes(this.role).subscribe(
       (notes: any[]) => {
         this.notes = notes;
       },
       (error) => console.error('Error fetching notes:', error)
     );
   }
+}
 }
