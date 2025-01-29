@@ -7,12 +7,6 @@ import { RolePermissions, MenuItem } from '../models/role-permissions.model';
 export class RoleService {
    private rolePermissions: RolePermissions[] = [
     {
-      role: 'Student',
-      menuItems: [
-        { label: 'Evaluar-Profesor', path: '/evaluacion-otorgada', icon: 'bx bx-chalkboard' },
-      ],
-    },
-    {
       role: 'professor',
       menuItems: [
         { label: 'Solicitud', path: '/solicitar', icon: 'bx bx-chalkboard' },
@@ -53,6 +47,13 @@ export class RoleService {
           { label: 'Info Administrador', path: '/info-administrador', icon: 'icon-badge' },
         ],
       },
+      {
+        role: 'Student',
+        menuItems: [
+          { label: 'Evaluacion-Profesor', path: '/evaluaciones', icon: 'bx bx-chalkboard' },
+        ],
+      },
+      
   ];
 
   getMenuItemsForRole(role: string): MenuItem[] {
