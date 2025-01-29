@@ -21,10 +21,16 @@ export class SolicitudService {
   checkAvailableClassroomsAndMeans(userName: string): Observable<any> {
     console.log(userName);
     return this.http.post(`${this.apiUrl}/classroommeans/checkAviableClassRoomsAndMeans`, {userName}, {
-        headers: this.headers, 
+        headers: this.headers,
       });
   }
   getUser() {
     return this.Authservice.getUserRole();
   }
+  reserveClassRoomAndMeans(requestPayload: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/classroommeans/reserveClassRoomAndMeans`, requestPayload, {
+      headers: this.headers,
+    });
+  }
+
 }

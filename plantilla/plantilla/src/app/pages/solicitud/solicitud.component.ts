@@ -6,7 +6,7 @@ import { SolicitudService } from 'src/app/service/solicitud.service';
   selector: 'app-solicitud',
   templateUrl: './solicitud.component.html',
   styleUrls: ['./solicitud.component.css'],
- 
+
 })
 export class SolicitudComponent implements OnInit {
   solicitudForm: FormGroup;
@@ -41,10 +41,40 @@ ngOnInit(): void {
 }
 reservarMedio(medio: any) {
   console.log('Reservando medio:', medio);
-  alert(`Has reservado ${medio.medio} (${medio.cantidad} disponibles).`);
 
-  // Aquí puedes llamar al servicio para realizar la reserva en el backend
+  // Crear el objeto reserveMeans dinámico
+  const reserveMeans = {};
+  reserveMeans[`additionalProp${medio.id}`] = medio.cantidad;
+
+  // Crear el payload que se enviará al backend
+  const requestPayload = {
+    userName: this.userName,  // El nombre del usuario (profesor)
+    subjectName: this.selectedSubject,  // El nombre de la asignatura seleccionada
+    reserveMeans: reserveMeans,  // Los medios y las cantidades
+    reserve: true,  // Indicamos que la reserva es verdadera
+  };
+
+  // Llamar al servicio para realizar la reserva
+  this.solicitud.reserveClassRoomAndMeans(requestPayload).subscribe(
+    (response) => {
+      // Mostrar mensaje de éxito
+      alert(`Reserva exitosa para la asignatura ${this.selectedSubject}.`);
+
+      // Llamamos a CargarInfo para refrescar la lista de medios
+      this.CargarInfo();
+
+      // Mostrar la respuesta del backend
+      console.log('Respuesta del backend:', response);
+    },
+    (error) => {
+      // Manejo de errores
+      console.error('Error al reservar medio:', error);
+      alert('Error al intentar reservar el medio. Por favor, intente nuevamente.');
+    }
+  );
 }
+
+
 
 CargarInfo() {
   this.userName = this.solicitud.getUser();
@@ -82,4 +112,4 @@ onSubjectChange(subjectValue: string) {
 }
 
 
-} 
+}
