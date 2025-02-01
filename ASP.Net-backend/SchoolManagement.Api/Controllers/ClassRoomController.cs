@@ -44,6 +44,15 @@ namespace SchoolManagement.Api.Controllers
             return Ok(_classRoom);
         }
 
+        [HttpGet]
+        [Route("getMaintenances")]
+        [Authorize(Roles ="SuperAdmin, Admin")]
+        public async Task<ActionResult> GetMaintenanceInClassRooms()
+        {
+            var maintenances = await _classRoomService.GetClassRoomsMeanAmmount();
+            return Ok(maintenances);
+        }
+
         [HttpDelete]
         [Route("delete")]
         [Authorize(Roles = "SuperAdmin")]

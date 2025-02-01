@@ -13,5 +13,6 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<ClassRoomResponseDto> UpdateClassRoomAsync(ClassRoomResponseDto classRoomDto);
         Task<IEnumerable<ClassRoomResponseDto>> ListClassRoomAsync();
         Task<ClassRoomResponseDto> DeleteClassRoomByIdAsync(int classRoomDto);
+        Task<ClassRoomMeanAmmount> GetClassRoomsMeanAmmount();
     }
 }

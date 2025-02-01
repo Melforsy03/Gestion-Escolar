@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoom;
+using SchoolManagement.Infrastructure;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,13 @@ namespace SchoolManagement.Application.ApplicationServices.Services
     public class ClassRoomService : IClassRoomService
     {
         private readonly IClassRoomRepository _classRoomRepository;
+        private readonly Context _context; 
         private readonly IMapper _mapper;
 
-        public ClassRoomService(IClassRoomRepository classRoomRepository, IMapper mapper)
+        public ClassRoomService(Context context, IClassRoomRepository classRoomRepository, IMapper mapper)
         {
             _classRoomRepository = classRoomRepository;
+            _context = context;
             _mapper = mapper;
         }
 
@@ -38,6 +41,36 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             classRoom.IsDeleted = true;
             await _classRoomRepository.UpdateAsync(classRoom);
             return _mapper.Map<ClassRoomResponseDto>(classRoom);
+        }
+
+        public async Task<ClassRoomMeanAmmount> GetClassRoomsMeanAmmount()
+        {
+            var maintenance = _context.Maintenances.Where(m => m.typeOfMean == 0);
+            var classRooms = _context.ClassRooms;
+            Dictionary<int, Dictionary<string, string>> ClassRoomMaintenanceByType = new Dictionary<int, Dictionary<string, string>>();
+            foreach(var cr in classRooms)
+            {
+                var classRoomTechMean = _context.ClassRoomTechMeans.Where(ctm => ctm.IdClassRoom == cr.IdClassR);
+
+                Dictionary<string, string> temp = new Dictionary<string, string>();
+                foreach (var crtm in classRoomTechMean)
+                {
+                    var maintenancesForThisMean = maintenance.Where(m => m.IdTechMean == crtm.IdTechMean);
+                    if(maintenancesForThisMean.Count() > 0)
+                    {
+                        foreach (var maint in maintenancesForThisMean)
+                        {
+                            var mean = _context.TechnologicalMeans.Where(tm => tm.IdMean == maint.IdTechMean).First();
+                            temp.Add(mean.NameMean, "TechnologicalMean");
+                        }
+
+                    }
+                }
+
+                ClassRoomMaintenanceByType.Add(cr.IdClassR, temp);
+            }
+            DateTime Limit = DateTime.Now.AddYears(-2);
+            return new ClassRoomMeanAmmount { ClassRoomsAndMeans = ClassRoomMaintenanceByType , AmmountOfMaintenance2yo = _context.Maintenances.Count(m => m.MaintenanceDate >= DateOnly.FromDateTime(Limit)) };
         }
 
         public async Task<IEnumerable<ClassRoomResponseDto>> ListClassRoomAsync()
