@@ -63,7 +63,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             {
                 a += evaluation[i];
             }
-
+            if (evaluation.Count == 0) return 0;
             return a/evaluation.Count();
 
         }
