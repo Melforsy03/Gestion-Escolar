@@ -11,11 +11,17 @@ export class PeticionesComponent implements OnInit {
   selectedSpec: string = '';
   professors: any[] = [];
   selectedFunctionality = 'especializacionProfesores';
+
+  maintenances: any = {};  // Para almacenar los mantenimientos
+  totalMaintenances: number = 0;  // Para almacenar la cantidad total de mantenimientos
+
   constructor(private professorService: ProfessorService) {}
+
   functionalities = [
     { key: 'especializacionProfesores', label: 'Gestión de Profesores por Especialización' },
-    { key: 'otraFuncionalidad', label: 'Otra Funcionalidad' } // Agrega más funcionalidades aquí
+    { key: 'mantenimientosRealizados', label: 'Mantenimientos Realizados' } // Nueva funcionalidad
   ];
+
   ngOnInit(): void {
     this.loadSpecs();
   }
@@ -35,10 +41,18 @@ export class PeticionesComponent implements OnInit {
   }
 
   onFunctionalityChange(): void {
-    console.log('Funcionalidad seleccionada:', this.selectedFunctionality);
-    // Aquí puedes manejar la lógica cuando se cambia de funcionalidad
+    if (this.selectedFunctionality === 'mantenimientosRealizados') {
+      this.loadMaintenances();
+    }
   }
-  
+
+  loadMaintenances(): void {
+    this.professorService.getMaintenances().subscribe((response) => {
+      this.maintenances = response.classRoomsAndMeans;
+      this.totalMaintenances = response.ammountOfMaintenance2yo;
+    });
+  }
+
   objectKeys(obj: any): string[] {
     return Object.keys(obj);
   }
