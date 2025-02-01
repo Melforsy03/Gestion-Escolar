@@ -161,6 +161,13 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto
 
             CreateMap<ProfStudSubCourseDto,Domain.Relations.ProfStudSubCourse>();
             CreateMap<Domain.Relations.ProfStudSubCourse, ProfStudSubCourseDto>();
+        
+            //Aula y medios tecnologicos
+            CreateMap<ClassRoomTechMeanResponseDto, ClassRoomTechMeanResponseDto>();
+            CreateMap<Domain.Relations.ClassRoomTechMean, ClassRoomTechMeanResponseDto>();
+            CreateMap<ClassRoomTechMeanResponseDto, Domain.Relations.ClassRoomTechMean>();
+            CreateMap<ClassRoomTechMeanDto, ClassRoomTechMeanResponseDto>();
+            CreateMap<ClassRoomTechMeanResponseDto, ClassRoomTechMeanDto>();
         }
     }
 }
