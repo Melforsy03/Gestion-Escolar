@@ -32,5 +32,10 @@ export class SolicitudService {
       headers: this.headers,
     });
   }
-
+  NotcheckAvailableClassroomsAndMeans(userName: string): Observable<any> {
+    console.log(userName);
+    return this.http.post(`${this.apiUrl}/classroommeans/checkNotAviableClassRoomsAndMeans`, {userName}, {
+        headers: this.headers,
+      });
+  }
 }
