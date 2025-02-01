@@ -13,6 +13,7 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<ProfessorCreateResponseDto> CreateProfessorAsync(ProfessorDto professorDto);
         Task<ProfessorResponseDto> UpdateProfessorAsync(ProfessorResponseDto professorInfo);
         Task<IEnumerable<ProfessorResponseDto>> ListProfessorAsync();
+        Task<ProfessorsEvaluations> GetGoodProfessors();
         Task<ProfessorResponseDto> DeleteProfessorByIdAsync(int professorDto);
     }
 }

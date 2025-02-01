@@ -5,6 +5,7 @@ using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.Professor;
 using SchoolManagement.Application.Common;
 using SchoolManagement.Domain.Entities;
+using SchoolManagement.Infrastructure;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using SchoolManagement.Infrastructure.DataAccess.Repository;
 using SchoolManagement.Infrastructure.Identity;
@@ -19,16 +20,53 @@ namespace SchoolManagement.Application.ApplicationServices.Services
     public class ProfessorService : IProfessorService
     {
         private readonly IProfessorRepository _professorRepository;
+        private readonly Context _context;
         private readonly Triggers _trigger;
         private readonly IMapper _mapper;
 
-        public ProfessorService(IProfessorRepository professorRepository, IMapper mapper, Triggers trigger)
+        public ProfessorService(IProfessorRepository professorRepository, IMapper mapper, Triggers trigger, Context context)
         {
             _professorRepository = professorRepository;
+            _context = context;
             _mapper = mapper;
             _trigger = trigger;
         }
 
+        public async Task<ProfessorsEvaluations> GetGoodProfessors()
+        {
+            var professors = _context.Professors.ToList();
+            ProfessorsEvaluations profEval = new ProfessorsEvaluations();
+            profEval.professorsAndSubjects = new Dictionary<string, List<string>>();
+            foreach(var prof in professors)
+            {
+                var evaluation = _context.ProfStudSubCourses.Where(pssc => pssc.IdProf == prof.IdProf).Select(p => p.Evaluation).ToList();
+                if(GetAverage(evaluation) > 8)
+                {
+                    var profSubjects = _context.ProfessorSubjects.Where(ps => ps.IdProf == prof.IdProf);
+                    List<string> subjects = new List<string>();
+                    foreach(var ps in profSubjects)
+                    {
+                        subjects.Add(_context.Subjects.Where(s => s.IdSub == ps.IdSub).First().NameSub);
+                    }
+                    profEval.professorsAndSubjects.Add(prof.NameProf, subjects);
+                }
+            }
+
+            return profEval;
+
+        }
+
+        private float GetAverage(List<int> evaluation)
+        {
+            int a = 0;
+            for(int i = 0; i < evaluation.Count; i++)
+            {
+                a += evaluation[i];
+            }
+
+            return a/evaluation.Count();
+
+        }
         public async Task<ProfessorCreateResponseDto> CreateProfessorAsync(ProfessorDto professorDto)
         {
             var professor = _mapper.Map<Professor>(professorDto);
