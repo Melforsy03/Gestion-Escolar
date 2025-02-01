@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolManagement.Infrastructure;
 
@@ -11,9 +12,11 @@ using SchoolManagement.Infrastructure;
 namespace SchoolManagement.Api.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250201141711_MIGA")]
+    partial class MIGA
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -353,11 +356,6 @@ namespace SchoolManagement.Api.Migrations
                     b.Property<int>("Salary")
                         .HasColumnType("int");
 
-                    b.Property<string>("Spec")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
                     b.Property<int?>("StudentIdStud")
                         .HasColumnType("int");
 
@@ -629,7 +627,7 @@ namespace SchoolManagement.Api.Migrations
 
                     b.HasIndex("IdProf");
 
-                    b.ToTable("ProfessorClassRooms");
+                    b.ToTable("ProfessorClassRoom");
                 });
 
             modelBuilder.Entity("SchoolManagement.Domain.Relations.ProfessorStudentSubject", b =>

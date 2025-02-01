@@ -13,6 +13,7 @@ namespace SchoolManagement.Domain.Entities
         public string UserId { get; set; }
         public string NameProf { get; set; } = string.Empty;
         public string Contract { get; set; } = string.Empty;
+        public string Spec {  get; set; } = string.Empty;
         public int Salary { get; set; } = 0;
         public bool IsDean { get; set; } = false;
         public int LaboralExperience { get; set; } = 0;

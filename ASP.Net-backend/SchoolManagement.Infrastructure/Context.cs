@@ -36,6 +36,7 @@ namespace SchoolManagement.Infrastructure
         public DbSet<SecretaryProfessorStudentSubject> SecretaryProfessorStudentSubjects { get; set; }
         public DbSet<StudentSubject> StudentSubjects { get; set; }
         public DbSet<SubjectAuxMean> SubjectAuxMeans { get; set; }
+        public DbSet<ProfessorClassRoom> ProfessorClassRooms { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -83,10 +84,20 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.UserId).IsRequired().HasMaxLength(64);
                 entity.Property(e => e.NameProf).IsRequired().HasMaxLength(64);
                 entity.Property(e => e.Contract).IsRequired().HasMaxLength(20);
+                entity.Property(e => e.Spec).IsRequired().HasMaxLength(20);
                 entity.Property(e => e.Salary).IsRequired();
                 entity.Property(e => e.IsDean).IsRequired();
                 entity.Property(e => e.LaboralExperience).IsRequired();
 
+
+                //Relacion de profesor con aula
+                entity.HasMany(p => p.ClassRooms).WithMany(c => c.Professors).UsingEntity<ProfessorClassRoom>(
+                    pc => pc.HasOne(prop => prop.classRoom).WithMany()
+                    .HasForeignKey(prop => prop.IdClassR),
+                    pc => pc.HasOne(prop => prop.professor).WithMany()
+                    .HasForeignKey(prop => prop.IdProf),
+                    pc => pc.HasKey(prop => prop.IdProfClass)
+                    );
 
                 //Relacion de Profesor con Asignatura
                 entity.HasMany(p => p.Subjects).WithMany(sub => sub.Professors).UsingEntity<ProfessorSubject>(
