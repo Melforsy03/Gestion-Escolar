@@ -59,15 +59,22 @@ namespace SchoolManagement.Application.ApplicationServices.Services
                 List<int> costs = new List<int>();
                 foreach(var tm in techMean)
                 {
-                    var maintenances = _context.Maintenances.Where(m => m.IdTechMean == tm.IdMean).ToList();
-                    foreach(var main in maintenances)
+                    DateTime dateLimit = DateTime.Now.AddYears(-1);
+                    var maintenances = _context.Maintenances.Where(m => m.IdTechMean == tm.IdMean && m.MaintenanceDate >= DateOnly.FromDateTime(dateLimit)).ToList();
+                    
+                    foreach (var main in maintenances)
                     {
-                        costs.Add(main.Cost);
+                            costs.Add(main.Cost);
                     }
+                    
+                    
+
+                }
+                if(costs.Count() > 2)
+                {
+                    classRoomTechMeanAmmount.ClassRoomAverageCost.Add(cr.IdClassR, GetAverage(costs));
                 }
 
-                classRoomTechMeanAmmount.ClassRoomAverageCost.Add(cr.IdClassR, GetAverage(costs));
-                
             }
 
             return classRoomTechMeanAmmount;
