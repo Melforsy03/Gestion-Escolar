@@ -170,6 +170,5 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             return new ClassRoommeanRequestReserveResponseDto { success = true, classRoom = classRoom.IdClassR, message = "Success!", reserveMeans = classRoomMeanRequestReserveDto.reserveMeans, subjectName = classRoomMeanRequestReserveDto.subjectName };
         }
       
-       // public async Task 
     }
 }
