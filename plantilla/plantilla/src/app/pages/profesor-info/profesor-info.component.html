@@ -1,12 +1,9 @@
 <div class="content">
   <div class="row">
-    <!-- Fila para el campo de búsqueda -->
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-
           <button class="custom-button" (click)="openModal()">Agregar Profesor</button>
-          <!-- Barra de búsqueda -->
           <div class="search-bar mb-3 d-flex align-items-center">
             <input
               type="text"
@@ -19,7 +16,6 @@
             <i class="fa fa-search ml-2"></i>
           </div>
         </div>
-        <!-- Tabla de profesores -->
         <div class="col-md-12">
           <div class="card-header">
             <div class="table-responsive">
@@ -28,6 +24,7 @@
                   <tr>
                     <th>Nombre</th>
                     <th>Tipo de Contrato</th>
+                    <th>Especialidad</th>
                     <th>Salario</th>
                     <th>Experiencia Laboral</th>
                     <th>Acciones</th>
@@ -36,27 +33,26 @@
                 <tbody>
                   <ng-container *ngFor="let profesor of profesores; let i = index">
                     <tr>
-                      <!-- Nombre -->
                       <td>
                         <span *ngIf="!profesor.isEditing">{{ profesor.professor.nameProf }}</span>
                         <input *ngIf="profesor.isEditing" type="text" class="form-control" [(ngModel)]="profesor.professor.nameProf" />
                       </td>
-                      <!-- Tipo de Contrato -->
                       <td>
                         <span *ngIf="!profesor.isEditing">{{ profesor.professor.contract }}</span>
                         <input *ngIf="profesor.isEditing" type="text" class="form-control" [(ngModel)]="profesor.professor.contract" />
                       </td>
-                      <!-- Salario -->
+                      <td>
+                        <span *ngIf="!profesor.isEditing">{{ profesor.professor.spec }}</span>
+                        <input *ngIf="profesor.isEditing" type="text" class="form-control" [(ngModel)]="profesor.professor.spec" />
+                      </td>
                       <td>
                         <span *ngIf="!profesor.isEditing">{{ profesor.professor.salary }}</span>
                         <input *ngIf="profesor.isEditing" type="number" class="form-control" [(ngModel)]="profesor.professor.salary" />
                       </td>
-                      <!-- Experiencia Laboral -->
                       <td>
                         <span *ngIf="!profesor.isEditing">{{ profesor.professor.laboralExperience }}</span>
                         <input *ngIf="profesor.isEditing" type="number" class="form-control" [(ngModel)]="profesor.professor.laboralExperience" />
                       </td>
-                      <!-- Acciones -->
                       <td>
                         <button class="custom-button" *ngIf="!profesor.isEditing" (click)="toggleEdit(profesor)">Editar</button>
                         <button class="custom-button" *ngIf="profesor.isEditing" (click)="saveChanges(profesor)">Guardar</button>
@@ -74,7 +70,6 @@
     </div>
   </div>
 
-  <!-- Modal para agregar profesor -->
   <div
     class="modal"
     tabindex="-1"
@@ -99,6 +94,10 @@
             <div class="form-group">
               <label for="contract">Tipo de Contrato</label>
               <input type="text" id="contract" class="form-control" [(ngModel)]="newProfesor.contract" name="contract">
+            </div>
+            <div class="form-group">
+              <label for="spec">Especialidad</label>
+              <input type="text" id="spec" class="form-control" [(ngModel)]="newProfesor.spec" name="spec">
             </div>
             <div class="form-group">
               <label for="salary">Salario</label>
