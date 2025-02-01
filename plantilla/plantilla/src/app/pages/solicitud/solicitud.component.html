@@ -6,7 +6,7 @@
           <h4 class="card-title">Solicitud de Aulas y Medios</h4>
         </div>
         <div class="card-body">
-          <!-- Selector de Asignaturas con el mismo estilo -->
+          <!-- Selector de Asignaturas -->
           <div class="filter-section mb-3">
             <label for="subjectSelect">Asignatura:</label>
             <select
@@ -15,8 +15,8 @@
               [(ngModel)]="selectedSubject"
               (change)="onSubjectChange($event.target.value)"
             >
-              <option value="" disabled [selected]="!result.length">
-                {{ result.length ? 'Seleccione una asignatura' : 'No hay asignaturas disponibles' }}
+              <option value="" disabled [selected]="!result?.length">
+                {{ result?.length ? 'Seleccione una asignatura' : 'No hay asignaturas disponibles' }}
               </option>
               <option *ngFor="let entry of result" [value]="entry.subject">
                 {{ entry.subject }}
@@ -24,14 +24,15 @@
             </select>
           </div>
 
-          <!-- Mostrar Medios y Cantidades -->
+          <!-- Mostrar Medios Disponibles -->
           <div class="table-responsive" *ngIf="selectedMedios && selectedMedios.length > 0">
             <h4>Medios Disponibles para "{{ selectedSubject }}"</h4>
             <table class="table tablesorter">
               <thead class="text-primary">
                 <tr>
                   <th>Medio</th>
-                  <th>Cantidad</th>
+                  <th>Cantidad Disponible</th>
+                  <th>Cantidad a Reservar</th>
                   <th>Acción</th>
                 </tr>
               </thead>
@@ -39,6 +40,16 @@
                 <tr *ngFor="let medio of selectedMedios">
                   <td>{{ medio.medio }}</td>
                   <td>{{ medio.cantidad }}</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      [(ngModel)]="medio.cantidadReserva"
+                      [min]="1"
+                      [max]="medio.cantidad"
+                      placeholder="Ingrese cantidad"
+                    />
+                  </td>
                   <td>
                     <button class="custom-butto" (click)="reservarMedio(medio)">
                       Reservar
@@ -58,4 +69,5 @@
     </div>
   </div>
 </div>
+
 

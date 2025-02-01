@@ -10,10 +10,14 @@ import { SolicitudService } from 'src/app/service/solicitud.service';
 })
 export class SolicitudComponent implements OnInit {
   solicitudForm: FormGroup;
-  result: any = null; // Para almacenar los resultados del endpoint
+  result: any [] = []; // Para almacenar los resultados del endpoint
   userName: string = '';
   selectedSubject: string = ''; // Asignatura seleccionada
   selectedMedios: any[] = []; // Medios para la asignatura seleccionada
+  isModalVisible: boolean = false;
+  medioSeleccionado: any = [];
+  cantidadReserva: number = 1;
+  reserveMeans: any[] = [];
   constructor(private fb: FormBuilder, private http: HttpClient , private solicitud :SolicitudService) {
     this.solicitudForm = this.fb.group({
       aula: [''],
@@ -21,60 +25,9 @@ export class SolicitudComponent implements OnInit {
     });
   }
 
-  get medios() {
-    return this.solicitudForm.get('medios') as FormArray;
-  }
-
-  addMedio() {
-    const medioForm = this.fb.group({
-      nombre: [''],
-      cantidad: ['']
-    });
-    this.medios.push(medioForm);
-  }
-
-  removeMedio(index: number) {
-    this.medios.removeAt(index);
-  }
 ngOnInit(): void {
     this.CargarInfo();
 }
-reservarMedio(medio: any) {
-  console.log('Reservando medio:', medio);
-
-  // Crear el objeto reserveMeans dinámico
-  const reserveMeans = {};
-  reserveMeans[`additionalProp${medio.id}`] = medio.cantidad;
-
-  // Crear el payload que se enviará al backend
-  const requestPayload = {
-    userName: this.userName,  // El nombre del usuario (profesor)
-    subjectName: this.selectedSubject,  // El nombre de la asignatura seleccionada
-    reserveMeans: reserveMeans,  // Los medios y las cantidades
-    reserve: true,  // Indicamos que la reserva es verdadera
-  };
-
-  // Llamar al servicio para realizar la reserva
-  this.solicitud.reserveClassRoomAndMeans(requestPayload).subscribe(
-    (response) => {
-      // Mostrar mensaje de éxito
-      alert(`Reserva exitosa para la asignatura ${this.selectedSubject}.`);
-
-      // Llamamos a CargarInfo para refrescar la lista de medios
-      this.CargarInfo();
-
-      // Mostrar la respuesta del backend
-      console.log('Respuesta del backend:', response);
-    },
-    (error) => {
-      // Manejo de errores
-      console.error('Error al reservar medio:', error);
-      alert('Error al intentar reservar el medio. Por favor, intente nuevamente.');
-    }
-  );
-}
-
-
 
 CargarInfo() {
   this.userName = this.solicitud.getUser();
@@ -110,6 +63,48 @@ onSubjectChange(subjectValue: string) {
   const selectedEntry = this.result.find(entry => entry.subject === this.selectedSubject);
   this.selectedMedios = selectedEntry ? selectedEntry.medios : [];
 }
+abrirModal(): void {
+ 
+  this.cantidadReserva = 1;
+  this.isModalVisible = true;
+ 
+}
+cerrarModal(event?: Event): void {
+  this.isModalVisible = false;
+  this.medioSeleccionado = null;
 
+}
+reservarMedio(medio: any): void {
+  if (!medio || !medio.cantidadReserva) {
+    alert('Debe ingresar una cantidad válida.');
+    return;
+  }
 
+  if (medio.cantidadReserva < 1 || medio.cantidadReserva > medio.cantidad) {
+    alert(`Cantidad inválida. Debe estar entre 1 y ${medio.cantidad}`);
+    return;
+  }
+
+  // Convertimos el array a un objeto con claves dinámicas
+  const reserveMeansObject = {
+    [medio.medio]: medio.cantidadReserva
+  };
+
+  const requestPayload = {
+    userName: this.userName,
+    subjectName: this.selectedSubject,
+    reserveMeans: reserveMeansObject, // Usamos el objeto en lugar del array
+    reserve: true
+  };
+  this.solicitud.reserveClassRoomAndMeans(requestPayload).subscribe(
+    response => {
+      this.CargarInfo();
+      medio.cantidadReserva = null;
+    },
+    error => {
+      console.error('Error al enviar la reserva:', error);
+      alert('Error al realizar la reserva');
+    }
+  );
+}
 }
