@@ -40,7 +40,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             }
             else
             {
-                maintenance.auxMean = await _auxiliaryMeansRepository.GetByIdAsync(maintenance.IdTechMean);
+                maintenance.auxMean = await _auxiliaryMeansRepository.GetByIdAsync(maintenance.IdAuxMean);
                 if (maintenance.auxMean == null) return null;
                 maintenance.IdAuxMean = maintenance.auxMean.IdMean;
                 name = maintenance.auxMean.NameMean;

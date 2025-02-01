@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoom;
+using SchoolManagement.Domain.Entities;
+using SchoolManagement.Domain.Relations;
 using SchoolManagement.Infrastructure;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
@@ -45,27 +47,46 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<ClassRoomMeanAmmount> GetClassRoomsMeanAmmount()
         {
-            var maintenance = _context.Maintenances.Where(m => m.typeOfMean == 0);
+            var maintenanceTech = _context.Maintenances.Where(m => m.typeOfMean == 0);
+            var maintenanceAux = _context.Maintenances.Where(m => m.typeOfMean == 1);
             var classRooms = _context.ClassRooms;
-            Dictionary<int, Dictionary<string, string>> ClassRoomMaintenanceByType = new Dictionary<int, Dictionary<string, string>>();
+           
+
+            Dictionary<int, Dictionary<string, int>> ClassRoomMaintenanceByType = new Dictionary<int, Dictionary<string, int>>();
+
             foreach(var cr in classRooms)
             {
+                int auxMeanAmmount = 0;
+                int techMeanAmmount = 0;
                 var classRoomTechMean = _context.ClassRoomTechMeans.Where(ctm => ctm.IdClassRoom == cr.IdClassR);
 
-                Dictionary<string, string> temp = new Dictionary<string, string>();
+                Dictionary<string, int> temp = new Dictionary<string, int>();
                 foreach (var crtm in classRoomTechMean)
                 {
-                    var maintenancesForThisMean = maintenance.Where(m => m.IdTechMean == crtm.IdTechMean);
-                    if(maintenancesForThisMean.Count() > 0)
-                    {
-                        foreach (var maint in maintenancesForThisMean)
-                        {
-                            var mean = _context.TechnologicalMeans.Where(tm => tm.IdMean == maint.IdTechMean).First();
-                            temp.Add(mean.NameMean, "TechnologicalMean");
-                        }
-
-                    }
+                    var maintenancesForThisMean = maintenanceTech.Where(m => m.IdTechMean == crtm.IdTechMean).ToList();
+                    techMeanAmmount += maintenancesForThisMean.Count();
                 }
+                temp.Add("TechnologicalMean", techMeanAmmount);
+                var subjectsInCR = _context.Subjects.Where(s => s.IdClassRoom == cr.IdClassR).ToList();
+                List<SubjectAuxMean> list = new List<SubjectAuxMean>();
+                List<AuxiliaryMeans> auxMean = new List<AuxiliaryMeans>();
+                
+                foreach(var sub in subjectsInCR)
+                {
+                    list.AddRange(_context.SubjectAuxMeans.Where(sam => sam.IdSub == sub.IdSub).ToList());
+                }
+
+                foreach(var subam in list)
+                {
+                    auxMean.Add(_context.AuxiliaryMeans.Where(am => am.IdMean == subam.IdAuxMean).FirstOrDefault());
+                }
+                
+                foreach(var am in auxMean)
+                {
+                    var maintenancesForThisMean = maintenanceAux.Where(ma => ma.IdAuxMean == am.IdMean).ToList();
+                    auxMeanAmmount += maintenancesForThisMean.Count();
+                }
+                temp.Add("AuxiliaryMean", auxMeanAmmount);
 
                 ClassRoomMaintenanceByType.Add(cr.IdClassR, temp);
             }
