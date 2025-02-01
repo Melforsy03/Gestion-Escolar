@@ -44,7 +44,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             await _classRoomRepository.UpdateAsync(classRoom);
             return _mapper.Map<ClassRoomResponseDto>(classRoom);
         }
-
+       // public async Task
         public async Task<ClassRoomMeanAmmount> GetClassRoomsMeanAmmount()
         {
             var maintenanceTech = _context.Maintenances.Where(m => m.typeOfMean == 0);

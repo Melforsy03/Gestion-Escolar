@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoom
 {
-    internal class ClassRoomTechMeanAmmount
+    public class ClassRoomTechMeanAmmount
     {
+        //Dictionary<int, >
     }
 }

@@ -4,8 +4,8 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Gestión de Funcionalidades</h4>
-          
-          <!-- Nuevo Selector para Elegir Funcionalidad -->
+
+          <!-- Selector para elegir funcionalidad -->
           <div class="filter-section mb-3">
             <label for="functionalityFilter">Seleccionar Funcionalidad:</label>
             <select id="functionalityFilter" class="form-select" [(ngModel)]="selectedFunctionality" (change)="onFunctionalityChange()">
@@ -16,8 +16,8 @@
       </div>
     </div>
   </div>
-  
-  <!-- Contenido de Especialización de Profesores -->
+
+  <!-- Funcionalidad "Gestión de Profesores por Especialización" -->
   <div *ngIf="selectedFunctionality === 'especializacionProfesores'" class="row">
     <div class="col-md-12">
       <div class="card">
@@ -56,6 +56,40 @@
                       </li>
                     </ul>
                   </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Funcionalidad "Mantenimientos Realizados" -->
+  <div *ngIf="selectedFunctionality === 'mantenimientosRealizados'" class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Mantenimientos Realizados</h4>
+          <p>Cantidad total de mantenimientos 2 años: {{ totalMaintenances }}</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table tablesorter">
+              <thead class="text-primary">
+                <tr>
+                  <th>Aula</th>
+                  <th>Medios Auxiliares</th>
+                  <th>Medios Tecnológicos</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let key of objectKeys(maintenances)">
+                  <td>{{ key }}</td>
+                  <td>{{ maintenances[key].AuxiliaryMean }}</td>
+                  <td>{{ maintenances[key].TechnologicalMean }}</td>
+                  <td>{{ maintenances[key].AuxiliaryMean + maintenances[key].TechnologicalMean }}</td>
                 </tr>
               </tbody>
             </table>
