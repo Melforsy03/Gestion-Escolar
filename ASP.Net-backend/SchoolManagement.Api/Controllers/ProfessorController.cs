@@ -54,6 +54,15 @@ namespace SchoolManagement.Api.Controllers
             var professor = await _professorService.DeleteProfessorByIdAsync(professorId);
             return Ok(professor);
         }
+
+        [HttpGet]
+        [Route("getGoodProfessors")]
+        [Authorize(Roles ="SuperAdmin, Secretary")]
+        public async Task<ActionResult> GetGoodProfessors()
+        {
+            var goodProfessors = _professorService.GetGoodProfessors();
+            return Ok(goodProfessors);
+        }
     }
 
 }

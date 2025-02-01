@@ -9,8 +9,8 @@ import { ProfesorService } from 'src/app/service/profesor-info.service';
 export class ProfesorComponent implements OnInit {
   profesores: any[] = [];
   globalSearchQuery: string = '';
-  showModal: boolean = false; // Controla la visibilidad del modal
-  newProfesor: any = { nameProf: '', contract: '', salary: 0, laboralExperience: 0 }; // Datos del nuevo profesor
+  showModal: boolean = false;
+  newProfesor: any = { nameProf: '', contract: '', spec: '', salary: 0, laboralExperience: 0 };
 
   constructor(private profesorService: ProfesorService) {}
 
@@ -23,7 +23,8 @@ export class ProfesorComponent implements OnInit {
       (data) => {
         this.profesores = data.map((profesor: any) => ({
           ...profesor,
-          isEditing: false // Agregar propiedad para controlar el estado de edición
+          isEditing: false,
+          spec: profesor.professor.spec
         }));
       },
       (error) => {
@@ -33,10 +34,8 @@ export class ProfesorComponent implements OnInit {
   }
 
   openModal(): void {
-    console.log('Modal abierto'); // Depuración
     this.showModal = true;
-    console.log(this.showModal)
-    this.newProfesor = { nameProf: '', contract: '', salary: 0, laboralExperience: 0 }; // Limpiar el formulario
+    this.newProfesor = { nameProf: '', contract: '', spec: '', salary: 0, laboralExperience: 0 };
   }
 
   closeModal(): void {
@@ -57,12 +56,11 @@ export class ProfesorComponent implements OnInit {
   }
 
   toggleEdit(profesor: any): void {
-    profesor.isEditing = !profesor.isEditing; // Cambiar el estado de edición
+    profesor.isEditing = !profesor.isEditing;
   }
 
   saveChanges(profesor: any): void {
     if (!profesor.id) {
-      // Crear nuevo profesor
       this.profesorService.createProfesor(profesor.professor).subscribe(
         (response) => {
           console.log('Profesor agregado:', response);
@@ -73,12 +71,12 @@ export class ProfesorComponent implements OnInit {
         }
       );
     } else {
-      // Actualizar profesor existente
       const updatedProfesor = {
         id: profesor.id,
         professor: {
           nameProf: profesor.professor.nameProf,
           contract: profesor.professor.contract,
+          spec: profesor.professor.spec,
           salary: profesor.professor.salary,
           laboralExperience: profesor.professor.laboralExperience
         }
@@ -87,7 +85,7 @@ export class ProfesorComponent implements OnInit {
       this.profesorService.updateProfesor(updatedProfesor).subscribe(
         (response) => {
           console.log('Profesor actualizado:', response);
-          profesor.isEditing = false; // Salir del modo de edición
+          profesor.isEditing = false;
         },
         (error) => {
           console.error('Error al actualizar profesor:', error);
@@ -109,9 +107,9 @@ export class ProfesorComponent implements OnInit {
   }
 
   updateDisplayProfesor(): void {
-    // Filtrar la lista de profesores según la consulta de búsqueda global.
     this.profesores = this.profesores.filter(profesor =>
-      profesor.professor.nameProf.toLowerCase().includes(this.globalSearchQuery.toLowerCase())
+      profesor.professor.nameProf.toLowerCase().includes(this.globalSearchQuery.toLowerCase()) ||
+      profesor.professor.spec.toLowerCase().includes(this.globalSearchQuery.toLowerCase())
     );
   }
 }
