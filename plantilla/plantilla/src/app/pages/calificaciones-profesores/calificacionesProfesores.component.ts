@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CalificacionesService, Calificacion } from 'src/app/service/calificacionesPofesores.service';
+import { CalificacionesService } from 'src/app/service/calificacionesPofesores.service';
 
 @Component({
   selector: 'app-calificaciones',
@@ -12,8 +12,8 @@ export class CalificacionesComponent implements OnInit {
   constructor(private calificacionesService: CalificacionesService) {}
 
   ngOnInit(): void {
-  
-     this.loadCalificaciones();  
+
+     this.loadCalificaciones();
   }
 
   // Método para cargar las calificaciones
