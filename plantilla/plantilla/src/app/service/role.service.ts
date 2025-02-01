@@ -40,6 +40,7 @@ export class RoleService {
           { label: 'Evaluacion Profesores', path: '/calificaciones-profesores', icon: 'icon-notes' },
           { label: 'General Estudiantes', path: '/estudiantes-pofesor', icon: 'icon-paper' },
           { label: 'Info Estudiantes', path: '/estudiantes', icon: 'icon-single-copy-04' },
+          { label : 'Peticiones BD'  , path : '/peticiones' , icon :'icon-components' },
           { label: 'Info Profesores', path: '/profesor', icon: 'icon-notes' },
           { label: 'Info Secretaria', path: '/info-secretaria', icon: 'icon-badge' },
           { label: 'Info Administrador', path: '/info-administrador', icon: 'icon-badge' },
