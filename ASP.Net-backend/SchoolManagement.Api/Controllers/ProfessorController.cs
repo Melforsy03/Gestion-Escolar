@@ -60,7 +60,7 @@ namespace SchoolManagement.Api.Controllers
         [Authorize(Roles ="SuperAdmin, Secretary")]
         public async Task<ActionResult> GetGoodProfessors()
         {
-            var goodProfessors = _professorService.GetGoodProfessors();
+            var goodProfessors = await _professorService.GetGoodProfessors();
             return Ok(goodProfessors);
         }
     }

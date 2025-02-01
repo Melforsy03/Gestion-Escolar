@@ -8,6 +8,6 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoom
 {
     public class ClassRoomTechMeanAmmount
     {
-        //Dictionary<int, >
+        public Dictionary<int, float> ClassRoomAverageCost { get; set; }
     }
 }

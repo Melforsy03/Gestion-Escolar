@@ -53,6 +53,15 @@ namespace SchoolManagement.Api.Controllers
             return Ok(maintenances);
         }
 
+        [HttpGet]
+        [Route("getMaintenancesAverageCosts")]
+        [Authorize(Roles = "SuperAdmin, Admin")]
+        public async Task<ActionResult> GetCostsOfMaintenance()
+        {
+            var maintenancesCosts = await _classRoomService.GetClassRoomTechAmmount();
+            return Ok(maintenancesCosts);
+        }
+
         [HttpDelete]
         [Route("delete")]
         [Authorize(Roles = "SuperAdmin")]
