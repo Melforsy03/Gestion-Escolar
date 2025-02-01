@@ -123,7 +123,7 @@ namespace SchoolManagement.Infrastructure
                 {
                     await _userManager.AddToRoleAsync(superadmin, superadminRole.Name);
                 }
-                _context.Professors.Add(new Domain.Entities.Professor { IsDean = true , NameProf="Pepe Gonzalez", UserId = superadmin.Id, LaboralExperience = 15, Salary = 10000, IsDeleted = false, Contract = "Tiempo Completo"});
+                _context.Professors.Add(new Domain.Entities.Professor { IsDean = true , Spec = "spec0", NameProf="Pepe Gonzalez", UserId = superadmin.Id, LaboralExperience = 15, Salary = 10000, IsDeleted = false, Contract = "Tiempo Completo"});
             }
 
             //Administrador
@@ -158,7 +158,7 @@ namespace SchoolManagement.Infrastructure
                     {
                         await _userManager.AddToRoleAsync(user, professorRole.Name);
 
-                        _context.Professors.Add(new Domain.Entities.Professor { IsDean = false, NameProf = "Pepe" + i + " Gonzalez", UserId = user.Id, LaboralExperience = 5, Salary = 10000, IsDeleted = false, Contract = "Tiempo Completo" });
+                        _context.Professors.Add(new Domain.Entities.Professor { IsDean = false, Spec = "spec" + i, NameProf = "Pepe" + i + " Gonzalez", UserId = user.Id, LaboralExperience = 5, Salary = 10000, IsDeleted = false, Contract = "Tiempo Completo" });
                     }
                 }
                 _context.SaveChanges();

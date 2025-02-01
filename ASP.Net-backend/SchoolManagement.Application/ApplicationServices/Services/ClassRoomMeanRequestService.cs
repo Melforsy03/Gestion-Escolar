@@ -125,6 +125,11 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             var User = _context.Users.Where(u => u.UserName == classRoomMeanRequestReserveDto.userName).FirstOrDefault();
             var professor = _context.Professors.Where(p => p.UserId == User.Id).First();
 
+            if (classRoomMeanRequestReserveDto.reserve)
+            {
+                _context.ProfessorClassRooms.Add(new ProfessorClassRoom {IdProf = professor.IdProf, IdClassR = classRoom.IdClassR, professor = professor, classRoom = classRoom });
+            }
+
             Dictionary<List<AuxiliaryMeans>, int> AuxMean = new Dictionary<List<AuxiliaryMeans>, int>();
 
             int i = 0;
@@ -165,5 +170,6 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             return new ClassRoommeanRequestReserveResponseDto { success = true, classRoom = classRoom.IdClassR, message = "Success!", reserveMeans = classRoomMeanRequestReserveDto.reserveMeans, subjectName = classRoomMeanRequestReserveDto.subjectName };
         }
       
+       // public async Task 
     }
 }

@@ -10,6 +10,7 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.Professor
     {
         public string NameProf { get; set; }
         public string Contract { get; set; }
+        public string Spec {  get; set; }
         public int Salary { get; set; }
         public int LaboralExperience { get; set; }
 
