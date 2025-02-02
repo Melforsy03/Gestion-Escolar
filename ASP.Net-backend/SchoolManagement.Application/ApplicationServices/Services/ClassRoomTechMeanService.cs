@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomTechMean;
+using SchoolManagement.Infrastructure;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using System;
 using System.Collections.Generic;
@@ -13,13 +14,15 @@ namespace SchoolManagement.Application.ApplicationServices.Services
     public class ClassRoomTechMeanService : IClassRoomTechMeanService
     {
         private readonly IClassRoomTechMeanRepository _classRoomTechMeanRepository;
+        private readonly Context _context;
         private readonly IClassRoomRepository _classRoomRepository;
         private readonly ITechnologicalMeansRepository _technologicalMeansRepository;
         private readonly IMapper _mapper;
 
-        public ClassRoomTechMeanService(IClassRoomTechMeanRepository classRoomTechMeanRepository, IClassRoomRepository classRoomRepository, ITechnologicalMeansRepository technologicalMeansRepository,IMapper mapper)
+        public ClassRoomTechMeanService(Context contex, IClassRoomTechMeanRepository classRoomTechMeanRepository, IClassRoomRepository classRoomRepository, ITechnologicalMeansRepository technologicalMeansRepository,IMapper mapper)
         {
             _classRoomTechMeanRepository = classRoomTechMeanRepository;
+            _context = contex;
             _classRoomRepository = classRoomRepository;
             _technologicalMeansRepository = technologicalMeansRepository;
             _mapper = mapper;
@@ -50,7 +53,9 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
             for (int i = 0; i < list.Count; i++)
             {
-                classRoomTechMeansList.Add(_mapper.Map<ClassRoomTechMeanResponseDto>(list[i]));
+                var temp = _mapper.Map<ClassRoomTechMeanResponseDto>(list[i]);
+                temp.TechName = _context.TechnologicalMeans.Where(tm => tm.IdMean == list[i].IdTechMean).FirstOrDefault().NameMean;
+                classRoomTechMeansList.Add(temp);
             }
 
             return classRoomTechMeansList;

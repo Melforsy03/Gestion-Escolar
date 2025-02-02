@@ -9,5 +9,6 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoomTec
     public class ClassRoomTechMeanResponseDto: ClassRoomTechMeanDto
     {
         public int IdClassRoomTech { get; set; } = 0;
+        public string TechName { get; set; }
     }
 }
