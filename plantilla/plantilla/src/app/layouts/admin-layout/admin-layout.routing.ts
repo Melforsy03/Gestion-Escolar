@@ -9,11 +9,9 @@ import { PeticionesComponent } from "src/app/pages/peticiones/peticiones.compone
 import { InfoSecretariaComponent} from "src/app/pages/info-secretaria/info-secretaria.component";
 import { InfoAdministradorComponent } from "src/app/pages/info-administrador/info-administrador.component";
 import { MediosTecnologicosComponent } from "src/app/pages/medios-tecnologicos/medios-tecnologicos.component";
-import { CalificacionesComponent } from "src/app/pages/calificaciones-profesores/calificacionesProfesores.component";
-import { EstudiantesProfesor } from "src/app/pages/estudiantes-profesor/estudiantes-pofesor.component";
 import { EvaluacionComponent } from "src/app/pages/evaluacion/evaluacion.component";
 import { MantenimientoComponent } from "src/app/pages/mantenimiento/mantenimiento.component";
-
+import { CalificacionComponent } from "src/app/pages/calificacion/calificacion.component";
 export const AdminLayoutRoutes: Routes = [
   { path: "profesor", component: ProfesorComponent },
   { path: "calificacion-estudiantes", component: InfoEstudiantesComponent },
@@ -24,8 +22,7 @@ export const AdminLayoutRoutes: Routes = [
   { path : "info-secretaria" , component :InfoSecretariaComponent},
   { path : "info-administrador" , component :InfoAdministradorComponent},
   { path : "medio-tecnologico" , component :MediosTecnologicosComponent},
-  { path : "calificaciones-profesores" , component :CalificacionesComponent},
-  { path : "estudiantes-profesor" , component :EstudiantesProfesor},
-  {path :  "evaluaciones" , component :EvaluacionComponent},
-   {path : "mantenimiento" , component :MantenimientoComponent}
+  { path :  "evaluaciones" , component :EvaluacionComponent},
+  { path : "mantenimiento" , component :MantenimientoComponent},
+  { path : "calificacion" , component :CalificacionComponent}
 ];
