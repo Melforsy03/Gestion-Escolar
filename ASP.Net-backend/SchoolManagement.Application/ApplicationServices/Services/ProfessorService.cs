@@ -110,7 +110,42 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
             return Professors_List;
         }
+        public async Task<IEnumerable<ProfessorsBadResponse>> GetBadProfessors()
+        {
+            List<int> badProfessorsId = _context.ProfessorsPunishments.GroupBy(p => p.IdProf).Select(g => g.Key).ToList();
+            List<ProfessorsBadResponse> badProfessors = new List<ProfessorsBadResponse>();
+            foreach(var bp in badProfessorsId)
+            {
+               
+                var professor = _context.Professors.Where(p => p.IdProf == bp).FirstOrDefault();
 
+                ProfessorsBadResponse temp = new ProfessorsBadResponse();
+                temp.UseAuxMean = professor.UseAuxMean;
+                temp.NameProf = professor.NameProf;
+                temp.PunishmentDate = _context.ProfessorsPunishments.Where(pp => pp.IdProf == bp).OrderBy(s => s.PunishmentDate).FirstOrDefault().PunishmentDate;
+
+                var evals = _context.ProfStudSubCourses.Where(pssc => pssc.IdProf == bp).OrderBy(e => e.Evaluation).Select(g => g.Evaluation).ToList();
+                if(evals.Count() >= 3)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        temp.evals[i] = evals[i];
+                    }
+                }
+                else
+                {
+                    for(int i = 0; i < evals.Count(); i++)
+                    {
+                        temp.evals[i] = evals[i];
+                    }
+                }
+
+                badProfessors.Add(temp);
+                
+            }
+
+            return badProfessors;
+        }
         public async Task<ProfessorResponseDto> UpdateProfessorAsync(ProfessorResponseDto professorInfo)
         {
             var professor = _professorRepository.GetById(professorInfo.Id);

@@ -98,6 +98,7 @@ namespace SchoolManagement.Infrastructure
                 entity.Property(e => e.Salary).IsRequired();
                 entity.Property(e => e.IsDean).IsRequired();
                 entity.Property(e => e.LaboralExperience).IsRequired();
+                entity.Property(e => e.UseAuxMean).IsRequired();
 
 
                 //Relacion de profesor con aula

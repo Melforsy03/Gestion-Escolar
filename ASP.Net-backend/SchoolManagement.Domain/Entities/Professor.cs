@@ -18,6 +18,7 @@ namespace SchoolManagement.Domain.Entities
         public bool IsDean { get; set; } = false;
         public int LaboralExperience { get; set; } = 0;
         public bool IsDeleted { get; set; } = false;
+        public bool UseAuxMean { get; set; } = false;
         public List<Subject> Subjects { get; set; } = new List<Subject>();
         public List<AuxiliaryMeans> AuxiliaryMeans { get; set; } = new List<AuxiliaryMeans>();
         public List<ClassRoom> ClassRooms { get; set; } = new List<ClassRoom>();

@@ -63,6 +63,14 @@ namespace SchoolManagement.Api.Controllers
             var goodProfessors = await _professorService.GetGoodProfessors();
             return Ok(goodProfessors);
         }
+        [HttpGet]
+        [Route("getBadProfessors")]
+        [Authorize(Roles = "SuperAdmin, Secretary")]
+        public async Task<ActionResult> GetBadProfessors()
+        {
+            var badProfessors = await _professorService.GetBadProfessors();
+            return Ok(badProfessors);
+        }
     }
 
 }
