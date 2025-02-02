@@ -10,7 +10,6 @@
               Exportar Información como PDF
             </button>
           </div>
-
           <!-- Selector para elegir funcionalidad -->
           <div class="filter-section mb-3">
             <label for="functionalityFilter">Seleccionar Funcionalidad:</label>
@@ -29,6 +28,12 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Gestión de Profesores por Especialización</h4>
+          <div class="filter-section mb-3">
+            <label for="specFilter">Seleccionar Especialización:</label>
+            <select id="specFilter" class="form-select" [(ngModel)]="selectedSpec" (change)="onSpecChange()">
+              <option *ngFor="let spec of specs" [value]="spec">{{ spec }}</option>
+            </select>
+          </div>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -100,6 +105,7 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Mantenimientos Realizados</h4>
+          <p>Cantidad total de mantenimientos 2 años: {{ totalMaintenances }}</p>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -127,7 +133,7 @@
     </div>
   </div>
 
-  <!-- Funcionalidad "Profesores Destacados" -->
+  <!-- Funcionalidad "Profesor Buena Nota" -->
   <div *ngIf="selectedFunctionality === 'ProfesorBuenaNota'" class="row">
     <div class="col-md-12">
       <div class="card">
@@ -160,7 +166,7 @@
     </div>
   </div>
 
-  <!-- Funcionalidad "Estudiantes con Bajo Rendimiento" -->
+  <!-- Funcionalidad "Bad Students" -->
   <div *ngIf="selectedFunctionality === 'BadStudents'" class="row">
     <div class="col-md-12">
       <div class="card">
@@ -173,8 +179,8 @@
               <thead class="text-primary">
                 <tr>
                   <th>Curso</th>
-                  <th>Estudiante</th>
-                  <th>Evaluación Promedio</th>
+                  <th>Nombre del Estudiante</th>
+                  <th>Evaluación Promedio de Profesores</th>
                 </tr>
               </thead>
               <tbody>
@@ -191,7 +197,7 @@
     </div>
   </div>
 
-  <!-- Funcionalidad "Profesores Sancionados" -->
+  <!-- Funcionalidad "Bad Professor" -->
   <div *ngIf="selectedFunctionality === 'BadProfessor'" class="row">
     <div class="col-md-12">
       <div class="card">
@@ -203,8 +209,8 @@
             <table class="table tablesorter">
               <thead class="text-primary">
                 <tr>
-                  <th>Profesor</th>
-                  <th>Fecha de Sanción</th>
+                  <th>Nombre del Profesor</th>
+                  <th>Fecha de Primera Sanción</th>
                   <th>Usa Medios Auxiliares</th>
                   <th>Peores Evaluaciones</th>
                 </tr>
