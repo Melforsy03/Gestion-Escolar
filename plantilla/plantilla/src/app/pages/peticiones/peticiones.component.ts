@@ -16,6 +16,8 @@ export class PeticionesComponent implements OnInit {
   totalMaintenances: number = 0;  // Para almacenar la cantidad total de mantenimientos
   goodProfesor :any [] = [];
   badStudents: any[] = [];
+  badProfesro :any [] = [];
+  punishedProfessors: any[] = [];
   constructor(private professorService: ProfessorService) {}
 
   functionalities = [
@@ -24,7 +26,7 @@ export class PeticionesComponent implements OnInit {
     { key: 'ProfesorBuenaNota', label: 'Profesores con Buena Nota' },
     { key: 'mantenim', label: 'Mantenimientos Realizados' } ,
     { key: 'BadStudents', label: 'Estudiantes bajo rendimiento' },
-    { key: 'mantenimientosRealizados', label: 'Mantenimientos Realizados' } 
+    { key: 'BadProfessor', label: 'Profesor con mala Nota' } 
   ];
 
   ngOnInit(): void {
@@ -51,6 +53,10 @@ export class PeticionesComponent implements OnInit {
     }
     else if (this.selectedFunctionality === 'ProfesorBuenaNota') {
       this.loadGoodProfesor();
+    }
+    else if (this.selectedFunctionality === 'BadProfessor')
+    {
+     this.loadBadProfesor();
     }
     else if (this.selectedFunctionality === 'BadStudents')
     {
@@ -80,5 +86,16 @@ loadGoodProfesor () :void
     this.professorService.getBadStudents().subscribe(response => {
       this.badStudents = response
     });
+}
+loadBadProfesor() : void 
+{
+  this.professorService.getBadProfesor().subscribe(response => {
+    this.punishedProfessors = response.map(professor => ({
+      nameProf: professor.nameProf,
+      punishmentDate: professor.punishmentDate,
+      UseAuxMean: professor.UseAuxMean,
+      evals: professor.evals.length > 0 ? professor.evals : [0, 0, 0]
+    }));
+  });
 }
 }

@@ -158,4 +158,41 @@
       </div>
     </div>
   </div>
+  <div *ngIf="selectedFunctionality === 'BadProfessor'" class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Lista de Profesores Sancionados</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table tablesorter">
+                <thead class="text-primary">
+                  <tr>
+                    <th>Nombre del Profesor</th>
+                    <th>Fecha de Primera Sanción</th>
+                    <th>Usa Medios Auxiliares</th>
+                    <th>Peores Evaluaciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let professor of punishedProfessors">
+                    <td>{{ professor.nameProf }}</td>
+                    <td>{{ professor.punishmentDate }}</td>
+                    <td>{{ professor.UseAuxMean ? 'Sí' : 'No' }}</td>
+                    <td>
+                      <ul>
+                        <li *ngFor="let eval of professor.evals">{{ eval !== 0 ? eval : 'N/A' }}</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  </div>
+  
 </div>
