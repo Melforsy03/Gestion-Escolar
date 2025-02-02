@@ -52,7 +52,9 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         {
             var classRoom = _context.ClassRooms.ToList();
             ClassRoomTechMeanAmmount classRoomTechMeanAmmount = new ClassRoomTechMeanAmmount();
-            foreach(var cr in classRoom)
+
+            classRoomTechMeanAmmount.ClassRoomAverageCost = new Dictionary<int, float>();
+            foreach (var cr in classRoom)
             {
                 var classRoomTechMean = _context.ClassRoomTechMeans.Where(crtm => crtm.IdClassRoom == cr.IdClassR);
                 List<TechnologicalMeans> techMean = new List<TechnologicalMeans>();
@@ -76,7 +78,6 @@ namespace SchoolManagement.Application.ApplicationServices.Services
                 }
                 if(costs.Count() > 2)
                 {
-                    classRoomTechMeanAmmount.ClassRoomAverageCost = new Dictionary<int, float>();
                     classRoomTechMeanAmmount.ClassRoomAverageCost.Add(cr.IdClassR, _trigger.GetAverage(costs));
                 }
 
