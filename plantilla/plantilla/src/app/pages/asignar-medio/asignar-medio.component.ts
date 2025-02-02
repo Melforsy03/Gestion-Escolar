@@ -41,9 +41,28 @@ export class AsignarComponent implements OnInit {
 
   seleccionarAula(aula: any) {
     this.selectedClassroom = aula;
+
+    // Obtener todos los medios disponibles
     this.solicitud.getTechnologicalMeansForClassroom(aula.idClassR).subscribe(
       (response) => {
-        this.mediosDisponibles = response || [];
+        const todosLosMedios = response || [];
+
+        // Obtener los medios asignados
+        this.solicitud.getAssignedTechMeans().subscribe(
+          (assignedResponse) => {
+            this.assignedTechMeans = assignedResponse || [];
+
+            // Filtrar solo los medios que NO han sido asignados a esta aula
+            this.mediosDisponibles = todosLosMedios.filter(medio =>
+              !this.assignedTechMeans.some(asignado =>
+                asignado.idTechMean === medio.idMean && asignado.idClassRoom === aula.idClassR
+              )
+            );
+          },
+          (error) => {
+            console.error('Error al cargar medios asignados:', error);
+          }
+        );
       },
       (error) => {
         console.error('Error al obtener medios tecnológicos:', error);
@@ -65,10 +84,9 @@ export class AsignarComponent implements OnInit {
     this.solicitud.assignTechnologicalMeanToClassroom(data).subscribe(
       (response) => {
         console.log('Medio asignado exitosamente', response);
-        const medioAsignado = this.mediosDisponibles.find(m => m.idMean === medioId);
-        if (medioAsignado) {
-          this.selectedTechnologicalMeans.push(medioAsignado);
-        }
+
+        // Eliminar el medio asignado de la lista para que desaparezca
+        this.mediosDisponibles = this.mediosDisponibles.filter(m => m.idMean !== medioId);
       },
       (error) => {
         console.error('Error al asignar el medio:', error);
@@ -113,3 +131,4 @@ export class AsignarComponent implements OnInit {
     this.mediosDisponibles = [];
   }
 }
+

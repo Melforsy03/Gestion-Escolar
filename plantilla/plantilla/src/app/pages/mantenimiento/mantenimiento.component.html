@@ -23,36 +23,25 @@
         </div>
 
         <!-- Tabla de Mantenimientos -->
-        <div class="table-responsive">
-          <table class="table">
-            <thead class="text-primary">
-              <tr>
-                <th>Fecha de Mantenimiento</th>
-                <th>Costo</th>
-                <th>ID Medio</th>
-                <th>Tipo de Medio</th>
-                <th>ID Tecnologico</th>
-                <th>ID Auxiliar</th>
-                <th>ID Mantenimiento</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let mantenimiento of mantenimientos">
-                <td>{{ mantenimiento.maintenanceDate }}</td>
-                <td>{{ mantenimiento.cost | currency }}</td>
-                <td>{{ mantenimiento.idMean }}</td>
-                <td>{{ mantenimiento.typeOfMean }}</td>
-                <td>{{ mantenimiento.idTechMean }}</td>
-                <td>{{ mantenimiento.idAuxMean }}</td>
-                <td>{{ mantenimiento.idM }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="table-responsive">
+  <table class="table">
+    <thead class="text-primary">
+      <tr>
+        <th>Fecha de Mantenimiento</th>
+        <th>ID Medio</th>
+        <th>Costo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mantenimiento of mantenimientos">
+        <td>{{ mantenimiento.maintenanceDate }}</td>
+        <td>{{ mantenimiento.idTechMean !== 0 ? mantenimiento.idTechMean : mantenimiento.idAuxMean }}</td>
+        <td>{{ mantenimiento.cost | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
 
 <!-- Modal para agregar mantenimiento -->
 <div class="modal" [ngClass]="{'show d-block': showModal}">
