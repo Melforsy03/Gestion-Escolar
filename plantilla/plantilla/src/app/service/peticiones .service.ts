@@ -35,4 +35,8 @@ export class ProfessorService {
   {
     return this.http.get<any>(`${this.baseUrl}/professor/getGoodProfessors` , { headers: this.getHeaders() });
   }
+  getBadStudents ():Observable<any>
+  {
+    return this.http.get<any>(`${this.baseUrl}/student/getBadStudents` , { headers: this.getHeaders() })
+  }
 }

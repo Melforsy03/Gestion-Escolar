@@ -129,5 +129,33 @@
         </div>
       </div>
     </div>
-  
+  <div *ngIf="selectedFunctionality === 'BadStudents'" class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Lista de Estudiantes con Bajo Rendimiento</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table tablesorter">
+              <thead class="text-primary">
+                <tr>
+                  <th>Curso</th>
+                  <th>Nombre del Estudiante</th>
+                  <th>Evaluación Promedio de Profesores</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let student of badStudents">
+                  <td>{{ student.curso }}</td>
+                  <td>{{ student.studentName }}</td>
+                  <td>{{ student.professorsAvarageEvaluation }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -15,14 +15,15 @@ export class PeticionesComponent implements OnInit {
   maintenances: any = {};  // Para almacenar los mantenimientos
   totalMaintenances: number = 0;  // Para almacenar la cantidad total de mantenimientos
   goodProfesor :any [] = [];
+  badStudents: any[] = [];
   constructor(private professorService: ProfessorService) {}
 
   functionalities = [
     { key: 'especializacionProfesores', label: 'Gestión de Profesores por Especialización' },
     { key: 'mantenimientosRealizados', label: 'Mantenimientos Realizados' } ,
     { key: 'ProfesorBuenaNota', label: 'Profesores con Buena Nota' },
-    { key: 'mantenimientosRealizados', label: 'Mantenimientos Realizados' } ,
-    { key: 'especializacionProfesores', label: 'Gestión de Profesores por Especialización' },
+    { key: 'mantenim', label: 'Mantenimientos Realizados' } ,
+    { key: 'BadStudents', label: 'Estudiantes bajo rendimiento' },
     { key: 'mantenimientosRealizados', label: 'Mantenimientos Realizados' } 
   ];
 
@@ -48,8 +49,12 @@ export class PeticionesComponent implements OnInit {
     if (this.selectedFunctionality === 'mantenimientosRealizados') {
       this.loadMaintenances();
     }
-    if (this.selectedFunctionality === 'ProfesorBuenaNota') {
+    else if (this.selectedFunctionality === 'ProfesorBuenaNota') {
       this.loadGoodProfesor();
+    }
+    else if (this.selectedFunctionality === 'BadStudents')
+    {
+      this.loadBadStuden();
     }
   }
 
@@ -71,4 +76,9 @@ loadGoodProfesor () :void
   objectKeys(obj: any): string[] {
     return Object.keys(obj);
   }
+  loadBadStuden() :void {
+    this.professorService.getBadStudents().subscribe(response => {
+      this.badStudents = response
+    });
+}
 }
