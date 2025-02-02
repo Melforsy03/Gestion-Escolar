@@ -37,7 +37,7 @@ export class RoleService {
           { label: 'Gestionar Calificaciones', path: '/calificacion-estudiantes', icon: 'icon-paper' },
           { label: 'Medios-auxiliares', path: '/medio-auxiliar', icon: 'icon-app' },
           { label: 'Medios Tecnologicos', path: '/medio-tecnologico', icon: 'icon-app' },
-          { label: 'Evaluacion Profesores', path: '/calificaciones-profesores', icon: 'icon-notes' },
+          { label: 'Evaluacion Profesores', path: '/calificacion', icon: 'icon-notes' },
           { label: 'Info Estudiantes', path: '/estudiantes', icon: 'icon-single-copy-04' },
           { label : 'Peticiones BD'  , path : '/peticiones' , icon :'icon-components' },
           { label: 'Info Profesores', path: '/profesor', icon: 'icon-notes' },

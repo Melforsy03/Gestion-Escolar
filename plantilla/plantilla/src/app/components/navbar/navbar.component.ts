@@ -192,4 +192,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
      window.removeEventListener("resize", this.updateColor);
   }
+  redirectToAuth(): void {
+        // Eliminar datos de sesión (ajusta según tu sistema de autenticación)
+      localStorage.removeItem('token');  
+      sessionStorage.clear();  // Limpia la sesión
+    this.router.navigate(['/auth']);
+  }
 }
