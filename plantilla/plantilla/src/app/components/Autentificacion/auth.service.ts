@@ -3,17 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
-import * as CryptoJS from 'crypto-js';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  private isLoggedIn = false;
-  private userRole: string | null = null;
-
+  private isLoggedIn = new BehaviorSubject<boolean>(this.hasSession()); // Detecta si hay sesión guardada
+  isAuthenticated$ = this.isLoggedIn.asObservable(); // Observable para detectar cambios de sesión
+  
   constructor(private http: HttpClient, private router: Router) {}
 
+  private hasSession(): boolean {
+    return !!localStorage.getItem('userSession');
+  }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const userRole = localStorage.getItem('role');
     const expectedRole = route.data['role'];
@@ -46,11 +49,12 @@ export class AuthGuard implements CanActivate {
         const role = response.role;
         const token = response.token;
         localStorage.setItem('role', role);
-        console.log("USer Name:"+credentials.userName);
+       
         localStorage.setItem('userName', credentials.userName);
         localStorage.setItem('token',token);
-        this.isLoggedIn = true;
-        console.log("Rol obtenido:", role);
+        localStorage.setItem('userSession', credentials.userName);
+         this.isLoggedIn.next(true); // Notifica que se ha iniciado sesión
+        
 
       }),
      )
@@ -58,13 +62,14 @@ export class AuthGuard implements CanActivate {
   }
 
   logout() {
-    this.isLoggedIn = false;
-    this.userRole = null;
+    localStorage.removeItem('userSession');
+    this.isLoggedIn.next(false); // Notifica que se ha cerrado sesión
   }
 
   isAuthenticated(): boolean {
-    return this.isLoggedIn;
+    return this.isLoggedIn.getValue();
   }
+
   getToken () : string | null{
     return localStorage.getItem('token');
   }

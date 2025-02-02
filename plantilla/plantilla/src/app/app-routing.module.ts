@@ -31,6 +31,7 @@ const routes: Routes = [
       }
     ]
   },
+  { path: 'login', component: AuthComponent },
   {
     path: "**",
     redirectTo: "solicitar"

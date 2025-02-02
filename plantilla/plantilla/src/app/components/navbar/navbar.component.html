@@ -39,18 +39,11 @@
           
         </li>
         <li class=" nav-item" ngbDropdown>
-          <a
-            class=" nav-link"
-            data-toggle="dropdown"
-            href="javascript:void(0)"
-           
-             ngbDropdownToggle
-    (click)="redirectToAuth()"
-          >
-            <div class=" notification d-none d-lg-block d-xl-block"></div>
-            <i class=" tim-icons icon-button-power"> </i>
-            <p class=" d-lg-none">Log out</p>
+          <a class="nav-link" href="javascript:void(0)" (click)="logout()">
+            <i class="tim-icons icon-button-power"></i>
+            <p class="d-lg-none">Cerrar Sesión</p>
           </a>
+          
         </li>
         <li class=" separator d-lg-none"></li>
       </ul>

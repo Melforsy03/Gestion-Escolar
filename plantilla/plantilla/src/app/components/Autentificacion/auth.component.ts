@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthGuard } from './auth.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -13,7 +13,7 @@ export class AuthComponent {
   loginForm: FormGroup;
   userData = {userName : '', password: '' };
   rememberMe = false;
-  constructor(private fb: FormBuilder, private authGuard: AuthGuard) {
+  constructor(private fb: FormBuilder, private authGuard: AuthGuard ,private router: Router,) {
   }
 
   ngOnInit() {
@@ -53,7 +53,6 @@ export class AuthComponent {
           password: password.value
         };
   
-        console.log('Sending data:', this.userData);
   
         this.authGuard.login(this.userData).subscribe(
           response => console.log(response),
@@ -66,9 +65,11 @@ export class AuthComponent {
         console.error('No se pudo obtener los controles del formulario');
         alert('Ha habido un error al procesar su solicitud.');
       }
+      this.router.navigate(['/inicio']); // Redirige después del login
     } else {
       console.log('Form is invalid:', this.loginForm.errors);
       alert('Por favor, complete todos los campos obligatorios.');
     }
   }
+ 
 }

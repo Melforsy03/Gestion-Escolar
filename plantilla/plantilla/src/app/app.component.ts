@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { AuthGuard } from "./components/Autentificacion/auth.service";
+import { Observable } from "rxjs";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -7,7 +8,10 @@ import { AuthGuard } from "./components/Autentificacion/auth.service";
 })
 export class AppComponent {
   title = "Gestion-Escolar";
-  constructor(public authService: AuthGuard) {}
+  isAuthenticated: Observable<boolean>;
+  constructor(public authService: AuthGuard) {
+    this.isAuthenticated = this.authService.isAuthenticated$;
+  }
 
   logout() {
     this.authService.logout();

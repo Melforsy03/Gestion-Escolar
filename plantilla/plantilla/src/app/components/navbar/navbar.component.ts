@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, OnDestroy } from "@angular/core";
-
+import { AuthGuard } from "../Autentificacion/auth.service";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -15,19 +15,22 @@ export class NavbarComponent implements OnInit, OnDestroy {
   mobile_menu_visible: any = 0;
   private toggleButton: any;
   private sidebarVisible: boolean;
-
+  isAuthenticated: boolean = false;
   public isCollapsed = true;
 
   closeResult: string;
-
   constructor(
     location: Location,
     private element: ElementRef,
     private router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private authService: AuthGuard
   ) {
     this.location = location;
     this.sidebarVisible = false;
+    this.authService.isAuthenticated$.subscribe(status => {
+      this.isAuthenticated = status;
+    });
   }
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
    updateColor = () => {
@@ -192,10 +195,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
      window.removeEventListener("resize", this.updateColor);
   }
-  redirectToAuth(): void {
-        // Eliminar datos de sesión (ajusta según tu sistema de autenticación)
-      localStorage.removeItem('token');  
-      sessionStorage.clear();  // Limpia la sesión
-    this.router.navigate(['/auth']);
+ 
+  logout() {
+    // Llamar al servicio de autenticación para cerrar sesión
+    this.authService.logout();
+
+    // Redirigir al usuario a la página de login
+    this.router.navigate(['/login']);
   }
 }
