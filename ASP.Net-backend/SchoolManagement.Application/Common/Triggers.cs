@@ -24,6 +24,29 @@ namespace SchoolManagement.Application.Common
             _roleManager = roleManager;
         }
 
+        public float GetAverage(List<float> evaluation)
+        {
+            float a = 0;
+            for (int i = 0; i < evaluation.Count; i++)
+            {
+                a += evaluation[i];
+            }
+            if (evaluation.Count == 0) return 0;
+            return a / evaluation.Count();
+
+        }
+        public float GetAverage(List<int> evaluation)
+        {
+            int a = 0;
+            for (int i = 0; i < evaluation.Count; i++)
+            {
+                a += evaluation[i];
+            }
+            if (evaluation.Count == 0) return 0;
+            return a / evaluation.Count();
+
+        }
+
         public async Task<(User, string)> RegisterUser(string Name, string Role)
         {
             string ReducedName = string.Empty;

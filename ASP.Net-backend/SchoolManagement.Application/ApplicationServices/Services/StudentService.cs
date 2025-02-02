@@ -50,7 +50,71 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             answer.Password = User.Item2;
             return answer;
         }
+        public async Task<IEnumerable<StudentInfoBad>> GetBadStudents()
+        {
+            var students = _context.Students.ToList();
+            List<StudentInfoBad> badStudents = new List<StudentInfoBad>();
+            foreach (var student in students)
+            {
+                
+                var studentSubjects = _context.StudentSubjects.Where(ss => ss.IdStud == student.IdStud).ToList();
+                List<Subject> subjects = new List<Subject>();
+                foreach(var ss in studentSubjects)
+                {
+                    var gradesTemp = _context.ProfessorStudentSubjects.Where(pss => pss.IdStudSub == ss.IdStudSub).Select(k => k.StudentGrades).ToList();
+                    float average = _trigger.GetAverage(gradesTemp);
+                    if(average < 50 && average >= 0)
+                    {
+                        subjects.Add(_context.Subjects.Where(s => s.IdSub == ss.IdSub).First());
+                    }
+                }
 
+                if (subjects.Count() >= 2)
+                {
+
+                    List<Professor> checkedProfessors = new List<Professor>();
+
+                    foreach (var s in subjects)
+                    {
+
+                        List<Professor> professors = new List<Professor>();
+                        var professorSubjects = _context.ProfessorSubjects.Where(ps => ps.IdSub == s.IdSub).ToList();
+                        foreach(var ps in professorSubjects)
+                        {
+                            professors.Add(_context.Professors.Where(p => p.IdProf == ps.IdProf).First());
+                        }
+                        foreach (var p in professors)
+                        {
+                            var grades = _context.ProfessorStudentSubjects.Where(pss => pss.IdProf == p.IdProf && pss.IdStudSub == _context.StudentSubjects.Where(ss => ss.IdSub == s.IdSub && ss.IdStud == student.IdStud).First().IdStudSub).Select(g => g.StudentGrades).ToList();
+                            foreach(var g in grades)
+                            {
+                                if(g < 50)
+                                {
+                                    checkedProfessors.Add(p);
+                                }
+                            }
+                        }
+
+                    }
+
+                    List<int> evals = new List<int>();
+                    foreach (var p in checkedProfessors)
+                    {
+                        evals.AddRange(_context.ProfStudSubCourses.Where(pssc => pssc.IdProf == p.IdProf && pssc.IdCourse == student.IdC).Select(g => g.Evaluation).ToList());
+                    }
+
+
+                    StudentInfoBad badStudent = new StudentInfoBad();
+                    badStudent.StudentId = student.IdStud;
+                    badStudent.StudentName = student.NameStud;
+                    badStudent.Curso = _context.Courses.Where(c => c.IdC == student.IdC).First().CourseName;
+                    badStudent.ProfessorsAvarageEvaluation = _trigger.GetAverage(evals);
+
+                    badStudents.Add(badStudent);
+                }
+            }
+            return badStudents;
+        }
         public async Task<StudentResponseDto> DeleteStudentByIdAsync(int studentId)
         {
             var student = _studentRepository.GetById(studentId);

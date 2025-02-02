@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.ClassRoom;
+using SchoolManagement.Application.Common;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Domain.Relations;
 using SchoolManagement.Infrastructure;
@@ -16,14 +18,16 @@ namespace SchoolManagement.Application.ApplicationServices.Services
     public class ClassRoomService : IClassRoomService
     {
         private readonly IClassRoomRepository _classRoomRepository;
-        private readonly Context _context; 
+        private readonly Context _context;
+        private readonly Triggers _trigger;
         private readonly IMapper _mapper;
 
-        public ClassRoomService(Context context, IClassRoomRepository classRoomRepository, IMapper mapper)
+        public ClassRoomService(Triggers trigger, Context context, IClassRoomRepository classRoomRepository, IMapper mapper)
         {
             _classRoomRepository = classRoomRepository;
             _context = context;
             _mapper = mapper;
+            _trigger = trigger;
         }
 
         public async Task<ClassRoomResponseDto> CreateClassRoomAsync(ClassRoomDto classRoomDto)
@@ -72,7 +76,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
                 }
                 if(costs.Count() > 2)
                 {
-                    classRoomTechMeanAmmount.ClassRoomAverageCost.Add(cr.IdClassR, GetAverage(costs));
+                    classRoomTechMeanAmmount.ClassRoomAverageCost.Add(cr.IdClassR, _trigger.GetAverage(costs));
                 }
 
             }
@@ -80,17 +84,6 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             return classRoomTechMeanAmmount;
         }
 
-        private float GetAverage(List<int> evaluation)
-        {
-            int a = 0;
-            for (int i = 0; i < evaluation.Count; i++)
-            {
-                a += evaluation[i];
-            }
-            if (evaluation.Count == 0) return 0;
-            return a / evaluation.Count();
-
-        }
         public async Task<ClassRoomMeanAmmount> GetClassRoomsMeanAmmount()
         {
             var maintenanceTech = _context.Maintenances.Where(m => m.typeOfMean == 0);

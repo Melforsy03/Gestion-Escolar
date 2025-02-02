@@ -40,7 +40,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             foreach(var prof in professors)
             {
                 var evaluation = _context.ProfStudSubCourses.Where(pssc => pssc.IdProf == prof.IdProf).Select(p => p.Evaluation).ToList();
-                if(GetAverage(evaluation) > 8)
+                if(_trigger.GetAverage(evaluation) > 8)
                 {
                     var profSubjects = _context.ProfessorSubjects.Where(ps => ps.IdProf == prof.IdProf);
                     List<string> subjects = new List<string>();
@@ -56,17 +56,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         }
 
-        private float GetAverage(List<int> evaluation)
-        {
-            int a = 0;
-            for(int i = 0; i < evaluation.Count; i++)
-            {
-                a += evaluation[i];
-            }
-            if (evaluation.Count == 0) return 0;
-            return a/evaluation.Count();
-
-        }
+       
         public async Task<ProfessorCreateResponseDto> CreateProfessorAsync(ProfessorDto professorDto)
         {
             var professor = _mapper.Map<Professor>(professorDto);
@@ -128,11 +118,14 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             {
                 return null;
             }
+            if(professor.Salary > professorInfo.professor.Salary) _context.ProfessorsPunishments.Add(new ProfessorPunishment {IdProf = professor.IdProf, Professor = professor, PunishmentDate = DateTime.Now });
+
             _mapper.Map(professorInfo.professor, professor);
             await _professorRepository.UpdateAsync(professor);
             ProfessorResponseDto answer = new ProfessorResponseDto();
             answer.Id = professor.IdProf;
             answer.professor = _mapper.Map<ProfessorDto>(professor);
+            _context.SaveChanges();
             return answer;
 
         }
