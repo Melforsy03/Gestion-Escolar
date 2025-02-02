@@ -18,19 +18,28 @@ export class SolicitudService {
     });
   }
 
-  // Obtener las aulas
+  // Obtener aulas disponibles
   getAvailableClassrooms(): Observable<any> {
     return this.http.get(`${this.apiUrl}/classroom/list`, { headers: this.headers });
   }
 
-  // Obtener los medios tecnológicos disponibles para un aula seleccionada
+  // Obtener medios tecnológicos disponibles
   getTechnologicalMeansForClassroom(classroomId: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/technologicalmeans/list`, { headers: this.headers });
   }
 
-  // Asignar un medio tecnológico a un aula
+  // Asignar medio tecnológico a un aula
   assignTechnologicalMeanToClassroom(data: { idClassRoom: number, idTechMean: number }): Observable<any> {
     return this.http.post(`${this.apiUrl}/classRoomTechMean/create`, data, { headers: this.headers });
   }
-}
 
+  // Obtener medios asignados
+  getAssignedTechMeans(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/classRoomTechMean/list`, { headers: this.headers });
+  }
+
+  // Eliminar asignación de medio
+  deleteAssignedTechMean(idClassRoomTech: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/classRoomTechMean/delete?id=${idClassRoomTech}`, { headers: this.headers });
+  }
+}

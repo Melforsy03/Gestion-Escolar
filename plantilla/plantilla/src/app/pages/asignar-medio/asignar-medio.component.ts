@@ -10,11 +10,12 @@ import { SolicitudService } from 'src/app/service/asignar-medio.service';
 })
 export class AsignarComponent implements OnInit {
   solicitudForm: FormGroup;
-  result: any[] = []; // Para almacenar los resultados del endpoint de aulas
-  mediosDisponibles: any[] = []; // Medios tecnológicos disponibles para un aula seleccionada
-  aulas: any[] = []; // Aulas disponibles
-  selectedClassroom: any = null; // Aula seleccionada
-  selectedTechnologicalMeans: any[] = []; // Medios tecnológicos seleccionados
+  aulas: any[] = [];
+  mediosDisponibles: any[] = [];
+  selectedClassroom: any = null;
+  selectedTechnologicalMeans: any[] = [];
+  assignedTechMeans: any[] = [];
+  showAssignedMeans = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient, private solicitud: SolicitudService) {
     this.solicitudForm = this.fb.group({
@@ -27,15 +28,10 @@ export class AsignarComponent implements OnInit {
     this.cargarAulas();
   }
 
-  // Cargar todas las aulas
   cargarAulas() {
     this.solicitud.getAvailableClassrooms().subscribe(
       (response) => {
-        if (response) {
-          this.aulas = response;
-        } else {
-          console.error('No se pudieron obtener las aulas');
-        }
+        this.aulas = response || [];
       },
       (error) => {
         console.error('Error al cargar aulas:', error);
@@ -43,53 +39,77 @@ export class AsignarComponent implements OnInit {
     );
   }
 
-  // Cuando seleccionamos un aula, obtener los medios tecnológicos disponibles para esa aula
   seleccionarAula(aula: any) {
     this.selectedClassroom = aula;
     this.solicitud.getTechnologicalMeansForClassroom(aula.idClassR).subscribe(
       (response) => {
-        this.mediosDisponibles = response;
+        this.mediosDisponibles = response || [];
       },
       (error) => {
-        console.error('Error al obtener los medios tecnológicos:', error);
+        console.error('Error al obtener medios tecnológicos:', error);
       }
     );
   }
 
-  // Seleccionar un medio tecnológico y asociarlo al aula
   asignarMedio(medioId: number) {
     if (!this.selectedClassroom) {
       alert('Debe seleccionar un aula antes de asignar un medio');
       return;
     }
 
-    // Asegurarse de que los datos se envían correctamente en el formato requerido
     const data = {
-      idClassRoom: this.selectedClassroom.idClassR, // ID del aula seleccionada
-      idTechMean: medioId, // ID del medio seleccionado
+      idClassRoom: this.selectedClassroom.idClassR,
+      idTechMean: medioId,
     };
 
-    console.log('Datos enviados al backend:', data); // Log para verificar lo que se envía
-
-    // Enviar la solicitud con el ID del aula y del medio al backend
     this.solicitud.assignTechnologicalMeanToClassroom(data).subscribe(
       (response) => {
         console.log('Medio asignado exitosamente', response);
-        // Agregar el medio a la lista de medios asignados
-        const medioAsignado = this.mediosDisponibles.find(m => m.id === medioId);
+        const medioAsignado = this.mediosDisponibles.find(m => m.idMean === medioId);
         if (medioAsignado) {
           this.selectedTechnologicalMeans.push(medioAsignado);
         }
       },
       (error) => {
-        console.error('Error al asignar el medio tecnológico:', error);
+        console.error('Error al asignar el medio:', error);
       }
     );
   }
 
-  // Volver a la lista de aulas
+  cargarMediosAsignados() {
+    this.solicitud.getAssignedTechMeans().subscribe(
+      (response) => {
+        this.assignedTechMeans = response || [];
+      },
+      (error) => {
+        console.error('Error al cargar medios asignados:', error);
+      }
+    );
+  }
+
+  eliminarAsignacion(idClassRoomTech: number) {
+    this.solicitud.deleteAssignedTechMean(idClassRoomTech).subscribe(
+      (response) => {
+        console.log('Asignación eliminada exitosamente', response);
+        this.assignedTechMeans = this.assignedTechMeans.filter(m => m.idClassRoomTech !== idClassRoomTech);
+      },
+      (error) => {
+        console.error('Error al eliminar asignación:', error);
+      }
+    );
+  }
+
+  toggleAssignedMeans() {
+    this.showAssignedMeans = !this.showAssignedMeans;
+    this.selectedClassroom = null;
+    if (this.showAssignedMeans) {
+      this.cargarMediosAsignados();
+    }
+  }
+
   volverAulas() {
     this.selectedClassroom = null;
+    this.showAssignedMeans = false;
     this.mediosDisponibles = [];
   }
 }

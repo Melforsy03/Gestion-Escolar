@@ -12,21 +12,22 @@ export class PeticionesComponent implements OnInit {
   professors: any[] = [];
   selectedFunctionality = 'especializacionProfesores';
 
-  maintenances: any = {};  // Para almacenar los mantenimientos
-  totalMaintenances: number = 0;  // Para almacenar la cantidad total de mantenimientos
-  goodProfesor :any [] = [];
+  maintenances: any = {};
+  totalMaintenances: number = 0;
+  goodProfesor: any[] = [];
   badStudents: any[] = [];
-  badProfesro :any [] = [];
   punishedProfessors: any[] = [];
+  maintenanceCosts: any[] = [];
+
   constructor(private professorService: ProfessorService) {}
 
   functionalities = [
     { key: 'especializacionProfesores', label: 'Gestión de Profesores por Especialización' },
-    { key: 'mantenimientosRealizados', label: 'Mantenimientos Realizados' } ,
+    { key: 'mantenimientosRealizados', label: 'Mantenimientos Realizados' },
     { key: 'ProfesorBuenaNota', label: 'Profesores con Buena Nota' },
-    { key: 'mantenim', label: 'Mantenimientos Realizados' } ,
     { key: 'BadStudents', label: 'Estudiantes bajo rendimiento' },
-    { key: 'BadProfessor', label: 'Profesor con mala Nota' } 
+    { key: 'BadProfessor', label: 'Profesor con mala Nota' },
+    { key: 'promedioMantenimiento', label: 'Promedio Mantenimiento' } // Nueva funcionalidad
   ];
 
   ngOnInit(): void {
@@ -50,17 +51,14 @@ export class PeticionesComponent implements OnInit {
   onFunctionalityChange(): void {
     if (this.selectedFunctionality === 'mantenimientosRealizados') {
       this.loadMaintenances();
-    }
-    else if (this.selectedFunctionality === 'ProfesorBuenaNota') {
+    } else if (this.selectedFunctionality === 'ProfesorBuenaNota') {
       this.loadGoodProfesor();
-    }
-    else if (this.selectedFunctionality === 'BadProfessor')
-    {
-     this.loadBadProfesor();
-    }
-    else if (this.selectedFunctionality === 'BadStudents')
-    {
-      this.loadBadStuden();
+    } else if (this.selectedFunctionality === 'BadProfessor') {
+      this.loadBadProfesor();
+    } else if (this.selectedFunctionality === 'BadStudents') {
+      this.loadBadStudents();
+    } else if (this.selectedFunctionality === 'promedioMantenimiento') {
+      this.loadMaintenanceCosts(); // Llamada a la nueva funcionalidad
     }
   }
 
@@ -70,7 +68,7 @@ export class PeticionesComponent implements OnInit {
       this.totalMaintenances = response.ammountOfMaintenance2yo;
     });
   }
-loadGoodProfesor () :void 
+loadGoodProfesor () :void
 {
   this.professorService.getGoodProfessors().subscribe(response => {
     this.goodProfesor = Object.entries(response.professorsAndSubjects).map(
@@ -82,12 +80,12 @@ loadGoodProfesor () :void
   objectKeys(obj: any): string[] {
     return Object.keys(obj);
   }
-  loadBadStuden() :void {
+  loadBadStudents() :void {
     this.professorService.getBadStudents().subscribe(response => {
       this.badStudents = response
     });
 }
-loadBadProfesor() : void 
+loadBadProfesor() : void
 {
   this.professorService.getBadProfesor().subscribe(response => {
     this.punishedProfessors = response.map(professor => ({
@@ -97,5 +95,19 @@ loadBadProfesor() : void
       evals: professor.evals.length > 0 ? professor.evals : [0, 0, 0]
     }));
   });
+
 }
+loadMaintenanceCosts(): void {
+  this.professorService.getMaintenanceCosts().subscribe(response => {
+    console.log("Datos de mantenimiento recibidos:", response); // Log para depuración
+    // Asignamos la propiedad classRoomAverageCost al array de mantenimiento
+    this.maintenanceCosts = Object.entries(response.classRoomAverageCost).map(([idClassR, amount]) => ({
+      idClassR,      // ID del aula
+      amount         // Costo asociado a ese aula
+    }));
+  });
 }
+
+
+}
+

@@ -64,6 +64,36 @@
       </div>
     </div>
   </div>
+<!-- Funcionalidad "Promedio Mantenimiento" -->
+<div *ngIf="selectedFunctionality === 'promedioMantenimiento'" class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Promedio de Mantenimiento</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter">
+            <thead class="text-primary">
+              <tr>
+                <th>Aula</th>
+                <th>Costo de Mantenimiento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Iterando sobre maintenanceCosts -->
+              <tr *ngFor="let cost of maintenanceCosts">
+                <td>{{ cost.idClassR }}</td> <!-- Key es el Id del aula -->
+                <td>{{ cost.amount }}</td>   <!-- Value es el costo promedio -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <!-- Funcionalidad "Mantenimientos Realizados" -->
   <div *ngIf="selectedFunctionality === 'mantenimientosRealizados'" class="row">
@@ -192,7 +222,7 @@
           </div>
         </div>
       </div>
-  
+
   </div>
-  
+
 </div>
