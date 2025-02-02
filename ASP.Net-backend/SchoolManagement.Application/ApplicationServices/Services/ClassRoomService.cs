@@ -76,6 +76,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
                 }
                 if(costs.Count() > 2)
                 {
+                    classRoomTechMeanAmmount.ClassRoomAverageCost = new Dictionary<int, float>();
                     classRoomTechMeanAmmount.ClassRoomAverageCost.Add(cr.IdClassR, _trigger.GetAverage(costs));
                 }
 
