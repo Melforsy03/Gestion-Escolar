@@ -3,13 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthGuard } from 'src/app/components/Autentificacion/auth.service'; // Importa tu servicio de autenticación
 
-export interface Calificacion {
-  profesor: string;
-  estudiante: string;
-  asignatura: string;
-  curso: string;
-  evaluacion: string;
-}
 
 @Injectable({
   providedIn: 'root',

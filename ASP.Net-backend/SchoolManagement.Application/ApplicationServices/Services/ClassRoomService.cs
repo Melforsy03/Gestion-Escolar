@@ -44,7 +44,53 @@ namespace SchoolManagement.Application.ApplicationServices.Services
             await _classRoomRepository.UpdateAsync(classRoom);
             return _mapper.Map<ClassRoomResponseDto>(classRoom);
         }
+        public async Task<ClassRoomTechMeanAmmount> GetClassRoomTechAmmount()
+        {
+            var classRoom = _context.ClassRooms.ToList();
+            ClassRoomTechMeanAmmount classRoomTechMeanAmmount = new ClassRoomTechMeanAmmount();
+            foreach(var cr in classRoom)
+            {
+                var classRoomTechMean = _context.ClassRoomTechMeans.Where(crtm => crtm.IdClassRoom == cr.IdClassR);
+                List<TechnologicalMeans> techMean = new List<TechnologicalMeans>();
+                foreach(var crtm in classRoomTechMean)
+                {
+                    techMean.AddRange(_context.TechnologicalMeans.Where(tm => tm.IdMean == crtm.IdTechMean).ToList());
+                }
+                List<int> costs = new List<int>();
+                foreach(var tm in techMean)
+                {
+                    DateTime dateLimit = DateTime.Now.AddYears(-1);
+                    var maintenances = _context.Maintenances.Where(m => m.IdTechMean == tm.IdMean && m.MaintenanceDate >= DateOnly.FromDateTime(dateLimit)).ToList();
+                    
+                    foreach (var main in maintenances)
+                    {
+                            costs.Add(main.Cost);
+                    }
+                    
+                    
 
+                }
+                if(costs.Count() > 2)
+                {
+                    classRoomTechMeanAmmount.ClassRoomAverageCost.Add(cr.IdClassR, GetAverage(costs));
+                }
+
+            }
+
+            return classRoomTechMeanAmmount;
+        }
+
+        private float GetAverage(List<int> evaluation)
+        {
+            int a = 0;
+            for (int i = 0; i < evaluation.Count; i++)
+            {
+                a += evaluation[i];
+            }
+            if (evaluation.Count == 0) return 0;
+            return a / evaluation.Count();
+
+        }
         public async Task<ClassRoomMeanAmmount> GetClassRoomsMeanAmmount()
         {
             var maintenanceTech = _context.Maintenances.Where(m => m.typeOfMean == 0);
