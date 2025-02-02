@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfessorService } from 'src/app/service/peticiones .service';
-
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 @Component({
   selector: 'app-peticiones',
   templateUrl: './peticiones.component.html',
@@ -18,18 +19,17 @@ export class PeticionesComponent implements OnInit {
   badStudents: any[] = [];
   punishedProfessors: any[] = [];
   maintenanceCosts: any[] = [];
-
+  functionalities = [
+    { key: 'especializacionProfesores', label: 'Gestión de Profesores' },
+    { key: 'promedioMantenimiento', label: 'Promedio de Mantenimiento' },
+    { key: 'mantenimientosRealizados', label: 'Mantenimientos Realizados' },
+    { key: 'ProfesorBuenaNota', label: 'Profesores Destacados' },
+    { key: 'BadStudents', label: 'Estudiantes con Bajo Rendimiento' },
+    { key: 'BadProfessor', label: 'Profesores Sancionados' }
+  ];
   constructor(private professorService: ProfessorService) {}
 
-  functionalities = [
-    { key: 'especializacionProfesores', label: 'Gestión de Profesores por Especialización' },
-    { key: 'mantenimientosRealizados', label: 'Mantenimientos Realizados' },
-    { key: 'ProfesorBuenaNota', label: 'Profesores con Buena Nota' },
-    { key: 'BadStudents', label: 'Estudiantes bajo rendimiento' },
-    { key: 'BadProfessor', label: 'Profesor con mala Nota' },
-    { key: 'promedioMantenimiento', label: 'Promedio Mantenimiento' } // Nueva funcionalidad
-  ];
-
+ 
   ngOnInit(): void {
     this.loadSpecs();
   }
@@ -108,6 +108,80 @@ loadMaintenanceCosts(): void {
   });
 }
 
+exportToPdf(selectedFunctionality: string) {
+  const doc = new jsPDF();
+  let title = '';
+  let columns: string[] = [];
+  let data: any[] = [];
+
+  switch (selectedFunctionality) {
+    case 'especializacionProfesores':
+      title = 'Gestión de Profesores por Especialización';
+      columns = ['Profesor', 'Especialización', 'Aulas y Medios'];
+      data = this.professors.map(prof => [
+        prof.nameProf,
+        prof.spec,
+        JSON.stringify(prof.classRoomsAndMeans) // Para simplificar, se convierte a string
+      ]);
+      break;
+
+    case 'promedioMantenimiento':
+      title = 'Promedio de Mantenimiento';
+      columns = ['Aula', 'Costo de Mantenimiento'];
+      data = this.maintenanceCosts.map(cost => [cost.idClassR, cost.amount]);
+      break;
+
+    case 'mantenimientosRealizados':
+      title = 'Mantenimientos Realizados';
+      columns = ['Aula', 'Medios Auxiliares', 'Medios Tecnológicos', 'Total'];
+      data = Object.keys(this.maintenances).map(key => [
+        key,
+        this.maintenances[key].AuxiliaryMean,
+        this.maintenances[key].TechnologicalMean,
+        this.maintenances[key].AuxiliaryMean + this.maintenances[key].TechnologicalMean
+      ]);
+      break;
+
+    case 'ProfesorBuenaNota':
+      title = 'Profesores Destacados';
+      columns = ['Profesor', 'Materias'];
+      data = this.goodProfesor.map(prof => [prof.name, prof.subjects.join(', ')]);
+      break;
+
+    case 'BadStudents':
+      title = 'Estudiantes con Bajo Rendimiento';
+      columns = ['Curso', 'Estudiante', 'Evaluación Promedio'];
+      data = this.badStudents.map(student => [student.curso, student.studentName, student.professorsAvarageEvaluation]);
+      break;
+
+    case 'BadProfessor':
+      title = 'Profesores Sancionados';
+      columns = ['Profesor', 'Fecha de Sanción', 'Usa Medios Auxiliares', 'Peores Evaluaciones'];
+      data = this.punishedProfessors.map(prof => [
+        prof.nameProf,
+        prof.punishmentDate,
+        prof.UseAuxMean ? 'Sí' : 'No',
+        prof.evals.join(', ')
+      ]);
+      break;
+
+    default:
+      alert('Seleccione una funcionalidad válida');
+      return;
+  }
+
+  // Agregar título
+  doc.text(title, 14, 20);
+  // Generar tabla
+  autoTable(doc, {
+    head: [columns],
+    body: data,
+    startY: 30
+  });
+
+  // Guardar el documento
+  doc.save(`${title}.pdf`);
+}
 
 }
 

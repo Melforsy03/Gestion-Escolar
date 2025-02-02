@@ -5,6 +5,12 @@
         <div class="card-header">
           <h4 class="card-title">Gestión de Funcionalidades</h4>
 
+          <div class="float-start mt-3 ml-3">
+            <button class="custom-button" (click)="exportToPdf(selectedFunctionality)">
+              Exportar Información como PDF
+            </button>
+          </div>
+
           <!-- Selector para elegir funcionalidad -->
           <div class="filter-section mb-3">
             <label for="functionalityFilter">Seleccionar Funcionalidad:</label>
@@ -23,12 +29,6 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Gestión de Profesores por Especialización</h4>
-          <div class="filter-section mb-3">
-            <label for="specFilter">Seleccionar Especialización:</label>
-            <select id="specFilter" class="form-select" [(ngModel)]="selectedSpec" (change)="onSpecChange()">
-              <option *ngFor="let spec of specs" [value]="spec">{{ spec }}</option>
-            </select>
-          </div>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -64,36 +64,35 @@
       </div>
     </div>
   </div>
-<!-- Funcionalidad "Promedio Mantenimiento" -->
-<div *ngIf="selectedFunctionality === 'promedioMantenimiento'" class="row">
-  <div class="col-md-12">
-    <div class="card">
-      <div class="card-header">
-        <h4 class="card-title">Promedio de Mantenimiento</h4>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table tablesorter">
-            <thead class="text-primary">
-              <tr>
-                <th>Aula</th>
-                <th>Costo de Mantenimiento</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Iterando sobre maintenanceCosts -->
-              <tr *ngFor="let cost of maintenanceCosts">
-                <td>{{ cost.idClassR }}</td> <!-- Key es el Id del aula -->
-                <td>{{ cost.amount }}</td>   <!-- Value es el costo promedio -->
-              </tr>
-            </tbody>
-          </table>
+
+  <!-- Funcionalidad "Promedio Mantenimiento" -->
+  <div *ngIf="selectedFunctionality === 'promedioMantenimiento'" class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Promedio de Mantenimiento</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table tablesorter">
+              <thead class="text-primary">
+                <tr>
+                  <th>Aula</th>
+                  <th>Costo de Mantenimiento</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cost of maintenanceCosts">
+                  <td>{{ cost.idClassR }}</td>
+                  <td>{{ cost.amount }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
 
   <!-- Funcionalidad "Mantenimientos Realizados" -->
   <div *ngIf="selectedFunctionality === 'mantenimientosRealizados'" class="row">
@@ -101,7 +100,6 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Mantenimientos Realizados</h4>
-          <p>Cantidad total de mantenimientos 2 años: {{ totalMaintenances }}</p>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -128,37 +126,41 @@
       </div>
     </div>
   </div>
+
+  <!-- Funcionalidad "Profesores Destacados" -->
   <div *ngIf="selectedFunctionality === 'ProfesorBuenaNota'" class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            <h4 class="card-title">Lista de Profesores Destacados</h4>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table tablesorter">
-                <thead class="text-primary">
-                  <tr>
-                    <th>Profesor</th>
-                    <th>Materias</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let professor of goodProfesor">
-                    <td>{{ professor.name }}</td>
-                    <td>
-                      <ul>
-                        <li *ngFor="let subject of professor.subjects">{{ subject }}</li>
-                      </ul>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Lista de Profesores Destacados</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table tablesorter">
+              <thead class="text-primary">
+                <tr>
+                  <th>Profesor</th>
+                  <th>Materias</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let professor of goodProfesor">
+                  <td>{{ professor.name }}</td>
+                  <td>
+                    <ul>
+                      <li *ngFor="let subject of professor.subjects">{{ subject }}</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Funcionalidad "Estudiantes con Bajo Rendimiento" -->
   <div *ngIf="selectedFunctionality === 'BadStudents'" class="row">
     <div class="col-md-12">
       <div class="card">
@@ -171,8 +173,8 @@
               <thead class="text-primary">
                 <tr>
                   <th>Curso</th>
-                  <th>Nombre del Estudiante</th>
-                  <th>Evaluación Promedio de Profesores</th>
+                  <th>Estudiante</th>
+                  <th>Evaluación Promedio</th>
                 </tr>
               </thead>
               <tbody>
@@ -188,41 +190,41 @@
       </div>
     </div>
   </div>
+
+  <!-- Funcionalidad "Profesores Sancionados" -->
   <div *ngIf="selectedFunctionality === 'BadProfessor'" class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            <h4 class="card-title">Lista de Profesores Sancionados</h4>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table tablesorter">
-                <thead class="text-primary">
-                  <tr>
-                    <th>Nombre del Profesor</th>
-                    <th>Fecha de Primera Sanción</th>
-                    <th>Usa Medios Auxiliares</th>
-                    <th>Peores Evaluaciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let professor of punishedProfessors">
-                    <td>{{ professor.nameProf }}</td>
-                    <td>{{ professor.punishmentDate }}</td>
-                    <td>{{ professor.UseAuxMean ? 'Sí' : 'No' }}</td>
-                    <td>
-                      <ul>
-                        <li *ngFor="let eval of professor.evals">{{ eval !== 0 ? eval : 'N/A' }}</li>
-                      </ul>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Lista de Profesores Sancionados</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table tablesorter">
+              <thead class="text-primary">
+                <tr>
+                  <th>Profesor</th>
+                  <th>Fecha de Sanción</th>
+                  <th>Usa Medios Auxiliares</th>
+                  <th>Peores Evaluaciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let professor of punishedProfessors">
+                  <td>{{ professor.nameProf }}</td>
+                  <td>{{ professor.punishmentDate }}</td>
+                  <td>{{ professor.UseAuxMean ? 'Sí' : 'No' }}</td>
+                  <td>
+                    <ul>
+                      <li *ngFor="let eval of professor.evals">{{ eval !== 0 ? eval : 'N/A' }}</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-
+    </div>
   </div>
-
 </div>
