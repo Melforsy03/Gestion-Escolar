@@ -35,6 +35,14 @@ namespace SchoolManagement.Api.Controllers
             var student = await _studentService.ListStudentAsync();
             return Ok(student);
         }
+        [HttpGet]
+        [Route("getBadStudents")]
+        [Authorize(Roles = "Secretary, SuperAdmin, Professor")]
+        public async Task<ActionResult<IEnumerable<Student>>> ListBadStudent()
+        {
+            var badStudents = await _studentService.GetBadStudents();
+            return Ok(badStudents);
+        }
 
         [HttpPut]
         [Route("update")]

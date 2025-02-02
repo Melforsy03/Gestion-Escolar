@@ -26,6 +26,7 @@ namespace SchoolManagement.Infrastructure
         public DbSet<Student> Students { get; set; }
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<TechnologicalMeans> TechnologicalMeans { get; set; }
+        public DbSet<ProfessorPunishment> ProfessorsPunishments { get; set; }
 
         //Relations
         public DbSet<ClassRoomRestriction> ClassRoomRestrictions { get; set; }
@@ -50,6 +51,15 @@ namespace SchoolManagement.Infrastructure
                  entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
                  entity.Property(u => u.PasswordHash).IsRequired();
              });  */
+
+            modelBuilder.Entity<ProfessorPunishment>(entity =>
+            {
+                entity.HasKey(p => p.IdPun);
+                entity.HasOne(p => p.Professor).WithMany()
+                .HasForeignKey(p => p.IdProf);
+                entity.Property(p => p.PunishmentDate).IsRequired();
+
+            });
 
             modelBuilder.Entity<Administrator>(entity =>
             {
