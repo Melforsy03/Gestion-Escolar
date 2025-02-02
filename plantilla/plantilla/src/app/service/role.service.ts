@@ -45,8 +45,9 @@ export class RoleService {
           { label: 'Info Administrador', path: '/info-administrador', icon: 'icon-badge' },
           { label: 'Mantenimiento', path: '/mantenimiento', icon: 'icon-badge' },
           {label : 'CalificacionProf' , path :'/calificacion' , icon: 'icon-badge'},
+          { label: 'Asignar Medio', path: '/asignar-medio', icon: 'icon-badge' },
           { label: 'Info Administrador', path: '/info-administrador', icon: 'icon-badge' },
-   
+
         ],
       },
       {
@@ -55,7 +56,7 @@ export class RoleService {
           { label: 'Evaluacion-Profesor', path: '/evaluaciones', icon: 'bx bx-chalkboard' },
         ],
       },
-      
+
   ];
 
   getMenuItemsForRole(role: string): MenuItem[] {
