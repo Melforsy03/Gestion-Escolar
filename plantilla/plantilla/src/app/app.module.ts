@@ -24,6 +24,7 @@ import { MantenimientoComponent } from "./pages/mantenimiento/mantenimiento.comp
 import { EvaluacionComponent } from './pages/evaluacion/evaluacion.component';
 import { InfoGeneralComponent } from './pages/info-general/info-general.component';
 import { CalificacionComponent } from './pages/calificacion/calificacion.component';
+import { AsignarComponent } from './pages/asignar-medio/asignar-medio.component';
 
 
 
@@ -41,7 +42,7 @@ import { CalificacionComponent } from './pages/calificacion/calificacion.compone
     ReactiveFormsModule,
 
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, EvaluacionComponent , MantenimientoComponent, InfoGeneralComponent, CalificacionComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, EvaluacionComponent , MantenimientoComponent, InfoGeneralComponent, CalificacionComponent, AsignarComponent],
   providers: [EstudentService],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,69 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between">
+          <h4 class="card-title">Asignación de medios a aulas</h4>
+          <button class="custom-butto" *ngIf="selectedClassroom" (click)="volverAulas()">Volver a Aulas</button>
+        </div>
+        <div class="card-body">
+          <!-- Selector de Aulas -->
+          <div *ngIf="!selectedClassroom" class="filter-section mb-3">
+            <h5><strong>Aulas Disponibles</strong></h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Aula</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let aula of aulas">
+                  <td>{{ aula.location }} (ID: {{ aula.idClassR }})</td>
+                  <td>
+                    <button class="btn btn-info" (click)="seleccionarAula(aula)">
+                      Seleccionar
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mostrar Medios Tecnológicos para el Aula Seleccionada -->
+          <div *ngIf="selectedClassroom" class="table-responsive">
+            <h5><strong>Medios Tecnológicos para el Aula "{{ selectedClassroom.location }}"</strong></h5>
+            <table class="table tablesorter">
+              <thead class="text-primary">
+                <tr>
+                  <th>Medio</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let medio of mediosDisponibles">
+                  <td>{{ medio.nameMean }}</td> <!-- Asegúrate de que 'name' es la propiedad correcta -->
+                  <td>
+                    <button class="btn btn-success" (click)="asignarMedio(medio.idMean)">
+                      Asignar
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Medios Asignados -->
+          <div *ngIf="selectedTechnologicalMeans.length > 0">
+            <h4>Medios Asignados</h4>
+            <ul>
+              <li *ngFor="let medio of selectedTechnologicalMeans">
+                {{ medio.nameMean }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

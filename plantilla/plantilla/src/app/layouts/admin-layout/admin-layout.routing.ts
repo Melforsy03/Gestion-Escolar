@@ -12,6 +12,7 @@ import { MediosTecnologicosComponent } from "src/app/pages/medios-tecnologicos/m
 import { EvaluacionComponent } from "src/app/pages/evaluacion/evaluacion.component";
 import { MantenimientoComponent } from "src/app/pages/mantenimiento/mantenimiento.component";
 import { CalificacionComponent } from "src/app/pages/calificacion/calificacion.component";
+import { AsignarComponent } from "src/app/pages/asignar-medio/asignar-medio.component";
 export const AdminLayoutRoutes: Routes = [
   { path: "profesor", component: ProfesorComponent },
   { path: "calificacion-estudiantes", component: InfoEstudiantesComponent },
@@ -24,5 +25,6 @@ export const AdminLayoutRoutes: Routes = [
   { path : "medio-tecnologico" , component :MediosTecnologicosComponent},
   { path :  "evaluaciones" , component :EvaluacionComponent},
   { path : "mantenimiento" , component :MantenimientoComponent},
+  { path : "asignar-medio" , component :AsignarComponent},
   { path : "calificacion" , component :CalificacionComponent}
 ];
