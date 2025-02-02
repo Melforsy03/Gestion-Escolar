@@ -168,7 +168,10 @@ namespace SchoolManagement.Application.ApplicationServices.Services
                
                 
             }
-
+            if(AuxMean.Count() > 0)
+            {
+                professor.UseAuxMean = true;
+            }
             _context.SaveChanges();
 
             return new ClassRoommeanRequestReserveResponseDto { success = true, classRoom = classRoom.IdClassR, message = "Success!", reserveMeans = classRoomMeanRequestReserveDto.reserveMeans, subjectName = classRoomMeanRequestReserveDto.subjectName };

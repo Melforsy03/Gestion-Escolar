@@ -14,6 +14,7 @@ namespace SchoolManagement.Application.ApplicationServices.IServices
         Task<ProfessorResponseDto> UpdateProfessorAsync(ProfessorResponseDto professorInfo);
         Task<IEnumerable<ProfessorResponseDto>> ListProfessorAsync();
         Task<ProfessorsEvaluations> GetGoodProfessors();
+        Task<IEnumerable<ProfessorsBadResponse>> GetBadProfessors();
         Task<ProfessorResponseDto> DeleteProfessorByIdAsync(int professorDto);
     }
 }
