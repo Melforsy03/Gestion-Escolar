@@ -98,4 +98,36 @@
       </div>
     </div>
   </div>
+  <div *ngIf="selectedFunctionality === 'ProfesorBuenaNota'" class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Lista de Profesores Destacados</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table tablesorter">
+                <thead class="text-primary">
+                  <tr>
+                    <th>Profesor</th>
+                    <th>Materias</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let professor of goodProfesor">
+                    <td>{{ professor.name }}</td>
+                    <td>
+                      <ul>
+                        <li *ngFor="let subject of professor.subjects">{{ subject }}</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
 </div>

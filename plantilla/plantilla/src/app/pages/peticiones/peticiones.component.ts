@@ -14,12 +14,16 @@ export class PeticionesComponent implements OnInit {
 
   maintenances: any = {};  // Para almacenar los mantenimientos
   totalMaintenances: number = 0;  // Para almacenar la cantidad total de mantenimientos
-
+  goodProfesor :any [] = [];
   constructor(private professorService: ProfessorService) {}
 
   functionalities = [
     { key: 'especializacionProfesores', label: 'Gestión de Profesores por Especialización' },
-    { key: 'mantenimientosRealizados', label: 'Mantenimientos Realizados' } // Nueva funcionalidad
+    { key: 'mantenimientosRealizados', label: 'Mantenimientos Realizados' } ,
+    { key: 'ProfesorBuenaNota', label: 'Profesores con Buena Nota' },
+    { key: 'mantenimientosRealizados', label: 'Mantenimientos Realizados' } ,
+    { key: 'especializacionProfesores', label: 'Gestión de Profesores por Especialización' },
+    { key: 'mantenimientosRealizados', label: 'Mantenimientos Realizados' } 
   ];
 
   ngOnInit(): void {
@@ -44,6 +48,9 @@ export class PeticionesComponent implements OnInit {
     if (this.selectedFunctionality === 'mantenimientosRealizados') {
       this.loadMaintenances();
     }
+    if (this.selectedFunctionality === 'ProfesorBuenaNota') {
+      this.loadGoodProfesor();
+    }
   }
 
   loadMaintenances(): void {
@@ -51,6 +58,14 @@ export class PeticionesComponent implements OnInit {
       this.maintenances = response.classRoomsAndMeans;
       this.totalMaintenances = response.ammountOfMaintenance2yo;
     });
+  }
+loadGoodProfesor () :void 
+{
+  this.professorService.getGoodProfessors().subscribe(response => {
+    this.goodProfesor = Object.entries(response.professorsAndSubjects).map(
+      ([name, subjects]) => ({ name, subjects })
+    );
+  });
   }
 
   objectKeys(obj: any): string[] {
