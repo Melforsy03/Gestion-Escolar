@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AsignarMedioComponent } from './asignar-medio.component';
+import { AsignarComponent } from './asignar-medio.component';
 
-describe('AsignarMedioComponent', () => {
-  let component: AsignarMedioComponent;
-  let fixture: ComponentFixture<AsignarMedioComponent>;
+describe('AsignarComponent', () => {
+  let component: AsignarComponent;
+  let fixture: ComponentFixture<AsignarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AsignarMedioComponent ]
+      declarations: [ AsignarComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AsignarMedioComponent);
+    fixture = TestBed.createComponent(AsignarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,12 +4,44 @@
       <div class="card">
         <div class="card-header d-flex justify-content-between">
           <h4 class="card-title">Asignación de medios a aulas</h4>
-          <button class="btn btn-secondary" *ngIf="selectedClassroom || showAssignedMeans" (click)="volverAulas()">Regresar</button>
         </div>
         <div class="card-body">
-
+          <!-- Botón para mostrar medios asignados -->
           <button class="btn btn-primary mb-3" (click)="toggleAssignedMeans()">Medios Asignados</button>
 
+          <!-- Mostrar select de aula siempre visible -->
+          <div class="filter-section">
+            <label for="aulaSelect">Seleccionar Aula:</label>
+            <select id="aulaSelect" class="form-select" (change)="seleccionarAula($event.target.value)">
+              <option value="" disabled selected>Selecciona un aula</option>
+              <option *ngFor="let aula of aulas" [value]="aula.idClassR">
+                {{ aula.location }} (ID: {{ aula.idClassR }})
+              </option>
+            </select>
+          </div>
+
+          <!-- Mostrar tabla de medios solo si un aula ha sido seleccionada -->
+          <div *ngIf="selectedClassroom && !showAssignedMeans">
+            <h5><strong>Medios Tecnológicos para "{{ selectedClassroom.location }}"</strong></h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Medio</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let medio of mediosDisponibles">
+                  <td>{{ medio.nameMean }}</td>
+                  <td>
+                    <button class="btn btn-success" (click)="asignarMedio(medio.idMean)">Asignar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mostrar medios asignados cuando se hace clic en el botón -->
           <div *ngIf="showAssignedMeans">
             <h5><strong>Medios Asignados</strong></h5>
             <table class="table">
@@ -33,47 +65,6 @@
               </tbody>
             </table>
           </div>
-
-          <div *ngIf="!selectedClassroom && !showAssignedMeans">
-            <h5><strong>Aulas Disponibles</strong></h5>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Aula</th>
-                  <th>Acción</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let aula of aulas">
-                  <td>{{ aula.location }} (ID: {{ aula.idClassR }})</td>
-                  <td>
-                    <button class="btn btn-info" (click)="seleccionarAula(aula)">Seleccionar</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div *ngIf="selectedClassroom">
-            <h5><strong>Medios Tecnológicos para "{{ selectedClassroom.location }}"</strong></h5>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Medio</th>
-                  <th>Acción</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let medio of mediosDisponibles">
-                  <td>{{ medio.nameMean }}</td>
-                  <td>
-                    <button class="btn btn-success" (click)="asignarMedio(medio.idMean)">Asignar</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
         </div>
       </div>
     </div>

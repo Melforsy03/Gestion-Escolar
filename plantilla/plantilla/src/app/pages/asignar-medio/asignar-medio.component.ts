@@ -39,11 +39,20 @@ export class AsignarComponent implements OnInit {
     );
   }
 
-  seleccionarAula(aula: any) {
-    this.selectedClassroom = aula;
+  seleccionarAula(aulaId: string) {
+    if (!aulaId) {
+      this.selectedClassroom = null;
+      this.mediosDisponibles = [];
+      return;
+    }
+
+    // Convertir el aulaId a número
+    const aulaIdNumber = Number(aulaId);
+
+    this.selectedClassroom = this.aulas.find(aula => aula.idClassR === aulaIdNumber);
 
     // Obtener todos los medios disponibles
-    this.solicitud.getTechnologicalMeansForClassroom(aula.idClassR).subscribe(
+    this.solicitud.getTechnologicalMeansForClassroom(aulaIdNumber).subscribe(
       (response) => {
         const todosLosMedios = response || [];
 
@@ -55,7 +64,7 @@ export class AsignarComponent implements OnInit {
             // Filtrar solo los medios que NO han sido asignados a esta aula
             this.mediosDisponibles = todosLosMedios.filter(medio =>
               !this.assignedTechMeans.some(asignado =>
-                asignado.idTechMean === medio.idMean && asignado.idClassRoom === aula.idClassR
+                asignado.idTechMean === medio.idMean && asignado.idClassRoom === aulaIdNumber
               )
             );
           },
@@ -131,4 +140,3 @@ export class AsignarComponent implements OnInit {
     this.mediosDisponibles = [];
   }
 }
-

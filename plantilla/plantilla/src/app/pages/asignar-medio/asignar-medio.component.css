@@ -1,17 +1,21 @@
-.custom-butto {
-  background-color: #32325d; /* Color de fondo */
-  color: white; /* Color del texto */
-  border: 1px solid #1e1f35; /* Borde */
-  border-radius: 5px; /* Bordes redondeados */
-  padding: 8px 16px; /* Espaciado interno */
-  font-size: 14px; /* Tamaño de la fuente */
-  cursor: pointer; /* Cambia el cursor al pasar el mouse */
-  transition: all 0.3s ease; /* Transición suave para efectos */
-  margin-bottom: 20px;
+/* Estilo general para el select */
+select {
+  background-color: #ffffff; /* Fondo blanco */
+  color: #000000; /* Texto negro */
+  border: 1px solid #ced4da; /* Borde estándar */
+  padding: 10px; /* Relleno para más espacio */
+  font-size: 16px; /* Tamaño de fuente */
+  width: 100%; /* Hace que el select ocupe todo el ancho disponible */
+  margin-bottom: 20px; /* Espacio debajo del select */
 }
-.custom-select option {
-  color: black;
+
+/* Estilo para las opciones del select */
+select option {
+  color: #000000; /* Color del texto de las opciones */
+  background-color: #ffffff; /* Fondo blanco para las opciones */
 }
+
+/* Estilo para la sección de filtro que contiene el select */
 .filter-section {
   margin-bottom: 30px; /* Espacio adicional debajo del filtro */
   display: flex;
@@ -19,17 +23,40 @@
   align-items: center; /* Alinea verticalmente los elementos */
   padding: 15px; /* Espaciado interno */
   border-radius: 8px; /* Bordes redondeados */
-  }
+}
 
-  .filter-section label {
-    font-weight: bold;
-    margin-right: 10px; /* Espacio entre el label y el select */
-  }
+/* Estilo del label de la sección de filtro */
+.filter-section label {
+  font-weight: bold;
+  margin-right: 10px; /* Espacio entre el label y el select */
+}
 
-  .filter-section .form-select {
-    width: 220px; /* Aumenta el ancho de los selectores */
-    padding: 8px;
-    border-radius: 5px; /* Bordes redondeados */
-    border: 1px solid #ccc; /* Borde sutil */
-    font-size: 14px;
-  }
+/* Estilo para el botón de "Medios Asignados" */
+button.btn.btn-primary.mb-3 {
+  background-color: #32325d;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+button.btn.btn-primary.mb-3:hover {
+  background-color: #1e1f35;
+}
+
+/* Estilo para la tabla de medios */
+table.table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Estilo de la tabla de medios asignados */
+table.table th,
+table.table td {
+  text-align: center;
+}
+
