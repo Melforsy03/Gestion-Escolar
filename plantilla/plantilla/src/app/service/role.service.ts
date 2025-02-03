@@ -47,6 +47,7 @@ export class RoleService {
           {label : 'CalificacionProf' , path :'/calificacion' , icon: 'icon-badge'},
           { label: 'Asignar Medio', path: '/asignar-medio', icon: 'icon-badge' },
           { label: 'Asignar Asignatura', path: '/asignatura-profesor', icon: 'icon-badge' },
+          { label: 'Ausencias', path: '/ausencias', icon: 'icon-badge' },
           { label: 'Info Administrador', path: '/info-administrador', icon: 'icon-badge' },
 
         ],
