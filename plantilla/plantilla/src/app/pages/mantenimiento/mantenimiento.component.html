@@ -53,16 +53,22 @@
       </div>
       <div class="modal-body">
         <form>
+          <!-- Fecha -->
+          <h6>Fecha</h6>
           <div class="form-group">
             <label>Fecha de Mantenimiento:</label>
             <input type="date" class="form-control" [(ngModel)]="newMantenimiento.maintenanceDate" name="fecha">
           </div>
 
+          <!-- ID -->
+          <h6>ID</h6>
           <div class="form-group">
-            <label>Costo:</label>
-            <input type="number" class="form-control" [(ngModel)]="newMantenimiento.cost" name="costo">
+            <label>ID del Medio:</label>
+            <input type="number" class="form-control" [(ngModel)]="newMantenimiento.idMean" name="idMedio">
           </div>
 
+          <!-- Tipo -->
+          <h6>Tipo</h6>
           <div class="form-group">
             <label>Tipo de Medio:</label>
             <select class="form-control" [(ngModel)]="newMantenimiento.typeOfMean" name="tipo" (change)="onTipoMedioChange()">
@@ -71,9 +77,11 @@
             </select>
           </div>
 
+          <!-- Costo -->
+          <h6>Costo</h6>
           <div class="form-group">
-            <label>ID del Medio:</label>
-            <input type="number" class="form-control" [(ngModel)]="newMantenimiento.idMean" name="idMedio">
+            <label>Costo:</label>
+            <input type="number" class="form-control" [(ngModel)]="newMantenimiento.cost" name="costo">
           </div>
         </form>
       </div>
