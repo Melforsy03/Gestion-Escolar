@@ -8,6 +8,6 @@ namespace SchoolManagement.Application.ApplicationServices.Maps_Dto.Notification
 {
     public class NotificationResponse
     {
-        public string message { get; set; }
+        public List<string> messages { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.Course;
+using SchoolManagement.Application.Common;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Infrastructure.DataAccess.IRepository;
 using SchoolManagement.Infrastructure.DataAccess.Repository;
@@ -15,11 +16,13 @@ namespace SchoolManagement.Application.ApplicationServices.Services
     public class CourseService : ICourseService
     {
         private readonly ICourseRepository _courseRepository;
+        private readonly Triggers _trigger;
         private readonly IMapper _mapper;
 
-        public CourseService(ICourseRepository courseRepository, IMapper mapper)
+        public CourseService(Triggers trigger, ICourseRepository courseRepository, IMapper mapper)
         {
             _courseRepository = courseRepository;
+            _trigger = trigger;
             _mapper = mapper;
         }
 
@@ -27,6 +30,8 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         {
             var course = _mapper.Map<Domain.Entities.Course>(courseDto);
             var savedCourse = await _courseRepository.CreateAsync(course);
+            _trigger.CheckBadProfessors(savedCourse.IdC);
+            _trigger.CheckBadMeans();
             return _mapper.Map<CourseResponseDto>(savedCourse);
         }
 
