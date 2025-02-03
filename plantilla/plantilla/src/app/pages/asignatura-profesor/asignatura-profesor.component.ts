@@ -10,13 +10,13 @@ import { Solicitud } from 'src/app/service/asignatura-profesor.service';
 })
 export class AsignaturaPComponent implements OnInit {
   solicitudForm: FormGroup;
-  subjects: any[] = [];
-  professors: any[] = [];
-  selectedSubject: any = null;
-  professorSubjectAssignments: any[] = [];
-  showAssignedSubjects = false;
-  filteredSubjects: any[] = [];
-  searchTerm: string = '';
+  subjects: any[] = []; // Lista de asignaturas disponibles
+  professors: any[] = []; // Lista de profesores disponibles
+  selectedSubject: any = null; // Asignatura seleccionada
+  professorSubjectAssignments: any[] = []; // Lista de asignaciones de profesores a asignaturas
+  showAssignedSubjects = false; // Controla la vista de asignaciones
+  filteredSubjects: any[] = []; // Lista filtrada de asignaturas
+  searchTerm: string = ''; // Término de búsqueda para filtrar asignaturas
 
   constructor(private fb: FormBuilder, private http: HttpClient, private solicitud: Solicitud) {
     this.solicitudForm = this.fb.group({
@@ -24,15 +24,22 @@ export class AsignaturaPComponent implements OnInit {
     });
   }
 
+  /**
+   * Se ejecuta al iniciar el componente.
+   * Carga las asignaturas disponibles.
+   */
   ngOnInit(): void {
     this.cargarAsignaturas();
   }
 
+  /**
+   * Obtiene la lista de asignaturas desde el servicio y las almacena en `subjects` y `filteredSubjects`.
+   */
   cargarAsignaturas() {
     this.solicitud.getSubjects().subscribe(
       (response) => {
         this.subjects = response || [];
-        this.filteredSubjects = this.subjects; // Inicializar con todas las asignaturas
+        this.filteredSubjects = this.subjects; // Inicializa la lista filtrada con todas las asignaturas
       },
       (error) => {
         console.error('Error al cargar asignaturas:', error);
@@ -40,12 +47,19 @@ export class AsignaturaPComponent implements OnInit {
     );
   }
 
+  /**
+   * Filtra la lista de asignaturas en función del término de búsqueda ingresado por el usuario.
+   */
   filterSubjects() {
     this.filteredSubjects = this.subjects.filter(subject =>
       subject.nameSub.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
 
+  /**
+   * Selecciona una asignatura y obtiene los profesores disponibles para asignarla.
+   * @param subjectId ID de la asignatura seleccionada
+   */
   seleccionarAsignatura(subjectId: string) {
     if (!subjectId) {
       this.selectedSubject = null;
@@ -56,9 +70,10 @@ export class AsignaturaPComponent implements OnInit {
     const subjectIdNumber = Number(subjectId);
     this.selectedSubject = this.subjects.find(subject => subject.idSub === subjectIdNumber);
 
+    // Obtiene la lista de profesores disponibles para la asignatura seleccionada
     this.solicitud.getProfessorsForSubject(subjectIdNumber).subscribe(
       (response) => {
-        // Filtrar los profesores ya asignados para que no aparezcan en la lista
+        // Filtra los profesores ya asignados para que no aparezcan en la lista de selección
         this.professors = response.filter(professor =>
           !this.professorSubjectAssignments.some(assignment =>
             assignment.professorId === professor.id && assignment.subjectId === subjectIdNumber
@@ -70,6 +85,10 @@ export class AsignaturaPComponent implements OnInit {
     );
   }
 
+  /**
+   * Asigna un profesor a una asignatura.
+   * @param professorId ID del profesor a asignar
+   */
   asignarProfesor(professorId: number) {
     if (!this.selectedSubject) {
       alert('Debe seleccionar una asignatura antes de asignar un profesor');
@@ -84,7 +103,8 @@ export class AsignaturaPComponent implements OnInit {
     this.solicitud.assignProfessorToSubject(data).subscribe(
       (response) => {
         console.log('Profesor asignado exitosamente', response);
-        // Actualizar la lista de asignaciones
+
+        // Agrega la nueva asignación a la lista de asignaciones locales
         this.professorSubjectAssignments.push({
           professorId: professorId,
           subjectId: this.selectedSubject.idSub,
@@ -92,7 +112,7 @@ export class AsignaturaPComponent implements OnInit {
           subjectName: this.selectedSubject.nameSub
         });
 
-        // Filtrar nuevamente los profesores disponibles
+        // Recargar la lista de profesores disponibles
         this.seleccionarAsignatura(this.selectedSubject.idSub);
       },
       (error) => {
@@ -101,6 +121,9 @@ export class AsignaturaPComponent implements OnInit {
     );
   }
 
+  /**
+   * Carga todas las asignaciones de profesores a asignaturas.
+   */
   cargarAsignaciones() {
     this.solicitud.getProfessorSubjectAssignments().subscribe(
       (response) => {
@@ -112,16 +135,21 @@ export class AsignaturaPComponent implements OnInit {
     );
   }
 
+  /**
+   * Elimina una asignación de profesor a una asignatura.
+   * @param idProfSub ID de la asignación a eliminar
+   */
   eliminarAsignacion(idProfSub: number) {
     this.solicitud.deleteProfessorSubjectAssignment(idProfSub).subscribe(
       (response) => {
         console.log('Asignación eliminada exitosamente', response);
-        // Eliminar de la lista de asignaciones locales
+
+        // Elimina la asignación de la lista local
         this.professorSubjectAssignments = this.professorSubjectAssignments.filter(
           (assignment) => assignment.idProfSub !== idProfSub
         );
 
-        // Filtrar nuevamente los profesores disponibles
+        // Recargar la lista de profesores disponibles
         this.seleccionarAsignatura(this.selectedSubject.idSub);
       },
       (error) => {
@@ -130,6 +158,10 @@ export class AsignaturaPComponent implements OnInit {
     );
   }
 
+  /**
+   * Alterna la visualización de la lista de asignaciones.
+   * Si se activa, se cargan las asignaciones existentes.
+   */
   toggleAssignedSubjects() {
     this.showAssignedSubjects = !this.showAssignedSubjects;
     this.selectedSubject = null;
