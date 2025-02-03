@@ -3,6 +3,7 @@ import { AuthGuard } from "../Autentificacion/auth.service";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-navbar",
@@ -17,14 +18,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private sidebarVisible: boolean;
   isAuthenticated: boolean = false;
   public isCollapsed = true;
-
+  notifications: string[] = [];
+  staticAlertClosed2 = true; 
   closeResult: string;
   constructor(
     location: Location,
     private element: ElementRef,
     private router: Router,
     private modalService: NgbModal,
-    private authService: AuthGuard
+    private authService: AuthGuard,
+    private http: HttpClient
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -55,8 +58,26 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.mobile_menu_visible = 0;
       }
     });
+    this.fetchNotifications();
+  }
+  fetchNotifications() {
+    this.http.get<string[]>('https://localhost:5164/notifiction/get') 
+      .subscribe(
+        (data) => {
+          this.notifications = data; 
+        },
+        (error) => {
+          console.error('Error obteniendo notificaciones:', error);
+        }
+      );
+  }
+   showAlert() {
+    this.staticAlertClosed2 = false;
   }
 
+  closeAlert() {
+    this.staticAlertClosed2 = true;
+  }
   collapse() {
     this.isCollapsed = !this.isCollapsed;
     const navbar = document.getElementsByTagName("nav")[0];
