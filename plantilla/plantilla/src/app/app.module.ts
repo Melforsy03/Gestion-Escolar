@@ -26,6 +26,7 @@ import { InfoGeneralComponent } from './pages/info-general/info-general.componen
 import { CalificacionComponent } from './pages/calificacion/calificacion.component';
 import { AsignarComponent } from './pages/asignar-medio/asignar-medio.component';
 import { AsignaturaPComponent } from './pages/asignatura-profesor/asignatura-profesor.component';
+import { AusenciasComponent } from './pages/ausencias/ausencias.component';
 
 
 
@@ -43,7 +44,7 @@ import { AsignaturaPComponent } from './pages/asignatura-profesor/asignatura-pro
     ReactiveFormsModule,
 
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, EvaluacionComponent , MantenimientoComponent, InfoGeneralComponent, CalificacionComponent, AsignarComponent, AsignaturaPComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, EvaluacionComponent , MantenimientoComponent, InfoGeneralComponent, CalificacionComponent, AsignarComponent, AsignaturaPComponent, AusenciasComponent],
   providers: [EstudentService],
   bootstrap: [AppComponent]
 })
