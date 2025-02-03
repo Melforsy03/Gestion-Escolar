@@ -14,7 +14,6 @@ namespace SchoolManagement.Domain.Entities
         public bool isDeleted { get; set; } = false;
         public string NameMean {  get; set; } = string.Empty;
         public string State { get; set; } = string.Empty;
-        public int IdMaintenance { get; set; } = 0; 
         public List<Maintenance> maintenances { get; set; } = new List<Maintenance>();
     }
 }
