@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.Professor;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.Secretary;
 using SchoolManagement.Application.Common;
 using SchoolManagement.Domain.Entities;
@@ -29,6 +30,8 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<SecretaryCreateResponseDto> CreateSecretaryAsync(SecretaryDto secretaryDto)
         {
+
+            if (!_trigger.CheckName(secretaryDto.NameS)) return null;
             // Mapea el DTO de secretaria a la entidad de dominio Secretary
             var secretary = _mapper.Map<Secretary>(secretaryDto);
 
@@ -103,6 +106,8 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<SecretaryResponseDto> UpdateSecretaryAsync(SecretaryResponseDto secretaryInfo)
         {
+
+            if (!_trigger.CheckName(secretaryInfo.secretary.NameS)) return null;
             // Obtiene la secretaria por su ID desde el DTO
             var secretary = _secretaryRepository.GetById(secretaryInfo.Id);
 

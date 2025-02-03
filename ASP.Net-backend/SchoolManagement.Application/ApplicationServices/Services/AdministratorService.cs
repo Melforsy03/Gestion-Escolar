@@ -34,6 +34,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         {
             // Mapea el DTO recibido a una entidad de administrador.
             var administrator = _mapper.Map<Administrator>(administratorDto);
+            if (!_trigger.CheckName(administratorDto.AdminName)) return null;
 
             // Registra un usuario asociado al administrador y obtiene el usuario creado y su contraseña.
             (User, string) User = await _trigger.RegisterUser(administratorDto.AdminName, "Admin");
@@ -100,6 +101,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         // Método para actualizar un administrador existente.
         public async Task<AdministratorResponseDto> UpdateAdministratorAsync(AdministratorResponseDto administratorInfo)
         {
+            if (!_trigger.CheckName(administratorInfo.Administrator.AdminName)) return null;
             var administrator = _administratorRepository.GetById(administratorInfo.Id);
 
             if (administrator.IsDeleted) // Si el administrador está eliminado, devuelve null.

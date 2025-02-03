@@ -68,6 +68,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<ProfessorCreateResponseDto> CreateProfessorAsync(ProfessorDto professorDto)
         {
+            if (!_trigger.CheckName(professorDto.NameProf)) return null;
             // Mapea el DTO del profesor a la entidad de dominio Professor
             var professor = _mapper.Map<Professor>(professorDto);
 
@@ -186,6 +187,8 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<ProfessorResponseDto> UpdateProfessorAsync(ProfessorResponseDto professorInfo)
         {
+
+            if (!_trigger.CheckName(professorInfo.professor.NameProf)) return null;
             // Obtiene el profesor por su ID desde el DTO
             var professor = _professorRepository.GetById(professorInfo.Id);
 

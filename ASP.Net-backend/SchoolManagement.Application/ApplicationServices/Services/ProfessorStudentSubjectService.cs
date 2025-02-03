@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfessorStudentSubject;
+using SchoolManagement.Application.Common;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Domain.Relations;
 using SchoolManagement.Domain.Role;
@@ -22,10 +23,12 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         private readonly ISubjectRepository _subjectRepository;
         private readonly Context _context;
         private readonly IMapper _mapper;
+        private readonly Triggers _trigger;
 
-        public ProfessorStudentSubjectService(Context context, ISubjectRepository subjectRepository, IProfessorStudentSubjectRepository professorStudentSubjectRepository, IProfessorRepository professorRepository, IStudentSubjectRepository studentSubjectRepository,IMapper mapper)
+        public ProfessorStudentSubjectService(Triggers trigger, Context context, ISubjectRepository subjectRepository, IProfessorStudentSubjectRepository professorStudentSubjectRepository, IProfessorRepository professorRepository, IStudentSubjectRepository studentSubjectRepository,IMapper mapper)
         {
             _subjectRepository = subjectRepository;
+            _trigger = trigger;
             _context = context;
             _professorStudentSubjectRepository = professorStudentSubjectRepository;
             _professorRepository = professorRepository;
@@ -35,6 +38,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<ProfessorStudentSubjectResponseDto> CreateProfessorStudentSubjectAsync(ProfessorStudentSubjectDto professorStudentSubjectDto)
         {
+            if (!_trigger.CheckRange(0, 100, professorStudentSubjectDto.StudentGrades)) return null;
             // Obtiene el usuario basado en el nombre de usuario proporcionado en el DTO
             var user = _context.Users.Where(u => u.UserName == professorStudentSubjectDto.UserName).FirstOrDefault();
 
@@ -177,6 +181,8 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<bool> UpdateProfessorStudentSubjectAsync(int profStudSubID, float studentGrade)
         {
+
+            if (!_trigger.CheckRange(0, 100, studentGrade)) return false;
             // Busca la relación entre profesor y asignatura del estudiante por su ID 
             var profStudSub = await _context.ProfessorStudentSubjects.FindAsync(profStudSubID);
 

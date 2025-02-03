@@ -35,6 +35,8 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<StudentCreateResponseDto> CreateStudentAsync(StudentDto studentDto)
         {
+
+            if (!_trigger.CheckName(studentDto.NameStud) || !_trigger.CheckRange(0,100, studentDto.Age)) return null;
             // Mapea el DTO de estudiante a la entidad de dominio Student
             var student = _mapper.Map<Student>(studentDto);
 
@@ -186,6 +188,8 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<StudentResponseDto> UpdateStudentAsync(StudentResponseDto studentInfo)
         {
+
+            if (!_trigger.CheckName(studentInfo.student.NameStud) || !_trigger.CheckRange(0,100, studentInfo.student.Age)) return null;
             var student = _studentRepository.GetById(studentInfo.Id);  // Obtiene al estudiante por su ID desde el DTO
 
             if (student.IsDeleted)

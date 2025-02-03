@@ -227,5 +227,36 @@ namespace SchoolManagement.Application.Common
 
             return new string(passwordChars.OrderBy(x => random.Next()).ToArray()); // Mezclar y retornar la contraseña generada.
         }
+
+        public  bool CheckName(string Name)
+        {
+            foreach (char c in Name)
+            {
+                if (!char.IsLetter(c)) // Si encuentra un carácter que no es letra, retorna false
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public  bool CheckRange(int start, int end, int input)
+        {
+            if(input > start && input <= end)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        public bool CheckRange(int start, int end, float input)
+        {
+            if (input > start && input <= end)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
