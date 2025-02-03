@@ -46,6 +46,7 @@ export class RoleService {
           { label: 'Mantenimiento', path: '/mantenimiento', icon: 'icon-badge' },
           {label : 'CalificacionProf' , path :'/calificacion' , icon: 'icon-badge'},
           { label: 'Asignar Medio', path: '/asignar-medio', icon: 'icon-badge' },
+          { label: 'Asignar Asignatura', path: '/asignatura-profesor', icon: 'icon-badge' },
           { label: 'Info Administrador', path: '/info-administrador', icon: 'icon-badge' },
 
         ],

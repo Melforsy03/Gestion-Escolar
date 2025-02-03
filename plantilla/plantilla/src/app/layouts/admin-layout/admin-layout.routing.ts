@@ -1,4 +1,5 @@
 
+
 import { Routes } from "@angular/router";
 import { ProfesorComponent } from "../../pages/profesor-info/profesor-info.component";
 import { InfoEstudiantesComponent } from "../../pages/notas/info-estudiantes.component";
@@ -13,6 +14,7 @@ import { EvaluacionComponent } from "src/app/pages/evaluacion/evaluacion.compone
 import { MantenimientoComponent } from "src/app/pages/mantenimiento/mantenimiento.component";
 import { CalificacionComponent } from "src/app/pages/calificacion/calificacion.component";
 import { AsignarComponent } from "src/app/pages/asignar-medio/asignar-medio.component";
+import { AsignaturaPComponent } from "src/app/pages/asignatura-profesor/asignatura-profesor.component";
 export const AdminLayoutRoutes: Routes = [
   { path: "profesor", component: ProfesorComponent },
   { path: "calificacion-estudiantes", component: InfoEstudiantesComponent },
@@ -27,4 +29,5 @@ export const AdminLayoutRoutes: Routes = [
   { path : "mantenimiento" , component :MantenimientoComponent},
   { path : "calificacion" , component :CalificacionComponent},
   { path : "asignar-medio" , component :AsignarComponent},
+  { path : "asignatura-profesor" , component :AsignaturaPComponent},
 ];
