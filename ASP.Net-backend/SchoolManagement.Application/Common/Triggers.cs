@@ -232,10 +232,12 @@ namespace SchoolManagement.Application.Common
         {
             foreach (char c in Name)
             {
-                if (!char.IsLetter(c)) // Si encuentra un carácter que no es letra, retorna false
+                if (!(char.IsLetter(c) || c == ' ')) // Si encuentra un carácter que no es letra, retorna false
                 {
                     return false;
                 }
+
+
             }
             return true;
         }

@@ -15,7 +15,11 @@ import { MantenimientoComponent } from "src/app/pages/mantenimiento/mantenimient
 import { CalificacionComponent } from "src/app/pages/calificacion/calificacion.component";
 import { AsignarComponent } from "src/app/pages/asignar-medio/asignar-medio.component";
 import { AsignaturaPComponent } from "src/app/pages/asignatura-profesor/asignatura-profesor.component";
+<<<<<<< HEAD
 import { ClassroomComponent } from "src/app/pages/aulas/aulas.component";
+=======
+import { AusenciasComponent } from "src/app/pages/ausencias/ausencias.component";
+>>>>>>> e70cc6eb39888607a4766a6463e405fcf5818bca
 export const AdminLayoutRoutes: Routes = [
   { path: "profesor", component: ProfesorComponent },
   { path: "calificacion-estudiantes", component: InfoEstudiantesComponent },
@@ -31,5 +35,9 @@ export const AdminLayoutRoutes: Routes = [
   { path : "calificacion" , component :CalificacionComponent},
   { path : "asignar-medio" , component :AsignarComponent},
   { path : "asignatura-profesor" , component :AsignaturaPComponent},
+<<<<<<< HEAD
   { path : "aulas" , component :ClassroomComponent}
+=======
+  { path : "ausencias" , component :AusenciasComponent},
+>>>>>>> e70cc6eb39888607a4766a6463e405fcf5818bca
 ];
