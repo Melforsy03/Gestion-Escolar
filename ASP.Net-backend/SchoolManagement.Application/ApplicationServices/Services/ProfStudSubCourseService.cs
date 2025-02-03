@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using SchoolManagement.Application.ApplicationServices.IServices;
 using SchoolManagement.Application.ApplicationServices.Maps_Dto.ProfStudSubCourse;
+using SchoolManagement.Application.ApplicationServices.Maps_Dto.Student;
+using SchoolManagement.Application.Common;
 using SchoolManagement.Domain.Entities;
 using SchoolManagement.Domain.Relations;
 using SchoolManagement.Infrastructure;
@@ -20,11 +22,13 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         private readonly IProfessorRepository _professorRepository;
         private readonly IStudentRepository _studentRepository;
         private readonly ISubjectRepository _subjectRepository;
+        private readonly Triggers _trigger;
         private readonly Context _context;
         private readonly IMapper _mapper;
 
-        public ProfStudSubCourseService(Context context, IProfStudSubCourseRepository profStudSubCourseRepository, ISubjectRepository subjectRepository, IStudentRepository studentRepository, IProfessorRepository professorRepository, ICourseRepository courseRepository, IMapper mapper)
+        public ProfStudSubCourseService(Triggers trigger, Context context, IProfStudSubCourseRepository profStudSubCourseRepository, ISubjectRepository subjectRepository, IStudentRepository studentRepository, IProfessorRepository professorRepository, ICourseRepository courseRepository, IMapper mapper)
         {
+            _trigger = trigger; 
             _profStudSubCourseRepository = profStudSubCourseRepository;
             _courseRepository = courseRepository;
             _studentRepository = studentRepository;
@@ -36,6 +40,8 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
         public async Task<ProfStudSubCourseResponseDto> CreateProfStudSubCourseAsync(ProfStudSubCourseDto profStudSubCourseDto)
         {
+            if (!_trigger.CheckRange(0, 10, profStudSubCourseDto.Evaluation)) return null;
+
             var profStudSubCourse = _mapper.Map<ProfStudSubCourse>(profStudSubCourseDto);
             profStudSubCourse.Course = await _courseRepository.GetByIdAsync(profStudSubCourseDto.IdCourse);
             profStudSubCourse.Professor = await _professorRepository.GetByIdAsync(profStudSubCourseDto.IdProf);
@@ -108,6 +114,12 @@ namespace SchoolManagement.Application.ApplicationServices.Services
 
                 for (int j = 0; j < professorSubjects.Count(); j++)
                 {
+                    var check = _context.ProfStudSubCourses.Where(pssc => pssc.IdProf == professorSubjects[j].IdProf 
+                    && pssc.IdStud == student.IdStud 
+                    && pssc.IdCourse == _context.Courses.OrderByDescending(k => k.IdC).FirstOrDefault().IdC).ToList();
+
+                    if (check.Count() > 0) continue;
+
                     ProfStudSubCourseConsultResponseDto temp = new ProfStudSubCourseConsultResponseDto();
                    
                     temp.IdSub = professorSubjects[j].IdSub;
@@ -126,6 +138,7 @@ namespace SchoolManagement.Application.ApplicationServices.Services
         }
         public async Task<ProfStudSubCourseResponseDto> UpdateProfStudSubCourseAsync(ProfStudSubCourseResponseDto profStudSubCourseDto)
         {
+            if (!_trigger.CheckRange(0, 100, profStudSubCourseDto.Evaluation)) return null;
             var profStudSubCourse = await _profStudSubCourseRepository.GetByIdAsync(profStudSubCourseDto.IdProfStudSubCourse);
             _mapper.Map(profStudSubCourseDto, profStudSubCourse);
             await _profStudSubCourseRepository.UpdateAsync(profStudSubCourse);
