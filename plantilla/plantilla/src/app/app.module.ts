@@ -26,14 +26,8 @@ import { InfoGeneralComponent } from './pages/info-general/info-general.componen
 import { CalificacionComponent } from './pages/calificacion/calificacion.component';
 import { AsignarComponent } from './pages/asignar-medio/asignar-medio.component';
 import { AsignaturaPComponent } from './pages/asignatura-profesor/asignatura-profesor.component';
-<<<<<<< HEAD
 import { ClassroomComponent } from "./pages/aulas/aulas.component";
-=======
-import { AusenciasComponent } from './pages/ausencias/ausencias.component';
->>>>>>> e70cc6eb39888607a4766a6463e405fcf5818bca
-
-
-
+import { AusenciasComponent } from "./pages/ausencias/ausencias.component";
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -48,11 +42,7 @@ import { AusenciasComponent } from './pages/ausencias/ausencias.component';
     ReactiveFormsModule,
 
   ],
-<<<<<<< HEAD
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, EvaluacionComponent , MantenimientoComponent, InfoGeneralComponent, CalificacionComponent, AsignarComponent, AsignaturaPComponent, ClassroomComponent],
-=======
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, EvaluacionComponent , MantenimientoComponent, InfoGeneralComponent, CalificacionComponent, AsignarComponent, AsignaturaPComponent, AusenciasComponent],
->>>>>>> e70cc6eb39888607a4766a6463e405fcf5818bca
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,AuthComponent, SolicitudComponent, MedioAuxiliarComponent, PeticionesComponent, InfoSecretariaComponent, InfoAdministradorComponent, MediosTecnologicosComponent, EvaluacionComponent , MantenimientoComponent, InfoGeneralComponent, CalificacionComponent, AsignarComponent, AsignaturaPComponent, ClassroomComponent ,AusenciasComponent],
   providers: [EstudentService],
   bootstrap: [AppComponent]
 })
