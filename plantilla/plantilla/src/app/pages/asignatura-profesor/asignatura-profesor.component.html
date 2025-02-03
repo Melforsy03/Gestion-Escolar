@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
           <!-- Botón para mostrar asignaciones de profesores -->
-          <button class="btn btn-primary mb-3" (click)="toggleAssignedSubjects()">Asignaciones de Profesores</button>
+          <button class="custom-button" (click)="toggleAssignedSubjects()">Asignaciones de Profesores</button>
 
           <!-- Mostrar select de asignatura siempre visible -->
           <div class="filter-section">
@@ -16,7 +16,7 @@
             <select id="subjectSelect" class="form-select" (change)="seleccionarAsignatura($event.target.value)">
               <option value="" disabled selected>Selecciona una asignatura</option>
               <option *ngFor="let subject of filteredSubjects" [value]="subject.idSub">
-                {{ subject.nameSub }} (ID: {{ subject.idSub }})
+                {{ subject.nameSub }} 
               </option>
             </select>
           </div>
@@ -37,7 +37,7 @@
                   <td>{{ professor.professor.nameProf }}</td>
                   <td>{{ professor.professor.spec }}</td>
                   <td>
-                    <button class="btn btn-success" (click)="asignarProfesor(professor.id)">Asignar</button>
+                    <button class="custom-button" (click)="asignarProfesor(professor.id)">Asignar</button>
                   </td>
                 </tr>
               </tbody>
@@ -60,7 +60,7 @@
                   <td>{{ assignment.idProf }}</td>
                   <td>{{ assignment.idSub }}</td>
                   <td>
-                    <button class="btn btn-danger" (click)="eliminarAsignacion(assignment.idProfSub)">
+                    <button class="custom-button" (click)="eliminarAsignacion(assignment.idProfSub)">
                       Eliminar
                     </button>
                   </td>

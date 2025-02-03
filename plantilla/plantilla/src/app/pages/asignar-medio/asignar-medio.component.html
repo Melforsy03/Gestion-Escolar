@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
           <!-- Botón para mostrar medios asignados -->
-          <button class="btn btn-primary mb-3" (click)="toggleAssignedMeans()">Medios Asignados</button>
+          <button class="custom-button" (click)="toggleAssignedMeans()">Medios Asignados</button>
 
           <!-- Mostrar select de aula siempre visible -->
           <div class="filter-section">
@@ -15,7 +15,7 @@
             <select id="aulaSelect" class="form-select" (change)="seleccionarAula($event.target.value)">
               <option value="" disabled selected>Selecciona un aula</option>
               <option *ngFor="let aula of aulas" [value]="aula.idClassR">
-                {{ aula.location }} (ID: {{ aula.idClassR }})
+                  {{ aula.location }} 
               </option>
             </select>
           </div>
