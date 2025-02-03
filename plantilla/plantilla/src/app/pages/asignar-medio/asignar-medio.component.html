@@ -34,13 +34,12 @@
                 <tr *ngFor="let medio of mediosDisponibles">
                   <td>{{ medio.nameMean }}</td>
                   <td>
-                    <button class="btn btn-success" (click)="asignarMedio(medio.idMean)">Asignar</button>
+                    <button class="custom-button" (click)="asignarMedio(medio.idMean)">Asignar</button>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-
           <!-- Mostrar medios asignados cuando se hace clic en el botón -->
           <div *ngIf="showAssignedMeans">
             <h5><strong>Medios Asignados</strong></h5>
@@ -57,7 +56,7 @@
                   <td>{{ asignacion.techName }}</td>
                   <td>{{ asignacion.idClassRoom }}</td>
                   <td>
-                    <button class="btn btn-danger" (click)="eliminarAsignacion(asignacion.idClassRoomTech)">
+                    <button class="custom-button" (click)="eliminarAsignacion(asignacion.idClassRoomTech)">
                       Eliminar
                     </button>
                   </td>

@@ -55,8 +55,9 @@ export class EvaluacionComponent implements OnInit {
   
       this.calificacionesService.asignarNota(payload).subscribe(
         () => {
-          alert('✅ Nota asignada con éxito');
+          
           this.cerrarModal();
+          this.cargarCalificaciones();
         },
         (error) => {
           console.error('❌ Error al asignar la nota:', error);
