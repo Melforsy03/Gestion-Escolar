@@ -23,11 +23,11 @@ export class RoleService {
       ],
     },
     {
-        role: 'administrador',
+        role: 'Admin',
         menuItems: [
-          { label: 'medios-auxiliares', path: '/medio-auxiliar', icon: 'inventory' },
-          { label: 'medios-tecnologicos', path: '/medio-tecnologico', icon: 'icon-app' },
-          { label : "Mantenimiento" , path : '/registrar-mantenimiento' , icon :'icon-components'}
+          { label: 'Medios-auxiliares', path: '/medio-auxiliar', icon: 'icon-app' },
+          { label: 'Medios Tecnologicos', path: '/medio-tecnologico', icon: 'icon-app' },
+          { label: 'Mantenimiento', path: '/mantenimiento', icon: 'icon-badge' }
         ],
       },
       {
@@ -44,7 +44,8 @@ export class RoleService {
           { label: 'Info Secretaria', path: '/info-secretaria', icon: 'icon-badge' },
           { label: 'Info Administrador', path: '/info-administrador', icon: 'icon-badge' },
           { label: 'Mantenimiento', path: '/mantenimiento', icon: 'icon-badge' },
-          {label : 'CalificacionProf' , path :'/calificacion' , icon: 'icon-badge'},
+          { label : 'CalificacionProf' , path :'/calificacion' , icon: 'icon-badge'},
+          { label : 'Aulas', path : '/aulas' ,icon: 'icon-badge'},
           { label: 'Asignar Medio', path: '/asignar-medio', icon: 'icon-badge' },
           { label: 'Asignar Asignatura', path: '/asignatura-profesor', icon: 'icon-badge' },
           { label: 'Info Administrador', path: '/info-administrador', icon: 'icon-badge' },

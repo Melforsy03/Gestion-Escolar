@@ -15,6 +15,7 @@ import { MantenimientoComponent } from "src/app/pages/mantenimiento/mantenimient
 import { CalificacionComponent } from "src/app/pages/calificacion/calificacion.component";
 import { AsignarComponent } from "src/app/pages/asignar-medio/asignar-medio.component";
 import { AsignaturaPComponent } from "src/app/pages/asignatura-profesor/asignatura-profesor.component";
+import { ClassroomComponent } from "src/app/pages/aulas/aulas.component";
 export const AdminLayoutRoutes: Routes = [
   { path: "profesor", component: ProfesorComponent },
   { path: "calificacion-estudiantes", component: InfoEstudiantesComponent },
@@ -30,4 +31,5 @@ export const AdminLayoutRoutes: Routes = [
   { path : "calificacion" , component :CalificacionComponent},
   { path : "asignar-medio" , component :AsignarComponent},
   { path : "asignatura-profesor" , component :AsignaturaPComponent},
+  { path : "aulas" , component :ClassroomComponent}
 ];
