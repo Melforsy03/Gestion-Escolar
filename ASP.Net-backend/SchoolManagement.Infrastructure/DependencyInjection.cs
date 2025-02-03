@@ -41,6 +41,8 @@ namespace SchoolManagement.Infrastructure
             services.AddScoped<ISubjectAuxMeanRepository, SubjectAuxMeanRepository>();
             services.AddScoped<IProfessorClassRoomRepository, ProfessorClassRoomRepository>();
             services.AddScoped<IProfessorPunishmentRepository, ProfessorPunishmentRepository>();
+            services.AddScoped<IProfessorNotificationsRepository, ProfessorNotificationsRepository>();
+            services.AddScoped<IMeanNotificationRepository, MeanNotificationRepository>();
             services.AddScoped<ContextInitializer>();
             services.AddAuthentication();
 

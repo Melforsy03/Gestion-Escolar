@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using SchoolManagement.Domain.Entities;
+using SchoolManagement.Domain.Notifications;
 using SchoolManagement.Domain.Relations;
 using SchoolManagement.Domain.Role;
 using SchoolManagement.Infrastructure.Identity;
@@ -39,18 +40,33 @@ namespace SchoolManagement.Infrastructure
         public DbSet<SubjectAuxMean> SubjectAuxMeans { get; set; }
         public DbSet<ProfessorClassRoom> ProfessorClassRooms { get; set; }
 
+        //Notifications
+        public DbSet<ProfessorNotifications> ProfessorNotifications { get; set; }
+        public DbSet<MeanNotifications> MeanNotifications { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            /* modelBuilder.Entity<User>(entity =>
-             {
-                 entity.HasKey(u => u.Id);
-                 entity.Property(u => u.UserName).IsRequired().HasMaxLength(50);
-                 entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
-                 entity.Property(u => u.PasswordHash).IsRequired();
-             });  */
+            
+
+            modelBuilder.Entity<MeanNotifications>(entity =>
+            {
+                entity.HasKey(e => e.MeanNotId);
+                entity.Property(e => e.MeanName);
+                entity.Property(e => e.MeanID);
+                entity.Property(e => e.BeenSended);
+            });
+
+            modelBuilder.Entity<ProfessorNotifications>(entity =>
+            {
+                entity.HasKey(e => e.ProfNotId);
+                entity.HasOne(e => e.professor).WithMany()
+                .HasForeignKey(e => e.IdProf);
+                entity.Property(e => e.BeenSended);
+                entity.Property(e => e.ProfName);
+            });
 
             modelBuilder.Entity<ProfessorPunishment>(entity =>
             {

@@ -46,6 +46,7 @@ namespace SchoolManagement.Application
             services.AddScoped<ISubjectAuxMeanService, SubjectAuxMeanService>();
             services.AddScoped<ITechnologicalMeansService, TechnologicalMeansService>();
             services.AddScoped<IProfessorClassRoomService, ProfessorClassRoomService>();
+            services.AddScoped<INotificationService, NotificationService>();
             services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
             services.AddScoped<Triggers>();
 
